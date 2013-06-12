@@ -1,0 +1,91 @@
+.SearchMain
+{
+  padding: 10px 20px;
+}
+
+.SearchMain h2
+{
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.searchtypes 
+{
+  cursor: default;
+}
+
+.searchtype 
+{
+  cursor: pointer;
+  color: #888;
+}
+
+.searchtype.active 
+{
+  color: #000;
+  font-weight:bold;
+}
+
+.ChangeDateButton
+{  
+  color:blue;
+  cursor:pointer;
+  font-size:7pt;
+}
+
+#month
+{  
+  width:130px;
+}
+#day
+{  
+  width:60px;
+}
+#year
+{  
+  width:70px;
+}
+
+#SearchForm 
+{
+  padding-top: 10px;
+}
+
+#SearchField
+{
+  width: 300px;
+}
+
+#SearchField.default
+{
+  color: #999;
+  font-style: italic;
+}
+
+.SearchResult
+{
+  border-bottom: 1px solid #CCC;
+  padding: 10px;
+  margin: 3px 0;
+  font-size: 13px;
+}
+
+.SearchResult img
+{
+  float: left;
+  margin: 0 10px 0 0;
+  width:50px;
+  height:50px;
+}
+
+#Results
+{
+  width: 500px;
+  float: left;
+  margin: 0 20px;
+}
+
+.LocImage {
+	width:100px;
+	height:100px;
+}

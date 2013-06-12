@@ -1,0 +1,34 @@
+<site>
+  <entry uri="/">Applications/Login</entry>
+  <entry uri="/register">Register</entry>
+  <!--<entry uri="/users">Debug_Users</entry>-->
+  <entry uri="/explore">Explore</entry>
+  <entry uri="/location">LocationViewer</entry>
+  <entry uri="/location/featured">FeaturedEventViewer</entry>
+  <entry uri="/locations/json">LocationJSON</entry>
+  <entry uri="/admin/locations">AdminLocationManager</entry>
+  <entry uri="/admin/locations/json">AdminLocationManagerJSON</entry>
+  <entry uri="/login">LoginHandler</entry>
+  <entry uri="/logout">LogoutHandler</entry>
+  <entry uri="/photo">UserPhoto</entry>
+  <entry uri="/user">UserInfo</entry>
+  <entry uri="/recommendations/user/json">UserRecommendationsJSON</entry>
+  <entry uri="/profile">Profile</entry>
+  <entry uri="/profile/json">ProfileJSON</entry>
+  <entry uri="/photoManager/json">PhotoManagerJSON</entry>
+  <entry uri="/trending">Trending</entry>
+  <entry uri="/network">Network</entry>
+  <entry uri="/network/json">NetworkJSON</entry>
+  <entry uri="/photos">UserPhotos</entry>
+  <entry uri="/messages/json">MessagesJSON</entry>
+  <entry uri="/messages">MessagesMain</entry>
+  <entry uri="/messages/thread">ThreadMain</entry>
+  <entry uri="/search">Search</entry>
+  <entry uri="/search/json">SearchJSON</entry>
+  <entry uri="/tos">Terms</entry>
+  <entry uri="/privacy">Privacy</entry>
+  <entry uri="/about">About</entry>
+  <entry uri="/settings">Settings</entry>
+  <entry uri="/reset">ResetPassword</entry>
+  <entry uri="/reset/json">ResetPasswordJSON</entry>
+</site>

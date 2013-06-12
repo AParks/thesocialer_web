@@ -1,0 +1,4 @@
+AuthUserFile /var/www/cred/.htpasswd
+AuthType Basic
+AuthName "Hi"
+Require valid-user

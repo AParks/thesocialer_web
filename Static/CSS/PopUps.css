@@ -1,0 +1,80 @@
+/* 
+    Document   : PopUps
+    Created on : May 30, 2013, 2:41:07 PM
+    Author     : aparks
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#LocationList .PopUpLocationPicture {    
+    width: 100% !important;
+  /*  height: auto;*/
+    max-height: 400px;
+        max-width: 100%;
+
+    display: block; 
+    margin-left: auto; margin-right: auto; 
+    margin-top: 61px;
+
+}
+#LocationList li.loc 
+{
+ /*   margin-left: 20px;*/
+    width: 430px !important; 
+    height: 300px ! important; 
+    background-color: #262626;
+        background-size: 100% 100%;
+
+}
+#LocationList li.loc  a
+{
+    width: 430px;
+    height: 300px;
+    display: inline-block;
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+ 
+}
+
+.TitleLocationContainer 
+{
+ /* top:-10px !important;*/
+  width:100% !important; 
+  background-color: #262626 !important;
+  border-bottom: 3px solid #6888B9;
+  padding: 0px !important;
+}
+.EventTitle {
+    padding: 15px;
+/*    font-size: 32pt !important;*/
+
+}
+.EventPrice {
+    float: right;
+
+}
+
+
+.DateContainer {
+    margin: 4px;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    float: left;
+    vertical-align: middle;
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    background-image: url('/Static/Images/calendar.png');
+}
+
+.DateContainer_Date {
+    width: 50px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 17px;
+    position: absolute;
+    margin-top: 10px;
+}

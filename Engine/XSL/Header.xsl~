@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:soc="http://kemmerer.co">
+  <xsl:output method="xml" omit-xml-declaration="yes"/>
+
+  <xsl:template match="/Header">
+  	<xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE xhtml&gt;</xsl:text>
+    <html>
+      <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>The Socialer</title>
+        <xsl:apply-templates select="CSS/file" />
+        <soc:googleAnalytics environment="dev" />
+        <link rel="icon" href="/Photos/favicon.ico" type="image/x-icon" />
+      </head>
+      <body class="Socialer">
+        <div id="Header">
+          <a href="/dashboard">
+            <img title="Home" src="/Static/Images/Logo.jpg" id="Logo" />
+          </a>
+          <xsl:choose>
+            <xsl:when test="./Viewer/@userId != -1">
+              <div id="AccountSettingsContainer">
+		<a href="#" id="HelpButton">How It Works</a>
+                |
+                <a href="/messages">
+                  <xsl:text>Messages</xsl:text>
+                  <xsl:if test="@unreadCount > 0">
+                    <xsl:text> (</xsl:text>
+                    <xsl:value-of select="@unreadCount" />
+                    <xsl:text>)</xsl:text>
+                  </xsl:if>
+                </a>
+                |
+                <a href="/logout">Log Out</a>
+              </div>
+            </xsl:when>
+            <xsl:otherwise>
+              <div id="MemberLoginContainer">
+                <xsl:text>Members </xsl:text>
+                <a href="#" id="LoginLink">
+                  <xsl:text>Login Here</xsl:text>
+                </a>
+                <form id="QuickLoginForm">
+                  <xsl:text>Email: </xsl:text>
+                  <input type="text" name="LoginEmail" />
+                  <br />
+                  <br />
+                  <xsl:text>Password: </xsl:text>
+                  <input type="password" name="LoginPassword" />
+                  <br />
+                  <br />
+                  <div id="QuickLoginFormLoginFailed">Incorrect email or password.</div>
+                  <a id="QuickLoginLink">
+                    <xsl:text>Login</xsl:text>
+                  </a>
+                  <!-- So there's submit on Enter -->
+                  <input type="submit" style="position:absolute;left:-9999px;" />
+                </form>
+              </div>
+            </xsl:otherwise>
+          </xsl:choose>
+        </div>
+        <div id="Navigation">
+          <xsl:if test="./Viewer/@userId != -1">
+            <xsl:call-template name="LoggedInNavigation" />
+          </xsl:if>
+	  <xsl:call-template name="HowItWorks" />
+        </div>
+	
+        <xsl:value-of select="markup" disable-output-escaping="yes" />
+        <xsl:apply-templates select="JavaScript/file" />
+        <xsl:if test="string-length(initJavaScript)">
+          <script type="text/JavaScript">
+            <xsl:value-of select="initJavaScript" />
+          </script>
+        </xsl:if>
+      </body>
+    </html>
+  </xsl:template>
+
+  <xsl:template match="/Header/JavaScript/file">
+    <script type="text/JavaScript">
+      <xsl:attribute name="src">
+        <xsl:value-of select="." />
+      </xsl:attribute>
+      <xsl:comment></xsl:comment>
+    </script>
+  </xsl:template>
+
+  <xsl:template match="/Header/CSS/file">
+    <link rel="stylesheet" type="text/css">
+      <xsl:attribute name="href">
+        <xsl:value-of select="." />
+      </xsl:attribute>
+    </link>
+  </xsl:template>
+
+  <xsl:template name="LoggedInNavigation">
+    <div class="navcontainer">
+      <a href="/dashboard" class="first NavigationLink">Home</a>
+      <a href="/trending" class="NavigationLink">What's Trending</a>      
+      <a href="/network" class="NavigationLink">Connections</a>
+      <a href="/profile" class="NavigationLink">Your Profile</a>
+      <a href="/search" class="last NavigationLink">Search</a>
+      <div id="SocialInbox">
+        <div class="clickRegion">
+          <span>Social Inbox</span>
+          <div id="SocialInboxCount">
+            <xsl:value-of select="count(SocialInbox/FriendRequests/FriendRequest)+count(SocialInbox/LocationShares/LocationShare)" />
+          </div>
+        </div>
+        <ol id="SocialInboxNotifications">
+          <xsl:choose>
+            <xsl:when test="count(SocialInbox/FriendRequests/FriendRequest) > 0"> 
+              <xsl:apply-templates select="SocialInbox/FriendRequests" />
+            </xsl:when>
+            <xsl:otherwise>
+              <li class="Notification none">No new friend requests.</li>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:choose>
+            <xsl:when test="count(SocialInbox/LocationShares/LocationShare) > 0"> 
+              <xsl:apply-templates select="SocialInbox/LocationShares" />
+            </xsl:when>
+            <xsl:otherwise>
+              <li class="Notification none">No new shares.</li>
+            </xsl:otherwise>
+          </xsl:choose>
+        </ol>
+      </div>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="FriendRequest">
+    <li class="Notification">
+      <xsl:attribute name="data-sender">
+        <xsl:value-of select="Member/@userId" />
+      </xsl:attribute>
+      <soc:photo size="Medium">
+        <xsl:attribute name="userId"><xsl:value-of select="Member/@userId" /></xsl:attribute>
+      </soc:photo>
+      <ol class="userDetails">
+        <li class="userName">
+          <strong>
+            <xsl:value-of select="Member/@firstName" />
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="Member/@lastName" />
+          </strong> 
+          wants to get social
+        </li>
+        <li>
+          <xsl:value-of select="Member/@Location" />
+          <xsl:text>, </xsl:text>
+          <xsl:value-of select="Member/@College" />
+        </li>
+        <li>
+          <button class="standard Blue accept">Accept</button>
+          <button class="standard Gray decline">Decline</button>
+        </li>
+      </ol>
+    </li>
+  </xsl:template>
+  
+  <xsl:template match="LocationShare">
+    <li class="Notification">
+      <xsl:attribute name="data-sender">
+        <xsl:value-of select="Member/@userId" />
+      </xsl:attribute>
+      <xsl:attribute name="data-loc-id">
+        <xsl:value-of select="./Location/@id" />
+      </xsl:attribute>
+      <xsl:attribute name="data-loc-date">
+        <xsl:value-of select="./DateObject/@rawdate" />
+      </xsl:attribute>
+      <a href="/location/{./Location/@id}/{./@date}">
+      	<img border="0" style="height:70px;width:70px;" src="/Photos/Locations/{./Location/@image}" />
+      </a>
+      <ol class="userDetails">
+        <li class="userName">
+          <a href="/profile/{Member/@userId}"><strong>
+            <xsl:value-of select="Member/@firstName" />
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="Member/@lastName" />
+          </strong></a> 
+          wants you to check out <a href="/location/{./Location/@id}/{./DateObject/@rawdate}"><xsl:value-of select="./Location/@name" /></a> on 
+          <xsl:value-of select="./DateObject/@shortDay" />, 
+          <xsl:value-of select="./DateObject/@shortMonth" /><xsl:text> </xsl:text>
+          <xsl:value-of select="./DateObject/@date" />
+        </li>
+         <li>
+          <button class="standard Gray dismiss">Dismiss</button>
+        </li>
+      </ol>
+    </li>
+  </xsl:template>
+
+  <xsl:template name="HowItWorks">
+    <div class="HowItWorks hide">
+      <div class="CloseWindow">X</div>
+      <h2>The Home Page</h2>
+      <br />
+      <p>The Spotlighted Event is the first thing you see when you sign into your Socialer account. This sits at the top of the home page, and will change frequently (daily to begin). These spotlighted events will generally be unique experiences going on in the Philly area. They will also include awesome promotional activities like free bike rentals/car service to locations/ etc. Check this daily to discover new opportunities. </p>
+      
+      <p>Below the Spotlighted Event are two rows of tabs.  These tabs were designed to help you easily sort through the different types of Places that Philly has to offer.  Take some time to play with the tabs and “like” some of your favorite places so we can begin to sort and display content that will be more relevant to you.  These liked places will be displayed on your profile.</p>
+      <br />
+      <br />
+      <h2>What’s Trending</h2>
+      <br />
+      <p>Trending is a developing concept.  The goal is to provide a daily snapshot of popular events and locations in Philly.  Initially, TheSocialer will start the trends each day by sharing various places with cool things happening.  When you comment on a location’s page, it appears under “Today’s comments” in the What’s Trending tab.  This will allow other users to discover things happening that day they may not otherwise know about. If you have a place in mind for that day/evening that has not appeared on What’s Trending, feel free to try and start your own trend. </p>
+      <br />
+      <br />
+      <h2>Sharing Events and Your Social Inbox</h2>
+      <br />
+      <p>Sharing and your Social Inbox are two important tools for discovering new experiences. TheSocialer will share a few events every day that show up in your Social Inbox. These events will coincide with the places you see on the trending page. You can also share an event with your network by going on any location’s page and clicking “Share This Event”. It is our hope that it will be easy for you to discover new experiences, while also allowing you to share interesting things with others. </p>
+      <br />
+      <br />
+      <h2>Your Connections</h2>
+      <br />
+      <p>Your Connections are the people that will make meaning out of the different locations and experiences you see on the site. The purpose is to build out a network so that you can not only discover places unique to your interests, but also participate in interesting experiences with others like you. Feel free to Get Social with others that might be able to contribute to your knowledge of what's going on in Philly. The goal is not to get deeply personal, but rather find cool people (who you may or may not already know) that like doing what you like to do. </p>
+      <br />
+      <br />
+      <h2>Experience</h2>
+      <br />
+      <p>We are going to be offering some awesome incentives to help encourage interaction off the site. Take advantage of the free promotions and go experience all that your city has to offer. Also, let us know what we can do differently... this is for you!</p>
+      <br />
+    </div>
+  </xsl:template>
+
+</xsl:stylesheet>

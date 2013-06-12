@@ -1,0 +1,61 @@
+.Messages
+{
+  padding: 10px 20px;
+}
+
+h1
+{
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+#Messages
+{
+  margin: 0 20px;
+  min-height:300px;
+}
+
+#Messages img
+{
+  float: left;
+  margin-right: 10px;
+}
+
+#Messages li.new
+{
+  background-color: #F6F6FF;
+}
+
+#Messages li
+{
+  border-bottom: 1px solid #EEE;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.SenderName
+{
+  font-weight: bold;
+  color: #999;
+}
+
+.SenderName
+{
+  margin-bottom: 3px;
+}
+
+.Preview
+{
+  color: #666;
+}
+
+.Timestamp
+{
+  float: right;
+  color: #999;
+}
+
+.NoMessages {
+	padding:20px;
+	height:300px;
+}

@@ -1,0 +1,342 @@
+.encrypted {
+    float: left;
+    margin-top: 10px;
+    background: url(/Static/Images/checkout-lock-icon.png) no-repeat left;
+    padding-left: 15px;
+    line-height: 14px;
+    font-size: 12px;
+    color: #bebebe;
+}
+.EventTitle{
+    padding: 4px;
+    text-align: center;
+    color: white;
+    line-height: 32px;
+}
+
+.booking{
+    text-align: center;
+    padding: 10px;
+    width: 85%;
+    background-color: #e7e7e7;
+    -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7);
+    box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7);
+}
+.booking  #total_price,
+.booking  #dollar_sign{
+    font-size: 48px;
+    font-family: comfortaabold;
+}
+.booking  #fee_text{
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: comfortaaregular;
+}
+
+.booking  #date{
+    font-size: 20px;
+    margin-bottom: 25px;
+    font-family: comfortaaregular;
+}
+
+.booking select{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 3px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+
+}
+.booking > button{
+    height: 50px;
+    font-family: comfortaaregular !important;
+
+}
+
+
+
+#leftcontainer
+{ 
+    width:580px;
+    float:left;
+    border-right:solid 1px gray;
+    padding:5px;
+}
+
+#FeaturedEvent 
+{
+    border: 1px solid #DCDCDC;
+    width:570px;
+    height: auto;
+    margin-bottom: 5px;
+    line-height: 18px;
+    position:relative;
+    overflow:hidden;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-box-shadow:  0px 1px 4px 0px rgba(0, 0, 0, .7);
+    box-shadow:  0px 1px 4px 0px rgba(0, 0, 0, .7);
+    background-color: #262626;
+    
+}
+#myCarousel{
+    height: 300px;
+    width: 570px;
+    background-size: contain;
+}
+#desc{
+    font-size: 16px;
+    padding: 10px;
+    color: white; 
+}
+   
+
+#FeaturedEvent img {
+    border: solid 1px gray;
+    max-height: 100%;
+    max-width: 100%;
+}
+.FeaturedEventImage {
+    width:900px;
+}
+.FeaturedEventBottomBar 
+{
+    width:880px;
+    height:44px;
+    position:absolute;
+    bottom:0px;
+    border-top:solid 3px #58A5D7;
+    background: rgba(0,0,0,0.7);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+    color:#FFF;
+    padding:5px 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.FeaturedEventHeadline {
+    float:left;
+    font-size:18pt;
+    font-weight:bold;
+    margin:4px 4px 0 4px;
+    padding-bottom:4px;
+    cursor:pointer;
+}
+.FeaturedEventLocation {
+    float:left;
+    clear: left;
+    font-size:10pt;
+    font-weight:bold;
+    cursor:default;
+    margin:0 4px;
+}
+.FeaturedEventTime {
+    float:right;
+    cursor:default;
+}
+
+/* the right side of the image, not the right column */
+.LocationRight
+{
+    position:absolute;
+    right:15px;
+}
+
+.FeaturedAttendingList 
+{
+
+}
+
+.AttendingCounts
+{ 
+    height:40px;
+}
+
+.FeaturedAttendingList li 
+{
+    width: 60px;
+    height:30px;
+    text-align: center;
+
+    padding: 4px 0 6px 0;
+    font-size: 7pt;
+    vertical-align: middle;
+    top:37px;
+    cursor:pointer;
+    -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+    background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+    background-color:#79bbff;
+    display:inline-block;
+    color:#fff;
+    cursor:pointer;
+    font-family:arial;
+    font-size: 8pt;
+    font-weight:bold;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #528ecc; 
+}
+
+.FeaturedAttendingList li.active {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.5, #378de5), color-stop(1, #79bbff) );
+    background:-moz-linear-gradient( center top, #378de5 50%, #79bbff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+    background-color:#378de5;
+    text-shadow:1px 1px 2px #124E8C;
+}
+.FeaturedAttendingList li:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
+    background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+    background-color:#378de5;
+}
+
+.FeaturedAttendingList strong {
+    display:block;
+    font-size: 16pt;
+    font-weight: bold;
+}
+.FeaturedAttendingList .AttendingCount {
+    background-color: #0050F2;
+    color: #FFF;
+    margin-right:1px;
+}
+.FeaturedAttendingList .MaybeCount {
+    background-color: #CACBCB;
+    color: #FFF;
+}
+
+.DateContainer
+{
+
+}
+.DateContainer_Date,
+.DateContainer_Day
+{
+    display:inline-block;
+    width: 60px;
+    padding: 12px 0;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    vertical-align: middle;
+    line-height: 32px;
+    min-height: 32px;
+    height: 32px;
+    margin-bottom:1px;
+    -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+    background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+    background-color:#79bbff;
+}
+.DateContainer_Day
+{
+    font-size: 20px;
+    margin-right: 1px;
+}
+.DateContainer_Date
+{
+    font-size: 16px;
+    line-height: inherit;
+}
+
+.LocationDescription
+{
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.ShareBar
+{
+    background-color: #E5E5E5;
+    font-size: 18px;
+    text-align: right;
+    padding: 4px;
+    margin: 4px 0;
+}
+
+.Attendees
+{
+    margin: 15px 0;
+}
+
+.Attendees strong
+{
+    display: block;
+}
+
+.Attendees .UserPhoto
+{
+    margin: 4px;
+    width:30px;
+    height:30px;
+}
+
+.AttendeesYes,
+.AttendeesMaybe
+{
+    float: left;
+    width: 290px;
+    margin:15px 0;
+}
+
+#rightcontainer
+{ 
+    width:300px;
+    float:right;
+}
+.LocationInfoContainer
+{
+    overflow:hidden;
+    margin:10px;
+}
+
+.LocationInfoContainer h1
+{ 
+    color:gray;
+    margin-bottom:10px;
+    font-size:14pt;
+}
+
+.LocationInfoContainer h2
+{
+    font-weight:bold;
+    padding:5px 5px 0 5px;
+}
+
+.LocationInfoContainer p
+{ 
+    padding:5px;
+    color: gray;
+    line-height:18px;
+}
+
+#MainBody
+{
+    padding: 20px;
+    font-size: 12px;
+}
+
+#LocationMap
+{
+    height: 270px;
+    width: 270px;
+    border: solid 1px gray;
+    margin: 0 auto;
+}
+
+.MemberName
+{ 
+    position:absolute;
+    border:solid 1px gray;
+    padding:5px;
+    background-color:#FFF;
+    color:gray;
+}

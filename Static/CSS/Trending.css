@@ -1,0 +1,475 @@
+#Top 
+{
+    padding:10px 20px;
+}
+
+.WelcomeBack {
+    font-size: 16pt;
+    /* color:#1F61D4; */
+    color: #6888B9;
+    padding:15px 30px;
+    display:inline-block;
+}
+
+#EventDays {
+    display:inline-block;
+}
+
+#EventDays li {
+    background-color: #A1A2A5;
+    color: #FFF;
+    text-align: center;
+    display:inline-block;
+    font-size: 9pt;
+
+    cursor: pointer;
+    padding:5px 25px;
+}
+
+#EventDays li:hover {
+    text-decoration: none;
+    background-color: #6888B9;
+}
+
+#EventDays li.Day1 {
+    width: 60px;
+}
+
+#EventDays li.Day2 {
+    width: 60px;
+}
+
+#EventDays li.selected {
+    color: #0D233D;
+    background-color: #6888B9;
+}
+
+#EventDays li.last {
+    margin-right: 0;
+    width: 80px;
+}
+
+#EventDays li.last a,
+#EventDays li.last a:hover {
+    color: #FFF;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.Home {
+    padding: 5px 20px;
+}
+
+.EventList {
+
+}
+
+.EventList li {
+    display:inline-block;
+}
+
+.EventList .Event {
+    background: -moz-linear-gradient(top, #FFF, #E2E2E2); 
+    position: relative;
+    margin:13px 13px;
+    -webkit-box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+    box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+    overflow:hidden;
+}
+
+.EventList li.Loading {
+    line-height: 20px;
+    text-align: center;
+    width:830px;
+    height:840px;
+    color: #0B233F;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.AttendingCount 
+{
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:45px;
+    height: 45px;
+    text-align:center;
+    vertical-align: middle;
+    background-color:white;
+    border-radius:8px;
+
+    background-image:url('/Static/Images/star.png');
+    background-size: contain;
+    display:inline-block;
+
+    color:#c2c2c2;
+    cursor:pointer;
+    font-family:arial;
+    font-size: 8pt;
+    font-weight:bold;
+    text-decoration:none;
+
+
+}
+
+.AttendingCount strong
+{
+    font-size: 12pt;
+    line-height: 45px;
+    /*   line-height:32px; */
+    /*   padding:12px 0 0 0px;*/
+}
+
+.AttendingCount.active 
+{
+    /*   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.5, #378de5), color-stop(1, #79bbff) );
+       background:-moz-linear-gradient( center top, #378de5 50%, #79bbff 100% );
+       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');*/
+    background-color:white;
+    border-radius:8px;
+    background-size: contain;
+    background-image:url('/Static/Images/star_active.png');
+    color:gold;
+}
+.AttendingCount:hover {
+    background-image:url('/Static/Images/star_active.png');
+        color:gold;
+
+
+}
+.fav{
+    position:absolute;
+    bottom:0;
+    right:0;
+    height:45px;
+    width:45px;
+    max-height:100%;
+    max-width:100%;
+    background-image:url('/Static/Images/star.png');
+    background-size: contain;
+}
+
+.AttendingList {
+    float:left;
+    margin-top: 5px;
+}
+
+.AttendingList li {
+    float: left;
+    /*   width: 35px; */
+    text-align: center;
+    margin: -5px 5px 10px 0;
+    position: relative;
+}
+
+.AttendingList li img {
+    width:35px;
+}
+
+.AttendingList li .MemberName {
+    position: absolute;
+    top: 45px;
+    left: -10px;
+    border: 1px solid #0B233F;
+    background-color: #F2F2F2;
+    z-index: 2;
+    padding: 8px;
+    white-space: nowrap;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.TitleLocationContainer 
+{
+    position:absolute;
+    top:0;
+    width:240px;
+    background: rgba(0,0,0,0.7);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+    color:#FFF;
+    padding:5px 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.EventTitle {
+    font-size: 13pt;
+}
+
+.EventLocation {
+    font-size: 8pt;
+    margin-top: 5px;
+}
+
+.LocationImage {
+    cursor:pointer;
+}
+
+.LocationImage img {
+    width:260px;
+    height:260px;
+}
+
+.AttendingButtonsHolder {
+    position:absolute;
+    bottom:5px;
+    right:5px;
+    font-size: 9px;
+    z-index:2;
+}
+
+.AttendingButtons {
+    position:absolute;
+    right:0;
+    bottom:0;
+    opacity:0;
+}
+
+.AttendingButtons .Button {
+    line-height: 45px;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    margin-right:2px;
+    background-color: #CACBCB;
+    color: #0050F2;
+}
+
+.AttendingButtons .Button.hover {
+    background-color: #6690FF;
+    color: #FFF;
+}
+
+.AttendingButtons .Button.active {
+    background-color: #0050F2;
+    color: #FFF;
+}
+
+.AttendingButtonYes {
+    width: 45px;
+}
+
+.AttendingButtonYes.hover,
+.AttendingButtonYes.active {
+    color: #3C9A49;
+}
+
+.AttendingButtonMaybe {
+    width: 45px;
+}
+
+.AttendingButtonMaybe.hover,
+.AttendingButtonMaybe.active {
+    color: #FAAE2B;
+}
+
+.AttendingButtonNo.Button {
+    width: 34px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    border-right-width: 1px;
+}
+
+.AttendingButtonNo.hover,
+.AttendingButtonNo.active {
+    color: #C3031B;
+}
+
+.Events {
+    float: left;
+}
+
+.TrendContainer 
+{
+    position:absolute;
+    bottom:-100px;
+    height:50px;
+    width:260px;
+    background-color:rgba(0,0,0,.6);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+}
+
+.CommentContainer {
+    position:absolute;
+    bottom:-100px;
+    background-color:white;
+    height:60px;
+    width:260px;
+}
+
+.CommentContainer .UserName {
+    float: left;
+    font-size:10pt;
+    margin-top:3px;
+    margin-left:5px;
+}
+.CommentContainer .UserName:hover {
+    color: red;
+}
+
+/*.CommentContainer .UserPhoto {
+    float:left;
+    margin-top:-20px;
+    margin-left:8px;
+    border:solid 2px white;
+    width:35px;
+    height:35px;
+}*/
+
+.CommentContainer .UserLink {
+
+}
+
+.CommentContainer .Comment 
+{
+    clear:left;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size:8pt;
+    color:#777;
+    width:200px;
+    height:34px;
+    overflow:hidden;
+    padding: 0 5px;
+    white-space: pre-wrap;      /* CSS3 */   
+    white-space: -moz-pre-wrap; /* Firefox */    
+    white-space: -pre-wrap;     /* Opera <7 */   
+    white-space: -o-pre-wrap;   /* Opera 7 */    
+    word-wrap: break-word;      /* IE */
+}
+
+
+/* Featured Event Stuff: Modified layout for /trending  */
+.FeaturedAttendingList {
+    position:absolute;
+    width:55px;
+    height:100px;
+    right:0px;
+    top:20px;
+    background:rgba(220, 220, 220, 0.8);
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor:default;
+}
+
+.FeaturedAttendingList li {
+    float: right;
+    width: 45px;
+    text-align: center;
+    position: relative;
+}
+
+.FeaturedAttendingList .AttendingCount,
+.FeaturedAttendingList .MaybeCount 
+{
+    height: 30px;
+    padding: 5px 0;
+    font-size: 7pt;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.FeaturedAttendingList strong 
+{
+    display:block;
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 0;
+    line-height:18px;
+}
+
+.FeaturedAttendingList .AttendingCount 
+{
+    background-image:none;
+    background-color: #0050F2;
+    border: solid 1px #AAA;
+    color: #FFF;
+    position:absolute;
+    right:5px;
+    top:8px;
+}
+
+.FeaturedAttendingList .MaybeCount {
+    background-color: #CACBCB;
+    border: solid 1px #AAA;
+    color: #0050F2;
+    position:absolute;
+    right:5px;
+    top:52px;
+}
+
+#FeaturedEvent {
+    border: 1px solid #DCDCDC;
+    margin-bottom: 5px;
+    line-height: 18px;
+    position:relative;
+    overflow:hidden;
+}
+
+#FeaturedEvent img {
+    border: solid 1px gray;
+}
+
+.FeaturedEventInfo {
+    cursor: pointer;
+    max-height:400px;
+}
+.FeaturedEventImage {
+    width:100%;
+}
+.FeaturedEventBottomBar 
+{
+    width:840px;
+    height:44px;
+    position:absolute;
+    bottom:0px;
+    border-top:solid 3px #58A5D7;
+    background: rgba(0,0,0,0.7);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+    color:#FFF;
+    padding:5px 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.FeaturedEventHeadline {
+    float:left;
+    font-size:18pt;
+    font-weight:bold;
+    margin:4px 4px 0 4px;
+    padding-bottom:4px;
+    cursor:pointer;
+}
+.FeaturedEventLocation {
+    float:left;
+    clear: left;
+    font-size:10pt;
+    font-weight:bold;
+    cursor:default;
+    margin:0 4px;
+}
+.FeaturedEventTime {
+    float:right;
+    cursor:default;
+    font-size:14pt;
+}
+
+#FeaturedEvent_WhosGoing {
+    color: #666;
+    font-size:7pt;
+    font-weight: bold;
+    margin-right:10px;
+    position:absolute;
+    right:0px;
+    top:110px;
+}

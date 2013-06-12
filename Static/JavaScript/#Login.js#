@@ -1,0 +1,274 @@
+var LoginForm = function( ) {
+    var inputs = $( 'input', '#registerform' );
+    var joinbutton = $( 'button[name=Join]' );
+    var eventList = $('.EventList');
+    var eventSkeleton = eventList.find('li.LocationSkeleton').removeClass('LocationSkeleton').remove();
+    var regform = $('#registrationform');
+
+    function init( ) {
+	Main.overlay();
+	var loginbox = $('#MemberLoginContainer');
+	loginbox.css('position','fixed');
+	loginbox.css('top','50%');
+	loginbox.css('margin-top','-212px');
+	loginbox.css('left','50%');
+	loginbox.css('margin-left','200px');
+	/*$(document).scroll(function() {
+	    Main.centerObject(regform);
+	});*/
+	
+	loadEventsForDate(Main.formatDate(new Date()));
+	var validator = $("#registration").validate({ 
+            rules: { 
+		fullname: "required", 
+		password: { 
+                    required: true, 
+                    minlength: 5 
+		}, 
+		passwordconfirm: { 
+                    required: true, 
+                    minlength: 5, 
+                    equalTo: "#password" 
+		}, 
+		email: { 
+                    required: true, 
+                    email: true
+		    // TODO implement this remote stuff
+                    //remote: "emails.php" 
+		},
+		month: {
+		    required: true
+		},
+		day: {
+		    required: true,
+		    minlength:1,
+		    maxlength:2,
+		    range: [1, 31],
+		    number:true
+		},
+		year: {
+		    required: true,
+		    minlength:4,
+		    maxlength:4,
+		    number:true
+		},
+		gender: {
+		    required: true
+		}
+            }, 
+	    
+            messages: { 
+		fullname: "Enter your name",
+		password: { 
+                    required: "Provide a password", 
+                    rangelength: jQuery.format("Enter at least {0} characters") 
+		}, 
+		passwordconfirm: { 
+                    required: "Repeat your password", 
+                    minlength: jQuery.format("Enter at least {0} characters"), 
+                    equalTo: "Enter the same password as above" 
+		}, 
+		email: { 
+                    required: "Please enter a valid email address", 
+                    minlength: "Please enter a valid email address", 
+                    remote: jQuery.format("{0} is already in use") 
+		},
+		month: {
+		    required: "Please enter a valid birthdate"
+		},
+		day: {
+		    required: "Please enter a valid birthdate"
+		},
+		year: {
+		    required: "Please enter a valid birthdate"
+		},
+		dob: {
+		    required: "Please enter a valid birthdate"
+		},
+		gender: {
+		    required: "This field is required"
+		}
+            }, 
+            errorPlacement: function(error, element) {
+		if (element.attr("name") == "month" || element.attr("name") == "day" || element.attr("name") == "year") {
+		    error.appendTo( element.parent().parent().parent().next() );
+		}
+		else if ( element.is(":radio") ) {
+                    error.appendTo( element.parent().parent().parent().next() ); 
+		}
+		else if ( element.is(":checkbox") ) {
+                    error.appendTo ( element.next() );
+		} 
+		else {
+                    error.appendTo( element.parent().next() ); 
+		}
+            }, 
+            submitHandler: function() {
+		var shaObj = new jsSHA( $('#password').val( ) , "ASCII");
+		var hash = shaObj.getHash("SHA-256","HEX");
+		var name = $('#fullname').val().split(" ");
+		$.ajax( {
+		    url: '/register',
+		    type: 'POST',
+		    data: { 
+			firstName: name[0],
+			lastName: name[1],
+			emailAddress: $('#email' ).val( ),
+			year: $('#year').val( ),
+			month: $('#month' ).val( ),
+			day: $('#day' ).val( ),
+			gender: $('input:radio[name=gender]:checked').val(),
+			college: $('input[name=college]').val(),
+			password: hash
+		    },
+		    success: function( data ) {
+			top.location = '/dashboard';
+		    }
+		} );
+            }, 
+            // set this class to error-labels to indicate valid fields 
+            success: function(label) { 
+		// set  as text for IE 
+		label.html(" ").addClass("checked"); 
+            } 
+	}); 
+    }
+    
+    inputs.each(function( ){
+	$(this).data( 'default', $(this).val( ) );
+    }).focus(function( ){
+	$(this).addClass( 'active' );
+	if ( $(this).val( ) === $(this).data( 'default' ) ) {
+	    $( this ).val( '' );
+	}
+	if ($(this).attr('id') === 'password' && $(this).attr('type') !== 'password') {
+	    var $password = $('<input type="password" tabindex="4" name="password" id="password" />');
+	    $(this).replaceWith($password);
+	    $password.focus();
+	}
+    });
+    
+    function loadEventsForDate(selectedDate) {
+	Main.fetchFromServer('/locations/json/forDate', {date: selectedDate, limit: 9}, receiveEventsForDate);
+    }
+    
+    function receiveEventsForDate(response) {
+	for ( var i = 0, len = response.locations.length; i < len; i++ ) {
+	    newEvent(response.locations[i]);
+	}
+	$('#TrendingEvents').animate({
+            opacity: 1
+        }, 2000, function() { });;
+    }
+    
+    function newEvent(locationInfo) {
+        var newLocation = eventSkeleton.clone(true);
+
+        var locationImage = newLocation.find('.LocationImage');
+        locationImage.prepend('<img src="/Photos/Locations/'+locationInfo.image+'" />');
+
+        locationImage.bind('click', function(){
+            top.location = '/location/' + locationInfo.id + '/' + activeDate;
+        });
+
+        newLocation.find('.Event').attr('data-location-id', locationInfo.id);
+        newLocation.find('.EventTitle').html(locationInfo.name);
+        newLocation.find('.EventLocation').text(locationInfo.streetAddress);
+
+	newLocation.hover(
+            function() {
+                $(this).find('.TitleLocationContainer').animate({
+                    opacity: 0.9,
+                    top: '-4px'
+                }, 150, function() { });
+                $(this).find('.CommentContainer').animate({
+                    opacity: 0.9,
+                    bottom: '-6px'
+                }, 150, function() { });
+            },
+            function() {
+                $(this).find('.TitleLocationContainer').animate({
+                    opacity: 1,
+                    top: '0'
+                }, 150, function() { });
+                $(this).find('.CommentContainer').animate({
+                    opacity: 1,
+                    bottom: '0'
+                }, 150, function() { });
+            });
+
+        if ( locationInfo.userStatus ) {
+            if ( locationInfo.userStatus == 'yes' ) {
+                newLocation.find('.AttendingCount').addClass('active');
+            }
+        }
+
+        var attendingCounts = newLocation.find('ul.AttendingCounts');
+        attendingCounts.find('li.AttendingCount').html('<strong>' + locationInfo.attendanceCounts.yes + '</strong> Going');
+	newLocation.removeClass('hide');
+        newLocation.appendTo(eventList);
+    }
+
+
+    /*function newEvent(locationInfo) {
+	var newEvent = eventSkeleton.clone(true);
+	newEvent.find('div.nearbyeventname').html('<a href="/location/'+locationInfo.id+'">'+locationInfo.name+'</a>'); 
+	newEvent.find('div.nearbyeventlocation').text(locationInfo.streetAddress);
+	newEvent.find('div.nearbyeventimage').html('<img src="/Photos/Locations/'+locationInfo.image+'" />');
+	
+	var attendingList = newEvent.find('ul.nearbyeventattendees');
+	
+	if ( locationInfo.attendanceCounts.yes > 6 ) {
+	    var othersCount = locationInfo.attendanceCounts.yes - 6;
+	    newEvent.find('span.nearbyeventattendeeCount').text('+' + othersCount  + ' other' + (othersCount === 1 ? '' : 's will be there'));
+	}
+	
+	for ( var i = 0, len = Math.min(6, locationInfo.attendees.length); i < len; i++ ) {
+	    newAttendee(attendingList, locationInfo.attendees[i]);
+	}
+	
+	newEvent.appendTo(eventList);
+    }*/
+    
+    function newAttendee(container, userId) {
+	var newImage;
+	newImage = $('<li data-user-id="' + userId + '"><img src="/photo/' + userId + '/Small" /></li>');
+	container.append(newImage);
+    }
+    
+
+    var collegebox = $('#selectcollege');
+    function parseCollegeData(data){
+        var dataarray = data.split("\n");
+	for (college in dataarray) {
+	    addCollegeOption(dataarray[college]);
+	}
+	collegebox.select2({
+	    placeholder: "Where did you go?",
+	    minimumInputLength:3,
+	    allowClear: true
+	});
+	collegebox.parent().find('.select2-container').css('width','250px');
+    }
+    function addCollegeOption(college) {
+	collegebox.append('<option value="'+college+'">'+college+'</option>');
+    }
+    //$.get("Static/colleges.csv",parseCollegeData);
+    $('#month').select2({
+	minimumResultsForSearch: 13,
+	placeholder: "Month"
+    });
+    $('#day').select2({
+	minimumResultsForSearch: 32,
+	placeholder: "Day"
+    });
+    $('#year').select2({
+	minimumResultsForSearch: 102,
+	placeholder: "Year"
+    });
+    init();
+};
+
+$(function( ){
+    new LoginForm( );
+});

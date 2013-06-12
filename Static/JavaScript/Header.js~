@@ -1,0 +1,52 @@
+var Header = function( ) { };
+
+Header.showFailedLogin = function( ) {
+    $('#QuickLoginForm_LoginFailed').show( );
+    $('#QuickLoginForm').show( );
+}
+
+$(function(){
+    $('#HelpButton').bind('click', function(){
+	$('.HowItWorks').toggle();	
+    });
+    
+    $('.HowItWorks').find('.CloseWindow').bind('click', function (){
+	$(this).parent().hide();
+    });
+
+    if ($('#LoginLink').length)
+    {
+	$('#LoginLink').bind('click', function(){
+	    $('#QuickLoginForm').show();
+	    return false;
+	});
+	
+	$('#QuickLoginForm').submit( function( event ){
+	    event.preventDefault();
+	    var emailbox = $(this).parent( ).find('input[name=LoginEmail]');
+	    var passbox = $(this).parent( ).find('input[name=LoginPassword]');
+	    var shaObj = new jsSHA( passbox.val( ) , "ASCII");
+	    var hash = shaObj.getHash("SHA-256","HEX");
+	    $.ajax( {
+		url: '/login',
+		type: 'POST',
+		data: { 
+	    	    LoginEmail: emailbox.val(),
+	            LoginPassword: hash
+		},
+		success: function( data ) {
+	    	    
+		},
+		error: function( data ) {
+		    //$('#QuickLoginFormLoginFailed').show();
+		}
+	    } );
+	    //$(this).parent( ).submit( );
+	    return false;
+	});
+	
+	$('#QuickLoginLink').bind('click', function() {$(this).parent().submit()} );
+	
+    }
+    
+});

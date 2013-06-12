@@ -1,0 +1,427 @@
+.LocationsMain {
+    padding: 10px 20px;
+}
+
+.LocationsMain h2 {
+    font-size: 18px;
+    margin: 5px 0;
+    color:#1F61D4;
+}
+
+.LocationsMain .RightSide {
+    float: right;
+    width: 230px;
+    margin-left: 10px;
+    margin-top:30px;
+}
+
+.LocationsMain .LeftSide {
+
+}
+
+#Map {
+    width: 230px;
+    height: 260px;
+}
+
+#FeaturedEvent {
+    border: 1px solid #DCDCDC;
+    margin-bottom: 5px;
+    line-height: 18px;
+    position:relative;
+    overflow:hidden;
+}
+
+#FeaturedEvent img {
+    border: solid 1px gray;
+}
+
+.FeaturedEventInfo {
+    cursor: pointer;
+    max-height:400px;
+}
+.FeaturedEventImage {
+    width:100%;
+}
+.FeaturedEventBottomBar 
+{
+  width:840px;
+  height:44px;
+  position:absolute;
+  bottom:0px;
+  border-top:solid 3px #58C5C7;
+  background: rgba(0,0,0,0.7);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+  color:#FFF;
+  padding:5px 10px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.FeaturedEventHeadline {
+    float:left;
+    font-size:18pt;
+    font-weight:bold;
+    margin:4px 4px 0 4px;
+    padding-bottom:4px;
+    cursor:pointer;
+}
+.FeaturedEventLocation {
+    float:left;
+    clear: left;
+    font-size:10pt;
+    font-weight:bold;
+    cursor:default;
+    margin:0 4px;
+}
+.FeaturedEventTime {
+    float:right;
+    cursor:default;
+    font-size:14pt;
+}
+
+#FeaturedEvent_WhosGoing {
+    color: #666;
+    font-size:7pt;
+    font-weight: bold;
+    margin-right:10px;
+    position:absolute;
+    right:0px;
+    top:110px;
+}
+
+#tagfilter {
+    width:840px;
+    margin:5px auto;
+}
+
+#tagfilter .tagbutton 
+{
+  text-align: center;
+  display: inline-block;
+  padding: 5px 0px;
+  width:103px;
+  height:12px;
+  border: 1px solid #DCDCDC;
+  cursor: pointer;
+  font-weight:bold;
+  font-size:8pt;
+  color:#000;
+  letter-spacing:1px;
+  background-color: #D0F5FF;  /* old versions of IE */
+  background-image: -ms-linear-gradient(top, #FFFFFF 0%, #E0F5FF 100%);  /* IE10 Consumer Preview */ 
+  background-image: -moz-linear-gradient(top, #FFFFFF 0%, #E0F5FF 100%); /* Mozilla Firefox */ 
+  background-image: -o-linear-gradient(top, #FFFFFF 0%, #E0F5FF 100%); /* Opera */ 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #E0F5FF)); /* Webkit (Safari/Chrome 10) */ 
+  background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #E0F5FF 100%); /* Webkit (Chrome 11+) */ 
+  background-image: linear-gradient(to bottom, #FFFFFF 0%, #E0F5FF 100%); /* W3C Markup, IE10 Release Preview */ 
+  
+                       
+}
+
+#tagfilter .tagbutton.first {
+    
+}
+
+#tagfilter .tagbutton.last {
+
+}
+
+#tagfilter .tagbutton:hover {
+    background-color: #B0DFFF;  /* old versions of IE */
+    background-image: -ms-linear-gradient(top, #FFFFFF 0%, #B0DFFF 100%);  /* IE10 Consumer Preview */ 
+    background-image: -moz-linear-gradient(top, #FFFFFF 0%, #B0DFFF 100%); /* Mozilla Firefox */ 
+    background-image: -o-linear-gradient(top, #FFFFFF 0%, #B0DFFF 100%); /* Opera */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #B0DFFF)); /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #B0DFFF 100%); /* Webkit (Chrome 11+) */ 
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #B0DFFF 100%); /* W3C Markup, IE10 Release Preview */ 
+}
+
+#tagfilter .tagbutton.active {
+    background-color: #3890C7;  /* old versions of IE */
+    background-image: -ms-linear-gradient(top, #FFFFFF 0%, #3890C7 100%);  /* IE10 Consumer Preview */ 
+    background-image: -moz-linear-gradient(top, #FFFFFF 0%, #3890C7 100%); /* Mozilla Firefox */ 
+    background-image: -o-linear-gradient(top, #FFFFFF 0%, #3890C7 100%); /* Opera */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #3890C7)); /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #3890C7 100%); /* Webkit (Chrome 11+) */ 
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #3890C7 100%); /* W3C Markup, IE10 Release Preview */ 
+}
+
+#LocationList
+{ 
+
+}
+
+#LocationList li.loc 
+{
+  position:relative;
+  display:inline-block;  
+  height:410px;
+  width:410px;
+  margin:10px 10px;
+  -webkit-box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+  box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+  cursor:pointer;
+
+}
+
+#LocationList .LocationPicture {
+    position:absolute;
+    top:0;
+    left:0;
+    width:410px;
+    height:410px;
+}
+
+#LocationList .LocationName {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.TitleLocationContainer 
+{
+  position:absolute;
+  top:0;
+  width:390px;
+  background: rgba(0,0,0,0.7);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+  color:#FFF;
+  padding:5px 10px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.EventTitle {
+    font-size: 18pt;
+      font-family: comfortaaregular !important;
+
+}
+
+.EventLocation {
+    font-size: 8pt;
+    margin-top: 5px;
+}
+
+#LocationList .LocationDescription 
+{
+  position:absolute;
+  bottom:0;
+  background: rgba(0,0,0,0.7);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+  width:390px;
+  height:40px;
+  padding: 5px 10px;
+  overflow:hidden;
+}
+
+#LocationList .LocationDescription .scroll
+{ 
+  position:absolute;
+  top:5px;
+  font-size:9pt;
+  line-height:18px;
+  color:#FFF;
+}
+
+
+/* AttendingList: Modified layout for /trending  */
+.FeaturedAttendingList {
+    position:absolute;
+    width:55px;
+    height:100px;
+    right:0px;
+    top:20px;
+    background:rgba(220, 220, 220, 0.8);
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor:default;
+}
+
+.FeaturedAttendingList li {
+    float: right;
+    width: 45px;
+    text-align: center;
+    position: relative;
+}
+
+.AttendingList 
+{
+  float:right;
+  position:absolute;
+  width:100px;
+  bottom:65px;
+  right:-10px;
+  -webkit-box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+  box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+}
+
+.FeaturedAttendingList .AttendingCount,
+.FeaturedAttendingList .MaybeCount {
+    height: 30px;
+    padding: 5px 0;
+    font-size: 7pt;
+    vertical-align: middle;
+}
+
+.AttendingList .LikeCount 
+{
+  float:right;
+  padding: 5px 0; 
+  font-size: 8pt;
+  vertical-align: middle;
+  text-align: center;
+  height: 30px;
+  width: 45px;
+  cursor: pointer;
+  color: #FFF;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+  background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+  background-color:#79bbff;
+}
+
+.AttendingList .LikeButton 
+{
+  float:right;
+  line-height: 40px;
+  font-size: 10px;
+  text-align: center;
+  vertical-align: middle;
+  height: 40px;
+  width:45px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right:1px;
+  background-color: #CACBCB;
+  
+  color: #0050F2;
+}
+
+.AttendingList .LikeButton.active 
+{
+  background-color: #0050F2;
+  color: #FFF;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+  background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+}
+
+.AttendingList .LikeButton:hover {
+    background-color: #6690FF;
+    color: #FFF;
+}
+
+.AttendingList strong,
+.FeaturedAttendingList strong {
+    display:block;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.FeaturedAttendingList .AttendingCount {
+    background-color: #0050F2;
+    border: solid 1px #AAA;
+    color: #FFF;
+    position:absolute;
+    right:5px;
+    top:8px;
+}
+
+.FeaturedAttendingList .MaybeCount {
+    background-color: #CACBCB;
+    border: solid 1px #AAA;
+    color: #0050F2;
+    position:absolute;
+    right:5px;
+    top:52px;
+}
+
+#LocationListPaging {
+    width:200px;
+    margin: auto;
+}
+
+#LocationListPaging .page.selected {
+    background-color: #B8CEFB;
+    border: 1px solid #B2B2B2;
+}
+
+#LocationListPaging li {
+    float: left;
+    padding: 4px;
+    margin: 4px 2px;
+}
+
+#LocationListPaging li.clear {
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+
+#LocationListPaging .page {
+    margin: 4px;
+    background-color: #E7EEFD;
+    border: 1px solid #E5E5E5;
+}
+
+#PastEventsAttended button {
+    font-weight: normal;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.PastEventsAttendedContainer {
+    border-top: 1px solid #AAA;
+    margin-top: 15px;
+    padding-top: 5px;
+}
+
+#PastEventsAttended li {
+    margin: 7px 0;
+    line-height: 16px;
+    font-size: 11px;
+}
+
+#PastEventsAttended li a {
+    font-size: 13px;
+}
+
+#PastEventSkeleton {
+    display: none;
+}
+
+.LocationTags 
+{
+  float:right;
+  clear:right;
+  margin-right:-10px;
+  margin-top:40px;
+  text-align:center
+}
+
+.LocationTag {
+    display:block;
+    position:relative;
+
+    margin-top:3px;
+    padding:3px 10px;
+    font-size:8pt;
+    font-weight: bold;
+    color:black;
+    background: #3890C7;
+}
+
+.Loading 
+{
+  position:absolute;
+  z-index:9999;
+  text-align:center;
+  color:white;
+  width:860px;
+  /* Fallback for web browsers that don't support RGBa */
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+  background: rgb(0, 0, 0);
+  /* RGBa with 0.6 opacity */
+  background: rgba(0, 0, 0, 0.6);
+}

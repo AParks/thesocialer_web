@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rsync -avr --rsh "ssh -i /home/parksa/.ssh/socialer.pem" /var/www/Engine/ ubuntu@socialer.dyndns.org:/var/www/Engine 
+rsync -avr --rsh "ssh -i /home/parksa/.ssh/socialer.pem" /var/www/Toolkit/ ubuntu@socialer.dyndns.org:/var/www/Toolkit 
+rsync -avr --rsh "ssh -i /home/parksa/.ssh/socialer.pem" /var/www/Applications/ ubuntu@socialer.dyndns.org:/var/www/Applications
+rsync -avr --rsh "ssh -i /home/parksa/.ssh/socialer.pem" /var/www/Static/ ubuntu@socialer.dyndns.org:/var/www/Static
+rsync -av  --rsh "ssh -i /home/parksa/.ssh/socialer.pem" /var/www/Configuration/ ubuntu@socialer.dyndns.org:/var/www/Configuration
+rsync -avr --rsh "ssh -i /home/parksa/.ssh/socialer.pem" /var/www/A/ ubuntu@socialer.dyndns.org:/var/www/A
+
+

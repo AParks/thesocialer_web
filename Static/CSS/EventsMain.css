@@ -1,0 +1,27 @@
+#NewEvent
+{
+  margin: 10px 0;
+  padding: 30px;
+  background-color: #DDD;
+  border: 2px solid #444;
+  border-width: 2px 0; 
+  text-align: center;
+}
+
+#EventInput
+{
+  border: 1px solid #444;
+  padding: 10px;
+  font-size: 18px;
+}
+
+#EventInput.inactive
+{
+  color: #999;
+}
+
+body
+{
+  margin: 0;
+  padding: 0;
+}

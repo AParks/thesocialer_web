@@ -1,0 +1,32 @@
+table
+{
+  margin: 5px;
+}
+
+th, td
+{
+  border: 1px solid #CCC;
+  padding: 5px 8px;
+}
+
+th
+{
+  font-weight: bold;
+  text-align: center;
+}
+
+#AddLocationForm th
+{
+  text-align: right;
+}
+
+#AddLocationForm .actions
+{
+  text-align: center;
+}
+
+td.AddResult
+{
+  text-align: center;
+  font-weight: bold;
+}

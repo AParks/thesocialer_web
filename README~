@@ -1,0 +1,29 @@
+Use the scripts in the /var/www/scripts/ folder to upload things to the server (uptoserver.sh won't mess with the stored images and data)
+
+Server setup:
+Install apache
+- setup config files
+- enable mod_rewrite using "a2enmod rewrite"
+- further enable rewriting by setting "AllowOverride all" in /etc/apache2/sites/000-default
+
+sudo apt-get install postgresql
+sudo apt-get install php5
+sudo apt-get install php-pear
+sudo pear install --alldeps Mail
+sudo pear install --alldeps Mail_Mime
+sudo apt-get install php5-gd
+sudo apt-get install php5-mcrypt
+sudo apt-get install php5-pgsql
+sudo apt-get install php5-xsl
+sudo apt-get install pgadmin3
+
+sudo passwd postgres
+make the password something good
+
+MAKE SURE THE PERMISSIONS ARE SET UP RIGHT (not just ownership) - compare with the actual site
+- dump the original db by doing "su postgres" and then "pg_dumpall > backup.sql"
+- using a backup .sql file, "su postgres" and run "psql -f backup.sql" to restore the database
+
+To delete entire db and restore to a new version -
+on unix, dropdb mayosala_socialer
+then psql -f back.sql

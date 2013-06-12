@@ -1,0 +1,380 @@
+#MainBody {
+    padding: 20px;
+}
+
+#LeftColumn {
+    float: left;
+    width: 250px;
+}
+
+#RightColumn {
+    float: left;
+    width: 650px;
+}
+
+.UserInfo {
+    background-color: #E3E3E3;
+    border-top: 7px solid #58A5D7;
+    padding: 10px 5px;
+}
+
+
+.UserInfo label {
+    font-size: 11px;
+    vertical-align: middle;
+    line-height: 20px;
+    width: 70px;
+    display: block;
+    float: left;
+}
+
+.UserInfo .value.edit {
+    outline: 2px solid #99D658;
+}
+
+.UserInfo .value input {
+    
+    border: 0;
+    width: 200px;
+    font-family: verdana,arial,sans-serif;
+    font-size: 16px;
+    padding: 0;
+}
+
+.UserInfo .value {
+    font-size: 16px;
+
+    float: left;
+    width: 218px;
+}
+
+.UserInfo .value.editable {
+    background-color: #FFF;
+    border: 1px solid #C7C7C7;
+}
+
+
+
+.UserInfo .element {
+    position: relative;
+    height:30px;
+}
+
+.UserInfo .element .editImage {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+}
+
+.OwnProfile .UserInfo .value {
+    padding: 0 5px;
+    height: 20px;
+}
+
+.UserInfo .FirstName,
+.UserInfo .LastName,
+.UserInfo .Location {
+    width: 305px;
+    margin-left: 5px;
+}
+
+.UserInfo .College {
+    width:440px;
+    margin: 0 0 0 5px;
+    clear: both;
+}
+
+.UserInfo .College input {
+    width:350px;
+}
+
+.UserInfo .College .value {
+    width: 350px;
+    height: auto;
+    min-height: 18px;
+}
+
+.UserInfo .AboutMe {
+    margin: 0 0 10px 5px;
+    width:625px;
+    clear: both;
+}
+
+.UserInfo .AboutMe .value {
+    width: 538px;
+    height: auto;
+    min-height: 18px;
+}
+
+.UserInfo .AboutMe input {
+    width: 520px;
+}
+
+.Photo {
+    display: block;
+    margin: 0 auto 5px;
+}
+
+#SaveProfile {
+    float: right;
+    margin: 10px 10px 0 0;
+    display: none;
+    color: #000;
+    width: 150px;
+}
+
+.ProfileBox {
+    padding: 5px 10px;
+    border-top: 1px solid #B2B2B2;
+    margin: 5px 0;
+    clear: both;
+}
+
+.ProfileBox.Photos {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.ProfileBox h2 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.ProfileTitle {
+    class: clear;
+    font-size: 16px;
+    margin: 0 0 5px;
+}
+
+.LinkContainer {
+    background-color: #AAABAD;
+    padding: 3px;
+}
+
+.LinkContainer a {
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.QuickPick {
+    width: 185px;
+    margin-right: 10px;
+    border: 1px solid #C7C7C7;
+    float: left;
+    font-size: 11px;
+    background-color: #FFF;
+}
+
+.QuickPick ul {
+    padding: 5px;
+}
+
+.QuickPick li {
+    margin: 3px 0 3px 20px;
+    list-style-image: url(/Static/Images/QuickPickCheck.png);
+    list-style-position: outside;
+}
+
+.QuickPick h2 {
+    background: -moz-linear-gradient(top, #FFF, #D8D8D8); 
+    padding: 5px;
+}
+
+.QuickPick.last {
+    width: 154px;
+    margin-right: 0;
+}
+
+.PhotoThumbs {
+    margin: 0 0 5px;
+}
+
+.PhotoThumbs img {
+    margin-right: 3px;
+    padding: 3px;
+    outline: 1px solid #EEE;
+    cursor: pointer;
+}
+
+.PhotoThumbs img:hover {
+    outline-color: #1F61D4;
+}
+
+.PhotoThumbs img.last {
+    margin-right: 0;
+}
+
+.ViewMoreContainer {
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+.ProfileSaveMessage {
+    font-size: 11px;
+    margin: 5px;
+    text-align: center;
+}
+
+
+.ProfileBox ::-webkit-scrollbar{width:9px;height:9px;}
+.ProfileBox ::-webkit-scrollbar-button:start:decrement,#doc ::-webkit-scrollbar-button:end:increment{display:block;height:0;background-color:transparent;}
+.ProfileBox ::-webkit-scrollbar-track-piece{background-color:#FAFAFA;-webkit-border-radius:0;-webkit-border-bottom-right-radius:8px;-webkit-border-bottom-left-radius:8px;}
+.ProfileBox ::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#999;-webkit-border-radius:8px;}
+.ProfileBox ::-webkit-scrollbar-thumb:horizontal{width:50px;background-color:#999;-webkit-border-radius:8px;}
+
+#LocationNamePopup {
+    position: absolute;
+    border: 1px solid #0B233F;
+    background-color: #F2F2F2;
+    z-index: 2;
+    padding: 8px;
+    white-space: nowrap;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+#LikedLocations {
+    height:75px;
+    white-space:nowrap;
+    overflow-x:scroll;
+    overflow-y:hidden;
+}
+
+#LikedLocations li {
+    display:inline-block;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+
+#LikedLocations li.last {
+    margin-right:0;
+}
+
+#LikedLocations img {
+    width:50px;
+    height:50px;
+    border:solid 1px gray;
+    -moz-box-shadow: 1px 2px 5px #000;
+    -webkit-box-shadow: 1px 2px 5px #000;
+    box-shadow: 1px 2px 5px #000;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#000000')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#000000');
+}
+
+#LikedLocations li .LocationName {
+  
+}
+
+#PastEventsAttended button {
+    font-weight: normal;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.PastEventsAttendedContainer {
+    border-top: 1px solid #AAA;
+    margin-top: 15px;
+    padding-top: 5px;
+}
+
+#PastEventsAttended li {
+    margin: 0 8px 0 0;
+    padding: 0 8px 0 0;
+    border-right: 1px solid #EEE;
+    line-height: 16px;
+    font-size: 11px;
+    width: 196px;
+    float: left;
+}
+
+#PastEventsAttended li.last {
+    border: 0;
+    margin-right: 0; 
+}
+
+#PastEventsAttended li a {
+    font-size: 13px;
+}
+
+#PastEventSkeleton {
+    display: none;
+}
+
+.FriendContainer .Friend {
+    margin: 0 0 4px 10px;
+}
+
+.FriendContainer .Friend.first {
+    margin-left: 0;
+}
+
+.Photos {
+    margin: 5px 0;
+}
+
+.PhotoLinks {
+    text-align: right;
+    color: #999;
+}
+
+#PhotoPopup {
+    margin: auto;
+    background-color: #FFF;
+    padding: 10px;
+    width: 700px;
+    z-index: 7;
+    border: 1px solid #CCC;
+    top: 50px;
+    position: fixed;
+}
+
+#PhotoPopup .inner {
+    text-align: center;
+    background-color: #EFF9FA;
+    border: 1px solid #EEE;
+    position: relative;
+}
+
+#PhotoPopup_Prev {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    color: #999;
+}
+
+#PhotoPopup_Next {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    color: #999;
+}
+
+.DeletePhoto,
+.MakeDefault {
+    float:right;
+    margin: 5px;
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    cursor:pointer;
+    color:#999;
+}
+.MakeDefault { bottom:15px; }
+
+.DeletePhoto:hover,
+.MakeDefault:hover {
+    text-decoration:underline;
+}
+
+.ClosePhotoWindow {
+    font-size:16pt;
+    position:absolute;
+    right:-10px;
+    top:-10px;
+    cursor:pointer;
+}

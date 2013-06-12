@@ -1,0 +1,27 @@
+#FriendRequestPopup
+{
+  width: 300px;
+  position: absolute;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  padding: 10px;
+  background: rgba(0, 0, 0, .5);
+}
+
+#FriendRequestPopup .inner
+{
+  background-color: #FFF;
+  text-align: center;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+#FriendRequestPopup button
+{
+  margin: 10px 5px 0;
+  padding: 3px 10px;
+}

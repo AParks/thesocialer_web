@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:soc="http://kemmerer.co">
+  <xsl:output method="html" omit-xml-declaration="yes" />
+
+  <xsl:template match="/LocationViewer">
+    <div class="LocationViewer" id="MainBody">
+      <div id="leftcontainer">
+	<div class="LocationImage">
+	  <div class="LocationDetails" >
+	    <h1><xsl:value-of select="./Location/@name" /></h1>
+	    <div class="LocationRight">
+	      <div class="DateContainer">
+		<div class="DateContainer_Day">
+		  <xsl:value-of select="./DateObject/@shortDay" />
+		</div>
+		<div class="DateContainer_Date">
+		  <xsl:value-of select="./DateObject/@shortMonth" />
+		  <br />
+		  <xsl:value-of select="./DateObject/@date" />
+		</div>
+	      </div>
+	    
+	      <xsl:if test="./Viewer/@userId != -1">
+		<div class="AttendingButtons_Holder">
+		  <div class="AttendingButtons">
+		    <div data-Status="yes" class="Button AttendingButton_Yes">Going</div>
+		    <div style="display:none;" data-Status="maybe" class="Button AttendingButton_Maybe">Maybe</div>
+		    <div style="display:none;" data-Status="no" class="Button AttendingButton_No">No</div>
+		  </div>
+		</div>
+	      </xsl:if>
+	    </div>
+	    <xsl:if test="./Viewer/@userId != -1">
+	      <div class="ShareBar">
+		<button id="ShareEvent" class="">Share</button>
+	      </div>
+	    </xsl:if>
+	    
+	    
+	  </div>
+	  <img src="/Photos/Locations/{./Location/@image}" />
+	</div>
+
+	<div class="Attendees">
+	  <div class="AttendeesYes">
+	    <strong>
+	      <span class="LocationLikeCount"><xsl:value-of select="count(./AttendanceManager/attendanceStatuses/yes/Member)" /></span> Going
+	    </strong>
+	    <xsl:apply-templates select="./AttendanceManager/attendanceStatuses/yes/Member" />
+	  </div>
+	</div>
+	
+	<div class="LocationComments">
+	  <h1>Today's Comments</h1>
+	  <hr />
+	  <xsl:if test="./Viewer/@userId != -1">
+	    <img class="MyPhoto" src="/photo/{./Viewer/@userId}/Small" />
+	    <textarea class="NewComment" placeholder="Write a comment..."></textarea>
+	  </xsl:if>
+	  <ul class="LocationCommentList">
+	    <xsl:call-template name="LocationCommentSkeleton" />
+	  </ul>
+	</div>
+
+      </div>	
+
+      <div id="rightcontainer">	
+	<div class="LocationInfoContainer">
+	  <h1>About The Venue:</h1>
+	  <h2>Popularity</h2>
+	  <p>
+	    <span class="LocationLikeCount"><xsl:value-of select="./Location/@likes" /></span> people like this venue.
+	    <xsl:choose>
+	      <xsl:when test='./Location/@userLikes = 1'>
+		<span class="LocationLikeButton">unlike</span><br /> 
+		<span class="LocationLikeText">You like this.</span>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<span class="LocationLikeButton">like</span><br /> 
+		<span class="LocationLikeText"></span>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </p>
+	  <h2>Address:</h2>
+	  <p><xsl:value-of select="./Location/@streetAddress" /></p>
+	  <h2>Website:</h2>
+	  <p>
+	    <a target="_blank">
+	      <xsl:attribute name="href">
+		<xsl:value-of select="./Location/@website" />
+	      </xsl:attribute>
+	      <xsl:value-of select="./Location/@website" />
+	    </a>
+	  </p>
+	  <h2>Description:</h2>
+	  <p><xsl:value-of select="./Location/@description" disable-output-escaping="yes" /></p>
+	</div>
+	<div id="LocationMap"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+</xsl:template>
+
+<xsl:template match="Member">
+  <a data-user-id="{./@userId}" href="/profile/{./@userId}">
+    <img src="/photo/{./@userId}/Small" class="UserPhoto" />
+  </a>
+</xsl:template>
+
+<xsl:template name="LocationCommentSkeleton">
+  <li class="hide LocationCommentSkeleton LocationCommentContainer">
+    <a class="UserLink"><img class="UserPhoto" /></a>
+    <div class="NameLocationContainer">
+      <a class="UserLink"><span class="UserName"></span></a> <br />
+      <span class="UserCollege" />
+    </div>
+    
+    <div class="Comment"></div>
+    
+    <div class="Replies"></div>
+    <xsl:if test="./Viewer/@userId != -1">
+      <input class="replybox" type="text" name="replycomment" placeholder="write a reply..." />
+    </xsl:if>
+    <div class="LikeTimestampContainer">
+      <div class="Timestamp"></div>
+      <div class="Likes"> - <span class="LikeCount">0</span><span class="heart">❤</span></div>
+    </div>
+    <div class="clear"></div>
+  </li>
+</xsl:template>
+</xsl:stylesheet>

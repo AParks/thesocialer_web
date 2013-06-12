@@ -1,0 +1,74 @@
+#EventSharerPopup
+{
+  width: 500px;
+  position: absolute;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  padding: 10px;
+  z-index: 7;
+  background: rgba(0, 0, 0, .5);
+}
+
+#EventSharerPopup .inner
+{
+  background-color: #FFF;
+  text-align: center;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+
+#EventSharerPopup .Friend
+{
+  float: left;
+  width: 60px;
+  height: 80px;
+  text-align: center;
+  outline: 1px solid #CCC;
+  padding: 5px;
+  margin: 5px;
+  font-size: 11px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#EventSharerPopup li img
+{
+  margin-bottom: 5px;
+}
+
+#EventSharerPopup li:hover
+{
+  outline: 1px solid #1F61D4 !important;
+}
+
+#EventSharerPopup li.selected
+{
+  outline: 1px solid #333;
+  background-color: #F6F6FA;
+}
+
+#EventSharerPopup li.clear
+{
+  float: none;
+}
+
+#EventSharerPopup h1
+{
+  font-size: 20px;
+}
+
+#EventSharerPopup button
+{
+  font-size: 16px;
+  font-weight: normal;
+}
+
+#EventSharerPopup .usersel
+{
+  cursor:pointer;
+}

@@ -1,0 +1,75 @@
+.Messages
+{
+  padding: 10px 20px;
+}
+
+h1
+{
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+#Messages
+{
+  margin: 0 20px;
+}
+
+#Messages img
+{
+  float: left;
+  margin-right: 10px;
+}
+
+#Messages li
+{
+  border-bottom: 1px solid #EEE;
+  padding: 5px 10px;
+}
+
+#Messages li.RespondBox
+{
+  border: 0;
+}
+
+.SenderName
+{
+  font-weight: bold;
+  color: #999;
+}
+
+.SenderName
+{
+  margin-bottom: 3px;
+}
+
+.Content
+{
+  float: left;
+  width: 625px;
+}
+
+.MessageBody
+{
+  color: #666;
+}
+
+.Timestamp
+{
+  float: right;
+  color: #999;
+}
+
+#Response
+{
+  border: 1px solid #DDD;
+  padding: 8px;
+  width: 500px;
+  height: 75px;
+  font-family: Verdana;
+  font-size: 12px;
+}
+
+.SendResult
+{
+  margin-left: 10px;
+}

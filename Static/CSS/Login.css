@@ -1,0 +1,442 @@
+#login {
+    clear: both;
+    position:relative;
+    width: 850px;
+    margin:auto;
+}
+
+
+#ForgotLink
+{
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #58A5D7;
+    border: 5px solid #F5F5F5;
+    color:white;
+    cursor:pointer;
+}
+#ForgotLink:hover:before{
+    position:absolute; 
+    content: '';
+    color: white;
+    border-radius: 50%;
+    box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+    top: 0 ; 
+    bottom: 0 ; 
+    left: 0 ; 
+    right: 0 ;    
+}
+#ForgotLink:hover{
+    position:relative;
+}
+
+
+
+
+
+
+#registerform , #MemberLoginContainer 
+
+{
+    margin-top: 20px;
+    width: 100%;
+    position:absolute;
+    opacity:.9;
+    z-index:7;
+
+    background-color: #F5F5F5;
+    padding: 20px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    border-radius: 25px 25px 25px 25px;
+}
+
+h5:before, h5:after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 50%;
+    height: 1px;
+    content: '\a0';
+    background-color: grey;
+}
+
+h5:before {
+    margin-left: -50%;
+    text-align: right;
+}
+h5 {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+}
+
+
+
+
+#registration label { 
+    font-size:8pt;
+}
+
+
+
+#registration label.error 
+{
+    font-size:9pt;
+    font-weight: normal;
+    color: #C00;
+    width: 50%;
+    display: inline;
+}
+
+#registration label.error.checked
+{ 
+    background:none;
+}
+
+#registration .field { 
+    height:28px;
+}
+
+#registration .status 
+{ 
+    position:relative;
+    display:block;
+    height:23px;
+}
+
+#registration input,
+#MemberLoginContainer input
+{ 
+    padding:5px;
+    margin-bottom: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+#fullname  input{
+    width: 49% !important;
+    display: inline;
+
+}
+label[for=lastname]{
+    float: right;
+}
+label[for=firstname]{
+    float: left;
+}
+#firstnameerror{
+    float:left;
+}
+#lastnameerror{
+    float:right;
+}
+
+.pass > * {
+    display:inline;
+    float: left;
+}
+
+.pass {
+    width: 100%;
+}
+#registration input[id="firstname"]{
+    float:left;
+}
+#registration input[id="lastname"]{
+    float:right;
+}
+#registration input[id="password"],
+#registration input[id="email"]{
+    width: 55%;
+}
+#gendercontainer input,
+#loccontainer input,
+input[type="checkbox"]{
+    width: 10%;
+    display: inline;
+}
+
+.fb-login-button{
+    width: 100%;
+    text-align: center;
+}
+
+
+#registration select
+{ 
+    padding:5px;
+}
+
+
+
+
+#month
+{
+    width:80px;
+}
+#monthcontainer 
+{ 
+    width:80px;
+}
+
+#day {
+    width:65px;
+}
+
+#daycontainer { 
+    width:65px;
+}
+
+#year {
+    width:70px;
+}
+
+#yearcontainer { 
+    width:70px;
+}
+
+#monthcontainer,
+#daycontainer,
+#yearcontainer 
+{ 
+    display:inline-block;
+}
+
+#monthlist,
+#daylist,
+#yearlist {
+    font-size: 16px;
+    display: none;
+    border: 1px solid #6392FF;
+    border-radius: 5px 5px;
+    -moz-border-radius: 5px 5px;
+    -moz-box-shadow:    inset 0 0 10px #CCC;
+    -webkit-box-shadow: inset 0 0 10px #CCC;
+    box-shadow:         inset 0 0 10px #CCC;
+    position: absolute;
+    width: 90px;
+    background-color: #FFF;
+    padding: 5px 10px;
+}
+
+#daylist { 
+    width:30px;
+}
+
+#gendercontainer,
+#loccontainer { 
+    padding:5px;
+}
+
+#gendercontainer label,
+#loccontainer label { 
+    margin-left:10px;
+}
+
+.joinbutton {
+    width: 100%;
+    background-color: #58A5D7;
+    border: 1px solid #748EED;
+    color: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: verdana,arial,sans-serif;
+    margin: 10px 0;
+    cursor:pointer;
+}
+
+.joinbutton:hover{
+    box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+}
+#loginfooter {
+    clear: both;
+    display: block;
+    margin: 45px auto;
+    text-align: center;
+}
+
+#loginfooter li {
+    padding: 0 15px;
+    border-right: 1px solid #FFF;
+    font-weight: bold;
+    display: inline-block;
+}
+
+#loginfooter li.last {
+    border-width: 0;
+}
+
+#loginfooter a {
+    color: #FFF;
+    border-bottom: 1px dotted #FFF;
+}
+
+#loginfooter a:hover {
+    text-decoration: none;
+}
+
+
+/* New trending styles */
+
+#TrendingEvents 
+{ 
+    position:absolute;
+    top:0;
+}
+
+.EventList
+{ 
+
+}
+
+.EventList li 
+{ 
+    display:inline-block;
+}
+
+.EventList .Event 
+{
+    background: -moz-linear-gradient(top, #FFF, #E2E2E2); 
+    position: relative;
+    margin:10px 10px;
+    webkit-box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+    box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+    overflow:hidden;
+}
+
+.AttendingCount {
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:45px;
+    height: 30px;
+    padding: 4px 0 6px 0;    
+    text-align:center;
+    vertical-align: middle;
+    -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+    background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+    background-color:#79bbff;
+    display:inline-block;
+    color:#fff;
+    cursor:pointer;
+    font-family:arial;
+    font-size: 8pt;
+    font-weight:bold;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #528ecc;
+}
+
+.AttendingCount strong {
+    font-size: 16pt;
+    font-weight: bold;
+    display:block;
+}
+
+.TitleLocationContainer 
+{
+    position:absolute;
+    top:0;
+    width:240px;
+    background: rgba(0,0,0,0.7);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+    color:#FFF;
+    padding:5px 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.EventTitle {
+    font-size: 13pt;
+}
+
+.EventLocation {
+    font-size: 8pt;
+    margin-top: 5px;
+}
+
+.LocationImage {
+    cursor:pointer;
+}
+
+.LocationImage img {
+    width:260px;
+    height:260px;
+}
+
+.AttendingButtonsHolder {
+    position:absolute;
+    bottom:5px;
+    right:5px;
+    font-size: 9px;
+}
+
+.AttendingButtons {
+    position:absolute;
+    right:0;
+    bottom:0;
+    opacity:0;
+}
+
+.AttendingButtons .Button {
+    line-height: 45px;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    margin-right:2px;
+    background-color: #CACBCB;
+    color: #0050F2;
+}
+
+.AttendingButtons .Button.hover {
+    background-color: #6690FF;
+    color: #FFF;
+}
+
+.AttendingButtons .Button.active {
+    background-color: #0050F2;
+    color: #FFF;
+}
+
+.AttendingButtonYes {
+    width: 45px;
+}
+
+.AttendingButtonYes.hover,
+.AttendingButtonYes.active {
+    color: #3C9A49;
+}
+
+.AttendingButtonNo.Button {
+    width: 34px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    border-right-width: 1px;
+}
+
+.AttendingButtonNo.hover,
+.AttendingButtonNo.active {
+    color: #C3031B;
+}
+
+.Events {
+    float: left;
+}
+
+#Header {
+    z-index: 7;
+}

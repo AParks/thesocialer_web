@@ -1,0 +1,20 @@
+--
+-- Name: insert_location(integer, text, text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: mayosala_socialer
+--
+
+CREATE FUNCTION insert_location(in_city_id integer, in_location_name text, in_street_address text, in_description text, in_website text, in_yelp_id text, in_location_image text) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+    DECLARE
+      new_id INTEGER;
+    BEGIN
+      INSERT INTO locations ( location_id, city_id, location_name, street_address, description, website, yelp_id, location_image )
+                  VALUES ( default, in_city_id, in_location_name, in_street_address, in_description, in_website, in_yelp_id, in_location_image ) 
+                  RETURNING location_id INTO new_id;
+      RETURN new_id;
+    END;
+  $$;
+
+
+ALTER FUNCTION public.insert_location(in_city_id integer, in_location_name text, in_street_address text, in_description text, in_website text, in_yelp_id text, in_location_image text) OWNER TO mayosala_socialer;
+

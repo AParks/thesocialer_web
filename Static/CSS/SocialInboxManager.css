@@ -1,0 +1,91 @@
+#SocialInbox
+{
+  float: right;
+  width: 145px;
+  background-color: #EFF9FA;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 0 2px 0 6px;
+  color: #1F61D4;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+
+#SocialInbox .clickRegion:hover span
+{
+  text-decoration: underline;
+}
+
+#SocialInboxCount
+{
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  float: right;
+  border-radius: 3px;
+  color: #FFF;
+  padding: 0 13px 0 4px;
+  height: 22px;
+  line-height: 22px;
+  margin: 1px 0;
+  background-image: url(/Static/Images/DownTick.png);
+  background-repeat: no-repeat;
+  background-color: #2A6DE1;
+  background-position: 90% 50%;
+}
+
+#SocialInboxNotifications
+{
+  display: none;
+  width: 300px;
+  position: absolute;
+  right: 0;
+  background-color: #F9F9F9;
+  padding: 0 10px;
+  border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  border: 3px solid #58A5D7;
+  border-width: 0 3px 3px 3px;
+  top: 27px;
+  color: #000;
+  cursor: default;
+}
+
+#SocialInboxNotifications .userDetails
+{
+  float: right;
+  width: 211px;
+  line-height: 15px;
+  color: #666;
+  font-size: 11px;
+}
+
+#SocialInboxNotifications .userDetails .userName
+{
+  color: #000;
+  font-size: 13px;
+}
+
+#SocialInboxNotifications button 
+{
+  font-size: 9px;
+  margin: 2px 5px 0 0;
+}
+
+#SocialInboxNotifications > li
+{
+  border-bottom: 1px solid #CCC;
+  padding: 10px 0 5px 0;
+}
+
+#SocialInboxNotifications li:last-child
+{
+  border: 0;
+}
+
+#SocialInboxNotifications .Notification.none
+{
+  text-align: center;
+}

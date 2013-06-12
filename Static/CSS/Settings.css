@@ -1,0 +1,81 @@
+#MainBody
+{ 
+  padding:20px;
+}
+
+#MainBody h1
+{ 
+  font-size:14pt;
+  margin-bottom:5px;
+}
+
+#MainBody h2
+{ 
+  font-size:12pt;
+  margin-bottom:5px;
+}
+
+#SettingsLeft
+{
+  float: left;
+  width: 150px;
+  border-right:solid 1px gray;
+  min-height:200px;
+}
+
+#SettingsRight
+{
+  float: left;
+  width: 700px;
+
+  padding:10px;
+}
+
+#SettingsTabs li
+{ 
+  padding:4px;
+  border-top: solid 1px #999;
+  border-bottom: solid 1px #999;
+  margin-bottom:5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor:pointer;
+}
+
+#SettingsTabs li.active
+{ 
+  background-color:#BBB;
+}
+
+.SettingsContent
+{ 
+  display:none;
+}
+.SettingsContent.active
+{ 
+  display:inline;
+}
+
+.SettingsContent table td
+{ 
+  padding:10px;
+  vertical-align:middle;
+}
+
+.SettingsContent .EditButton
+{ 
+  font-weight:bold;
+  cursor:pointer;
+}
+.SettingsContent .EditButton:hover
+{ 
+  text-decoration:underline;
+}
+
+.SettingsContent .date
+{ 
+  float:left;
+}

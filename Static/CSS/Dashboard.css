@@ -1,0 +1,304 @@
+.WelcomeBack {
+    font-size: 16pt;
+    color:#1F61D4;
+    padding:15px 30px;
+    display:inline-block;
+}
+
+#EventDays {
+    display:inline-block;
+}
+
+#EventDays li {
+    background-color: #A1A2A5;
+    color: #FFF;
+    text-align: center;
+    display:inline-block;
+    font-size: 9pt;
+    width: 70px;
+    cursor: pointer;
+    padding:5px;
+}
+
+#EventDays li:hover {
+    text-decoration: underline;
+}
+
+#EventDays li.Day1 {
+    width: 80px;
+}
+
+#EventDays li.Day2 {
+    width: 80px;
+}
+
+#EventDays li.selected {
+    color: #0D233D;
+    background-color: #58C5C7;
+}
+
+#EventDays li.last {
+    margin-right: 0;
+    width: 80px;
+}
+
+#EventDays li.last a,
+#EventDays li.last a:hover {
+    color: #FFF;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.Home {
+    padding: 5px 20px;
+}
+
+.EventList {
+
+}
+
+.EventList li {
+    display:inline-block;
+}
+
+.EventList .Event {
+    background: -moz-linear-gradient(top, #FFF, #E2E2E2); 
+    position: relative;
+    margin:10px 10px;
+    -webkit-box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+    box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+    overflow:hidden;
+}
+
+.EventList li.Loading {
+    line-height: 20px;
+    text-align: center;
+    width:830px;
+    height:840px;
+    color: #0B233F;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.AttendingCount 
+{
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:45px;
+  height: 30px;
+  padding: 4px 0 6px 0;    
+  text-align:center;
+  vertical-align: middle;
+  -moz-box-shadow: 0px 1px 1px 0px #999;
+  -webkit-box-shadow: 0px 1px 1px 0px #999;
+  box-shadow: 0px 1px 1px 0px #999;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+  background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+  background-color:#79bbff;
+  display:inline-block;
+  color:#fff;
+  cursor:pointer;
+  font-family:arial;
+  font-size: 8pt;
+  font-weight:bold;
+  text-decoration:none;
+  text-shadow:1px 1px 0px #528ecc;
+}
+
+.AttendingCount strong {
+    font-size: 16pt;
+    font-weight: bold;
+    display:block;
+}
+
+.AttendingCount.active {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.5, #378de5), color-stop(1, #79bbff) );
+    background:-moz-linear-gradient( center top, #378de5 50%, #79bbff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+    background-color:#378de5;
+    text-shadow:1px 1px 2px #124E8C;
+}
+.AttendingCount:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
+    background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+    background-color:#378de5;
+}
+
+.AttendingList {
+    float:left;
+    margin-top: 5px;
+}
+
+.AttendingList li {
+    float: left;
+    width: 35px;
+    text-align: center;
+    margin: -5px 5px 10px 0;
+    position: relative;
+}
+
+.AttendingList li img {
+    width:35px;
+}
+
+.AttendingList li .MemberName {
+    position: absolute;
+    top: 45px;
+    left: -10px;
+    border: 1px solid #0B233F;
+    background-color: #F2F2F2;
+    z-index: 2;
+    padding: 8px;
+    white-space: nowrap;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.TitleLocationContainer {
+    position:absolute;
+    top:0;
+    width:240px;
+    background: rgba(0,0,0,0.7);
+    color:#FFF;
+    padding:5px 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.EventTitle {
+    font-size: 13pt;
+}
+
+.EventLocation {
+    font-size: 8pt;
+    margin-top: 5px;
+}
+
+.LocationImage {
+    cursor:pointer;
+}
+
+.LocationImage img {
+    width:260px;
+    height:260px;
+}
+
+.AttendingButtonsHolder {
+    position:absolute;
+    bottom:5px;
+    right:5px;
+    font-size: 9px;
+    z-index:2;
+}
+
+.AttendingButtons {
+    position:absolute;
+    right:0;
+    bottom:0;
+    opacity:0;
+}
+
+.AttendingButtons .Button {
+    line-height: 45px;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    margin-right:2px;
+    background-color: #CACBCB;
+    color: #0050F2;
+}
+
+.AttendingButtons .Button.hover {
+    background-color: #6690FF;
+    color: #FFF;
+}
+
+.AttendingButtons .Button.active {
+    background-color: #0050F2;
+    color: #FFF;
+}
+
+.AttendingButtonYes {
+    width: 45px;
+}
+
+.AttendingButtonYes.hover,
+.AttendingButtonYes.active {
+    color: #3C9A49;
+}
+
+.AttendingButtonMaybe {
+    width: 45px;
+}
+
+.AttendingButtonMaybe.hover,
+.AttendingButtonMaybe.active {
+    color: #FAAE2B;
+}
+
+.AttendingButtonNo.Button {
+    width: 34px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    border-right-width: 1px;
+}
+
+.AttendingButtonNo.hover,
+.AttendingButtonNo.active {
+    color: #C3031B;
+}
+
+.Events {
+    float: left;
+}
+
+.CommentContainer {
+    position:absolute;
+    bottom:-100px;
+    background-color:white;
+    height:60px;
+    width:260px;
+}
+
+.CommentContainer .UserName {
+    float: left;
+    font-size:10pt;
+    margin-top:3px;
+    margin-left:5px;
+}
+
+.CommentContainer .UserPhoto {
+    float:left;
+    margin-top:-20px;
+    margin-left:8px;
+    border:solid 2px white;
+    width:35px;
+    height:35px;
+}
+
+.CommentContainer .UserLink {
+	
+}
+
+.CommentContainer .Comment 
+{
+  clear:left;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size:8pt;
+  color:#777;
+  width:200px;
+  height:34px;
+  overflow:hidden;
+  padding: 0 5px;
+}

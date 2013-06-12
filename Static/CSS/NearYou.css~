@@ -1,0 +1,481 @@
+.LocationsMain
+{
+  padding: 10px 20px;
+}
+
+.LocationsMain h2
+{
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.LocationsMain .LeftSide
+{
+  float: left;
+  width: 230px;
+  margin-right: 10px;
+}
+
+.LocationsMain .RightSide
+{
+  float: left;
+  width: 620px;
+}
+
+#Map
+{
+  width: 230px;
+  height: 260px;
+}
+
+#FeaturedEvent
+{
+  border: 1px solid #DCDCDC;
+  margin-bottom: 5px;
+  line-height: 18px;
+  position:relative;
+}
+
+#FeaturedEvent img {
+	border: solid 1px gray;
+}
+
+.FeaturedEventInfo {
+	cursor: pointer;
+}
+.FeaturedEventImage {
+	width:100%;
+}
+.FeaturedEventBottomBar {
+	width:600px;
+	position:absolute;
+	bottom:0px;
+	border-top:solid 3px #58C5C7;
+	background: rgba(0,0,0,0.7);
+	color:#FFF;
+	padding:5px 10px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+.FeaturedEventHeadline {
+	float:left;
+	font-size:18pt;
+	font-weight:bold;
+	margin:4px 4px 0 4px;
+	padding-bottom:4px;
+	cursor:pointer;
+}
+.FeaturedEventLocation {
+	float:left;
+	clear: left;
+	font-size:10pt;
+	font-weight:bold;
+	cursor:default;
+	margin:0 4px;
+}
+.FeaturedEventTime {
+	float:right;
+	cursor:default;
+}
+
+#FeaturedEvent_WhosGoing
+{
+  color: #666;
+  font-size:7pt;
+  font-weight: bold;
+  margin-right:10px;
+  position:absolute;
+  right:0px;
+  top:110px;
+}
+
+#tagfilter{
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding: 0;
+  margin-top:5px;
+}
+
+#tagfilter .tagbutton {
+	display: inline-block;
+	padding: 10px 11px;
+	border: 1px solid #DCDCDC;
+	cursor: pointer;
+	font-weight:bold;
+	background-color: #D0EFFF;  /* old versions of IE */
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #D0EFFF 100%);  /* IE10 Consumer Preview */ 
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #D0EFFF 100%); /* Mozilla Firefox */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #D0EFFF 100%); /* Opera */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #D0EFFF)); /* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #D0EFFF 100%); /* Webkit (Chrome 11+) */ 
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #D0EFFF 100%); /* W3C Markup, IE10 Release Preview */ 
+}
+
+#tagfilter .tagbutton.first {
+	
+}
+
+#tagfilter .tagbutton.last {
+   padding: 10px 13px 10px 12px;
+}
+
+#tagfilter .tagbutton:hover {
+	background-color: #B0DFFF;  /* old versions of IE */
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #B0DFFF 100%);  /* IE10 Consumer Preview */ 
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #B0DFFF 100%); /* Mozilla Firefox */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #B0DFFF 100%); /* Opera */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #B0DFFF)); /* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #B0DFFF 100%); /* Webkit (Chrome 11+) */ 
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #B0DFFF 100%); /* W3C Markup, IE10 Release Preview */ 
+}
+
+#tagfilter .tagbutton.active {
+	background-color: #92BC95;  /* old versions of IE */
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #58C5C7 100%);  /* IE10 Consumer Preview */ 
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #58C5C7 100%); /* Mozilla Firefox */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #58C5C7 100%); /* Opera */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #58C5C7)); /* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #58C5C7 100%); /* Webkit (Chrome 11+) */ 
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #58C5C7 100%); /* W3C Markup, IE10 Release Preview */ 
+}
+
+#LocationList li.loc
+{
+	background-color: #FEFEFE;  /* old versions of IE */
+	background-image: -ms-linear-gradient(top, #FEFEFE 0%, #EBEBEB 100%);  /* IE10 Consumer Preview */ 
+	background-image: -moz-linear-gradient(top, #FEFEFE 0%, #EBEBEB 100%); /* Mozilla Firefox */ 
+	background-image: -o-linear-gradient(top, #FEFEFE 0%, #EBEBEB 100%); /* Opera */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEFEFE), color-stop(1, #EBEBEB)); /* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-linear-gradient(top, #FEFEFE 0%, #EBEBEB 100%); /* Webkit (Chrome 11+) */ 
+	background-image: linear-gradient(to bottom, #FEFEFE 0%, #EBEBEB 100%); /* W3C Markup, IE10 Release Preview */ 
+	border: 1px solid #DCDCDC;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 5px;
+	line-height: 18px;
+}
+
+#LocationList .LocationName
+{
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+#LocationList .LocationPicture
+{
+  float:left;
+  cursor:pointer;
+}
+
+#LocationList .LocationPicture img
+{
+  width:100px;
+  height:100px;
+}
+
+#LocationList .LocationDescription
+{
+  width:380px;
+  padding-left:8px;
+  float:left;
+}
+
+#FeaturedEvent .ResponsesAndDate,
+#LocationList .ResponsesAndDate
+{
+  padding-left: 10px;
+  width: 100px;
+  height: auto;
+  float: right;
+  font-size: 10px;
+  color: #666;
+}
+
+#FeaturedEvent .ResponsesAndDate
+{
+  width: 146px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+#FeaturedEvent .Responses_Yes,
+#LocationList .Responses_Yes
+{
+  background-color: #0050F2;
+  color: #FFF;
+  width: 45px;
+  cursor: pointer;
+}
+
+#FeaturedEvent .Responses_Yes:hover,
+#LocationList .Responses_Yes:hover
+{
+  background: -moz-linear-gradient(top, #FFF,#C1D9C3); 
+  background: -webkit-linear-gradient(top, #FFF,#C1D9C3); 
+}
+
+
+#FeaturedEvent .Responses_Yes,
+#FeaturedEvent .Responses_Maybe,
+#LocationList .Responses_Yes,
+#LocationList .Responses_Maybe,
+#LocationList .Day,
+#LocationList .Date
+{
+  float: left;
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+  margin-right: 1px;
+  text-align: center;
+}
+
+#FeaturedEvent .Responses_Maybe,
+#LocationList .Responses_Maybe
+{
+  background-color: #FAE1B0;
+  color: #A90;
+  border: 1px solid #EAD2A4;
+  -moz-border-radius: 0 3px 3px 0;
+  -webkit-border-radius: 0 3px 3px 0;
+  width: 80px;
+  cursor: pointer;
+}
+
+#FeaturedEvent .Responses_Maybe:hover,
+#LocationList .Responses_Maybe:hover
+{
+  background: -moz-linear-gradient(top, #FFF,#FAE1B0); 
+  background: -webkit-linear-gradient(top, #FFF,#FAE1B0); 
+}
+
+#LocationList .Day
+{
+  background-color: #1760FE;
+  color: #FFF;
+  border: 1px solid #1760FE;
+  width: 38px;
+}
+
+#LocationList .Date
+{
+  background-color: #1760FE;
+  color: #FFF;
+  border: 1px solid #1760FE;
+  width: 38px;
+  margin-right: 0;
+  font-size: 11px;
+  line-height: 11px;
+}
+
+/* AttendingList: Modified layout for /dashboard  */
+.FeaturedAttendingList
+{
+  position:absolute;
+  width:55px;
+  height:100px;
+  right:0px;
+  top:20px;
+  background:rgba(220, 220, 220, 0.8);
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor:default;
+}
+
+.FeaturedAttendingList li
+{
+  float: right;
+  width: 45px;
+  text-align: center;
+  position: relative;
+}
+
+.AttendingList
+{
+	
+}
+
+.FeaturedAttendingList .AttendingCount,
+.FeaturedAttendingList .MaybeCount
+{
+  height: 30px;
+  padding: 5px 0;
+  font-size: 7pt;
+  vertical-align: middle;
+}
+
+.AttendingList .LikeCount
+{
+  padding: 5px 0; 
+  font-size: 8pt;
+  vertical-align: middle;
+  text-align: center;
+  height: 30px;
+  width: 45px;
+  cursor: pointer;
+  float: right;
+  margin-top:5px;
+  margin-right:9px;
+  background-color: #0050F2;
+  color: #FFF;
+  
+}
+
+.AttendingList .LikeButton
+{
+  line-height: 40px;
+  font-size: 10px;
+  text-align: center;
+  vertical-align: middle;
+  height: 40px;
+  width:45px;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  margin-top:5px;
+  margin-right:1px;
+  background-color: #CACBCB;
+  color: #0050F2;
+}
+
+.AttendingList .LikeButton.active {
+  background-color: #0050F2;
+  color: #FFF;
+}
+
+.AttendingList .LikeButton:hover {
+  background-color: #6690FF;
+  color: #FFF;
+}
+
+.AttendingList strong,
+.FeaturedAttendingList strong
+{
+  display:block;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.FeaturedAttendingList .AttendingCount
+{
+  background-color: #0050F2;
+  border: solid 1px #AAA;
+  color: #FFF;
+  position:absolute;
+  right:5px;
+  top:8px;
+}
+
+.FeaturedAttendingList .MaybeCount
+{
+  background-color: #CACBCB;
+  border: solid 1px #AAA;
+  color: #0050F2;
+  position:absolute;
+  right:5px;
+  top:52px;
+}
+
+#LocationListPaging
+{
+  width: 300px;
+  margin: auto;
+}
+
+#LocationListPaging .page.selected
+{
+  background-color: #B8CEFB;
+  border: 1px solid #B2B2B2;
+}
+
+#LocationListPaging li
+{
+  float: left;
+  padding: 4px;
+  margin: 4px 2px;
+}
+
+#LocationListPaging li.clear
+{
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+
+#LocationListPaging .page
+{
+  margin: 4px;
+  background-color: #E7EEFD;
+  border: 1px solid #E5E5E5;
+}
+
+#PastEventsAttended button
+{
+  font-weight: normal;
+  width: 100%;
+  margin-top: 3px;
+}
+
+.PastEventsAttendedContainer
+{
+  border-top: 1px solid #AAA;
+  margin-top: 15px;
+  padding-top: 5px;
+}
+
+#PastEventsAttended li
+{
+  margin: 7px 0;
+  line-height: 16px;
+  font-size: 11px;
+}
+
+#PastEventsAttended li a
+{
+  font-size: 13px;
+}
+
+#PastEventSkeleton
+{
+  display: none;
+}
+
+.LocationTags {
+	width:92px;
+	float:right;
+	clear:right;
+	text-align:center;
+	padding-right:8px;
+}
+
+.LocationTag {
+	display:block;
+	position:relative;
+	left:0px;
+	
+	margin-top:3px;
+	padding:3px;
+	font-size:8pt;
+	font-weight: bold;
+	color:black;
+	background: #58C5C7;
+}
+
+.Loading {
+	position:absolute;
+	z-index:9999;
+	text-align:center;
+	color:white;
+	width:620px;
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(0, 0, 0);
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.6);
+}

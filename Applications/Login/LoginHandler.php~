@@ -1,0 +1,28 @@
+<?php
+
+class LoginHandler extends JSONApplicationBase
+{
+  const URL_SUCCESSFUL_LOGIN = '/dashboard';
+  const URL_FAILED_LOGIN = '/?loginFailed=1';
+
+  function execute( )
+  {
+    try
+    {
+      $this->attemptLogin( $_POST['LoginEmail'], $_POST['LoginPassword'] );
+      $this->redirect( self::URL_SUCCESSFUL_LOGIN );
+    }
+    catch ( Exception $e )
+    {
+      error_log($e->getFile());
+   	  error_log($e->getLine());
+      error_log($e->getMessage());
+      $this->redirect( self::URL_FAILED_LOGIN );
+    }
+  }
+
+  function attemptLogin( $email, $password )
+  {
+    $this->viewer->login( $email, $password );
+  }
+}

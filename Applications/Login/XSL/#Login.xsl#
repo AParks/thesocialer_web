@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="html" omit-xml-declaration="yes"/>
+
+  <xsl:template match="/Login">
+    <!--<div class="logosubtitle">A Better Way to Experience Your City</div>-->
+    <div id="login">
+      <div id="TrendingEvents" style="opacity:0">
+	<ul class="EventList">
+	  <xsl:call-template name="NearbyEventSkeleton" />
+	</ul>
+      </div>
+
+      <div id="registerform">
+        <img src="/Static/Images/RegistrationHeader.png" />
+        <div class="inner">
+          <form id="registration" autocomplete="off" method="post" action="" >
+	    <table>
+	      <tr>
+		<td class="label"><label id="lfullname" for="fullname">Full Name</label></td>
+		<td class="field"><input id="fullname" name="fullname" type="text" value="" maxlength="100" placeholder="First Last" /></td>
+		<td class="status"></td>
+	      </tr>
+	      <tr>
+		<td class="label"><label id="lpassword" for="password">Password</label></td>
+		<td class="field"><input id="password" name="password" type="password" maxlength="50" value="" placeholder="Password" /></td>
+		<td class="status"></td>
+	      </tr>
+	      <tr>
+		<td class="label"><label id="lpasswordconfirm" for="passwordconfirm">Confirm</label></td>
+		<td class="field"><input id="passwordconfirm" name="passwordconfirm" type="password" maxlength="50" value="" placeholder="Confirm your password" /></td>
+		<td class="status"></td>
+	      </tr>
+	      <tr>
+		<td class="label"><label id="lemail" for="email">Email</label></td>
+		<td class="field"><input id="email" name="email" type="text" value="" maxlength="150" placeholder="Email" /></td>
+		<td class="status"></td>
+	      </tr>
+
+	      <tr>
+		<td class="label"><label id="lcollege" for="college">College</label></td>
+		
+		<td class="field">
+		  <input id="college" name="college" type="text" value="" placeholder="Where did you go?" />
+		  <!--<select id="selectcollege" name="college">
+		    <option></option>
+		  </select>-->
+		</td>
+		<td class="status"></td>
+	      </tr>
+	      
+	      <tr>
+		<td class="label"><label id="lbirthdate" for="birthdate">Birthdate</label></td>
+		<td class="field">
+		  <div>
+		    <div id="monthcontainer">
+		      <select id="month" name="month">
+			<option value="" disabled="disabled" selected="selected" style="display:none;">Month</option>
+			<option value="January">January</option>
+			<option value="February">February</option>
+			<option value="March">March</option>
+			<option value="April">April</option>
+			<option value="May">May</option>
+			<option value="June">June</option>
+			<option value="July">July</option>
+			<option value="August">August</option>
+			<option value="September">September</option>
+			<option value="October">October</option>
+			<option value="November">November</option>
+			<option value="December">December</option>
+		      </select>
+		      <!--<input tabindex="5" id="month" name="month" placeholder="month" />
+		      <ol id="monthlist">
+			<li>January</li><li>February</li><li>March</li><li>April</li>
+			<li>May</li><li>June</li><li>July</li><li>August</li>
+			<li>September</li><li>October</li><li>November</li><li>December</li>
+		      </ol>-->
+		    </div>
+		    
+		    <div id="daycontainer">
+		      <select id="day" name="day">
+			<option value="" disabled="disabled" selected="selected" style="display:none;">Day</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+			<option value="24">24</option>
+			<option value="25">25</option>
+			<option value="26">26</option>
+			<option value="27">27</option>
+			<option value="28">28</option>
+			<option value="29">29</option>
+			<option value="30">30</option>
+			<option value="31">31</option>
+		      </select>
+		      <!--<input tabindex="6" id="day" name="day" placeholder="day" />
+		      <ol id="daylist">
+			<li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li>
+			<li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li>
+			<li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li>
+			<li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li>
+			<li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li>
+			<li>31</li>
+		      </ol>-->
+		    </div>
+		    
+		    <div id="yearcontainer">
+		      <!--<input tabindex="7" id="year" name="year" placeholder="year" />-->
+		      <select id="year" name="year">
+			<option value="" disabled="disabled" selected="selected" style="display:none;">Year</option>
+			<xsl:for-each select="years/year">
+			  <option value="{.}"><xsl:value-of select="." /></option>
+			</xsl:for-each>
+		      </select>
+		    </div>
+		  </div>
+		</td>
+		<td class="status"></td>
+	      </tr>
+	      
+	      <tr>
+		<td class="label"><label id="lgender" for="gender">Gender</label></td>
+		<td class="field">
+		  <div id="gendercontainer">
+		    <label><input type="radio" name="gender" value="male" /> Male</label>
+		    <label><input type="radio" name="gender" value="female" /> Female</label>
+		  </div>
+		</td>
+		<td class="status"></td>
+	      </tr>
+	      
+	      <tr>
+		<td class="label"><label id="lloc" for="location">Location</label></td>
+		<td class="field">
+		  <div id="loccontainer">
+		    <label><input type="radio" name="location" value="Philadelphia" checked="checked" /> Philadelphia</label>
+		    <label><input type="radio" name="location" value="Other" /> Other</label>
+		  </div>
+		</td>
+		<td class="status"></td>
+	      </tr>
+	      <tr>
+		
+		<td class="field" colspan="3">
+		  <input class="joinbutton" id="signupsubmit" name="signup" type="submit" value="Join" />
+		</td>
+	      </tr>
+	      
+	    </table>
+	  </form>
+         </div>
+         <img id="registrationarrow" src="/Static/Images/RegistrationArrow.png" />
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <!--<ul id="loginfooter">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Signup</a></li>
+      <li><a href="#">How It Works</a></li>
+      <li><a href="#">Press</a></li>
+      <li class="last"><a href="#">Get In Touch</a></li>
+    </ul>-->
+  </xsl:template>
+
+  <!--<xsl:template name="NearbyEventSkeleton">
+    <li class="nearbyevent nearbyeventskeleton">
+      <div class="nearbyeventimage"></div>
+      <div class="nearbyeventname"></div>
+      <div class="nearbyeventlocation"></div>
+      <ul class="nearbyeventattendees"></ul>
+      <span class="nearbyeventattendeeCount"></span>
+      <div class="clear"></div>
+    </li>
+  </xsl:template>-->
+  
+  <xsl:template name="NearbyEventSkeleton">
+    <li class="hide LocationSkeleton">
+      <div class="Event">
+	<div class="AttendingButtonsHolder">
+          <ul class="AttendingCounts">
+            <li class="AttendingCount"></li>
+          </ul>
+        </div>
+        <div class="LocationImage">
+          <div class="TitleLocationContainer">
+            <div class="EventTitle"></div>
+            <div class="EventLocation"></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </xsl:template>
+  
+</xsl:stylesheet>

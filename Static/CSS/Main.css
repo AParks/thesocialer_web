@@ -1,0 +1,253 @@
+body
+{
+    background: url(/Static/Images/Background.jpg) no-repeat;
+        font-family: comfortaaregular;
+
+   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #0B233F;
+    line-height: 20px;
+}
+#MainBody *{
+  /*  font-family: comfortaaregular;*/
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #58A5D7;
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+#MainBody
+{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    width: 900px;
+    margin: 0 auto 0;
+    background-color: #FFF;
+    border-radius: 0 0 25px 25px;
+    -moz-border-radius: 0 0 25px 25px;
+}
+
+.hide
+{
+    display: none;
+}
+
+strong {
+    font-weight: bold;
+}
+
+#Header
+{
+    background-color: #FFF;
+    width: 900px;
+    margin: auto;
+    padding: 5px 0;
+    position: relative;
+}
+
+#Navigation
+{
+    height: 30px;
+    /* #0B233F */
+    background-color: black;
+}
+
+#Header .Right
+{
+    float: right;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+h1,
+h2,
+h3 {
+  line-height: 40px;
+}
+
+h1 {
+  font-size: 38.5px;
+}
+
+h2 {
+  font-size: 31.5px;
+}
+
+h3 {
+  font-size: 24.5px;
+}
+
+h4 {
+  font-size: 17.5px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 11.9px;
+}
+
+#Header h2
+{
+    color: #1961F3; 
+}
+
+a
+{
+    color: #1F61D4;
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+.clear
+{
+    clear: both;
+}
+
+button.Gray
+{
+    background: -moz-linear-gradient(top, #FFF, #E1E1D1);
+    background: -webkit-linear-gradient(top, #FFF, #E1E1D1);
+    border: 1px solid #CFCFCF;
+}
+
+button.Teal
+{
+    background: -moz-linear-gradient(top, #6CCCCE, #4EAEAF);
+    background: -webkit-linear-gradient(top, #6CCCCE, #4EAEAF);
+    border: 1px solid #4EAEAF;;
+}
+
+button.Blue.standard
+{
+    background: -moz-linear-gradient(top, #419AE8, #0768B3);
+    background: -webkit-linear-gradient(top, #419AE8, #0768B3);
+    border: 1px solid #2A79BF;
+    color: #FFF;
+}
+
+button.standard
+{
+    border-radius: 5px;
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    color: #666;
+    font-weight: bold;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: verdana,arial,sans-serif;
+}
+
+#overlay
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba( 253, 253, 253, .75 );
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AAFFFFFF', endColorstr='#AAFFFFFF'); /* IE */
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+}
+
+.Footer
+{ 
+    width:850px;
+    margin: 0 auto;
+    color: #999;
+}
+
+.Footer a
+{ 
+    color: #999;
+    margin-left:10px;
+}
+
+.LeftFoot
+{ 
+    float:left;
+    padding:10px;
+}
+.RightFoot
+{ 
+    float:right;
+    padding:10px;
+}
+
+.TOS
+{ 
+    font-size:11pt;
+    padding:40px;
+}
+.TOS h1
+{ 
+    font-weight:bold;
+    font-size:16pt;
+    margin-bottom:5px;
+}
+.TOS h2
+{ 
+    font-weight:bold;
+    font-size:14pt;
+}
+.TOS p
+{ 
+    font-size:11pt;
+    line-height:17px;
+    margin-bottom:20px;
+    padding:15px;
+}
+.TOS div
+{ 
+    font-size:11pt;
+    line-height:17px;
+    margin-bottom:20px;
+    padding:15px;
+}
+
+.TOS ul
+{ 
+    margin-left:15px;
+    list-style-type: circle;
+    list-style-position:outside;
+}

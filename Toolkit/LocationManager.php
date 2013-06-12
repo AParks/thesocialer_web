@@ -1,0 +1,242 @@
+<?php
+
+class LocationHeap extends SplHeap { 
+  public function  compare( $loc1, $loc2 ) { 
+    return ( $loc1->score - $loc2->score ); 
+  } 
+}
+
+class LocationManager {
+  const LIMIT_NONE = -1;
+  const SORT_BY_ATTENDING_COUNT = 'attendingCount';
+  const SORT_BY_NAME = 'name';
+  const SORT_BY_POPULAR = 'popular';
+  const SORT_BY_RELEVANT = 'relevant';
+  
+  const SORT_OPTION_DATE = 'date';
+  const SORT_OPTION_DATE_END = 'dateEnd';
+  
+  protected $sort = self::SORT_BY_NAME;
+  protected $sortOptions = array( );
+  
+  protected $limit = self::LIMIT_NONE;
+  protected $offset = 0;
+  protected $count = 0;
+  
+  public function __construct( ) { }
+  
+  public function getLocations( ) {
+    $locationIds = $this->fetchLocationIds( );
+    
+    $locations = array( );
+    foreach ( $locationIds as $locationId ) {
+      $loc = new Location( $locationId );      
+      $locations[] = $loc;
+    }
+
+    switch ( $this->sort ) {
+    case self::SORT_BY_ATTENDING_COUNT:
+      $locations = $this->sortByAttendingCount( $locations );
+      break;
+    case self::SORT_BY_POPULAR:
+      $locations = $this->sortByPopular($locations);
+      break;
+    case self::SORT_BY_RELEVANT:
+       $locations = $this->sortByRelevant($locations);
+    case self::SORT_BY_NAME:
+    default:
+      break;
+    }
+
+    if ( $this->limit !== self::LIMIT_NONE ) {
+      $locations = array_slice( $locations, 0, $this->limit );
+    }
+
+    return $locations;
+  }
+
+  protected function sortByAttendingCount( $locations ) {
+    $results = array( );
+    shuffle( $locations );
+    foreach ( $locations as $location ) {
+      $am = new AttendanceManager( $location, $this->sortOptions[self::SORT_OPTION_DATE] );
+      $results[ ] = array( 'count' => $am->getAttendanceCount( AttendanceManager::ATTENDANCE_YES ), 'location' => $location );
+    }
+
+    usort( $results, array( $this, '_sortByAttendingCount') );
+
+    $return = array( );
+
+    foreach ( $results as $result ) {
+      $return[] = $result['location'];
+    }
+
+    return $return;
+  }
+
+  protected function sortByRelevant($locations) {
+    $results = array( );
+
+    $dates = array();
+
+    $dateDiff = $this->sortOptions[self::SORT_OPTION_DATE_END]->diff( $this->sortOptions[self::SORT_OPTION_DATE] );
+    for ( $i = 0, $count = $dateDiff->days; $i <= $count; $i++ ) {
+      $date = clone $this->sortOptions[self::SORT_OPTION_DATE];
+      $date->modify('+' . $i . ' days');
+      $dates[] = $date;
+    }
+
+    /* this shuffle adds a dash of randomness to the results
+     * it still gives preference to the score, but in the event of a tie
+     * the top results won't be alphabetical anymore
+     */
+    // this could hurt performance, and there are really no ties anymore now that people use the site
+    //shuffle($locations);
+    $viewer = Viewer::getInstance( )->user;
+    $locmaxheap = new LocationHeap();
+    foreach ( $locations as $location ) {
+      foreach ( $dates as $date ) {
+      	//error_log('Location: '.$location->name.' Score: '.$this->_getRelevancyScore($location, $date));
+        $locmaxheap->insert( (object) array( 'score' => $this->_getRelevancyScore($location, $date, $viewer), 'location' => $location, 'date' => $date ) ); 
+        $this->count++;
+      }
+    }
+    
+    $return = array( );
+    $total = 0; 
+    
+    foreach( $locmaxheap as $loc ) {
+      $total++;
+      if ( $total <= $this->offset ) {
+	continue;
+      }
+      $return[] = $loc;
+      if ( $total > $this->limit + $this->offset ) {
+	break;
+      }
+    }
+    
+    return $return;
+  }
+
+  private function _getRelevancyScore($location, $date, $viewer) {
+    $score = 0;
+    
+    $am = new AttendanceManager( $location, $date );
+    $score += $am->getAttendanceCount(AttendanceManager::ATTENDANCE_YES);
+
+    $friends = new Friends( );
+    
+    // This adds score based on friends who are going, but we don't need it quite yet
+    // disabling it should add some speed to our load times
+    /*$statuses = $am->getAttendanceStatuses( AttendanceManager::TYPE_COMPLEX );
+    foreach ( $statuses[AttendanceManager::ATTENDANCE_YES] as $user ) {
+      if ( $friends->areFriends($viewer, $user)) {
+        $score += 10;
+      }
+    }*/
+    
+    $score += $location->likes;
+    
+    foreach( $viewer->tags as $tag ) {
+      if (in_array($tag, $location->tags)) {
+	$score += 100;
+      }
+    }
+    
+    return $score;
+  }
+
+  protected function sortByPopular($locations) {
+    $results = array( );
+
+    $dates = array();
+
+    $dateDiff = $this->sortOptions[self::SORT_OPTION_DATE_END]->diff( $this->sortOptions[self::SORT_OPTION_DATE] );
+    for ( $i = 0, $count = $dateDiff->days; $i <= $count; $i++ ) {
+      $date = clone $this->sortOptions[self::SORT_OPTION_DATE];
+      $date->modify('+' . $i . ' days');
+      $dates[] = $date;
+    }
+
+    foreach ( $locations as $location ) {
+      foreach ( $dates as $date ) {
+        $am = new AttendanceManager( $location, $date );
+        $count = $am->getAttendanceCount(AttendanceManager::ATTENDANCE_YES);
+        $results[$count][] = (object) array( 'location' => $location, 'date' => $date );
+        $this->count++;
+      }
+    }
+
+    krsort($results);
+
+    $return = array( );
+    $total = 0; 
+
+    foreach ( $results as $attendanceCount => $innerLoop ) {
+      foreach ( $innerLoop as $item ) {
+        $total++;
+
+        if ( $total <= $this->offset ) {
+          continue;
+        }
+
+        $return[] = $item;
+
+
+        if ( $total > $this->limit + $this->offset ) {
+          break 2;
+        }
+      }
+    }
+
+    return $return;
+  }
+
+
+
+  protected function _sortByAttendingCount( $a, $b ) {
+    return $a['count'] < $b['count'];
+  }
+
+  protected function fetchLocationIds( ) {
+    $pdo = sPDO::getInstance( );
+
+    $query = $pdo->prepare( 'SELECT location_id FROM get_locations( );' );
+    $query->execute( );
+    $locations = $query->fetchAll( PDO::FETCH_COLUMN, 0 );
+    return $locations;
+  }
+
+  function setSort( $sort ) {
+    $this->sort = $sort;
+  }
+
+  function setSortOption( $option, $value ) {
+    $this->sortOptions[$option] = $value;
+  }
+
+  function setLimit( $limit ) {
+    $limit = (int) $limit;
+
+    if ( $limit <= 0 && $limit !== self::LIMIT_NONE ) {
+      throw new InvalidArgumentException( 'Invalid limit.' );
+    }
+
+    $this->limit = $limit;
+  }
+
+  public function setOffset($offset) {
+    $offset = (int) $offset;
+
+    if ( $offset < 0 ) {
+      throw new InvalidArgumentException('Invalid offset.');
+    }
+
+    $this->offset = $offset;
+  }
+
+  public function getCount( ) {
+    return $this->count;
+  }
+}

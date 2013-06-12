@@ -1,0 +1,462 @@
+#leftcontainer
+{ 
+  width:580px;
+  float:left;
+  border-right:solid 1px gray;
+  padding:5px;
+}
+
+.LocationImage 
+{
+  width:550px;
+  height:400px;
+  overflow:hidden;
+  position:relative;
+  margin-top:10px;
+  margin-right:5px;
+  float:left;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7);
+  box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7);))
+}
+
+.LocationImage h1
+{ 
+  position:absolute;
+  width:380px;
+  left:0;
+  top:0;
+  background: rgba(0,0,0,0.7);
+  color:white;
+  cursor:default;
+  padding:10px 20px;
+  padding-right:150px;
+  font-size:18pt;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none; 
+}
+
+.LocationRight
+{
+  position:absolute;
+  right:15px;
+}
+
+.LocationImage img
+{ 
+  width:550px;
+  height:550px;
+}
+
+
+#rightcontainer
+{ 
+  width:300px;
+  float:right;
+}
+
+.LocationInfoContainer
+{
+  overflow:hidden;
+  margin:10px;
+}
+
+.LocationInfoContainer h1
+{ 
+  color:gray;
+  margin-bottom:10px;
+  font-size:14pt;
+}
+
+.LocationInfoContainer h2
+{
+  font-weight:bold;
+  padding:5px 5px 0 5px;
+}
+
+.LocationInfoContainer p
+{ 
+  position:relative;
+  padding:5px;
+  color: gray;
+  line-height:18px;
+}
+
+.LocationLikeCount 
+{ 
+  font-weight:bold;
+}
+.LocationLikeButton
+{ 
+  cursor:pointer;
+  color:blue;
+}
+.LocationLikeText
+{ 
+  font-size:7pt;
+  position:absolute;
+  bottom:-7px;;
+}
+
+#MainBody
+{
+  padding: 20px;
+  font-size: 12px;
+}
+
+#LocationMap
+{
+  height: 300px;
+  width: 300px;
+}
+
+.DateContainer
+{
+  overflow: hidden;
+}
+
+.DateContainer_Date,
+.DateContainer_Day
+{
+  width: 60px;
+  padding: 12px 0;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  float: left;
+  vertical-align: middle;
+  line-height: 32px;
+  min-height: 32px;
+  height: 32px;
+  margin-bottom:1px;
+  -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+  box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+  background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+  background-color:#79bbff;
+}
+
+.DateContainer_Day
+{
+  font-size: 20px;
+  margin-right: 1px;
+}
+
+.DateContainer_Date
+{
+  font-size: 16px;
+  line-height: inherit;
+}
+
+.TopCommentContainer
+{ 
+  position:absolute;
+  bottom:-50px;
+  height:80px;
+  background-color: #FFF;
+  font-size: 10pt;
+  padding:5px;
+}
+
+.TopCommentContainer .UserPhoto 
+{
+  width:50px;
+  height:50px;
+  margin:5px 0 0 5px;
+}
+
+.TopCommentContainer .Star 
+{  
+  position:absolute;
+  top:-20px;
+  left:0;
+  width:35px;
+  height:35px;
+  background-image:url('/Static/Images/star.png');
+}
+
+.ShareBar
+{
+  position:absolute;
+  bottom:0;
+  width:550px;
+  background-color: #EEE;
+  font-size: 18px;
+  text-align: right;
+  z-index:2;
+}
+
+.ShareBar button
+{
+  font-weight: bold;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.Attendees
+{
+  margin: 15px 0;
+}
+
+.Attendees strong
+{
+  display: block;
+}
+
+.Attendees .UserPhoto
+{
+  margin: 4px;
+  width:30px;
+  height:30px;
+}
+
+.AttendeesYes
+{
+  float: left;
+  width: 610px;
+  margin:15px 0;
+}
+
+.AttendingButtons_Holder
+{
+  font-size: 9px;
+  float: right;
+}
+
+.AttendingButtons
+{
+  float:right;
+}
+
+.AttendingButtons .Button
+{
+  line-height: 20px;
+  font-size: 10px;
+  text-align: center;
+  vertical-align: middle;
+  height: 20px;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  background-color: #CACBCB;
+  color: #0050F2;
+}
+
+.AttendingButtons .Button.hover
+{
+  background-color: #6690FF;
+  color: #FFF;
+}
+
+.AttendingButtons .Button.active
+{
+  background-color: #0050F2;
+  color: #FFF;
+}
+
+.AttendingButton_Yes
+{
+  width: 121px;
+}
+
+.LocationComments 
+{
+  float:left;
+  width:500px;
+  padding: 10px;
+}
+
+.LocationComments h1
+{ 
+  font-weight:bold;
+  font-size:16pt;
+}
+
+.MyPhoto
+{ 
+  width:34px;
+  height:34px;
+  margin: 0 5px 2px 20px;
+}
+.NewComment 
+{
+  resize:none;
+  width:390px;
+  font-size:9pt;
+  overflow: auto;
+}
+
+.LocationCommentList 
+{
+  margin-top:10px;
+}
+
+.LocationCommentContainer 
+{
+  position:relative;
+  overflow:hidden;
+  background-color:#F5F5F5;
+  margin-bottom:20px;
+  -webkit-box-shadow:  0px 1px 1px 0px rgba(0, 0, 0, .5);      
+  box-shadow:  0px 1px 1px 0px rgba(0, 0, 0, .5);))
+}
+
+img.UserPhoto 
+{
+  width:50px;
+  height:50px;
+  float:left;
+  margin:5px 0 0 5px;
+}
+
+.NameLocationContainer 
+{
+  position:relative;
+  float:left;
+  margin:5px 0 0 10px;
+}
+
+.UserLink
+{ 
+  color:#333;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.UserName 
+{
+  width:100%;
+  font-size:10pt;
+}
+
+.UserCollege 
+{
+  width:100%;
+  overflow:visible;
+  font-style:italic;
+  font-size:7pt;
+}
+
+.LikeTimestampContainer
+{ 
+  width:500px;
+  background: #CCC;
+  color:#333;
+  float:left;
+  margin:5px 0 0 0;
+  padding:5px 0;
+  vertical-align:middle;
+}
+
+.Timestamp 
+{
+  float:left;
+  font-size:8pt;
+  margin-left:10px;
+}
+
+.Likes 
+{
+  float:left;
+  text-align: right;
+  font-size:9pt;
+  margin-left:5px;  
+}
+.LikeCount 
+{ 
+  font-size:7pt;
+}
+.heart 
+{
+  color:black;
+  cursor:pointer;
+  font-size:9pt;
+  margin-left:2px;
+}
+
+.heart.active 
+{
+  color:red;
+}
+
+.replybox 
+{
+  margin-left:65px;
+  width:150px;
+  height:15px;
+  font-size:8pt;
+}
+
+.Replies 
+{
+  width:275px;
+  font-size:8pt;
+  margin-left:65px;
+  padding:5px 0;
+  clear:both;
+}
+
+.reply 
+{
+  display:block;
+  width:100%;
+  position:relative;
+}
+
+.DeleteComment 
+{
+  opacity:0.1;
+  position:absolute;
+  right:5px;
+  top:0;
+  height:5px;
+  width:5px;
+  cursor:pointer;
+}
+
+.DeleteComment:hover 
+{
+  opacity:1;
+}
+
+.DeleteReply 
+{
+  opacity:0.1;
+  height:5px;
+  width:5px;
+  margin-top:2px;
+  position:absolute;
+  right:0;
+  top:0;
+  cursor:pointer;
+}
+
+.DeleteReply:hover 
+{
+  opacity:1;
+}
+
+.Comment 
+{
+  float:left;
+  width:425px;
+
+  padding:4px 10px 0 10px;
+  font-size: 9pt;
+}
+
+.MemberName
+{ 
+  position:absolute;
+  border:solid 1px gray;
+  padding:5px;
+  background-color:#FFF;
+  color:gray;
+}

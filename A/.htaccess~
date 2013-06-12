@@ -1,0 +1,4 @@
+AuthUserFile C:\Users\Eric\eclipse_workspace\Socialer\cred\.htpasswd
+AuthType Basic
+AuthName "Hi"
+Require valid-user

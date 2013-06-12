@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rsync -avr /var/www/thesocialer.com/Engine/ eric@ericob.dyndns.org:/var/www/Engine 
+rsync -avr /var/www/thesocialer.com/Toolkit/ eric@ericob.dyndns.org:/var/www/Toolkit 
+rsync -avr /var/www/thesocialer.com/Applications/ eric@ericob.dyndns.org:/var/www/Applications
+rsync -avr /var/www/thesocialer.com/Static/ eric@ericob.dyndns.org:/var/www/Static
+rsync -av /var/www/thesocialer.com/Configuration/ eric@ericob.dyndns.org:/var/www/Configuration
+rsync -avr /var/www/thesocialer.com/A/ eric@ericob.dyndns.org:/var/www/A

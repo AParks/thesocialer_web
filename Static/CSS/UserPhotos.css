@@ -1,0 +1,59 @@
+.UserPhotos
+{
+  padding: 10px 20px;
+}
+
+.UserPhotos h2
+{
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.UserPhoto
+{
+  margin: 5px;
+  border: 1px solid #EEE;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.UserPhoto:hover
+{
+  border-color: #1F61D4;
+}
+
+#PhotoPopup
+{
+  margin: auto;
+  background-color: #FFF;
+  padding: 10px;
+  width: 700px;
+  z-index: 7;
+  border: 1px solid #CCC;
+  top: 50px;
+  position: fixed;
+}
+
+#PhotoPopup .inner
+{
+  text-align: center;
+  background-color: #EFF9FA;
+  border: 1px solid #EEE;
+  position: relative;
+}
+
+#PhotoPopup_Prev
+{
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  color: #999;
+}
+
+#PhotoPopup_Next
+{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: #999;
+}

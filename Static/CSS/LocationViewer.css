@@ -1,0 +1,576 @@
+#leftcontainer
+{ 
+    width:580px;
+    float:left;
+    border-right:solid 1px gray;
+    padding:5px;
+}
+
+#rightcontainer
+{ 
+    width:300px;
+    float:right;
+}
+
+.LocationImage 
+{
+    width:550px;
+    height:400px;
+    overflow:hidden;
+    position:relative;
+    margin-top:10px;
+    margin-right:5px;
+    float:left;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7);
+    box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7);
+}
+
+.LocationImage h1
+{ 
+    position:absolute;
+    width:380px;
+    left:0;
+    top:0;
+    background: rgba(0,0,0,0.7);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000'); /* IE */
+    color:white;
+    cursor:default;
+    padding:10px 20px;
+    padding-right:150px;
+    font-size:18pt;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: none;
+    user-select: none; 
+}
+
+.LocationRight
+{
+    position:absolute;
+    right:15px;
+}
+
+.LocationImage img
+{ 
+    width:550px;
+    height:550px;
+}
+
+
+
+.LocationInfoContainer
+{
+    overflow:hidden;
+    margin:10px;
+}
+
+.LocationInfoContainer h1
+{ 
+    color:gray;
+    margin-bottom:10px;
+    font-size:14pt;
+}
+
+.LocationInfoContainer h2
+{
+    font-weight:bold;
+    padding:5px 5px 0 5px;
+}
+
+.LocationInfoContainer p
+{ 
+    position:relative;
+    padding:5px;
+    color: gray;
+    line-height:18px;
+}
+
+.LocationLikeCount 
+{ 
+    font-weight:bold;
+}
+.LocationLikeButton
+{ 
+    cursor:pointer;
+    color:blue;
+}
+.LocationLikeText
+{ 
+    font-size:7pt;
+    position:absolute;
+    bottom:-7px;;
+}
+
+#MainBody
+{
+    padding: 20px;
+    font-size: 12px;
+}
+
+#LocationMap
+{
+    height: 300px;
+    width: 300px;
+}
+
+/*.DateContainer
+{
+    overflow: hidden;
+}*/
+
+.DateContainer
+{
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    float: left;
+    vertical-align: middle;
+    background-color: transparent;
+    text-align: center;
+
+    background-image:url('/Static/Images/calendar.png');
+
+}
+.DateContainer_Date{
+    width: 50px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 17px;
+    position:absolute;
+    margin-top: 10px;
+
+}
+
+
+
+.eventContainer
+{
+    width: 550px;
+    background-color: #FFF;
+    font-size: 10pt;
+    padding:5px;
+}
+
+.eventContainer .UserPhoto 
+{
+    width:50px;
+    height:50px;
+    margin:5px 0 0 5px;
+}
+
+.eventContainer .Star 
+{  
+    position:absolute;
+    top:-20px;
+    left:0;
+    width:35px;
+    height:35px;
+    background-image:url('/Static/Images/star.png');
+}
+
+
+
+
+
+.ShareEvent, 
+.FavoriteEvent,
+#tags{
+    border-radius: 5px;
+    height: 40px;
+    width:40px;
+    background-size: 40px 40px;
+    background-color:white;
+}   
+#tags{
+    background-image:url('/Static/Images/tag.png');
+}
+.ShareEvent{
+    background-image:url('/Static/Images/share.png');
+
+}
+.FavoriteEvent{
+    background-image:url('/Static/Images/star.png');
+    color: #c2c2c2;
+    line-height: 45px;
+
+}
+
+.FavoriteEvent > div{
+    font-weight: bold;
+    font-size: 12pt;
+
+}
+
+
+.ShareEvent:hover{
+    background-image:url('/Static/Images/share_active.png');
+    cursor: pointer;
+
+}
+
+.FavoriteEvent:hover,
+.FavoriteEvent.active{
+    color: gold;
+    cursor: pointer;
+    background-image:url('/Static/Images/star_active.png');
+
+}
+
+
+.Attendees
+{
+    margin: 15px 0;
+}
+
+.Attendees strong
+{
+    display: block;
+}
+
+.Attendees .UserPhoto
+{
+    margin: 4px;
+    width:30px;
+    height:30px;
+}
+
+.AttendeesYes
+{
+    float: left;
+    width: 600px;
+    margin:15px 0;
+}
+
+.AttendingButtons_Holder
+{
+    font-size: 9px;
+    float: right;
+}
+
+.AttendingButtons
+{
+    float:right;
+}
+
+.AttendingButtons .Button
+{
+    line-height: 20px;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    height: 20px;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    background-color: #CACBCB;
+    color: #0050F2;
+}
+
+.AttendingButtons .Button.hover
+{
+    background-color: #6690FF;
+    color: #FFF;
+}
+
+.AttendingButtons .Button.active
+{
+    background-color: #0050F2;
+    color: #FFF;
+}
+
+/*.AttendingButton_Yes
+{
+    width: 121px;
+}
+
+.LocationComments 
+{
+    float:left;
+    width:100%;
+    padding: 5px;
+} */
+
+
+
+.MyPhoto
+{ 
+    position:relative;
+    left: 0;
+    height:48px;
+    width:48px;
+    margin: 0px 0px 0px 0px;
+    border-radius: 3px;
+    background-size: contain;
+    float:left;
+    order:1;
+    flex-grow:  0;
+    flex-shrink: 0;
+}
+.NewComment 
+{
+    resize:none;
+    height: 48px ;
+    min-height: 48px;
+    width:85%;
+    font-size:9pt;
+    font-family: inherit;
+    border:2px solid #dee2e7;
+    border-radius: 4px;
+    color: #3f4549 !important;
+    cursor:text;
+    resize:none;
+    display:block;
+    overflow: hidden;
+    vertical-align: top;
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+    order:2;
+    flex: 1 1 auto;
+    margin-left: 10px;
+    float:left;
+
+
+}
+.add-event{
+    display: flex;
+    flex-direction:  row;
+    flex-wrap: nowrap;
+    width:100%;
+    min-height:48px;
+    padding: 10px;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-content:     align-content;
+    align-items: center;
+    float:left;
+    overflow: hidden;
+}
+
+textarea[placeholder]{
+    font-size:16px;
+    line-height:22px;
+    color: #aab2b8 ;
+    padding:10px 10px 10px 10px !important;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #aab2b8;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #aab2b8;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #aab2b8;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:   #aab2b8;
+}
+
+.LocationCommentList 
+{
+    margin-top:10px;
+}
+
+.LocationCommentContainer 
+{
+    position:relative;
+    /*   overflow:hidden;*/
+    background-color:transparent;
+    margin-bottom:20px;
+    -webkit-box-shadow:  1px 1px 1px 1px rgba(0, 0, 0, .5);      
+    box-shadow:  1px 1px 1px 1px rgba(0, 0, 0, .5);
+} 
+
+img.UserPhoto 
+{
+    width:50px;
+    height:50px;
+    float:left;
+    margin:5px 0 0 5px;
+}
+
+
+
+.UserInfo
+{ 
+    float:left;
+    width:100%;
+    font-size:9pt;
+
+    /*  text-decoration:none;*/
+    /* font-weight:bold; */
+}
+
+.UserName 
+{
+    color:#378de5;
+}
+
+.UserCollege 
+{
+    width:100%;
+    overflow:visible;
+    font-style:italic;
+    font-size:7pt;
+}
+
+.LikeTimestampContainer
+{ 
+    width:500px;
+    background: #CCC;
+    color:#333;
+    float:left;
+    margin:5px 0 0 0;
+    padding:5px 0;
+    vertical-align:middle;
+}
+
+.Timestamp 
+{
+    float:left;
+    font-size:8pt;
+    margin-left:10px;
+}
+
+.Likes 
+{
+    float:left;
+    text-align: right;
+    font-size:9pt;
+    margin-left:5px;  
+}
+.LikeCount 
+{ 
+    font-size:7pt;
+}
+.heart 
+{
+    color:black;
+    cursor:pointer;
+    font-size:9pt;
+    margin-left:2px;
+}
+
+.heart.active 
+{
+    color:red;
+}
+
+.replybox 
+{
+    margin-left:65px;
+    width:150px;
+    height:15px;
+    font-size:8pt;
+}
+
+.Replies 
+{
+    width:275px;
+    font-size:8pt;
+    margin-left:65px;
+    padding:5px 0;
+    clear:both;
+}
+
+.reply 
+{
+    display:block;
+    width:100%;
+    position:relative;
+}
+
+.DeleteComment 
+{
+    opacity:0.4;
+    position:absolute;
+    right:10px;
+    top:0;
+    font-size: 12pt;
+    height:5px;
+    width:5px;
+    cursor:pointer;
+}
+
+.DeleteComment:hover 
+{
+    opacity:1;
+}
+
+.DeleteReply 
+{
+    opacity:0.1;
+    height:5px;
+    width:5px;
+    margin-top:2px;
+    position:absolute;
+    right:0;
+    top:0;
+    cursor:pointer;
+}
+
+.DeleteReply:hover 
+{
+    opacity:1;
+}
+
+.Comment 
+{
+    float:left;
+    font-weight: bold;
+    padding:4px 10px 0 10px;
+    font-size: 12pt;
+    width: 330px;
+
+
+    white-space: pre-wrap;      /* CSS3 */   
+    white-space: -moz-pre-wrap; /* Firefox */    
+    white-space: -pre-wrap;     /* Opera <7 */   
+    white-space: -o-pre-wrap;   /* Opera 7 */    
+    word-wrap: break-word;      /* IE */
+}
+
+.MemberName
+{ 
+    position:absolute;
+    border:solid 1px gray;
+    padding:5px;
+    background-color:#FFF;
+    color:gray;
+}
+
+
+table{
+    width: 100%;
+    vertical-align: middle;
+}
+tr{
+    height:auto;
+}
+
+td{
+    vertical-align: middle;
+}
+
+
+td:nth-child(2){
+    text-align: left;
+
+}
+td:nth-child(1),
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5){
+    width: 50px !important;
+    text-align: center !important;
+}
+
+
+

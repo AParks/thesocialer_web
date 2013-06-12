@@ -1,0 +1,50 @@
+
+@import url(http://fonts.googleapis.com/css?family=Terminal+Dosis:400,600,700);
+body { color: #0a1930; background: url(../img/bg.jpg) no-repeat top center; font-family:'Terminal Dosis', Helvetica, Arial; font-weight: 400; margin-top: 20px;}
+.email {margin-top: 10px; padding-top: 15px; -webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+-webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, .1);
+-moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, .1);
+box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, .1);
+
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIzMiUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIzNCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC45OSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuNSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 32%, rgba(255,255,255,0.99) 34%, rgba(255,255,255,0.5) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(32%,rgba(255,255,255,1)), color-stop(34%,rgba(255,255,255,0.99)), color-stop(100%,rgba(255,255,255,0.5)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 32%,rgba(255,255,255,0.99) 34%,rgba(255,255,255,0.5) 100%);
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 32%,rgba(255,255,255,0.99) 34%,rgba(255,255,255,0.5) 100%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 32%,rgba(255,255,255,0.99) 34%,rgba(255,255,255,0.5) 100%);
+background: linear-gradient(top,  rgba(255,255,255,1) 32%,rgba(255,255,255,0.99) 34%,rgba(255,255,255,0.5) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#80ffffff',GradientType=0 );
+
+
+text-align: center;
+ }
+ h1 { color: #0a1930; font-size: 33px; margin-bottom: -5px; font-weight: 700;}
+ h2 { color: #5573aa; font-size: 20px; font-weight: 400; }
+.emailbox p { color: #0a1930; padding: 10px 25px; text-align: center; font-family:'Terminal Dosis', Helvetica, Arial; font-weight: 700; font-size: 20px; line-height: 24px; text-shadow: 0px 1px 1px #ffffff;
+filter: dropshadow(color=#ffffff, offx=0, offy=1);}
+ label { font-size: 16px; letter-spacing: 1px;                  color: #0a1930;                  font-weight: 700; font-size: 18px; text-transform: uppercase;
+
+filter: dropshadow(color=#000000, offx=0, offy=1);}
+ .emailinput { width: 350px; font-size: 18px; padding: 13px 18px;}
+  .btn-large {
+font-size: 20px;
+font-weight: normal;
+padding:9px 24px;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+font-family:'Terminal Dosis', Helvetica, Arial; font-weight: 700;
+text-transform: uppercase;
+}
+footer p{ text-align: center; color: white; font-size: 11px;}
+footer { margin-top: 30px;}
+.email { border: 3px solid #feb605;}
+
+p.success { text-align: center; font-size: 18px; padding: 0; margin: 0; text-shadow: 0; margin-bottom: 6px; }
+
+.container
+{
+  margin-top: 50px;
+}

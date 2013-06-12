@@ -1,0 +1,89 @@
+.PhotoUploader
+{
+  width: 300px;
+  background-color: #FFF;
+  border: 3px solid #CCC;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  padding: 20px;
+}
+
+#ThumbnailSquare
+{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border: 1px dashed #FFF;
+}
+
+#UploadedThumbnail
+{
+  width: 106px;
+  height: 106px;
+  overflow: hidden;
+  float: left;
+  margin-left: 10px;
+}
+
+.PhotoUploader .jcrop-holder
+{
+  float: left;
+}
+
+.PhotoUploader_FormContainer
+{
+  text-align: center;
+}
+
+.PhotoUploader h2
+{
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.PhotoUploader button.standard.Blue
+{
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+.PhotoUploader.Step2
+{
+  width: auto;
+}
+
+.PhotoUploader .SaveThumbnailContainer
+{
+  padding-top: 5px;
+  text-align: center;
+  clear: both;
+}
+
+.PhotoUploader .SuccessMessage
+{
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.PhotoUploader_Close
+{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #666;
+  font-size: 12px;
+}
+
+.PhotoUploader_Close:hover
+{
+  text-decoration: none;
+}
+
+.PhotoUploader .SuccessMessage .Close
+{
+  font-weight: normal;
+}

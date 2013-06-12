@@ -1,0 +1,135 @@
+.FriendsMain
+{
+  padding: 10px 20px;
+  min-height:720px;
+}
+
+.NoConnections 
+{
+  padding: 10px;
+}
+
+.Friend
+{
+  padding: 10px 20px;
+}
+
+.Friend img
+{
+  float: left;
+  width:70px;
+  margin-right: 5px;
+}
+
+.Friend .UserInfo
+{
+  float: left;
+  font-size: 12px;
+  line-height: 18px;
+
+}
+
+.Friend .AboutMe
+{
+  font-style: italic;
+}
+
+h1
+{
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+#FriendList
+{
+  width: 550px;
+  float:left;
+}
+
+#FriendList td
+{
+  border-bottom: 1px solid #EEE;
+  color: #666;
+}
+
+#FriendList td.first
+{
+  border-right: 1px solid #EEE;
+}
+
+#FriendList td.empty
+{
+  border: 0;
+}
+
+.UserSuggestions
+{
+  width: 300px;
+  float:left;
+  margin-top: 6px;
+  
+}
+
+.UserRecommendationList
+{
+  border: 1px solid #B8BCC2; 
+}
+
+.UserRecommendation
+{
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.UserRecommendation .UserPhoto
+{
+  float: left;
+  width: 60px;
+  height: 60px;
+}
+
+.UserRecommendation .RightSide
+{
+  float: right;
+  width: 223px;
+}
+
+.UserRecommendation .UserLocation
+{
+  float: right;
+  font-weight: normal;
+}
+
+.UserRecommendation .NameLocationContainer
+{
+  background-color: #F1F1F1;
+  font-size: 11px;
+  font-weight: bold;
+  margin: 0 1px;
+  padding: 4px;
+}
+
+.UserRecommendation .UserDetails
+{
+  padding: 4px;
+  color: #666;
+  font-size: 11px;
+}
+
+.UserRecommendation button
+{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.SeeMoreButton
+{ 
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.SeeMoreButton:hover
+{ 
+  text-decoration:underline;
+}
