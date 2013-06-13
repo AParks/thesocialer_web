@@ -19,7 +19,7 @@
             </head>
             <body class="Socialer">
                 <div id="fb-root"></div>
-              <!--  <script src="/Static/JavaScript/facebook.js"></script> -->
+                <script src="/Static/JavaScript/facebook.js"></script>
 
 
                 <div id="Header">
@@ -40,24 +40,58 @@
                         <xsl:choose>
                             <xsl:when test="./Viewer/@userId != -1">
                                 <a href="/profile">
-                                    <img width='20' height='20' src="/photo/{./Viewer/@userId}/Small"/>
-                                    <xsl:value-of select="./Viewer/Member/@firstName" />
-                                </a> |
+                                    <xsl:choose>
+                                        <xsl:when test="./Viewer/Member/@fb_id">  
+                                            <img width='25' height='25' style="border-radius: 5px;" src="https://graph.facebook.com/{./Viewer/Member/@fb_id}/picture?type=square"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <img width='25' height='25' src="/photo/{./Viewer/@userId}/Small"/> 
+                                        </xsl:otherwise>
+                                    </xsl:choose>
 
-                                <a href="/messages">
-                                    <xsl:text>Messages</xsl:text>
+                                    <div id='profile'>
+
+                                        <xsl:value-of select="./Viewer/Member/@firstName" />
+                                    </div>
+                                </a>
+                                <a href="/messages" style="text-align: center; width: 40px !important;">
+                                    <img height='25' src="/Static/Images/mailbox.png"/>
+
                                     <xsl:if test="@unreadCount > 0">
                                         <xsl:text> (</xsl:text>
                                         <xsl:value-of select="@unreadCount" />
                                         <xsl:text>)</xsl:text>
                                     </xsl:if>
-                                </a> |
-                                <a href="/settings"> Settings</a> |
-                                <a href="/logout"> Log Out</a>
+                                    
+                                </a>
+                                <a href="/network" style="text-align: center; width: 50px !important;">
+                                    <img width='auto' height='25' src="/Static/Images/connections.png"/>
+
+                                </a>
+
+                                <a href="/settings" style="text-align: center; width: 40px !important;">
+                                    <img width='auto' height='25' src="/Static/Images/settings.png"/>
+
+                                </a>
+                                <xsl:choose>
+                                    <xsl:when test="./Viewer/Member/@fb_id">
+                                        
+                                        <a href="#" id="fb_logout" style=" width: 60px !important;">
+                                            <div id='profile' style="width: 100% !important">Log Out</div>
+                                        </a>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        
+                                        <a href="/logout" style=" width: 60px !important;">
+                                            <div id='profile' style="width: 100% !important">Log Out</div>
+                                        </a>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                                
                             </xsl:when>
                             <xsl:otherwise>
-                                <a href="#myModal" role="button" class="btn" data-toggle="modal">Login </a>|
-                                <a href="#myModal2" role="button" class="btn" data-toggle="modal">Sign Up</a>
+                                <a href="#myModal" role="button" class="btn" data-toggle="modal" style="text-align: center; width: 60px !important;">Login </a>|
+                                <a href="#myModal2" role="button" class="btn" data-toggle="modal" style="text-align: center; width: 60px !important;">Sign Up</a>
                             </xsl:otherwise>
                         </xsl:choose>
                     </div>
@@ -77,6 +111,10 @@
                         <h3>Already a member?</h3> Login. Don't have an account? <a href="#myModal2" role="button" class="btn" data-toggle="modal">Sign up.</a>
 
                         <hr/>
+                     
+                        <div class="fb-login"/> 
+                        
+                           <h3 id='or'> or </h3>
                         <div id="QuickLoginFormLoginFailed">Incorrect email or password.</div>
                         <div id="tryagain">Your search did not return any results. Please try again with another email.</div>
                         <br id="break"  style="display:none;"/>
@@ -104,9 +142,7 @@
                             <button class="joinbutton">Send</button>
                         </form>
                 
-                            <!--  <h6> or </h6>
-                              
-                        <div class="fb-login" /> -->
+                     
                              
                     </div>
                 </div>
@@ -271,7 +307,6 @@
             <xsl:choose>
                
                 <xsl:when test="./Viewer/@userId != -1">
-                    <a href="/network" class="fourth NavigationLink">Connections</a>
                     <a href="/search" class="sixth last NavigationLink">Search</a>
                     <div id="SocialInbox">
                         <div class="clickRegion">
