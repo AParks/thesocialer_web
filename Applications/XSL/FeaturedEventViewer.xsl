@@ -146,10 +146,11 @@
                         <xsl:value-of select="./FeaturedEvent/@markup" disable-output-escaping="yes" />
                     </p> -->
                     <div class="Attendees">
-                        <div class="AttendeesYes">
-                            <h2>Attending:</h2>
+                       <!--  <div class="AttendeesYes">
+                           <h2>Attending:</h2>
                             <xsl:apply-templates select="./FeaturedEventAttendanceManager/attendanceStatuses/Member" />
-                        </div>
+                        </div> -->
+                        
                         <!--               <div class="AttendeesMaybe">
                             <strong>Maybe</strong>
                             <xsl:apply-templates select="./FeaturedEventAttendanceManager/attendanceStatuses/maybe/Member" />
