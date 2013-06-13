@@ -37,10 +37,11 @@ class Member extends ATransformableObject {
     protected $Location;
     protected $College;
     protected $friendsWithViewer;
+    protected $fb_id;
     protected $tags = array();
     protected $publicProperties = array('userId', 'firstName', 'lastName',
         'gender', 'photo', 'age', self::FIELD_ABOUT_ME, self::FIELD_COLLEGE, self::FIELD_LOCATION,
-        'friendsWithViewer', 'tags', 'emailAddress', 'dob');
+        'friendsWithViewer', 'tags', 'emailAddress', 'dob', 'fb_id');
 
     public function __construct($userId, $type = self::TYPE_COMPLEX) {
         $this->userId = (int) $userId;
@@ -61,35 +62,9 @@ class Member extends ATransformableObject {
     }
 
     private function _load() {
-        $config = array();
-        $config['appId'] = '327877070671041';
-        $config['secret'] = '86ef3bb6572ec448b644513076743896';
-        $config['fileUpload'] = true; // optional
-
-        $facebook = new Facebook($config);
-
-
-// See if there is a user from a cookie
-        $fb_user = $facebook->getUser();
-
-        if ($fb_user) {
-            try {
-                $user_info = $facebook->api('/' . $fb_user);
-                $this->firstName = $user_info['first_name'];
-                $this->lastName = $user_info['last_name'];
-                $this->emailAddress = $user_info['email'];
-                $this->dob = $user_info['birthday'];
-                $this->gender =  $user_info['gender'];
-                date_default_timezone_set("America/New_York");
-                $dobDateTime = new DateTime($this->dob);
-                $ageDateTime = $dobDateTime->diff(new DateTime());
-                $this->age = $ageDateTime->y;
-            } catch (FacebookApiException $e) {
-                
-            }
-        } else {
+       
             $pdo = sPDO::getInstance();
-            $query = $pdo->prepare('SELECT first_name, last_name, email_address, date_of_birth, gender FROM member_data( :user_id )');
+            $query = $pdo->prepare('SELECT first_name, last_name, email_address, date_of_birth, gender, fb_id FROM member_data( :user_id )');
             $query->bindValue(':user_id', $this->userId);
 
             $query->execute();
@@ -106,6 +81,7 @@ class Member extends ATransformableObject {
             $this->emailAddress = $row->email_address;
             $this->dob = $row->date_of_birth;
             $this->gender = $row->gender;
+            $this->fb_id = $row->fb_id;        
             date_default_timezone_set("America/New_York");
             $dobDateTime = new DateTime($this->dob);
             $ageDateTime = $dobDateTime->diff(new DateTime());
@@ -128,7 +104,7 @@ class Member extends ATransformableObject {
             if ($this->type === self::TYPE_COMPLEX) {
                 $this->photo = Photo::getByUser($this->userId, $this->gender);
             }
-        }
+        
     }
 
     public function __get($key) {
