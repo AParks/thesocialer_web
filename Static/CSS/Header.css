@@ -26,12 +26,40 @@ h1, h2, h3, h4, h5, h6{
         font-family: 'comfortaaregular' !important;
 }
 
+#AccountSettingsContainer a
+{
+    color: #666;
+    width: 85px;
+    height: 25px;
+    display: inline-block;
+    position: relative;
+    line-height: 25px;
+}
+
+#AccountSettingsContainer a:hover{
+    text-decoration: none;
+    color: white;
+    background-color: #47b9ea;   
+        border-radius: 5px;
+
+}
+#profile{
+    position: absolute;
+    line-height: 25px;
+    width: 60px;
+    text-align: center;
+    height: 25px;
+    display: inline-block;
+    
+}
 
 .pane-content{
+    position: fixed;
+    top: 0;
+    right: 0;
     background-color: #e7e7e7;
     display: inline-block;
     padding: 4px;
-    float: right;
 }
 .social-link{
     background-color: #c2c2c2;
@@ -105,9 +133,10 @@ a:hover{
 
 
 div.fb-login{
-    width: 154px !important;
+    width: 100%;
     height: 22px !important;
-    background-image:url('/Static/Images/fb_login_icon.gif');
+    background-size: 154px 22px;
+    background:url('/Static/Images/fb_login_icon.gif') center center no-repeat;
 }
 
 #MemberLoginContainer {
@@ -129,7 +158,7 @@ div.fb-login{
     border-radius: 25px 25px 25px 25px;
 }
 
-h6:before, h6:after {
+h3[id=or]:before, h3[id=or]:after {
     position: absolute;
     top: 51%;
     overflow: hidden;
@@ -139,11 +168,11 @@ h6:before, h6:after {
     background-color: grey;
 }
 
-h6:before {
+h3[id=or]:before {
     margin-left: -50%;
     text-align: right;
 }
-h6 {
+h3[id=or] {
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -360,10 +389,7 @@ input[type="checkbox"]{
     color: #666;
 }
 
-#AccountSettingsContainer a
-{
-    color: #666;
-}
+
 #Beta
 { 
     height:20px;
@@ -416,11 +442,7 @@ input[type="checkbox"]{
 }
 
 
-#AccountSettingsContainer a:hover{
-    text-decoration: none;
-    color:   #58A5D7 !important;    
 
-}
 
 
 #Navigation .navcontainer
@@ -873,4 +895,29 @@ button.close {
 }
 .carousel-caption h4, .carousel-caption p {
   color: #ffffff;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: top;
+  border-top: 4px solid #000000;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+}
+
+.dropup,
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  *margin-bottom: -3px;
+}
+
+.dropdown-toggle:active,
+.open .dropdown-toggle {
+  outline: 0;
 }

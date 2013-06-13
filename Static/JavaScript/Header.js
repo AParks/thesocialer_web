@@ -7,21 +7,40 @@ Header.showFailedLogin = function( ) {
 }
 
 $(function() {
-
- $('div.fb-login').click(function() {
-
+    
+    //facebook logout
+    $('#fb_logout').click(function() {
+            FB.logout(function(response){
+                window.location = "/logout";
+            });
+    });
+    
+    //facebook login
+    $('div.fb-login').click(function() {
         FB.login(function(response) {
             // handle the response
             if (response.authResponse) {
-                console.log(response);
+                 FB.api('/me', function(response) {
+            $.ajax({
+                url: '/login/fb',
+                type: 'POST',
+                data: {
+                    user_info: response,
+                    fb_id: response.id
+                },
+                success: function(data, textStatus, jqXHR) {
+                   location.reload(true);
+                }
+            });
+        });
             } else {
                 console.log('You cancelled login or you did not fully authorize the app.');
             }
         }, {scope: 'email,user_birthday, user_education_history, user_location'});
 
     });
-    
-    
+
+
     $('#HelpButton').bind('click', function() {
         $('.HowItWorks').toggle();
     });
@@ -30,9 +49,7 @@ $(function() {
         $(this).parent().hide();
     });
 
-   
-   //make "Keep me logged in" checkbox checked by default
-//   $('#rememberme')
+
 
 
 
@@ -249,12 +266,12 @@ $(function() {
         var shaObj = new jsSHA(passbox.val( ), "ASCII");
         var hash = shaObj.getHash("SHA-256", "HEX");
         $.ajax({
-            url: '/login',
+            url: '/login/normal',
             type: 'POST',
             data: {
                 LoginEmail: emailbox.val(),
                 LoginPassword: hash,
-                RememberMe: ($('.remember>input[type=checkbox]').is(':checked'))? 1 : 0
+                RememberMe: ($('.remember>input[type=checkbox]').is(':checked')) ? 1 : 0
             },
             success: function(data, textStatus, jqXHR) {
                 if (data === 'Invalid Login') {
