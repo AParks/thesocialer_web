@@ -75,9 +75,22 @@
 	    <xsl:call-template name="LocationCommentSkeleton" />
 	  </div>
 
+             
           <xsl:if test="./Viewer/@userId != -1">
               <div>
-	    <img class="MyPhoto" src="/photo/{./Viewer/@userId}/Small" />
+             
+              <xsl:choose>
+                  <xsl:when test="./Member/@fb_id">
+                      <img src="https://graph.facebook.com/{./Member/@fb_id}/picture?type=square" class='Photo'/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                      <img class="MyPhoto" src="/photo/{./Viewer/@userId}/Small" />
+                  </xsl:otherwise>
+              </xsl:choose>
+             
+              
+              
+              
 	    <textarea class="NewComment" placeholder="Suggest an event"></textarea>
             </div>
 	  </xsl:if>

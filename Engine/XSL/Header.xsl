@@ -111,9 +111,9 @@
                         <h3>Already a member?</h3> Login. Don't have an account? <a href="#myModal2" role="button" class="btn" data-toggle="modal">Sign up.</a>
 
                         <hr/>
-                     
-                        <div class="fb-login"/> 
-                        
+                     <br/>
+                        <div class="fb-login"/>
+
                            <h3 id='or'> or </h3>
                         <div id="QuickLoginFormLoginFailed">Incorrect email or password.</div>
                         <div id="tryagain">Your search did not return any results. Please try again with another email.</div>
@@ -156,6 +156,10 @@
 
                         <hr/>
                         <div class="inner">
+                            <br/>
+                        <div class="fb-login"/> 
+                        
+                           <h3 id='or'> or </h3>
                             <form id="registration" autocomplete="off" method="post" action="" >
                                 <div id="fullname">
                                     <input id="firstname" name="firstname" type="text" maxlength="100" placeholder="First Name" />

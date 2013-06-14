@@ -7,20 +7,48 @@ Header.showFailedLogin = function( ) {
 }
 
 $(function() {
-    
+
     //facebook logout
     $('#fb_logout').click(function() {
-            FB.logout(function(response){
+        //.reload(true);
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                console.log('connected');
+                console.log(response.session);
+                // the user is logged in and has authenticated your
+                // app, and response.authResponse supplies
+                // the user's ID, a valid access token, a signed
+                // request, and the time the access token 
+                // and signed request each expire
+                var uid = response.authResponse.userID;
+                var accessToken = response.authResponse.accessToken;
+                if(response.session){
+                    FB.logout(function(response) {
+                        window.location = "/logout";
+                    });
+                }
+                else
+                    window.location = "/logout";
+
+            } else if (response.status === 'not_authorized') {
+                // the user is logged in to Facebook, 
+                // but has not authenticated your app
+                console.log('not auth')
+                FB.logout(function(response) {
+                    window.location = "/logout";
+                });
+            } else {
+                // the user isn't logged in to Facebook
                 window.location = "/logout";
-            });
+
+            }
+        });
+
+
     });
-    
-    //facebook login
-    $('div.fb-login').click(function() {
-        FB.login(function(response) {
-            // handle the response
-            if (response.authResponse) {
-                 FB.api('/me', function(response) {
+
+    function login() {
+        FB.api('/me', function(response) {
             $.ajax({
                 url: '/login/fb',
                 type: 'POST',
@@ -29,14 +57,47 @@ $(function() {
                     fb_id: response.id
                 },
                 success: function(data, textStatus, jqXHR) {
-                   location.reload(true);
+                    location.reload(true);
                 }
             });
         });
+
+    }
+
+    //facebook login
+    $('div.fb-login').click(function() {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                // the user is logged in and has authenticated your
+                // app, and response.authResponse supplies
+                // the user's ID, a valid access token, a signed
+                // request, and the time the access token 
+                // and signed request each expire
+                var uid = response.authResponse.userID;
+                var accessToken = response.authResponse.accessToken;
+                login();
+            } else if (response.status === 'not_authorized') {
+                // the user is logged in to Facebook, 
+                // but has not authenticated your app
+                FB.login(function(response) {
+                    // handle the response
+                    if (response.authResponse)
+                        login();
+
+                }, {scope: 'email,user_birthday, user_education_history, user_location'});
+
             } else {
-                console.log('You cancelled login or you did not fully authorize the app.');
+                // the user isn't logged in to Facebook.
+                FB.login(function(response) {
+                    // handle the response
+                    if (response.authResponse)
+                        login();
+
+
+                }, {scope: 'email,user_birthday, user_education_history, user_location'});
+
             }
-        }, {scope: 'email,user_birthday, user_education_history, user_location'});
+        });
 
     });
 

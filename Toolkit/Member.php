@@ -140,7 +140,8 @@ class Member extends ATransformableObject {
         }
 
         if (isset($fields[self::FIELD_EMAIL])) {
-            $this->_updateEmail(trim($fields[self::FIELD_EMAIL]));
+            $result = $this->_updateEmail(trim($fields[self::FIELD_EMAIL]));
+            error_log('email:' . $result);
         }
         if (isset($fields[self::FIELD_DOB])) {
             $this->_updateDOB(trim($fields[self::FIELD_DOB]));
@@ -183,7 +184,15 @@ class Member extends ATransformableObject {
         $query = sPDO::getInstance()->prepare('SELECT update_user_email( :user_id, :email )');
         $query->bindValue(':user_id', $this->userId);
         $query->bindValue(':email', $email);
-        return $query->execute();
+        try{        
+            $query->execute();
+        }
+        catch(Exception $e){
+            error_log('email yo' . $e);
+            return false;
+        }
+        error_log('beyond the wall');
+        return true;
     }
 
     protected function _updateDOB($dob) {

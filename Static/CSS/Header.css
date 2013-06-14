@@ -137,6 +137,7 @@ div.fb-login{
     height: 22px !important;
     background-size: 154px 22px;
     background:url('/Static/Images/fb_login_icon.gif') center center no-repeat;
+    display: inline-block;
 }
 
 #MemberLoginContainer {
@@ -285,10 +286,6 @@ input[type="checkbox"]{
     display: inline;
 }
 
-.fb-login-button{
-    width: 100%;
-    text-align: center;
-}
 
 
 #registration select

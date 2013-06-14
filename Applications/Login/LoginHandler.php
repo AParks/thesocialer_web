@@ -1,9 +1,6 @@
 <?php
 
-class LoginHandler extends JSONApplicationBase {
-    // const URL_SUCCESSFUL_LOGIN = '/trending';
-    // const URL_FAILED_LOGIN = '/login_form';
-    // const URL_FAILED_LOGIN = '/?loginFailed=1';
+class LoginHandler extends JSONApplicationBase {    
 
     const ACTION_FB_LOGIN = 'fb';
     const ACTION_LOGIN = 'normal';
