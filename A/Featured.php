@@ -106,10 +106,19 @@
 
                 return true;
             }
+
             $(function() {
+                $('input[type=file]').change(function() {
+
+                    var eventId = $(this).first().parent()
+                            .parent().parent()
+                            .find('input[key=featured_event_id]').val();
+                    $(this).parent().find('input[name=eventId]').val(eventId);
+
+                    $(this).parent().submit();
+                    return false;
+                });
                 $('#events input[type=text], #events textarea').focusout(function() {
-                    // if (validateForm()){
-                    console.log($(this).val());
                     $.ajax({
                         url: '/A/FeaturedJSON.php',
                         type: 'POST',
@@ -125,7 +134,6 @@
                         }
                     });
                     return false;
-                    //}
                 });
                 $('a.delete').click(function() {
                     if (confirm("Are you sure you want to delete this event? This can't be undone.")) {
@@ -252,6 +260,10 @@
                             <th>Priority</th><td><input type="number" style="width: 80%; height:100%" id="priority" name="priority" value=0 /></td>
                             <td>Events with higher priority will appear first</td>
                         </tr>
+                        <tr> 
+                            <th>Spots</th><td><input type="number" style="width: 80%; height:100%" id="spots" name="spots" value=0 /></td>
+                            <td>total number of tickets/spots to sell</td>
+                        </tr>
                         <tr>
                             <td colspan="3"><input style="width:100%;" type="submit" name="submit" value="Create Event" /></td>
                         </tr>
@@ -283,11 +295,19 @@
         echo '<h1>Current featured events:</h1>';
         echo '<table id="events" class="table table-striped table-bordered table-condensed" style="margin: 20px;width: 1100px;">';
 
-        echo "<tr><th>Id</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Markup</th><th>Location</th><th>Price</th><th>Headline</th><th>Is private</th><th>SubHeadline</th><th>Host</th><th>Priority</th><th></th></tr>";
+        echo "<tr><th>Id</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Markup</th><th>Location</th><th>Price</th><th>Headline</th><th>Is private</th><th>SubHeadline</th><th>Host</th><th>Priority</th><th>Spots</th><th></th></tr>";
         foreach ($query->fetchAll(PDO::FETCH_ASSOC) as $featured) {
             echo "<tr>";
             foreach ($featured as $key => $value) {
-                if ($key == 'description')
+                if ($key == 'markup') {
+                    echo "<td>";
+                    echo "<form action='/A/FeaturedJSON.php' method='post' enctype='multipart/form-data' >";
+                    echo "<input type='file' name='file[]' id='file' multiple>$value</>";
+                    echo '<input type="hidden" name="eventId" />';
+                    echo "<input type='hidden' name='action' value='edit' />";
+                    echo "<input type='hidden' name='key' value='$key' />";
+                    echo "</form></td>";
+                } else if ($key == 'description')
                     echo "<td><textarea  name='$key' key='$key' >$value </textarea></td>";
                 else
                     echo "<td><input type='text' name='$key' key='$key' value='$value' /> </td>";

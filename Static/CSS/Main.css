@@ -129,7 +129,7 @@ h6 {
 
 a
 {
-    color: #1F61D4;
+    color: #6888b9;
     text-decoration: none;
 }
 
@@ -194,12 +194,13 @@ button.standard
 { 
     width:850px;
     margin: 0 auto;
-    color: #999;
+    color: white;
 }
+
 
 .Footer a
 { 
-    color: #999;
+    color: white;
     margin-left:10px;
 }
 

@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 
+
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:soc="http://kemmerer.co">
     <xsl:output method="html" omit-xml-declaration="yes"/>
 
+    
     <xsl:template match="/FeaturedEventViewer">
         <div class="LocationViewer" id="MainBody">
-            <div id="topcontainer">
-               
-            </div>
+            <div id="topcontainer"></div>
             <div id="leftcontainer">
                 <div id="FeaturedEvent">    
                     <div class="EventTitle">
@@ -130,14 +130,25 @@
                                     <xsl:value-of select="./FeaturedEvent/@featured_event_id" />
                                 </input> 
                             </form>
-                            
                         </button>
-                        <img alt="Credit Cards" src="/Static/Images/creditcards.gif"/>
+                        <div class="encrypted">
+                            <img height='15' src='/Static/Images/lock-white.png'/>
+                            128-bit SSL Encrypted Transactions</div>                            
+                        <!--                        <img alt="Credit Cards" src="/Static/Images/creditcards.gif"/> -->
                     </div> 
-                    <div class="encrypted">128-bit SSL Encrypted Transactions</div>
+                    <br/>
+                    <button id='fb-share'>
+                        <div id='img'/>
+                        <a id='share' href="https://www.facebook.com/sharer/sharer.php?u=thesocialer.com/popups/featured/{./FeaturedEvent/@featured_event_id}" target="_blank">
+                        
+                            Share
+                        </a>
+                    </button>
 
-                   
-            
+    
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-related="socialerphilly" data-via="socialerphilly" data-text="{./FeaturedEvent/@headline}" data-size="large">Tweet</a>
+
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     <!--    <h1>About The Event:</h1>
                     <h2>Time</h2>
                     <p id="FeaturedTime"></p>
@@ -146,7 +157,7 @@
                         <xsl:value-of select="./FeaturedEvent/@markup" disable-output-escaping="yes" />
                     </p> -->
                     <div class="Attendees">
-                       <!--  <div class="AttendeesYes">
+                        <!--  <div class="AttendeesYes">
                            <h2>Attending:</h2>
                             <xsl:apply-templates select="./FeaturedEventAttendanceManager/attendanceStatuses/Member" />
                         </div> -->

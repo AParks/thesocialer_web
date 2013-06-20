@@ -122,7 +122,7 @@ function init( ) {
 
 
     //suggest an event
-    $('textarea').keydown(function(event) {
+    $('textarea.NewComment').keydown(function(event) {
         if (event.which == 13) { // enter key pressed
             event.preventDefault();
             var comment = $(this).val();

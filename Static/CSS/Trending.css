@@ -16,7 +16,7 @@
 }
 
 #EventDays li {
-    background-color: #A1A2A5;
+    background-color: #c2c2c2;
     color: #FFF;
     text-align: center;
     display:inline-block;
@@ -26,9 +26,18 @@
     padding:5px 25px;
 }
 
-#EventDays li:hover {
+#EventDays li:hover,
+#EventDays li.selected{
     text-decoration: none;
-    background-color: #6888B9;
+    color: white;
+        background-color: #6887b9;
+    background-image: -moz-linear-gradient(top, #8ba3c9, #6887b9);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8ba3c9), to(#6887b9));
+    background-image: -webkit-linear-gradient(top, #8ba3c9, #6887b9);
+    background-image: -o-linear-gradient(top, #8ba3c9, #6887b9);
+    background-image: linear-gradient(to bottom, #8ba3c9, #6887b9);
+    background-repeat: repeat-x;
+
 }
 
 #EventDays li.Day1 {
@@ -37,11 +46,6 @@
 
 #EventDays li.Day2 {
     width: 60px;
-}
-
-#EventDays li.selected {
-    color: #0D233D;
-    background-color: #6888B9;
 }
 
 #EventDays li.last {

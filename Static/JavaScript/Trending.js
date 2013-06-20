@@ -126,7 +126,7 @@ var Home = function() {
 			trend = $(this).find('.TrendContainer');
 		    }
 		    trend.animate({ bottom: '0'}, 300);
-		}
+		} 
 	    },
 	    function() {
 		if(opacitySupport) {

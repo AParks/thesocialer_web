@@ -6,10 +6,14 @@
     <xsl:output method="xml" omit-xml-declaration="yes"/>
 
     <xsl:template match="/Header">
-        <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE xhtml&gt;</xsl:text>
+        <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
         <html>
             <head>
                 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+                <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+                <meta http-equiv="Pragma" content="no-cache" />
+                <meta http-equiv="Expires" content="0" />
+
                 <title>The Socialer</title>
                 <xsl:apply-templates select="CSS/file" />
                 <soc:googleAnalytics environment="dev" />
@@ -25,10 +29,13 @@
                 <div id="Header">
                     <div class="pane-content">
                         <span class="social-link">
-                            <a href="https://twitter.com/@socialerphilly" title="Twitter" >L</a>
+                            <a  data-toggle="tooltip" data-placement='bottom' id='Twitter' href="https://twitter.com/@socialerphilly" title="Check out our Twitter!" >L</a>
                         </span>
                         <span class="social-link">
-                            <a href="https://www.facebook.com/TheSocialer" title="Facebook">F</a>
+                            <a data-toggle="tooltip" data-placement='top'  id='Facebook' href="https://www.facebook.com/TheSocialer" title="Check out our Facebook!">F</a>
+                        </span>
+                        <span class="social-link">
+                            <a  id='Blog' href="http://socialerblog.com/" title="Check out our blog!">F</a>
                         </span>
                         
                     </div>
@@ -39,59 +46,82 @@
                     <div id="AccountSettingsContainer">
                         <xsl:choose>
                             <xsl:when test="./Viewer/@userId != -1">
-                                <a href="/profile">
-                                    <xsl:choose>
-                                        <xsl:when test="./Viewer/Member/@fb_id">  
-                                            <img width='25' height='25' style="border-radius: 5px;" src="https://graph.facebook.com/{./Viewer/Member/@fb_id}/picture?type=square"/>
-                                        </xsl:when>
-                                        <xsl:otherwise>
-                                            <img width='25' height='25' src="/photo/{./Viewer/@userId}/Small"/> 
-                                        </xsl:otherwise>
-                                    </xsl:choose>
-
-                                    <div id='profile'>
-
+                               
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="dLabel" data-toggle="dropdown" data-target="#">
                                         <xsl:value-of select="./Viewer/Member/@firstName" />
-                                    </div>
-                                </a>
-                                <a href="/messages" style="text-align: center; width: 40px !important;">
-                                    <img height='25' src="/Static/Images/mailbox.png"/>
 
-                                    <xsl:if test="@unreadCount > 0">
-                                        <xsl:text> (</xsl:text>
-                                        <xsl:value-of select="@unreadCount" />
-                                        <xsl:text>)</xsl:text>
-                                    </xsl:if>
-                                    
-                                </a>
-                                <a href="/network" style="text-align: center; width: 50px !important;">
-                                    <img width='auto' height='25' src="/Static/Images/connections.png"/>
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li>
+                                            <a href="/profile">
+                                                <xsl:choose>
+                                            <xsl:when test="./Viewer/Member/@fb_id">  
+                                                <img width='25' height='25' style="border-radius: 5px;" src="https://graph.facebook.com/{./Viewer/Member/@fb_id}/picture?type=square"/>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <img width='25' height='25' src="/photo/{./Viewer/@userId}/Small"/> 
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                                <div class='profile'>Profile</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/messages">
+                                                <img width='25' src="/Static/Images/mailbox.png"/>
+                                                <div class='profile'>Messages</div>
 
-                                </a>
-
-                                <a href="/settings" style="text-align: center; width: 40px !important;">
-                                    <img width='auto' height='25' src="/Static/Images/settings.png"/>
-
-                                </a>
-                                <xsl:choose>
-                                    <xsl:when test="./Viewer/Member/@fb_id">
+                                                <xsl:if test="@unreadCount > 0">
+                                                <span class="alert-count position-super">
+                                                    <xsl:value-of select="@unreadCount" />
+                                                    </span>
+                                                </xsl:if>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/network" id='network'>
+                                                <img width='25' height='auto' src="/Static/Images/connections_white.png"/>
+                                                <div class='profile'> Connections</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/settings" id='settings'>
+                                                <img width='25' height='25' src="/Static/Images/settings_white.png"/>
+                                                <div class='profile'>Settings</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <xsl:choose>
+                                                <xsl:when test="./Viewer/Member/@fb_id">
                                         
-                                        <a href="#" id="fb_logout" style=" width: 60px !important;">
-                                            <div id='profile' style="width: 100% !important">Log Out</div>
-                                        </a>
-                                    </xsl:when>
-                                    <xsl:otherwise>
+                                                    <a href="#" id="fb_logout">
+                                                        <img width='25' height='auto' src="/Static/Images/logout.png"/>
+                                                        <div class='profile'>Log Out</div>
+                                                    </a>
+                                                </xsl:when>
+                                                <xsl:otherwise>
                                         
-                                        <a href="/logout" style=" width: 60px !important;">
-                                            <div id='profile' style="width: 100% !important">Log Out</div>
-                                        </a>
-                                    </xsl:otherwise>
-                                </xsl:choose>
+                                                    <a href="/logout" >
+                                                        <img width='25' height='auto' src="/Static/Images/logout.png"/>
+                                                        <div class='profile'>Log Out</div>
+                                                    </a>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                        </li>
+                                    </ul>
+                                </div>
+                              
+                                
+
+
+
+                                
                                 
                             </xsl:when>
                             <xsl:otherwise>
-                                <a href="#myModal" role="button" class="btn" data-toggle="modal" style="text-align: center; width: 60px !important;">Login </a>|
-                                <a href="#myModal2" role="button" class="btn" data-toggle="modal" style="text-align: center; width: 60px !important;">Sign Up</a>
+                                <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login </a>|
+                                <a href="#myModal2" role="button" class="btn" data-toggle="modal" >Sign Up</a>
                             </xsl:otherwise>
                         </xsl:choose>
                     </div>
@@ -111,10 +141,10 @@
                         <h3>Already a member?</h3> Login. Don't have an account? <a href="#myModal2" role="button" class="btn" data-toggle="modal">Sign up.</a>
 
                         <hr/>
-                     <br/>
+                        <br/>
                         <div class="fb-login"/>
 
-                           <h3 id='or'> or </h3>
+                        <h3 id='or'> or </h3>
                         <div id="QuickLoginFormLoginFailed">Incorrect email or password.</div>
                         <div id="tryagain">Your search did not return any results. Please try again with another email.</div>
                         <br id="break"  style="display:none;"/>
@@ -157,9 +187,9 @@
                         <hr/>
                         <div class="inner">
                             <br/>
-                        <div class="fb-login"/> 
+                            <div class="fb-login"/> 
                         
-                           <h3 id='or'> or </h3>
+                            <h3 id='or'> or </h3>
                             <form id="registration" autocomplete="off" method="post" action="" >
                                 <div id="fullname">
                                     <input id="firstname" name="firstname" type="text" maxlength="100" placeholder="First Name" />
@@ -267,7 +297,7 @@
                 
                 <div class="Footer">
                     <div class="LeftFoot">
-                        TheSocialer © 2012
+                        TheSocialer © 2013
                     </div>
                     <div class="RightFoot">
                         <a href="/tos">Terms of Use</a>
@@ -317,6 +347,7 @@
                             <span>Social Inbox</span>
                             <div id="SocialInboxCount">
                                 <xsl:value-of select="count(SocialInbox/FriendRequests/FriendRequest)+count(SocialInbox/LocationShares/LocationShare)" />
+                                <b class="caret"></b>
                             </div>
                         </div>
                         <ol id="SocialInboxNotifications">

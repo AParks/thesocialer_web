@@ -30,38 +30,7 @@ abstract class ApplicationBase implements IApplication {
         $this->display = DisplayManager::getInstance();
         $this->viewer = Viewer::getInstance();
 
-        $config = array();
-        $config['appId'] = '327877070671041';
-        $config['secret'] = '86ef3bb6572ec448b644513076743896';
-        $config['fileUpload'] = true; // optional
-
-        $facebook = new Facebook($config);
-
-
-// See if there is a user from a cookie
-        $fb_user = $facebook->getUser();
-
-        if ($fb_user) {
-            try {
-                // Proceed knowing you have a logged in user who's authenticated.
-                $user_profile = $facebook->api('/me');
-                $user_info = $facebook->api('/' . $fb_user);
-                
-
-                $viewerDetails['userId'] = $fb_user;
-                $viewerDetails['firstName'] = $user_info['first_name'];
-                $viewerDetails['lastName'] = $user_info['last_name'];
-                $viewerDetails['gender'] = $user_info['gender'];
-            } catch (FacebookApiException $e) {
-                //              echo '<pre>' . htmlspecialchars(print_r($e, true)) . '</pre>';
-                //               $user = null;
-            }
-        }
-        $loginUrl = $facebook->getLoginUrl(array(
-            'scope' => 'email,user_location,user_birthday', // Permissions to request from the user
-            'redirect_uri' => 'http://thesocialer.com', // URL to redirect the user to once the login/authorization process is complete.
-        ));
-
+       
 
 
 

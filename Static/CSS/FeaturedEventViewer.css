@@ -1,11 +1,19 @@
+#leftcontainer hr{
+    border: 0;
+    height: 1px;
+    color: #b97168;
+    background-color: #b97168;
+}
 .encrypted {
     float: left;
-    margin-top: 10px;
-    background: url(/Static/Images/checkout-lock-icon.png) no-repeat left;
-    padding-left: 15px;
-    line-height: 14px;
     font-size: 12px;
-    color: #bebebe;
+    color: white;
+    height: 20px;
+    line-height: 20px;    
+    width: 100%;
+}
+#SeeMore{
+    color: #b97168;
 }
 .EventTitle{
     padding: 4px;
@@ -13,14 +21,36 @@
     color: white;
     line-height: 32px;
 }
+.LocationInfoContainer .joinbutton{
+    background-color: #c2c2c2 !important;
+    border-color: #e7e7e7 !important;
+  /*  background-color: #b97168 !important;
+    border-color: #b97168 !important; */
+}
+.LocationInfoContainer .joinbutton:hover{
+    background-color: #89b968 !important;
+    border-color: #b1b968 !important;
+  /*  background-color: #b97168 !important;
+    border-color: #b97168 !important; */
+}
+
 
 .booking{
+    color: #fff;
+    margin-left: 11px;
+    margin-top: 9px;
     text-align: center;
-    padding: 10px;
-    width: 85%;
-    background-color: #e7e7e7;
-    -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7);
-    box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7);
+    padding: 20px 10px 20px 10px;
+    width: 80%;
+     background-color: #6888b9;
+     border: 10px solid #e7e7e7;
+     
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+ /*    background-color: #b96887; */
+/*    background-color: #e7e7e7; */
+/*    -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7); */
+/*    box-shadow:  0px 1px 4px 1px #6888b9 */
 }
 .booking  #total_price,
 .booking  #dollar_sign{
@@ -56,19 +86,57 @@
 
 }
 
+#share{
+    font-weight: bold;
+    text-align: center;
+    color: #222;
+    text-shadow: 0px 1px 0px #fff;
+    height: 28px;
+    display: block;
+    line-height: 28px;
+}
+#fb-share{
+    position: relative;
+    top: -9px;
+    margin-right: 10px;
+}
+#fb-share > div{
+    margin-left: 5px;
+    background: url('/Static/Images/fb-blue.png') center center no-repeat;
+    height: 28px;
+    width: 14px;
+    background-size: 10px auto;
+    float: left;
+    display: inline-block;        
+}
+
+button[id=fb-share]{
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid #e7e7e7; 
+    width: 74px;
+    height: 28px;
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(top, #fff,#d8d8d8);
+    background-image: -moz-linear-gradient(top, #fff,#d8d8d8);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#d8d8d8));
+    background-image: -o-linear-gradient(top, #fff, #d8d8d8);
+    background-image: linear-gradient(to bottom, #fff, #d8d8d8); 
+    
+}
 
 
 #leftcontainer
 { 
     width:580px;
     float:left;
-    border-right:solid 1px gray;
+    border-right:solid 1px #b97168;
     padding:5px;
 }
 
 #FeaturedEvent 
 {
-    border: 1px solid #DCDCDC;
+    border: 1px solid #b97168;
     width:570px;
     height: auto;
     margin-bottom: 5px;
@@ -295,7 +363,8 @@
 .LocationInfoContainer
 {
     overflow:hidden;
-    margin:10px;
+    width: 100%;
+ /*   margin:10px;*/
 }
 
 .LocationInfoContainer h1
@@ -328,7 +397,7 @@
 {
     height: 270px;
     width: 270px;
-    border: solid 1px gray;
+    border: solid 1px #b97168;
     margin: 0 auto;
 }
 

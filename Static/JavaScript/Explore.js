@@ -99,7 +99,11 @@ var LocationsMain = function(loc){
 	    }
 	}
 	else {
-	    Main.fetchFromServer('/locations/json/popular', {limit: EVENTS_PER_PAGE, offset: ((page-1)*EVENTS_PER_PAGE) }, function(response){ receiveLocations(response, page)});
+	    Main.fetchFromServer('/locations/json/popular', 
+                    {limit: EVENTS_PER_PAGE, offset: ((page-1)*EVENTS_PER_PAGE) },
+                    function(response){
+                        receiveLocations(response, page);
+                    });
 	}
     }
     

@@ -5,8 +5,12 @@ FeaturedEventViewer = function(evt, userStatus) {
     var geocoder = new google.maps.Geocoder( );
 
     function init( ) {
+    
+
+        
         //add images to carousel
         var images = evt.markup.split(" ");
+        evt.markup = images[1];
         for (i = 1; i < images.length; i++) {
             html = "<div class='item'>" +
                     "<img src='" + images[i] + "'/>" +
@@ -31,7 +35,16 @@ FeaturedEventViewer = function(evt, userStatus) {
             }
         });
 
-
+    //facebook share
+            $('a[id=share]').attr('href', "https://www.facebook.com/dialog/feed?"+
+                    "app_id=327877070671041"+
+                    "&link=https://developers.facebook.com/docs/reference/dialogs/"+
+                    "&picture=https://thesocialer.com" + evt.markup+
+                    "&name=" + evt.headline +  
+                    "&caption=" + evt.sub_headline +  
+                    "&description="+ evt.description + 
+                    "&redirect_uri=https://thesocialer.com"+
+                    "&display=popup");
 
 
 

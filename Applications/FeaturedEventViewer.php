@@ -29,8 +29,11 @@ class FeaturedEventViewer extends ApplicationBase {
         $this->assetsManager->addJavascript('https://maps.googleapis.com/maps/api/js?sensor=false', true);
         $this->assetsManager->addInitJavaScript("$('.NavigationLink.third').addClass('active');");
         $this->assetsManager->addCSS('FeaturedEventViewer');
+
         $output = $x->transform('FeaturedEventViewer', $node);
         $this->display->appendOutput($output);
+      
+        
     }
 
     protected function getDateNode(DateObject $date) {

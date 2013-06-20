@@ -1,13 +1,14 @@
 #SocialInbox
 {
+  margin-top: 3px;
   float: right;
   width: 145px;
-  background-color: #EFF9FA;
+  background-color: #fff;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   padding: 0 2px 0 6px;
-  color: #1F61D4;
+  color: #6888b9;
   cursor: pointer;
   position: relative;
   z-index: 5;
@@ -29,24 +30,30 @@
   height: 22px;
   line-height: 22px;
   margin: 1px 0;
-  background-image: url(/Static/Images/DownTick.png);
-  background-repeat: no-repeat;
-  background-color: #2A6DE1;
+  /*background-image: url(/Static/Images/DownTick.png);
+  background-repeat: no-repeat;*/
+  background-color: #6888b9;
   background-position: 90% 50%;
 }
 
+#SocialInboxCount .caret{
+margin-top: 8px;
+position: relative;
+right: -7px;
+border-top-color: white !important;
+}
 #SocialInboxNotifications
 {
   display: none;
   width: 300px;
   position: absolute;
   right: 0;
-  background-color: #F9F9F9;
+  background-color: #e7e7e7;
   padding: 0 10px;
   border-radius: 0 0 10px 10px;
   -moz-border-radius: 0 0 10px 10px;
   -webkit-border-radius: 0 0 10px 10px;
-  border: 3px solid #58A5D7;
+  border: 3px solid #6888b9;
   border-width: 0 3px 3px 3px;
   top: 27px;
   color: #000;

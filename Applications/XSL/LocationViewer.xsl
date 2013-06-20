@@ -80,8 +80,8 @@
               <div>
              
               <xsl:choose>
-                  <xsl:when test="./Member/@fb_id">
-                      <img src="https://graph.facebook.com/{./Member/@fb_id}/picture?type=square" class='Photo'/>
+                  <xsl:when test="./Viewer/Member/@fb_id">
+                      <img src="https://graph.facebook.com/{./Viewer/Member/@fb_id}/picture?type=square" class='MyPhoto'/>
                   </xsl:when>
                   <xsl:otherwise>
                       <img class="MyPhoto" src="/photo/{./Viewer/@userId}/Small" />
