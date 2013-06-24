@@ -74,16 +74,19 @@ h1, h2, h3, h4, h5, h6{
     font-family: 'comfortaaregular' !important;
 }
 
+
+#AccountSettingsContainer a[data-toggle=modal]{
+    width: 60px;
+    text-align: center;
+}
+
 #AccountSettingsContainer a
 {
     height: 25px;
     display: inline-block;
     position: relative;
     line-height: 25px;
-    
     color: #666;
-/*     text-align: center;
-   width: 60px !important;*/
 }
 #AccountSettingsContainer a > img{
     margin-left: 5px;
@@ -573,7 +576,7 @@ a:hover{
 
 
 
-#tryagain, #QuickLoginFormLoginFailed
+#tryagain, #QuickLoginFormLoginFailed, #RegFailed
 {
     display: none;
     background-color: #ffebe8;

@@ -128,7 +128,7 @@ $query->execute();
 echo '<h1>Current users:</h1>';
 echo '<table class="table table-striped table-bordered table-condensed" style="margin: 20px;width: 600px;">';
 $count = 0;
-echo "<tr><th>Id</th><th>First</th><th>Last</th><th>Email</th><th>Birthday</th><th>Password</th><th>Gender</th><th>Signed Up</th><th></th></tr>";
+echo "<tr><th>Id</th><th>First</th><th>Last</th><th>Email</th><th>Birthday</th><th>Password</th><th>Gender</th><th>Signed Up</th><th>Facebook id</th><th>Active</th></tr>";
 foreach ( $query->fetchAll(PDO::FETCH_ASSOC) as $user )
 {
   $count++;

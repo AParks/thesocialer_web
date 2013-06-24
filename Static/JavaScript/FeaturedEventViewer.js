@@ -5,9 +5,9 @@ FeaturedEventViewer = function(evt, userStatus) {
     var geocoder = new google.maps.Geocoder( );
 
     function init( ) {
-    
 
-        
+
+
         //add images to carousel
         var images = evt.markup.split(" ");
         evt.markup = images[1];
@@ -21,30 +21,34 @@ FeaturedEventViewer = function(evt, userStatus) {
 
         //calculate image margins
         $('div[class~=active] img').load(function() {
-                calculateMarginsForImage($(this));
+            calculateMarginsForImage($(this));
         });
+        /*   $('.carousel').on('slid', function() {
+         var img = $('div[class~=active] img');
+         calculateMarginsForImage(img);
+         }); */
 
         $('.carousel').on('slide', function() {
-
             arry = $('#FeaturedEvent img');
+            // console.log(arry);
             for (i = 0; i < arry.length; i++) {
                 var img = $('.carousel-inner').find(':nth-child(' + (i + 1) + ')[class~=item]');
-
-                calculateMarginsForImage(img); 
+                //          console.log(img);
+                calculateMarginsForImage(img);
 
             }
         });
 
-    //facebook share
-            $('a[id=share]').attr('href', "https://www.facebook.com/dialog/feed?"+
-                    "app_id=327877070671041"+
-                    "&link=https://developers.facebook.com/docs/reference/dialogs/"+
-                    "&picture=https://thesocialer.com" + evt.markup+
-                    "&name=" + evt.headline +  
-                    "&caption=" + evt.sub_headline +  
-                    "&description="+ evt.description + 
-                    "&redirect_uri=https://thesocialer.com"+
-                    "&display=popup");
+        //facebook share
+        $('a[id=share]').attr('href', "https://www.facebook.com/dialog/feed?" +
+                "app_id=327877070671041" +
+                "&link=https://developers.facebook.com/docs/reference/dialogs/" +
+                "&picture=https://thesocialer.com" + evt.markup +
+                "&name=" + evt.headline +
+                "&caption=" + evt.sub_headline +
+                "&description=" + evt.description +
+                "&redirect_uri=https://thesocialer.com" +
+                "&display=popup");
 
 
 
@@ -193,13 +197,13 @@ FeaturedEventViewer = function(evt, userStatus) {
 $(function( ) {
 
 
+    $('#not-logged-in-payButton').click(function() {
+        $('#myModal').modal('show');
+    });
 
     $('#payButton').click(function() {
-        if (Viewer.userId == -1) {
-            $('#myModal').modal('show');
-            return false;
-        }
-        else {
+        if (Viewer.userId != -1) {
+
             var token = function(res) {
                 var $input = $('<input type=hidden name=stripeToken />').val(res.id);
                 var $id = $('<input type=hidden name=featured_event_id />').val(evt.featured_event_id);
@@ -221,6 +225,9 @@ $(function( ) {
 
             return false;
         }
+        else
+            $('#myModal').modal('show');
+
     });
     calculatePrice();
     $('#charge').find('script').attr('data-description', evt.description);

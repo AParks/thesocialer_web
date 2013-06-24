@@ -74,11 +74,11 @@
   <xsl:template name="LocationSkeleton">
     <li class="hide LocationSkeleton">
       <div class="Event" data-location-id="">
-	<div class="AttendingButtonsHolder">
+	<!--<div class="AttendingButtonsHolder">
 	  <ul class="AttendingCounts">
 	    <li class="AttendingCount"></li>
 	  </ul>  
-	</div>
+	</div> -->
 	<div class="LocationImage">
 	  <div class="TitleLocationContainer">
 	    <div class="EventTitle"></div>

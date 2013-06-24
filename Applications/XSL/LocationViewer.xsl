@@ -164,7 +164,7 @@
  <div class=" LocationCommentSkeleton LocationCommentContainer">
 
       <div class="eventContainer">
-
+       <!-- <div class="DeleteComment">✖</div> -->
        <table>
                <tr>
                    <td>

@@ -125,13 +125,13 @@ function init( ) {
     $('textarea.NewComment').keydown(function(event) {
         if (event.which == 13) { // enter key pressed
             event.preventDefault();
-            var comment = $(this).val();
+            var comment = $(this).val();            
             if (comment == "")
                 return;
-            var commentbox = $(this);
             var locid = loc.id;
 
             _this.makeComment(locid, date, comment);
+            console.log('waddup');
             $(this).val('');  //clear the text from the text area
             $(this).blur();   //remove focus from the text area
 
@@ -155,8 +155,9 @@ this.getComments = function() {
 
 this.makeComment = function(locId, date, comment) {
     Main.fetchFromServer('/network/json/makecomment', {location: loc.id, date: date, message: comment}, _this.getComments);
-       if ($('.FavoriteEvent').attr('data-status') != 'yes')
-           toggleAttendance();
+//    console.log($('.FavoriteEvent').first());
+ //  if ($('.FavoriteEvent').first().attr('data-status') != 'yes')
+ //          toggleAttendance($('.FavoriteEvent').first());
 }
 
 this.makeReply = function(commentId, replytext) {
@@ -200,8 +201,10 @@ this.newComment = function(comment) {
         newComment.find('.heart').toggleClass('active');
     }
 
+
+    //if the comment belongs to the viewing user, allow them to delete
     if (Viewer.userId == comment.user.userId) {
-        newComment.find('.eventcontainer').prepend('<div class="DeleteComment">✖</div>');
+        newComment.find('.eventContainer').prepend('<div class="DeleteComment">✖</div>');
         newComment.find('.DeleteComment').bind('click', function() {
             $.ajax({
                 url: '/network/json/deletecomment',

@@ -104,33 +104,43 @@
                             <option value="5">5 spots</option>
                         </select>
                         
-                        <button id="payButton" class="joinbutton">Book Now
+                        <xsl:choose>
+                            <xsl:when test="./Viewer/@userId != -1">
+                                
+                                <button id="payButton" class="joinbutton">Book Now
 
-                            <form id='charge' action="/charge" method="post">
-                                <script
-                                    src="https://checkout.stripe.com/v2/checkout.js" 
-                                    data-key="pk_test_tPl6A15XRwUWmiz0bEB280hN"
-                                    data-amount=""
-                                    data-name=""
-                                    data-description=""
-                                    data-currency="usd">
-                                </script>
-                                <input type='hidden' name='email'>
-                                    <xsl:attribute name="value">
-                                        <xsl:value-of select="./Viewer/Member/@emailAddress" />
-                                    </xsl:attribute>
-                                </input>
-                                <input type='hidden' name='userId'>
-                                    <xsl:attribute name="value">
-                                        <xsl:value-of select="./Viewer/@userId" />
-                                    </xsl:attribute>
-                                </input>
+                                    <form id='charge' action="/charge" method="post">
+                                        <script
+                                            src="https://checkout.stripe.com/v2/checkout.js" 
+                                            data-key="pk_test_tPl6A15XRwUWmiz0bEB280hN"
+                                            data-amount=""
+                                            data-name=""
+                                            data-description=""
+                                            data-currency="usd">
+                                        </script>
+                                        <input type='hidden' name='email'>
+                                            <xsl:attribute name="value">
+                                                <xsl:value-of select="./Viewer/Member/@emailAddress" />
+                                            </xsl:attribute>
+                                        </input>
+                                        <input type='hidden' name='userId'>
+                                            <xsl:attribute name="value">
+                                                <xsl:value-of select="./Viewer/@userId" />
+                                            </xsl:attribute>
+                                        </input>
 
-                                <input type='hidden' name='featured_event_id'>
-                                    <xsl:value-of select="./FeaturedEvent/@featured_event_id" />
-                                </input> 
-                            </form>
-                        </button>
+                                        <input type='hidden' name='featured_event_id'>
+                                            <xsl:value-of select="./FeaturedEvent/@featured_event_id" />
+                                        </input> 
+                                    </form>
+                                </button>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <button id="not-logged-in-payButton" class="joinbutton">Book Now</button>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                        
+                        
                         <div class="encrypted">
                             <img height='15' src='/Static/Images/lock-white.png'/>
                             128-bit SSL Encrypted Transactions</div>                            

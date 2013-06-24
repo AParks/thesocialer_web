@@ -30,7 +30,7 @@ abstract class ApplicationBase implements IApplication {
         $this->display = DisplayManager::getInstance();
         $this->viewer = Viewer::getInstance();
 
-       
+
 
 
 
@@ -73,5 +73,7 @@ abstract class ApplicationBase implements IApplication {
             $this->redirect('/');
         }
     }
+
+ 
 
 }

@@ -22,7 +22,7 @@ $(function() {
                 // and signed request each expire
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
-                if(response.session){
+                if (response.session) {
                     FB.logout(function(response) {
                         window.location = "/logout";
                     });
@@ -63,6 +63,32 @@ $(function() {
         });
 
     }
+
+    //friend reqests
+
+    $('#friend_request').click(function() {
+        FB.ui({
+            method: 'apprequests',
+            message: 'Join thesocialer.com! ',
+            title: 'Invite your friends to The Socialer',
+        },
+                function(response) {
+                    if (response.request && response.to) {
+                        var request_ids = [];
+                        for (i = 0; i < response.to.length; i++) {
+                            var temp = response.request + '_' + response.to[i];
+                            request_ids.push(temp);
+                        }
+                        var requests = request_ids.join(',');
+                     //   $.post('handle_requests.php', {uid: '<?php echo $user; ?>', request_ids: requests}, function(resp) {
+                            // callback after storing the requests
+                     //   });
+                    } else {
+                        alert('canceled');
+                    }
+                });
+        return false;
+    });
 
     //facebook login
     $('div.fb-login').click(function() {
@@ -266,8 +292,20 @@ $(function() {
                     password: hash
                 },
                 success: function(data) {
-                    location.reload(true);
-//                    top.location = '/trending';
+                    if (data) {
+                        $('#RegFailed').html(data);
+                        $('#RegFailed').show();
+                        $('.inner').find('#break').show();
+
+                    }
+                    else
+                        top.location = '/confirm';
+                },
+                error: function(data) {
+                    console.log(data);
+                    $('#myModal').modal('show');
+
+
                 }
             });
         },
@@ -335,14 +373,18 @@ $(function() {
                 RememberMe: ($('.remember>input[type=checkbox]').is(':checked')) ? 1 : 0
             },
             success: function(data, textStatus, jqXHR) {
-                if (data === 'Invalid Login') {
+                if (data) {
+                    $('#QuickLoginFormLoginFailed').html(data);
                     $('#QuickLoginFormLoginFailed').show();
                     $('#break').show();
                 }
                 else
                     top.location = url;
+
+
             },
             error: function(data) {
+                console.log(data);
                 $('#QuickLoginFormLoginFailed').show();
                 $('#break').show;
 

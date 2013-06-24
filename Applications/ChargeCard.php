@@ -135,7 +135,7 @@ class ChargeCard extends ApplicationBase {
                 . 'Dear Customer, <br/>'
                 . 'Your payment for $' . $amount . ' was processed today - ' . $date
                 . '<br/>See you there! <br/>'
-                . 'TheSocialer'
+                . 'The Socialer'
                 . '</body>'
                 . '</html>';
 

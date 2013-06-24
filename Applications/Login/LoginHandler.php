@@ -18,7 +18,7 @@ class LoginHandler extends JSONApplicationBase {
             }
         } catch (Exception $e) {
             error_log($e->getFile() . $e->getLine() . $e->getMessage());
-            die('Invalid Login');
+            die($e->getMessage());
         }
         exit;
     }

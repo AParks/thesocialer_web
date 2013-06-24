@@ -57,13 +57,13 @@
                                         <li>
                                             <a href="/profile">
                                                 <xsl:choose>
-                                            <xsl:when test="./Viewer/Member/@fb_id">  
-                                                <img width='25' height='25' style="border-radius: 5px;" src="https://graph.facebook.com/{./Viewer/Member/@fb_id}/picture?type=square"/>
-                                            </xsl:when>
-                                            <xsl:otherwise>
-                                                <img width='25' height='25' src="/photo/{./Viewer/@userId}/Small"/> 
-                                            </xsl:otherwise>
-                                        </xsl:choose>
+                                                    <xsl:when test="./Viewer/Member/@fb_id">  
+                                                        <img width='25' height='25' style="border-radius: 5px;" src="https://graph.facebook.com/{./Viewer/Member/@fb_id}/picture?type=square"/>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                        <img width='25' height='25' src="/photo/{./Viewer/@userId}/Small"/> 
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
                                                 <div class='profile'>Profile</div>
                                             </a>
                                         </li>
@@ -73,8 +73,8 @@
                                                 <div class='profile'>Messages</div>
 
                                                 <xsl:if test="@unreadCount > 0">
-                                                <span class="alert-count position-super">
-                                                    <xsl:value-of select="@unreadCount" />
+                                                    <span class="alert-count position-super">
+                                                        <xsl:value-of select="@unreadCount" />
                                                     </span>
                                                 </xsl:if>
                                             </a>
@@ -145,7 +145,7 @@
                         <div class="fb-login"/>
 
                         <h3 id='or'> or </h3>
-                        <div id="QuickLoginFormLoginFailed">Incorrect email or password.</div>
+                        <div id="QuickLoginFormLoginFailed"></div>
                         <div id="tryagain">Your search did not return any results. Please try again with another email.</div>
                         <br id="break"  style="display:none;"/>
                         <form id="QuickLoginForm">
@@ -190,6 +190,11 @@
                             <div class="fb-login"/> 
                         
                             <h3 id='or'> or </h3>
+                            
+                            <div id="RegFailed"></div>
+                            <br id="break"  style="display:none;"/>
+
+                        
                             <form id="registration" autocomplete="off" method="post" action="" >
                                 <div id="fullname">
                                     <input id="firstname" name="firstname" type="text" maxlength="100" placeholder="First Name" />
@@ -277,9 +282,9 @@
                         
                                 <div id="gendercontainer">
                                     <label>
-                                        <input type="radio" name="gender" value="male" /> Male</label>
+                                        <input type="radio" name="gender" value="m" /> Male</label>
                                     <label>
-                                        <input type="radio" name="gender" value="female" /> Female</label>
+                                        <input type="radio" name="gender" value="f" /> Female</label>
                                 </div>
                                 <label id="lloc" for="location">Location:</label>
                                 <div id="loccontainer">

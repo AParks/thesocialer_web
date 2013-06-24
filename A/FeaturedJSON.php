@@ -53,7 +53,9 @@ function move_files() {
         if (file_exists($location))
             echo $_FILES["file"]["name"][$i] . " already exists. ";
     }
-    return [$upload_succeeded, $markup];
+    $array[0] = $upload_succeeded;
+    $array[1] = $markup; 
+    return $array;
 }
 
 function create() {
@@ -86,7 +88,7 @@ function create() {
 
             if ($upload_succeeded) {
                 echo "Stored in: " . "/var/www/Photos/Featured/" . $_FILES["file"]["name"];
-                $query = sPDO::getInstance()->prepare('SELECT new_featured_event( :description, :startsAt, :endsAt, :location, :markup, :price, :headline, :is_private, :sub_headline, :host, :priority, :spots )');
+                $query = sPDO::getInstance()->prepare('SELECT new_featured_event( :description, :startsAt, :endsAt, :location, :markup, :price, :headline, :is_private, :sub_headline, :host, :priority, :total_spots )');
                 $query->bindValue(':description', str_replace('&', '&amp;', $_POST['description']));
                 $query->bindValue(':startsAt', $_POST['startDate']);
                 $query->bindValue(':endsAt', $_POST['endDate']);
@@ -98,7 +100,7 @@ function create() {
                 $query->bindValue(':is_private', $_POST['is_private']);
                 $query->bindValue(':host', $_POST['host']);
                 $query->bindValue(':priority', $_POST['priority']);
-                $query->bindValue(':spots', $_POST['spots']);
+                $query->bindValue(':total_spots', $_POST['spots']);
 
 
 

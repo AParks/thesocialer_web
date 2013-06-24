@@ -57,6 +57,11 @@ if ( $_POST['action'] === 'delete' )
 	$query = sPDO::getInstance()->prepare('DELETE FROM user_quick_picks WHERE user_id = :user_id');
 	$query->bindValue(':user_id', $_POST['userId'] );
 	$query->execute();
+        
+        
+	$query = sPDO::getInstance()->prepare('DELETE FROM confirm WHERE user_id = :user_id');
+	$query->bindValue(':user_id', $_POST['userId'] );
+	$query->execute();
 	
 	// now delete the user
   	$query = sPDO::getInstance()->prepare('DELETE FROM users WHERE user_id = :user_id');

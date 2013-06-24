@@ -9,6 +9,8 @@
     <div id="MainBody">
       <div class="FriendsMain">
         <h1>Your Social Network</h1>
+       <button id='friend_request'>Friends</button>
+        
         <table id="FriendList">
         
         <xsl:choose>
