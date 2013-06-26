@@ -8,6 +8,40 @@ Header.showFailedLogin = function( ) {
 
 $(function() {
 
+    UserVoice = window.UserVoice || [];
+    UserVoice.push(['showTab', 'classic_widget', {
+            mode: 'full',
+            primary_color: '#88b968',
+            link_color: '#6887b9',
+            default_mode: 'support',
+            forum_id: 212307,
+            tab_label: 'Feedback & Support',
+            tab_color: '#88b968',
+            tab_position: 'bottom-right',
+            tab_inverted: false
+        }]);
+
+
+
+
+    $('#confirm').click(resendConfirmationEmail());
+
+    function resendConfirmationEmail() {
+        $.ajax({
+            url: '/register',
+            type: 'POST',
+            data: {
+                action: 'resend_email',
+                firstName: Viewer.firstName,
+                emailAddress: ''
+            },
+            success: function() {
+                top.location = '/confirm';
+            }
+        });
+    }
+
+
     //facebook logout
     $('#fb_logout').click(function() {
         //.reload(true);
@@ -33,7 +67,6 @@ $(function() {
             } else if (response.status === 'not_authorized') {
                 // the user is logged in to Facebook, 
                 // but has not authenticated your app
-                console.log('not auth')
                 FB.logout(function(response) {
                     window.location = "/logout";
                 });
@@ -80,9 +113,9 @@ $(function() {
                             request_ids.push(temp);
                         }
                         var requests = request_ids.join(',');
-                     //   $.post('handle_requests.php', {uid: '<?php echo $user; ?>', request_ids: requests}, function(resp) {
-                            // callback after storing the requests
-                     //   });
+                        //   $.post('handle_requests.php', {uid: '<?php echo $user; ?>', request_ids: requests}, function(resp) {
+                        // callback after storing the requests
+                        //   });
                     } else {
                         alert('canceled');
                     }

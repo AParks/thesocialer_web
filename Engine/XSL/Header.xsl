@@ -13,7 +13,7 @@
                 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
                 <meta http-equiv="Pragma" content="no-cache" />
                 <meta http-equiv="Expires" content="0" />
-
+                <script type = "text/javascript" src="/Static/JavaScript/mixpanel.js"></script>
                 <title>The Socialer</title>
                 <xsl:apply-templates select="CSS/file" />
                 <soc:googleAnalytics environment="dev" />
@@ -22,8 +22,10 @@
 
             </head>
             <body class="Socialer">
+
+
                 <div id="fb-root"></div>
-                <script src="/Static/JavaScript/facebook.js"></script>
+                <script src="/Static/JavaScript/Plugins/facebook.js"></script>
 
 
                 <div id="Header">
@@ -301,6 +303,10 @@
 
                 
                 <div class="Footer">
+                     <script src="/Static/JavaScript/Plugins/uservoice.js"></script>
+
+                    
+                    
                     <div class="LeftFoot">
                         TheSocialer © 2013
                     </div>

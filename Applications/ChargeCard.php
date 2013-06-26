@@ -2,6 +2,7 @@
 
 class ChargeCard extends ApplicationBase {
 
+    
     public function execute() {
 
 
@@ -44,8 +45,8 @@ class ChargeCard extends ApplicationBase {
 
                     // set your secret key: remember to change this to your live secret key in production
                     // see your keys here https://manage.stripe.com/account
-                 //   Stripe::setApiKey("sk_test_i0kS1LRFqvmuGmYLQO3VzFCH");
-                 
+                    //   Stripe::setApiKey("sk_test_i0kS1LRFqvmuGmYLQO3VzFCH");
+
                     Stripe::setApiKey("sk_live_oZAmTuyJwbxUWN0DYMoCEQgT");
 
                     // Charge the order:
@@ -104,28 +105,12 @@ class ChargeCard extends ApplicationBase {
         error_log("query result" . $result);
     }
 
-    public function sendConfirmationEmail($amount, $to_email) {
-
-        require_once "Mail.php";
-        require_once "Mail/mime.php";
-
-        $options['head_encoding'] = 'quoted-printable';
-        $options['text_encoding'] = 'base64';
-        $options['html_encoding'] = 'base64';
-        $options['html_charset'] = 'UTF-8';
-        $options['text_charset'] = 'gb2312';
-        $options['head_charset'] = 'UTF-8';
+    public function sendReciept($amount, $to_email) {
 
         $subject = 'The Socialer - Online Payment Confirmation';
-        $headers['From'] = '"The Socialer" <noreply@thesocialer.com>';
-        $headers['To'] = '<' . $to_email . '>';
-        $headers['Subject'] = $subject;
-        $headers['Reply-To'] = '"The Socialer" <noreply@thesocialer.com>';
-        $host = "ssl://smtp.googlemail.com";
-        $port = "465";
-        $username = "noreply@thesocialer.com";
-        $password = "aZ6eZyPob2";
-        $smtp = Mail::factory('smtp', array('host' => $host, 'port' => $port, 'auth' => true, 'username' => $username, 'password' => $password));
+        $from_email = "noreply@thesocialer.com";
+        $from_password = "noproblems";
+
         $date = date('m/d/Y');
         $html = '<html>'
                 . '<head>'
@@ -140,20 +125,7 @@ class ChargeCard extends ApplicationBase {
                 . '</html>';
 
 
-
-        $mime = new Mail_mime();
-
-        $mime->setHTMLBody($html);
-
-        $message = $mime->get();
-        $headers = $mime->headers($headers);
-
-        //send the email
-        $mail = $smtp->send($to_email, $headers, $message);
-
-        if (PEAR::isError($mail)) {
-            error_log("" . $mail->getMessage() . "");
-        }
+        $this->email($html, $subject, $to_email, $from_email, $from_password);
     }
 
 }

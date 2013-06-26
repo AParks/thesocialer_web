@@ -2,32 +2,46 @@
 
 class Register extends ApplicationBase {
 
-    const URL_SUCCESSFUL_LOGIN = '/trending';
-    const URL_SUCCESSFUL_REGISTRATION = '/confirm';
+    private $fname;
+    private $email;
+    private $key;
 
     public function execute() {
-        // the pass may already have been hashed, but we do it again to add some salt
 
-        $fname = $_POST['firstName'];
+        $this->fname = $_POST['firstName'];
+        $this->email = $_POST['emailAddress'];
+        $key = $this->fname . $this->email . date('mY');
+        $this->key = $this->hashPassword($key);
+
+        switch ($_POST['action']) {
+            case 'register':
+                register();
+                break;
+
+            case 'resend_email':
+                $this->sendConfirmationEmail($this->fname, $this->email, $this->key);
+                break;
+        }
+    }
+
+    protected function register() {
         $lname = $_POST['lastName'];
-        $email = $_POST['emailAddress'];
         $dob = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'];
         $sex = $_POST['gender'];
         $password = $this->hashPassword($_POST['password']);
 
 
-        $registration = new MemberRegistration($fname, $lname, $email, $dob, $sex, $password, NULL, 0);
+        $registration = new MemberRegistration($this->fname, $lname, $this->email, $dob, $sex, $password, NULL, 0);
         $registration->setCollege($_POST['college']);
         $registration->setLocation($_POST['location']);
 
 
         try {
             $userId = $registration->complete();
-
-            $key = $fname . $email . date('mY');
-            $key = $this->hashPassword($key);
-            $this->sendConfirmationEmail($fname, $email, $key);
-            $this->storeAccountConfirmationDetails($userId, $key, $email);
+            if ($this->storeAccountConfirmationDetails($userId, $this->email))
+                $this->sendConfirmationEmail();
+            else
+                die('Registration could not be completed.');
         } catch (PDOException $e) {
             if ($e->getCode() == '23505')
                 die(' An account already exists with this email. 
@@ -38,7 +52,6 @@ class Register extends ApplicationBase {
     }
 
     function attemptLogin($email, $password) {
-        error_log('email' . $email);
         $this->viewer->login($email, $password, true);
     }
 
@@ -50,67 +63,41 @@ class Register extends ApplicationBase {
         return $final;
     }
 
-    protected function sendConfirmationEmail($first_name, $to_email, $key) {
+    protected function sendConfirmationEmail() {
 
-        require_once "Mail.php";
-        require_once "Mail/mime.php";
-
-        $options['head_encoding'] = 'quoted-printable';
-        $options['text_encoding'] = 'base64';
-        $options['html_encoding'] = 'base64';
-        $options['html_charset'] = 'UTF-8';
-        $options['text_charset'] = 'gb2312';
-        $options['head_charset'] = 'UTF-8';
-
+        $from_email = 'noreply@thesocialer.com';
+        $from_password = 'noproblems';
         $subject = 'Confirm your Socialer account';
-        $headers['From'] = '"The Socialer" <noreply@thesocialer.com>';
-        $headers['To'] = '<' . $to_email . '>';
-        $headers['Subject'] = $subject;
-        $headers['Reply-To'] = '"The Socialer" <noreply@thesocialer.com>';
-        $host = "ssl://smtp.googlemail.com";
-        $port = "465";
-        $username = "noreply@thesocialer.com";
-        $password = "aZ6eZyPob2";
-        $smtp = Mail::factory('smtp', array('host' => $host, 'port' => $port, 'auth' => true, 'username' => $username, 'password' => $password));
-
-        $confirm_email = "thesocialer.com/confirm?email={$to_email}&key={$key}";
+        $confirm_email = "thesocialer.com/confirm?email={$this->email}&key={$this->key}";
         $html = '<html>'
                 . '<head>'
                 . '<title>The Socialer - Email Confirmation</title>'
                 . '</head>'
                 . '<body>'
-                . 'Dear ' . $first_name . ', <br/>'
+                . 'Dear ' . $this->fname . ', <br/>'
                 . 'Please confirm that you signed up for the Socialer with this email address.  '
                 . '<br/>'
                 . "<a href=$confirm_email>Confirm</a><br/>"
                 . 'TheSocialer'
                 . '</body>'
                 . '</html>';
-
-
-
-        $mime = new Mail_mime();
-
-        $mime->setHTMLBody($html);
-
-        $message = $mime->get();
-        $headers = $mime->headers($headers);
-
-        //send the email
-        $mail = $smtp->send($to_email, $headers, $message);
-        error_log('mail sent?');
-        if (PEAR::isError($mail)) {
-            error_log("error sending mail " . $mail->getMessage() . "");
-        }
+        $this->email($html, $subject, $this->email, $from_email, $from_password);
     }
 
-    protected function storeAccountConfirmationDetails($user_id, $key, $email) {
+    protected function storeAccountConfirmationDetails($user_id) {
         $pdo = sPDO::getInstance();
+        $query_delete = $pdo->prepare('DELETE from confirm where user_id = :user_id');
+        $query_delete->bindValue(':user_id', $user_id);
+        $query_delete->execute();
+
         $query = $pdo->prepare('INSERT into confirm(user_id, key, email) VALUES (:user_id, :key, :email)');
         $query->bindValue(':user_id', $user_id);
-        $query->bindValue(':key', $key);
-        $query->bindValue(':email', $email);
-        $query->execute();
+        $query->bindValue(':key', $this->key);
+        $query->bindValue(':email', $this->email);
+        if ($query->execute()) {
+            return true;
+        }
+        return false;
     }
 
 }

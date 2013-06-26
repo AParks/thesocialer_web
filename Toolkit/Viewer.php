@@ -170,8 +170,8 @@ class Viewer extends ATransformableObject {
                     return $userId;
                 }
             }else if ($row['active'] == 0)
-                throw new Exception(' An account with that email has already been registered, 
-                    but was never activated. If this was you please <a>activate your account </a>');
+                throw new Exception(" An account with that email has already been registered, 
+                    but was never activated. <a id='confirm'>Resend confirmation email</a>.");
         }
         throw new Exception(' Incorrect email or password.');
     }

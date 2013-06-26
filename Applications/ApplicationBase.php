@@ -74,6 +74,42 @@ abstract class ApplicationBase implements IApplication {
         }
     }
 
+    protected function email($html , $subject, $to_email, $from_email, $from_password) {
+        require_once "Mail.php";
+        require_once "Mail/mime.php";
+
+        $options['head_encoding'] = 'quoted-printable';
+        $options['text_encoding'] = 'base64';
+        $options['html_encoding'] = 'base64';
+        $options['html_charset'] = 'UTF-8';
+        $options['text_charset'] = 'gb2312';
+        $options['head_charset'] = 'UTF-8';
+
+        $headers['From'] = '"The Socialer" <.'.$from_email.'>';
+        $headers['To'] = '<' . $to_email . '>';
+        $headers['Subject'] = $subject;
+        $headers['Reply-To'] = '"The Socialer" <.'.$from_email.'>';
+        $host = "ssl://smtp.googlemail.com";
+        $port = "465";
+        $smtp = Mail::factory('smtp', array('host' => $host, 'port' => $port, 'auth' => true, 'username' => $from_email, 'password' => $from_password));
+    
+        
+        $mime = new Mail_mime();
+
+        $mime->setHTMLBody($html);
+
+        $message = $mime->get();
+        $headers = $mime->headers($headers);
+
+        //send the email
+        $mail = $smtp->send($to_email, $headers, $message);
+        error_log('mail sent?');
+        if (PEAR::isError($mail)) {
+            error_log("error sending mail " . $mail->getMessage() . "");
+            return false;
+        }
+        return true;
+    }
  
 
 }
