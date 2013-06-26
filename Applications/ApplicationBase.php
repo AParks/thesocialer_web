@@ -19,6 +19,7 @@ abstract class ApplicationBase implements IApplication {
         $this->assetsManager->addJavaScript('Main');
         $this->assetsManager->addJavaScript('SocialInboxManager');
         $this->assetsManager->addJavaScript('bootstrap');
+        $this->assetsManager->addJavaScript('uservoice');
 
 
         $this->assetsManager->addCSS('Main');

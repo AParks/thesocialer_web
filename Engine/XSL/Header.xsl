@@ -303,7 +303,6 @@
 
                 
                 <div class="Footer">
-                     <script src="/Static/JavaScript/Plugins/uservoice.js"></script>
 
                     
                     
