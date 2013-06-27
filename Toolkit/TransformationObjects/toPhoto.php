@@ -23,7 +23,8 @@ class toPhoto extends toDefault
 
   public function _getMarkup()
   {
-    $return = sprintf( '<img src="/photo/%s/%s" class="%s"',
+      $rand = rand(0,100);
+    $return = sprintf( "<img src='/photo/%s/%s?dummy=$rand' class='%s'",
       $this->attributes[self::ATTR_USER_ID],
       $this->attributes[self::ATTR_SIZE],
       $this->attributes[self::ATTR_CLASS]);
@@ -42,6 +43,7 @@ class toPhoto extends toDefault
         . $return . '</a>';
     }
 
+    error_log('markup is '. $return);
     return $return;
   }
 }

@@ -24,22 +24,8 @@ $(function() {
 
 
 
-    $('#confirm').click(resendConfirmationEmail());
 
-    function resendConfirmationEmail() {
-        $.ajax({
-            url: '/register',
-            type: 'POST',
-            data: {
-                action: 'resend_email',
-                firstName: Viewer.firstName,
-                emailAddress: ''
-            },
-            success: function() {
-                top.location = '/confirm';
-            }
-        });
-    }
+
 
 
     //facebook logout
@@ -79,6 +65,34 @@ $(function() {
 
 
     });
+
+    function resend() {
+        $('#confirm').click(function() {
+            var failedForm = $(this).parent();
+            var email = $(this).attr('email');
+            var name = $(this).attr('firstname');
+            var user_id = $(this).attr('user_id');
+
+            $.ajax({
+                url: '/register',
+                type: 'POST',
+                data: {
+                    action: 'resend_email',
+                    firstName: name,
+                    emailAddress: email,
+                    user_id: user_id
+                },
+                success: function(data) {
+                    if (data) {
+                        console.log(data);
+                        failedForm.html(data);
+                        failedForm.show();
+                    } else
+                        top.location = '/confirm';
+                }
+            });
+        });
+    }
 
     function login() {
         FB.api('/me', function(response) {
@@ -307,12 +321,14 @@ $(function() {
             }
         },
         submitHandler: function() {
+            console.log('wat da fuck');
             var shaObj = new jsSHA($('#password').val( ), "ASCII");
             var hash = shaObj.getHash("SHA-256", "HEX");
             $.ajax({
                 url: '/register',
                 type: 'POST',
                 data: {
+                    action: 'register',
                     firstName: $('#firstname').val(),
                     lastName: $('#lastname').val(),
                     emailAddress: $('#email').val( ),
@@ -329,6 +345,8 @@ $(function() {
                         $('#RegFailed').html(data);
                         $('#RegFailed').show();
                         $('.inner').find('#break').show();
+                        resend();
+
 
                     }
                     else
@@ -336,7 +354,6 @@ $(function() {
                 },
                 error: function(data) {
                     console.log(data);
-                    $('#myModal').modal('show');
 
 
                 }
@@ -410,6 +427,7 @@ $(function() {
                     $('#QuickLoginFormLoginFailed').html(data);
                     $('#QuickLoginFormLoginFailed').show();
                     $('#break').show();
+                    resend();
                 }
                 else
                     top.location = url;

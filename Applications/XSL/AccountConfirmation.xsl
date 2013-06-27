@@ -14,7 +14,14 @@
 
     <xsl:template match="/AccountConfirmation">
         <div id="MainBody">
-
+            
+            <xsl:for-each select="AccountExpired">
+                <div style="padding: 20px;">
+                    This link has expired.
+                </div>
+            
+            </xsl:for-each>
+       
             <xsl:for-each select="AccountConfirmed">
                 <div style="padding: 20px;">
                     Welcome to The Socialer! Your account has been confirmed.

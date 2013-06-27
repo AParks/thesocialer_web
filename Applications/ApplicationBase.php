@@ -40,7 +40,11 @@ abstract class ApplicationBase implements IApplication {
 
         if ($this->viewer->user != null) {
             $viewerDetails['userId'] = $this->viewer->user->userId;
-            $viewerDetails['photo'] = $this->viewer->user->photo->paths[Photo::SIZE_SMALL];
+             if ($this->viewer->user->photo->path == 'facebook'){
+                $viewerDetails['photo'] = 'https://graph.facebook.com/' . $this->viewer->user->fb_id . '/picture?type=square';
+             }
+            else
+                $viewerDetails['photo'] = $this->viewer->user->photo->paths[Photo::SIZE_SMALL];
             $viewerDetails['firstName'] = $this->viewer->user->firstName;
             $viewerDetails['lastName'] = $this->viewer->user->lastName;
             $viewerDetails['gender'] = $this->viewer->user->gender;
@@ -48,8 +52,7 @@ abstract class ApplicationBase implements IApplication {
         }
 
         $this->assetsManager->addInitJavaScript('var Viewer = ' . json_encode($viewerDetails) . ';');
-        //      $this->assetsManager->addInitJavaScript("var login = '". $loginUrl . "';" );
-//echo $loginUrl;
+        
     }
 
     public function setRequestValues($values) {
@@ -86,7 +89,7 @@ abstract class ApplicationBase implements IApplication {
         $options['text_charset'] = 'gb2312';
         $options['head_charset'] = 'UTF-8';
 
-        $headers['From'] = '"The Socialer" <.'.$from_email.'>';
+        $headers['From'] = '"The Socialer" <'.$from_email.'>';
         $headers['To'] = '<' . $to_email . '>';
         $headers['Subject'] = $subject;
         $headers['Reply-To'] = '"The Socialer" <.'.$from_email.'>';
@@ -104,7 +107,6 @@ abstract class ApplicationBase implements IApplication {
 
         //send the email
         $mail = $smtp->send($to_email, $headers, $message);
-        error_log('mail sent?');
         if (PEAR::isError($mail)) {
             error_log("error sending mail " . $mail->getMessage() . "");
             return false;

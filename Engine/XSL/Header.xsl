@@ -13,7 +13,7 @@
                 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
                 <meta http-equiv="Pragma" content="no-cache" />
                 <meta http-equiv="Expires" content="0" />
-                <script type = "text/javascript" src="/Static/JavaScript/mixpanel.js"></script>
+                <script type = "text/javascript" src="/Static/JavaScript/Plugins/mixpanel.js"></script>
                 <title>The Socialer</title>
                 <xsl:apply-templates select="CSS/file" />
                 <soc:googleAnalytics environment="dev" />
@@ -58,14 +58,8 @@
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <li>
                                             <a href="/profile">
-                                                <xsl:choose>
-                                                    <xsl:when test="./Viewer/Member/@fb_id">  
-                                                        <img width='25' height='25' style="border-radius: 5px;" src="https://graph.facebook.com/{./Viewer/Member/@fb_id}/picture?type=square"/>
-                                                    </xsl:when>
-                                                    <xsl:otherwise>
-                                                        <img width='25' height='25' src="/photo/{./Viewer/@userId}/Small"/> 
-                                                    </xsl:otherwise>
-                                                </xsl:choose>
+                                                <img width='25' height='25' src="/photo/{./Viewer/@userId}/Small"/> 
+
                                                 <div class='profile'>Profile</div>
                                             </a>
                                         </li>

@@ -244,10 +244,11 @@ var Profile = function( user ) {
     		type: 'POST',
     		dataType: 'json',
     		data: { 
-    	    	    photoId: $activePhoto.attr('photo-id'),
+    	    	    photoId: $activePhoto.attr('photo-id')
     		}, 
     		success: function( data ) {
-    	    	    location.reload(true);
+                    location.reload(true);
+
     		}
     	    });
 	});

@@ -50,15 +50,15 @@
     <xsl:template name="LeftColumn">
         <xsl:choose>
 
-            <xsl:when test="./Member/@fb_id">
+            <xsl:when test="./Member/@fb_id and count(photos/Photo[@isDefault='1']) = 0 ">
                 <img src="https://graph.facebook.com/{./Member/@fb_id}/picture?type=large" class='Photo'/>
             </xsl:when>
             <xsl:otherwise>
                 <soc:photo class="Photo">
                     <xsl:attribute name="userId">
                         <xsl:value-of select="Member/@userId" />
-                    </xsl:attribute>
-                </soc:photo> 
+                    </xsl:attribute> 
+                </soc:photo>
             </xsl:otherwise>
         </xsl:choose>
 
@@ -240,7 +240,7 @@
     <xsl:template name="Photos">
         <div class="Photos">
             <div class="PhotoThumbs">
-                <xsl:for-each select="photos/Photo[not(@isDefault='1')]">
+                <xsl:for-each select="photos/Photo[not(@path='facebook') and @isDefault='']">
                     <img>
                         <xsl:attribute name="data-large">
                             <xsl:value-of select="paths/@Large" />
@@ -254,6 +254,18 @@
                         <xsl:attribute name="src">
                             <xsl:value-of select="paths/@Medium" />
                         </xsl:attribute>
+                    </img>
+                </xsl:for-each>
+                
+                <xsl:for-each select="photos/Photo[@isDefault='' and @path='facebook']">
+                    <img width='80' height='80' src="https://graph.facebook.com/{/Profile/Viewer/Member/@fb_id}/picture?type=square"
+                    data-large='https://graph.facebook.com/{/Profile/Viewer/Member/@fb_id}/picture?type=large'>
+                        <xsl:attribute name="photo-id">
+                            <xsl:value-of select="./@photoId" />
+                        </xsl:attribute>
+                        <xsl:if test="position() mod 7 = 0">
+                            <xsl:attribute name="class">last</xsl:attribute>
+                        </xsl:if>
                     </img>
                 </xsl:for-each>
             </div>

@@ -7,7 +7,6 @@ class UserInfo extends JSONApplicationBase {
 
     $response = array( );
     $fields = explode(',', $_GET['fields'] );
-
     foreach ( $fields as $field ) {
       try {
         $response[$field] = $user->{$field};

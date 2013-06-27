@@ -6,22 +6,15 @@ class AccountConfirmation extends ApplicationBase {
         $x = XSLTransformer::getInstance();
         $node = $this->dom->createElement('AccountConfirmation');
 
-        if (isset($_GET['key']) && isset($_GET['email'])) {
+        $key = $_GET['key'];
+        $email = $_GET['email'];
+        if (isset($email) && isset($key)) {
             $pdo = sPDO::getInstance();
-            $query = $pdo->prepare('SELECT user_id FROM confirm WHERE email = :email AND key = :key');
-            $query->bindParam(':email', $_GET['email']);
-            $query->bindParam(':key', $_GET['key']);
-            $query->execute();
-            $row = $query->fetch(PDO::FETCH_ASSOC);
 
-            //activate user account
-            if ($row['user_id']) { //valid confirmation code
-                $query_activate = $pdo->prepare('UPDATE users SET active=true WHERE user_id= :user_id');
-                $query_activate->bindParam(':user_id', $row['user_id']);
-                $query_activate->execute();
-
+            if ($this->validConfirmationCode($pdo, $email, $key)) {
                 $confirmNode = $this->dom->createElement('AccountConfirmed');
                 $node->appendChild($confirmNode);
+                  $this->viewer->login( $email, $password );
             }
             else
                 return $this->pageNotFound($x);
@@ -42,6 +35,37 @@ class AccountConfirmation extends ApplicationBase {
         $node = $this->dom->createElement('PageNotFound');
         $output = $x->transform('PageNotFound', $node);
         $this->display->appendOutput($output);
+    }
+
+    private function deleteOldEntries($pdo, $user_id) {
+
+        $query_delete = $pdo->prepare('DELETE from confirm WHERE user_id= :user_id');
+        $query_delete->bindParam(':user_id', $user_id);
+        $query_delete->execute();
+    }
+
+    private function activateUserAccount($pdo, $user_id) {
+        $query_activate = $pdo->prepare('UPDATE users SET active=true WHERE user_id= :user_id');
+        $query_activate->bindParam(':user_id', $user_id);
+        $query_activate->execute();
+    }
+
+    private function validConfirmationCode($pdo, $email, $key) {
+
+        $query = $pdo->prepare('SELECT user_id, expiration_date FROM confirm WHERE email = :email AND key = :key');
+        $query->bindParam(':email', $email);
+        $query->bindParam(':key', $key);
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        $expired = strtotime(date("Y-m-d H:i:s")) > strtotime($row['expiration_date']);
+
+        $u_id = $row['user_id'];
+        if ($u_id && !$expired) { //valid
+            $this->deleteOldEntries($pdo, $u_id);
+            $this->activateUserAccount($pdo, $u_id);
+            return true;
+        }
+        return false;
     }
 
 }

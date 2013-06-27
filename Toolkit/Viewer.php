@@ -19,13 +19,7 @@ class Viewer extends ATransformableObject {
         $facebook = new Facebook($config);
 
 
-        // See if there is a user from a cookie
-        $fb_user = $facebook->getUser();
-        $access_token = $facebook->getAccessToken();
-        $loginUrl = $facebook->getLoginUrl(array(
-            'scope' => 'email,user_location,user_birthday', // Permissions to request from the user
-            'redirect_uri' => 'http://thesocialer.com', // URL to redirect the user to once the login/authorization process is complete.
-        ));
+
 
 
         if (isset($_COOKIE['userlogin'])) {  //set user id from cookie
@@ -85,9 +79,11 @@ class Viewer extends ATransformableObject {
         else {
             $user_id = $this->createNewUser($user_info, $fb_id);
         }
-
+ 
         $this->setCookie($user_id);
         $this->setUserId($user_id);
+        Photo::create($this->user, 'facebook');
+
     }
 
     private function createNewUser($user_info, $fb_id) {
@@ -145,17 +141,17 @@ class Viewer extends ATransformableObject {
     public function login($email, $password, $remember) {
 
         $pdo = sPDO::getInstance();
-        $query = $pdo->prepare('SELECT user_id, password, active FROM users WHERE email_address = :email');
+        $query = $pdo->prepare('SELECT user_id, password, first_name, active FROM users WHERE email_address = :email');
         $query->bindParam(':email', $email);
         $query->execute();
         $row = $query->fetch(PDO::FETCH_ASSOC);
-        print_r($row);
+
 
         if ($row) {
+            $userId = $row['user_id'];
             $storedhash = $row['password'];
             if ($row['active'] == 1) {
                 if ($this->validatePassword($password, $storedhash)) {
-                    $userId = $row['user_id'];
                     $this->setUserId((int) $userId);
                     $query = $pdo->prepare('SELECT login( :user_id, :ip_address )');
                     $query->bindValue(':user_id', $userId);
@@ -169,9 +165,12 @@ class Viewer extends ATransformableObject {
 
                     return $userId;
                 }
-            }else if ($row['active'] == 0)
-                throw new Exception(" An account with that email has already been registered, 
-                    but was never activated. <a id='confirm'>Resend confirmation email</a>.");
+            }else if ($row['active'] == 0) {
+                $name = $row['first_name'];
+                throw new Exception(" An account with that email has already 
+                    been registered, but was never activated. 
+                    <a id='confirm' user_id=$userId email='$email' firstName='$name'>Resend confirmation email</a>.");
+            }
         }
         throw new Exception(' Incorrect email or password.');
     }

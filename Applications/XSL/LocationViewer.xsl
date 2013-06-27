@@ -78,21 +78,9 @@
              
           <xsl:if test="./Viewer/@userId != -1">
               <div>
-             
-              <xsl:choose>
-                  <xsl:when test="./Viewer/Member/@fb_id">
-                      <img src="https://graph.facebook.com/{./Viewer/Member/@fb_id}/picture?type=square" class='MyPhoto'/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                      <img class="MyPhoto" src="/photo/{./Viewer/@userId}/Small" />
-                  </xsl:otherwise>
-              </xsl:choose>
-             
-              
-              
-              
-	    <textarea class="NewComment" placeholder="Suggest an event"></textarea>
-            </div>
+                  <img class="MyPhoto" src="/photo/{./Viewer/@userId}/Small" />
+                  <textarea class="NewComment" placeholder="Suggest an event"></textarea>
+              </div>
 	  </xsl:if>
 	</div>
         
