@@ -53,7 +53,7 @@ FeaturedEventViewer = function(evt, userStatus) {
         //facebook share
         $('a[id=share]').attr('href', "https://www.facebook.com/dialog/feed?" +
                 "app_id=327877070671041" +
-                "&link=https://developers.facebook.com/docs/reference/dialogs/" +
+                "&link=" +document.URL+
                 "&picture=https://thesocialer.com" + evt.markup +
                 "&name=" + evt.headline +
                 "&caption=" + evt.sub_headline +
