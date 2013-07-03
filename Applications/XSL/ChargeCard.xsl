@@ -15,9 +15,18 @@
     <xsl:template match="/ChargeCard">
         <div id="MainBody">
             <div style="padding: 20px;">
-            Your payment has been received. Please check your email for a receipt.;
+                 <xsl:for-each select="Paid">
+                    Your payment has been received. Please check your email for a receipt.           
+                </xsl:for-each>
+                 <xsl:for-each select="NotPaid">
+                     <h4>Payment System Error!</h4>
+                     Your payment could NOT be processed (i.e., you have not been charged) 
+                     because the payment system rejected the transaction. You can try again or use another card.
+                </xsl:for-each>                     
             </div>
-        </div>        
+        </div>
+        
+                        
     </xsl:template>
 
 </xsl:stylesheet>

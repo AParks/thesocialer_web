@@ -17,6 +17,8 @@ class FeaturedEventViewer extends ApplicationBase {
         $node->appendChild($this->getEventNode($event));
         $node->appendChild($this->getDateNode(new DateObject(new DateTime($event->starts_at))));
         $node->appendChild($this->getAttendeesNode($attendanceManager));
+        $node->appendChild($this->getHostNode($event->host));
+
 
         $this->assetsManager->addInitJavaScript(' var evt = ' . json_encode($event->getPublicProperties()) . ';');
         //  $this->assetsManager->addInitJavaScript('var userStatus = "' . $attendanceManager->getUserStatus($this->viewer->userId) . '";');
@@ -42,6 +44,12 @@ class FeaturedEventViewer extends ApplicationBase {
 
     protected function getEventNode(FeaturedEvent $event) {
         return $event->toNode($this->dom);
+    }
+    protected function getHostNode($hostId) {
+        $host = $this->dom->createElement('Host');
+        $member = new Member($hostId);
+        $host->appendChild($member->toNode($this->dom));
+        return $host;
     }
 
     protected function getEvent() {

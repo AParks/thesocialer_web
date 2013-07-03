@@ -44,34 +44,61 @@
                         <xsl:value-of select="FeaturedEvent/@location" disable-output-escaping="yes" />
                     </div>   -->
                     
-                    <div id='desc'>
-                        <span id="Description">
-                        </span>
-                        <xsl:if test="string-length(./FeaturedEvent/@description) &gt; 200" >
-                            <span>
-                                <a id='SeeMore'>...See more </a>
+                    
+                </div>
+                
+                <ul class="nav nav-tabs">
+                    <li class='active' >
+                        <a href="#details" data-toggle="tab">Details</a>
+                    </li>
+                    <li>
+                        <a href="#comments" data-toggle="tab">Comments</a>
+                    </li>
+                    <li>
+                        <a href="#attending" data-toggle="tab">Attending</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane  active" id="details">
+                        <div id='desc'>
+                            <span id="Description">
                             </span>
-                        </xsl:if>
+                            <xsl:if test="string-length(./FeaturedEvent/@description) &gt; 200" >
+                                <span>
+                                    <a id='SeeMore'>...See more </a>
+                                </span>
+                            </xsl:if>
 
                         
-                        <span id="More_Description"></span>
+                            <span id="More_Description"></span>
+                        </div>
+               
+                    </div>
+                    <div class="tab-pane" id="comments">
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                            var disqus_shortname = 'thesocialer';
+
+                            /* * * DON'T EDIT BELOW THIS LINE * * */
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+                    </div>
+                    <div class='tab-pane' id='attending'>
+                        <div class="Attendees">
+                            <div class="AttendeesYes">
+                                <xsl:apply-templates select="./FeaturedEventAttendanceManager/attendanceStatuses/Member" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <h3>Comments</h3>
-                <hr />
-                <div id="disqus_thread"></div>
-                <script type="text/javascript">
-                    var disqus_shortname = 'thesocialer';
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+                           
+                
             </div>
             <div id="rightcontainer">
                 <div class="LocationInfoContainer">
@@ -96,47 +123,69 @@
                         </div>
                         
                         <br/>
-                        <select type="number">
-                            <option value="1" selected="selected">1 spot</option>
-                            <option value="2" style="font-family: comfortaaregular">2 spots</option>
-                            <option value="3">3 spots</option>
-                            <option value="4">4 spots</option>
-                            <option value="5">5 spots</option>
-                        </select>
                         
                         <xsl:choose>
-                            <xsl:when test="./Viewer/@userId != -1">
-                                
-                                <button id="payButton" class="joinbutton">Book Now
-
-                                    <form id='charge' action="/charge" method="post">
-                                        <script
-                                            src="https://checkout.stripe.com/v2/checkout.js" 
-                                            data-key="pk_test_tPl6A15XRwUWmiz0bEB280hN"
-                                            data-amount=""
-                                            data-name=""
-                                            data-description=""
-                                            data-currency="usd">
-                                        </script>
-                                        <input type='hidden' name='email'>
-                                            <xsl:attribute name="value">
-                                                <xsl:value-of select="./Viewer/Member/@emailAddress" />
-                                            </xsl:attribute>
-                                        </input>
-                                        <input type='hidden' name='userId'>
-                                            <xsl:attribute name="value">
-                                                <xsl:value-of select="./Viewer/@userId" />
-                                            </xsl:attribute>
-                                        </input>
-
-                                        <input type='hidden' name='featured_event_id'>
-                                            <xsl:value-of select="./FeaturedEvent/@featured_event_id" />
-                                        </input> 
-                                    </form>
-                                </button>
+                            <xsl:when test="./FeaturedEvent/@total_spots &lt;= ./FeaturedEvent/@spots_purchased">
+                                <div class="joinbutton" id='soldout' >Sold Out</div>
                             </xsl:when>
                             <xsl:otherwise>
-                                <button id="not-logged-in-payButton" class="joinbutton">Book Now</button>
+                                
+                                <select type="number">
+                                    <option value="1" selected="selected">1 spot</option>
+                                    <xsl:if test="./FeaturedEvent/@total_spots &gt; ./FeaturedEvent/@spots_purchased + 1">
+                                        <option value="2">2 spots</option>
+                                    </xsl:if>
+                                    <xsl:if test="./FeaturedEvent/@total_spots &gt; ./FeaturedEvent/@spots_purchased + 2">
+                                        <option value="3">3 spots</option>
+                                    </xsl:if>
+                                    <xsl:if test="./FeaturedEvent/@total_spots &gt; ./FeaturedEvent/@spots_purchased + 3">
+                                        <option value="4">4 spots</option>
+                                    </xsl:if>
+                                    <xsl:if test="./FeaturedEvent/@total_spots &gt; ./FeaturedEvent/@spots_purchased + 4">
+                                        <option value="5">5 spots</option>
+                                    </xsl:if>
+                                </select>
+                                <span id='fee_text'>
+                                    out of <xsl:value-of select="./FeaturedEvent/@total_spots - ./FeaturedEvent/@spots_purchased" />
+                                    available
+                                </span>
+
+                                <xsl:choose>
+
+                                    <xsl:when test="./Viewer/@userId != -1">
+                                
+                                        <button id="payButton" class="joinbutton">Book Now
+
+                                            <form id='charge' action="/charge" method="post">
+                                                <script
+                                                    src="https://checkout.stripe.com/v2/checkout.js" 
+                                                    data-key="pk_test_tPl6A15XRwUWmiz0bEB280hN"
+                                                    data-amount=""
+                                                    data-name=""
+                                                    data-description=""
+                                                    data-currency="usd">
+                                                </script>
+                                                <input type='hidden' name='email'>
+                                                    <xsl:attribute name="value">
+                                                        <xsl:value-of select="./Viewer/Member/@emailAddress" />
+                                                    </xsl:attribute>
+                                                </input>
+                                                <input type='hidden' name='userId'>
+                                                    <xsl:attribute name="value">
+                                                        <xsl:value-of select="./Viewer/@userId" />
+                                                    </xsl:attribute>
+                                                </input>
+
+                                                <input type='hidden' name='featured_event_id'>
+                                                    <xsl:value-of select="./FeaturedEvent/@featured_event_id" />
+                                                </input> 
+                                            </form>
+                                        </button>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <button id="not-logged-in-payButton" class="joinbutton">Book Now</button>
+                                    </xsl:otherwise>
+                                </xsl:choose>
                             </xsl:otherwise>
                         </xsl:choose>
                         
@@ -147,45 +196,39 @@
                         <!--                        <img alt="Credit Cards" src="/Static/Images/creditcards.gif"/> -->
                     </div> 
                     <br/>
+                    
                     <button id='fb-share'>
                         <div id='img'/>
-                        <a id='share' href="https://www.facebook.com/sharer/sharer.php?u=thesocialer.com/popups/featured/{./FeaturedEvent/@featured_event_id}" target="_blank">
-                        
+                        <a id='share' href="https://www.facebook.com/sharer/sharer.php?u=thesocialer.com/popups/featured/{./FeaturedEvent/@featured_event_id}" target="_blank">                        
                             Share
                         </a>
                     </button>
-
+                    <div class='count-o'>
+                        <i></i>
+                        <u></u>
+                        <a id='share-count'></a>
+                    </div>
     
                     <a href="https://twitter.com/share" class="twitter-share-button" data-related="socialerphilly" data-via="socialerphilly" data-text="{./FeaturedEvent/@headline}" data-size="large">Tweet</a>
 
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                    <!--    <h1>About The Event:</h1>
-                    <h2>Time</h2>
-                    <p id="FeaturedTime"></p>
-                    <h2>Address:</h2>
-                    <p>
-                        <xsl:value-of select="./FeaturedEvent/@markup" disable-output-escaping="yes" />
-                    </p> -->
-                    <div class="Attendees">
-                        <!--  <div class="AttendeesYes">
-                           <h2>Attending:</h2>
-                            <xsl:apply-templates select="./FeaturedEventAttendanceManager/attendanceStatuses/Member" />
-                        </div> -->
-                        
-                        <!--               <div class="AttendeesMaybe">
-                            <strong>Maybe</strong>
-                            <xsl:apply-templates select="./FeaturedEventAttendanceManager/attendanceStatuses/maybe/Member" />
-                        </div> -->
-                    </div>
                     
-                    <h2>Host:</h2>
-                    <a data-user-id="{./FeaturedEvent/@host}" href="/profile/{./FeaturedEvent/@host}">
-                        <img src="/photo/{./FeaturedEvent/@host}/Medium" class="UserPhoto" />
-                    </a>
+                   
+                    <ul class="nav nav-tabs">
+                        <li class='active'>
+                            <a href="#host" data-toggle="tab">Host</a>
+                        </li>
+                    </ul>
+                    <xsl:apply-templates select="./Host/Member" />
 
-                    <h2>Location:</h2>
-
+                    <ul class="nav nav-tabs">
+                        <li class='active'>
+                            <a href="#location" data-toggle="tab">Location</a>
+                        </li>
+                    </ul>
                     <div id="LocationMap"></div>
+
+
                 </div>
                                     
             </div>
@@ -194,9 +237,41 @@
 
     </xsl:template>
 
+    <xsl:template match="Host/Member">
+        <div id='host'>
+            <a data-user-id="{./@userId}" href="/profile/{./@userId}">
+                <img src="/photo/{./@userId}/Medium" class="UserPhoto" />
+            </a>
+            <div>
+                <div id='name'  style='vertical-align: text-top'>
+                    <xsl:value-of select="./@firstName"/>
+                    <xsl:text disable-output-escaping="yes">&amp;</xsl:text>nbsp;
+
+                    <xsl:value-of select="./@lastName"/>
+                </div>
+                <xsl:value-of select="./@AboutMe"/>
+            </div>
+        </div>
+                
+    </xsl:template>
+
+
+
     <xsl:template match="Member">
-        <a data-user-id="{./@userId}" href="/profile/{./@userId}">
-            <img src="/photo/{./@userId}/Small" class="UserPhoto" />
-        </a>
+
+        <xsl:if test="/FeaturedEventViewer/FeaturedEvent/@host != ./@userId">
+            <xsl:choose>
+                <xsl:when test="/FeaturedEventViewer/FeaturedEventAttendanceManager/attendanceStatuses/Member/@userId = /FeaturedEventViewer/Viewer/@userId">
+                    <a data-user-id="{./@userId}" href="/profile/{./@userId}">
+                        <img src="/photo/{./@userId}/Medium" class="UserPhoto" />
+                    </a>
+                </xsl:when>
+                <xsl:otherwise>
+                      <a data-user-id="{./@userId}">
+                        <img src="/photo/{./@userId}/Medium" class="UserPhoto" />
+                    </a>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>

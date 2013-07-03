@@ -1,4 +1,6 @@
 <?php
+require_once 'mixpanel-php/lib/Mixpanel.php';
+
 
 class Viewer extends ATransformableObject {
 
@@ -39,6 +41,10 @@ class Viewer extends ATransformableObject {
         $_SESSION['userId'] = $this->userId;
         try {
             $this->user = new Member($this->userId);
+          // $prop = $this->user->getProperties();
+          //  $mp = Mixpanel::getInstance("0e2c09979dc8b604e9c3aebcdea9bdaf");
+          //  $result = $mp->people->set($userId, json_encode($prop));
+          //  echo('hey '.$result);
         } catch (Exception $e) {
             echo $e->getMessage();
         }

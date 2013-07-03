@@ -14,7 +14,7 @@ class AccountConfirmation extends ApplicationBase {
             if ($this->validConfirmationCode($pdo, $email, $key)) {
                 $confirmNode = $this->dom->createElement('AccountConfirmed');
                 $node->appendChild($confirmNode);
-                  $this->viewer->login( $email, $password );
+              //    $this->viewer->login( $email, $password );
             }
             else
                 return $this->pageNotFound($x);
@@ -61,8 +61,9 @@ class AccountConfirmation extends ApplicationBase {
 
         $u_id = $row['user_id'];
         if ($u_id && !$expired) { //valid
-            $this->deleteOldEntries($pdo, $u_id);
             $this->activateUserAccount($pdo, $u_id);
+             $this->deleteOldEntries($pdo, $u_id);
+           
             return true;
         }
         return false;

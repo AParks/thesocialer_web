@@ -79,12 +79,14 @@
 	    <li class="AttendingCount"></li>
 	  </ul>  
 	</div> -->
+        <a id='LocationImageLink' href=''>
 	<div class="LocationImage">
 	  <div class="TitleLocationContainer">
 	    <div class="EventTitle"></div>
 	    <div class="EventLocation"></div>
 	  </div>
 	</div>
+        </a>
       </div>
     </li>
   </xsl:template>

@@ -298,7 +298,9 @@
                 
                 <div class="Footer">
 
-                    
+                   <!-- <a href="https://mixpanel.com/f/partner">
+                        <img style='position: fixed; bottom: 0; left: 0' src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" />
+                    </a> -->
                     
                     <div class="LeftFoot">
                         TheSocialer © 2013

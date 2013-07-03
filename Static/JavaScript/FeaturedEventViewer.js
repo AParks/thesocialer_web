@@ -4,9 +4,20 @@ FeaturedEventViewer = function(evt, userStatus) {
     var attendanceManager = new AttendanceManager( );
     var geocoder = new google.maps.Geocoder( );
 
+
     function init( ) {
 
 
+
+        $('#rightcontainer .UserPhoto').load(function() {
+            var min_host = $(this).height();
+            $('#host').css('min-height', min_host + 10);
+
+            //make sure the border spans the entire height of the page
+            var min = $('#rightcontainer').height();
+            $('#leftcontainer').css('min-height', min);
+
+        });
 
         //add images to carousel
         var images = evt.markup.split(" ");
@@ -49,18 +60,28 @@ FeaturedEventViewer = function(evt, userStatus) {
                 "&description=" + evt.description +
                 "&redirect_uri=https://thesocialer.com" +
                 "&display=popup");
+        //facebook share count
+        var url = 'https://graph.facebook.com/fql?q=select%20%20share_count%20from%20link_stat%20where%20url=%22' + document.URL + '%22';
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(data) {
+                var share_count = data['data'][0].share_count;
+                $('#share-count').append(share_count);
+            }
+        });
 
 
 
 
         //show part of the event description initially, and 
         //show the rest when user clicks on see more
-        $('#Description').text(evt.description.substring(0, 200));
+        $('#Description').append(evt.description.substring(0, 200));
         var n = evt.description.length;
         $('#SeeMore').click(function() {
 
             $('#SeeMore').css('display', 'none');
-            $('#More_Description').text(evt.description.substring(200, n));
+            $('#More_Description').append(evt.description.substring(200, n));
         });
 
         if (userStatus) {
@@ -196,6 +217,8 @@ FeaturedEventViewer = function(evt, userStatus) {
 
 $(function( ) {
 
+    var STRIPE_FEE_PERCENT = 0.029;
+    var STRIPE_FEE_FLAT = 0.30;
 
     $('#not-logged-in-payButton').click(function() {
         $('#myModal').modal('show');
@@ -205,17 +228,19 @@ $(function( ) {
         if (Viewer.userId != -1) {
 
             var token = function(res) {
+                var spots = parseFloat($('select[type=number]').val());
                 var $input = $('<input type=hidden name=stripeToken />').val(res.id);
                 var $id = $('<input type=hidden name=featured_event_id />').val(evt.featured_event_id);
+                var $spots = $('<input type=hidden name=spots />').val(spots);
+                $('form[id=charge]').append($input).append($id).append($spots).submit();
 
-                $('form[id=charge]').append($input).append($id).submit();
             };
 //pk_test_tPl6A15XRwUWmiz0bEB280hN
-
+//pk_live_lIxCZIgFwI8gw5HTSZ7nZrP7
             StripeCheckout.open({
-                key: 'pk_live_lIxCZIgFwI8gw5HTSZ7nZrP7',
+                key: 'pk_test_tPl6A15XRwUWmiz0bEB280hN',
                 address: true,
-                amount: $('#checkout_total').val().replace(/\./g, ""),
+                amount: calculatePrice().replace(/\./g, ""),
                 currency: 'usd',
                 name: evt.headline,
                 description: evt.sub_headline,
@@ -239,8 +264,11 @@ $(function( ) {
     });
 
     function calculatePrice() {
-        var price = parseFloat($('select[type=number]').val()) * parseFloat(evt.price);
-        var fee = parseFloat(price * .029 + 0.30);
+        var spots = parseFloat($('select[type=number]').val());
+        if (!spots)
+            spots = 1;
+        var price = spots * parseFloat(evt.price);
+        var fee = parseFloat(price * STRIPE_FEE_PERCENT + STRIPE_FEE_FLAT);
         var total = (price + fee).toFixed(2);
         $('#total_price').text(price.toFixed(2));
 
@@ -254,7 +282,7 @@ $(function( ) {
         $('form[id=charge]').append($amount);
 
 
-
+        return total;
     }
     userStatus = 'yes';
     var fev = new FeaturedEventViewer(evt, userStatus);

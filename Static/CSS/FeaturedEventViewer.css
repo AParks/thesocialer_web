@@ -1,17 +1,39 @@
+
+/*
+    host info
+*/
+#host > div{
+    width: 200px;
+    margin-left: 10px;
+    display: inline-block;
+    float: right;
+
+}
+#host > div > div{
+
+    font-weight: bold;
+    border-bottom: 1px solid #b97168;
+}
+
+#host > a{
+    position: absolute;
+    top: 0;
+}
+#host{
+    width: 100%;
+    position: relative;
+    padding-bottom: 5px;
+}
+
 #leftcontainer hr{
     border: 0;
     height: 1px;
     color: #b97168;
     background-color: #b97168;
+    
 }
-.encrypted {
-    float: left;
-    font-size: 12px;
-    color: white;
-    height: 20px;
-    line-height: 20px;    
-    width: 100%;
-}
+
+
 #SeeMore{
     color: #b97168;
 }
@@ -21,19 +43,26 @@
     color: white;
     line-height: 32px;
 }
-.LocationInfoContainer .joinbutton{
-    background-color: #c2c2c2 !important;
-    border-color: #e7e7e7 !important;
-  /*  background-color: #b97168 !important;
-    border-color: #b97168 !important; */
-}
-.LocationInfoContainer .joinbutton:hover{
-    background-color: #89b968 !important;
-    border-color: #b1b968 !important;
-  /*  background-color: #b97168 !important;
-    border-color: #b97168 !important; */
+/*everything within blue booking form */
+.LocationInfoContainer .joinbutton[id=soldout]{
+    background-color: #e7e7e7;
+    border-color: #e7e7e7;
+    color: #c2c2c2 !important;
+    cursor: auto !important;
 }
 
+.LocationInfoContainer .joinbutton[id=payButton]:hover,
+.LocationInfoContainer .joinbutton[id=not-logged-in-payButton]:hover{
+    background-color: #73ab4f;
+    border-color: #b1b968;
+    box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+}
+
+.LocationInfoContainer .joinbutton[id=payButton],
+.LocationInfoContainer .joinbutton[id=not-logged-in-payButton]{
+    background-color: #89b968;
+    border-color: #b1b968;
+}
 
 .booking{
     color: #fff;
@@ -42,19 +71,19 @@
     text-align: center;
     padding: 20px 10px 20px 10px;
     width: 80%;
-     background-color: #6888b9;
-     border: 10px solid #e7e7e7;
-     
+    background-color: #6888b9;
+    border: 10px solid #e7e7e7;
+
     border-radius: 5px;
     -moz-border-radius: 5px;
- /*    background-color: #b96887; */
-/*    background-color: #e7e7e7; */
-/*    -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7); */
-/*    box-shadow:  0px 1px 4px 1px #6888b9 */
+    /*    background-color: #b96887; */
+    /*    background-color: #e7e7e7; */
+    /*    -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7); */
+    /*    box-shadow:  0px 1px 4px 1px #6888b9 */
 }
 .booking  #total_price,
 .booking  #dollar_sign{
-    font-size: 48px;
+    font-size: 54px;
     font-family: comfortaabold;
 }
 .booking  #fee_text{
@@ -72,7 +101,7 @@
 .booking select{
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 40%;
     padding: 3px;
     height: 30px;
     background-color: white;
@@ -80,12 +109,21 @@
     -moz-border-radius: 5px;
 
 }
-.booking > button{
+.booking > .joinbutton{
     height: 50px;
-    font-family: comfortaaregular !important;
+    line-height: 50px;
 
 }
+.encrypted {
+    float: left;
+    font-size: 12px;
+    color: white;
+    height: 20px;
+    line-height: 20px;    
+    width: 100%;
+}
 
+/* event sharing*/
 #share{
     font-weight: bold;
     text-align: center;
@@ -95,10 +133,11 @@
     display: block;
     line-height: 28px;
 }
+
 #fb-share{
     position: relative;
     top: -9px;
-    margin-right: 10px;
+    margin-left: 45px;
 }
 #fb-share > div{
     margin-left: 5px;
@@ -122,7 +161,55 @@ button[id=fb-share]{
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#d8d8d8));
     background-image: -o-linear-gradient(top, #fff, #d8d8d8);
     background-image: linear-gradient(to bottom, #fff, #d8d8d8); 
-    
+
+}
+#share-count{
+    padding: 0 5px;
+    color: #333 !important;
+    line-height: 28px;
+}
+.count-o i, .count-o u{
+    position: absolute;
+    zoom: 1;
+    line-height: 0;
+    width: 0;
+    height: 0;
+    left: 0;
+    top: 50%;
+    margin: -5px 0 0 -5px;
+    border-width: 5px 5px 5px 0;
+    border: 4px transparent solid;
+    border-left: 0;
+    border-right-color: #aaa;  
+}
+
+.count-o u {
+    border-right-color: #fff;
+    margin-left: -4px;
+}
+.count-o {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 28px;
+    max-width: 100%;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: #bbb solid 1px;
+
+    margin: 0 10px 0 6px;
+    position: relative;
+    background: #fff;
+    visibility: visible;;
+    min-height: 18px;
+    min-width: 15px;
+
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
 }
 
 
@@ -130,8 +217,9 @@ button[id=fb-share]{
 { 
     width:580px;
     float:left;
-    border-right:solid 1px #b97168;
     padding:5px;
+    border-right:solid 1px #6888b9;
+    
 }
 
 #FeaturedEvent 
@@ -147,7 +235,7 @@ button[id=fb-share]{
     -webkit-box-shadow:  0px 1px 4px 0px rgba(0, 0, 0, .7);
     box-shadow:  0px 1px 4px 0px rgba(0, 0, 0, .7);
     background-color: #262626;
-    
+
 }
 #myCarousel{
     height: 300px;
@@ -157,9 +245,8 @@ button[id=fb-share]{
 #desc{
     font-size: 16px;
     padding: 10px;
-    color: white; 
 }
-   
+
 
 #FeaturedEvent img {
     border: solid 1px gray;
@@ -343,8 +430,8 @@ button[id=fb-share]{
 .Attendees .UserPhoto
 {
     margin: 4px;
-    width:30px;
-    height:30px;
+    width:50px;
+    height:50px;
 }
 
 .AttendeesYes,
@@ -359,12 +446,13 @@ button[id=fb-share]{
 { 
     width:300px;
     float:right;
+
 }
 .LocationInfoContainer
 {
     overflow:hidden;
     width: 100%;
- /*   margin:10px;*/
+    /*   margin:10px;*/
 }
 
 .LocationInfoContainer h1
@@ -404,8 +492,9 @@ button[id=fb-share]{
 .MemberName
 { 
     position:absolute;
-    border:solid 1px gray;
+    border:solid 1px #b97168;
     padding:5px;
-    background-color:#FFF;
-    color:gray;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
 }

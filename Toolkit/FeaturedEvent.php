@@ -14,7 +14,10 @@ class FeaturedEvent extends ATransformableObject {
     protected $sub_headline;
     protected $host;
     protected $priority;
-    protected $publicProperties = array('featured_event_id', 'description', 'starts_at', 'ends_at', 'location', 'markup','price',  'headline', 'is_private', 'sub_headline', 'host', 'priority');
+    protected $total_spots;
+    protected $spots_purchased;
+ 
+    protected $publicProperties = array('featured_event_id', 'description', 'starts_at', 'ends_at', 'location', 'markup','price',  'headline', 'is_private', 'sub_headline', 'host', 'priority', 'total_spots' , 'spots_purchased');
 
     public function __construct($featuredEventId = null) {
         $this->_load($featuredEventId);
@@ -73,6 +76,9 @@ class FeaturedEvent extends ATransformableObject {
         $this->sub_headline = $event->sub_headline;
         $this->host = $event->host;
         $this->priority = $event->priority;
+        $this->total_spots = $event->total_spots;
+        $this->spots_purchased = $event->spots_purchased;
+
 
 
     }

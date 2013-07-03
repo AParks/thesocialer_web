@@ -47,6 +47,9 @@ abstract class ApplicationBase implements IApplication {
                 $viewerDetails['photo'] = $this->viewer->user->photo->paths[Photo::SIZE_SMALL];
             $viewerDetails['firstName'] = $this->viewer->user->firstName;
             $viewerDetails['lastName'] = $this->viewer->user->lastName;
+            $viewerDetails['email'] = $this->viewer->user->emailAddress;
+            $viewerDetails['age'] = $this->viewer->user->age;
+            $viewerDetails['college'] = $this->viewer->user->College;
             $viewerDetails['gender'] = $this->viewer->user->gender;
             $viewerDetails['tags'] = $this->viewer->user->tags;
         }

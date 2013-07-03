@@ -96,6 +96,8 @@ $(function() {
 
     function login() {
         FB.api('/me', function(response) {
+            var url = document.URL;
+
             $.ajax({
                 url: '/login/fb',
                 type: 'POST',
@@ -104,7 +106,12 @@ $(function() {
                     fb_id: response.id
                 },
                 success: function(data, textStatus, jqXHR) {
-                    location.reload(true);
+                    top.location = url;
+                    mixpanel.identify("" + Viewer.userId + "");
+                    Viewer["$email"] = Viewer.email;
+                    mixpanel.people.set(Viewer);
+
+
                 }
             });
         });
@@ -321,7 +328,6 @@ $(function() {
             }
         },
         submitHandler: function() {
-            console.log('wat da fuck');
             var shaObj = new jsSHA($('#password').val( ), "ASCII");
             var hash = shaObj.getHash("SHA-256", "HEX");
             $.ajax({
@@ -429,9 +435,12 @@ $(function() {
                     $('#break').show();
                     resend();
                 }
-                else
+                else {
                     top.location = url;
-
+                    mixpanel.identify("" + Viewer.userId + "");
+                    Viewer["$email"] = Viewer.email;
+                    mixpanel.people.set(Viewer);
+                }
 
             },
             error: function(data) {

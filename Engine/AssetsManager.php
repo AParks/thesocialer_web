@@ -55,7 +55,7 @@ class AssetsManager
     }
     elseif ( ( $file = $this->autoLoader->getFile( 'JavaScript', $fileName ) ) )
     {
-      $this->javaScript[] = $file;
+      $this->javaScript[] = $file . '?' . rand(1,10);
     }
   }
 

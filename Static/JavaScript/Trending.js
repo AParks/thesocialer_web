@@ -86,11 +86,13 @@ var Home = function() {
 
         var locationImage = newLocation.find('.LocationImage');
         locationImage.prepend('<img src="/Photos/Locations/' + locationInfo.image + '" />');
+        locationImage.parent().attr('href', '/location/' + locationInfo.id + '/' + activeDate);
 
+        locationInfo['eventDate'] = activeDate;
+        mixpanel.track_links('#LocationImageLink', 'trending event click - live site', locationInfo);
         locationImage.bind('click', function() {
             toggleAttendance($(this).prev().find('.AttendingCount'));
-            console.log('hey');
-            top.location = '/location/' + locationInfo.id + '/' + activeDate;
+       //         mixpanel.track('trending event test');
         });
 
         var text = newLocation.find('.Comment').text();
@@ -159,31 +161,31 @@ var Home = function() {
 
         var buttons = newLocation.find('.AttendingCount');
         buttons.click(function() {
-           toggleAttendance($(this));
+            toggleAttendance($(this));
         });
 
         var attendingCounts = newLocation.find('ul.AttendingCounts');
         attendingCounts.find('li.AttendingCount').html('<strong>' + locationInfo.attendanceCounts.yes + '</strong>');
         newLocation.appendTo(eventList);
     }
-    
-    function toggleAttendance(button){
-        
+
+    function toggleAttendance(button) {
+
         var locationId = button.closest('.Event').attr('data-location-id');
-         if (Viewer.userId == -1)
-                $('#myModal').modal('show');
-            else if (button.hasClass('active')) {
-                var attendingCountContainer = button.find('strong');
-                attendingCountContainer.text(parseInt(attendingCountContainer.text(), 10) - 1);
-                attendanceManager.setAttendanceStatus(locationId, activeDate, 'no');
-                button.removeClass('active');
-            }
-            else {
-                var attendingCountContainer = button.find('strong');
-                attendingCountContainer.text(parseInt(attendingCountContainer.text(), 10) + 1);
-                attendanceManager.setAttendanceStatus(locationId, activeDate, 'yes');
-                button.addClass('active');
-            }
+        if (Viewer.userId == -1)
+            $('#myModal').modal('show');
+        else if (button.hasClass('active')) {
+            var attendingCountContainer = button.find('strong');
+            attendingCountContainer.text(parseInt(attendingCountContainer.text(), 10) - 1);
+            attendanceManager.setAttendanceStatus(locationId, activeDate, 'no');
+            button.removeClass('active');
+        }
+        else {
+            var attendingCountContainer = button.find('strong');
+            attendingCountContainer.text(parseInt(attendingCountContainer.text(), 10) + 1);
+            attendanceManager.setAttendanceStatus(locationId, activeDate, 'yes');
+            button.addClass('active');
+        }
     }
     function hoverOverMember( ) {
         var container = $(this);

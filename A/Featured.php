@@ -295,7 +295,7 @@
         echo '<h1>Current featured events:</h1>';
         echo '<table id="events" class="table table-striped table-bordered table-condensed" style="margin: 20px;width: 1100px;">';
 
-        echo "<tr><th>Id</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Markup</th><th>Location</th><th>Price</th><th>Headline</th><th>Is private</th><th>SubHeadline</th><th>Host</th><th>Priority</th><th>Spots</th><th></th></tr>";
+        echo "<tr><th>Id</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Markup</th><th>Location</th><th>Price</th><th>Headline</th><th>Is private</th><th>SubHeadline</th><th>Host</th><th>Priority</th><th>Total Spots</th><th>Spots Purchased</th><th></th></tr>";
         foreach ($query->fetchAll(PDO::FETCH_ASSOC) as $featured) {
             echo "<tr>";
             foreach ($featured as $key => $value) {

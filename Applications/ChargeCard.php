@@ -2,7 +2,6 @@
 
 class ChargeCard extends ApplicationBase {
 
-    
     public function execute() {
 
 
@@ -32,10 +31,18 @@ class ChargeCard extends ApplicationBase {
             $email = $_POST['email'];
             $userId = $_POST['userId'];
             $featured_event_id = $_POST['featured_event_id'];
+            $spots = $_POST['spots'];
+            error_log(print_r($_POST, true));
+
+            
 
             // Validate other form data!
             // If no errors, process the order:
             if (empty($errors)) {
+                $x = XSLTransformer::getInstance();
+                $this->assetsManager->addInitJavaScript("$('.NavigationLink.third').addClass('active');");
+                $node = $this->dom->createElement('ChargeCard');
+
 
                 // create the charge on Stripe's servers - this will charge the user's card
                 try {
@@ -45,9 +52,9 @@ class ChargeCard extends ApplicationBase {
 
                     // set your secret key: remember to change this to your live secret key in production
                     // see your keys here https://manage.stripe.com/account
-                    //   Stripe::setApiKey("sk_test_i0kS1LRFqvmuGmYLQO3VzFCH");
+                       Stripe::setApiKey("sk_test_i0kS1LRFqvmuGmYLQO3VzFCH");
 
-                    Stripe::setApiKey("sk_live_oZAmTuyJwbxUWN0DYMoCEQgT");
+                    //Stripe::setApiKey("sk_live_oZAmTuyJwbxUWN0DYMoCEQgT");
 
                     // Charge the order:
 
@@ -63,19 +70,20 @@ class ChargeCard extends ApplicationBase {
                     if ($charge->paid == true) {
 
                         // Store the order in the database.
-                        $this->storeOrder($token, $userId, $featured_event_id);
+                        $pdo = sPDO::getInstance();
+                        $this->storeOrder($pdo, $token, $userId, $featured_event_id, $spots);
+                        $this->updateSpots($pdo, $spots, $featured_event_id);
 
 
                         // Send the email.
-                        $this->sendConfirmationEmail($amount, $email);
+                        $this->sendReciept($amount, $email);
                         // Celebrate!
-                        $x = XSLTransformer::getInstance();
-                        $node = $this->dom->createElement('ChargeCard');
-                        $this->assetsManager->addInitJavaScript("$('.NavigationLink.third').addClass('active');");
-                        $output = $x->transform('ChargeCard', $node);
-                        $this->display->appendOutput($output);
-                    } else { // Charge was not paid!	
-                        echo '<div class="alert alert-error"><h4>Payment System Error!</h4>Your payment could NOT be processed (i.e., you have not been charged) because the payment system rejected the transaction. You can try again or use another card.</div>';
+                         $paid = $this->dom->createElement('Paid');
+                         $node->appendChild($paid);
+
+                    } else { // Charge was not paid!
+                        $not_paid = $this->dom->createElement('NotPaid');
+                        $node->appendChild($not_paid);
                     }
                 } catch (Stripe_CardError $e) {
                     // Card was declined.
@@ -91,18 +99,31 @@ class ChargeCard extends ApplicationBase {
                 } catch (Stripe_CardError $e) {
                     // Something else that's not the customer's fault.
                 }
+
+
+                $output = $x->transform('ChargeCard', $node);
+                $this->display->appendOutput($output);
             } // A user form submission error occurred, handled below.
         } // Form submission.
     }
 
-    public function storeOrder($token, $userId, $featured_event_id) {
-        $pdo = sPDO::getInstance();
-        $query = $pdo->prepare('SELECT set_featured_event_paid_attendance_status( :featured_event_id, :user_id, :stripe_token )');
+    private function storeOrder($pdo, $token, $userId, $featured_event_id, $spots) {
+        $query = $pdo->prepare('SELECT set_featured_event_paid_attendance_status( :featured_event_id, :user_id, :stripe_token, :spots_purchased )');
         $query->bindValue(':featured_event_id', $featured_event_id);
         $query->bindValue(':user_id', $userId);
         $query->bindValue(':stripe_token', $token);
+        $query->bindValue(':spots_purchased', $spots);
+      
         $result = $query->execute();
         error_log("query result" . $result);
+    }
+   
+    private function updateSpots($pdo, $spots,$featured_event_id ){        
+        $query = $pdo->prepare('UPDATE featured_events SET spots_purchased= spots_purchased + :spots where featured_event_id= :featured_event_id');
+        $query->bindValue(':spots', $spots);
+        $query->bindValue(':featured_event_id', $featured_event_id);
+
+        $query->execute();
     }
 
     public function sendReciept($amount, $to_email) {
