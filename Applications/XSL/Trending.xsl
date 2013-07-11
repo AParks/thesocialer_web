@@ -6,7 +6,7 @@
   <xsl:template match="/Home">
       <div id='img'>
             <div id='popup-desc-start'>Hand-picked events in Philadelphia </div>
-            <div id='popup-desc'>... we sift through the junk, so you don't have to.</div>
+            <div id='popup-desc'>... we sift through the junk,<br/> so you don't have to.</div>
         </div>
     <div id="MainBody">
    <!--   <div id="Top">

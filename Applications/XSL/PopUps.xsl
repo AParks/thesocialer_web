@@ -12,9 +12,14 @@
     <xsl:output method="html" omit-xml-declaration="yes"/>
 
     <xsl:template match="/Popups">
-        <div id='img'>
+        <div id='img'> 
             <div id='popup-desc-start'>Socialer Popups are ... </div>
-            <div id='popup-desc'>unique events hosted by and for members of our community.</div>
+            <div id='popup-desc'>
+                unique events hosted by and 
+                <br/>
+                for members of our
+                <br/> community. 
+            </div>
         </div>
         <div id="MainBody">
             

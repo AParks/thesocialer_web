@@ -74,7 +74,8 @@ strong {
     width: 900px;
     margin: auto;
     margin-top: 5px;
-    padding: 5px 0;
+    padding-top: 5px;
+    padding-bottom: 10px;
     position: relative;
 }
 
@@ -93,12 +94,11 @@ strong {
     
 } 
 #Header > a{
-    background: url('/Photos/favicon.ico') no-repeat;
-    background-size: contain;
+    background: url('/Photos/favicon.png') no-repeat;
+    background-size: 50px 50px;
     background-position: left;
     display: block;
     width: 300px;
-    padding-bottom: 8px;
 }
 #Header #the{
     position: relative;
