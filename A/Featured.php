@@ -2,9 +2,20 @@
     <head>
         <link rel="stylesheet" href="/Static/CSS/bootstrap.css" />
         <link rel="stylesheet" href="/Static/CSS/AdminFeatured.css" />
+        <link rel="stylesheet" href="/Static/CSS/Plugins/jquery.ui.all.css" />
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="/Static/JavaScript/Plugins/jquery-1.9.1.js"></script>
+        <script src="/Static/JavaScript/Plugins/jquery.ui.core.js"></script>
+        <script src="/Static/JavaScript/Plugins/jquery.ui.widget.js"></script>
+        <script src="/Static/JavaScript/Plugins/jquery.ui.datepicker.js"></script>
+
+
+
+      <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
         <style>
+            .datepicker{
+                width: 100px;
+            }
             #events input[type=text]{
                 border: none; 
                 webkit-box-shadow: none;
@@ -89,14 +100,10 @@
 
                     return false;
                 }
-                var startDate = $('input[name=startMonth]').val() + "/"
-                        + $('input[name=startDay]').val() + "/"
-                        + $('input[name=startYear]').val() + " " + $('input[name=startTime]').val();
+                var startDate = $('input[name=startDate]').val() + " " + $('input[name=startTime]').val();
                 $('input[name=startDate]').val(startDate);
 
-                var endDate = $('input[name=endMonth]').val() + "/"
-                        + $('input[name=endDay]').val() + "/"
-                        + $('input[name=endYear]').val() + " " + $('input[name=endTime]').val();
+                var endDate = $('input[name=endDate]').val() + " " + $('input[name=endTime]').val();
                 $('input[name=endDate]').val(endDate);
 
 
@@ -108,6 +115,8 @@
             }
 
             $(function() {
+                $(".datepicker").datepicker({ dateFormat: "mm/dd/yy" });
+
                 $('input[type=file]').change(function() {
 
                     var eventId = $(this).first().parent()
@@ -231,18 +240,14 @@
                         </tr>
                         <tr><th>Start Date (using military time)</th>
                             <td>
-                                <input class="date" type="text" name="startMonth" placeholder="MM" />
-                                <input class="date" type="text" name="startDay" placeholder="DD" />
-                                <input class="date" type="text" name="startYear" placeholder="YYYY" />
+                                <input class="date datepicker" type="text" name="startDate" />
                                 <input class="date" type="text" name="startTime" placeholder="HH:MM" style="width:70px;"/>
                             </td>
                             <td>The event's start date and time</td>
                         </tr>
                         <tr><th>End Date</th>
                             <td>
-                                <input class="date" type="text" name="endMonth" placeholder="MM" />
-                                <input class="date" type="text" name="endDay" placeholder="DD" />
-                                <input class="date" type="text" name="endYear" placeholder="YYYY" />
+                                <input class="date datepicker" type="text" name="endDate" />
                                 <input class="date" type="text" name="endTime" placeholder="HH:MM" style="width:70px;"/>
 
                             </td>
@@ -306,6 +311,7 @@
                     echo '<input type="hidden" name="eventId" />';
                     echo "<input type='hidden' name='action' value='edit' />";
                     echo "<input type='hidden' name='key' value='$key' />";
+                    echo "<input type='text' name='$key' key='$key' value='$value' />";
                     echo "</form></td>";
                 } else if ($key == 'description')
                     echo "<td><textarea  name='$key' key='$key' >$value </textarea></td>";

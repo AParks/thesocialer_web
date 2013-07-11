@@ -5,11 +5,46 @@
     Description:
         Purpose of the stylesheet follows.
 */
+
+#img{
+    height: 300px;
+    background: url('/Photos/Featured/Philadelphia-Fall.jpeg');
+    /*    background: url(/Photos/Featured/480499_554198984599518_653560464_n.jpeg) no-repeat;*/
+    background-size: 100% 100%;
+}
+body{
+    background-image: none !important;
+    background-color: #eef2f7 !important;
+
+}
+#MainBody, #Header {
+    background-color: #eef2f7;
+
+}
+
+#popup-desc-start{
+
+    font-size: 36pt;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);
+
+    padding-left:20px;
+    padding-top: 40px;
+}
+
+#popup-desc{
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);
+    font-size: 16pt;
+    color: white;
+    padding:20px;
+}
+
 #LocationList .PopUpLocationPicture {    
     width: 100% !important;
-  /*  height: auto;*/
+    /*  height: auto;*/
     max-height: 400px;
-        max-width: 100%;
+    max-width: 100%;
 
     display: block; 
     margin-left: auto; margin-right: auto; 
@@ -18,11 +53,11 @@
 }
 #LocationList li.loc 
 {
- /*   margin-left: 20px;*/
+    /*   margin-left: 20px;*/
     width: 430px !important; 
     height: 300px ! important; 
     background-color: #262626;
-        background-size: 100% 100%;
+    background-size: 100% 100%;
 
 }
 #LocationList li.loc  a
@@ -33,20 +68,20 @@
     background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
- 
+
 }
 
 .TitleLocationContainer 
 {
- /* top:-10px !important;*/
-  width:100% !important; 
- /* background-color: #262626 !important;*/
-  border-bottom: 3px solid #6888B9;
-  padding: 0px !important;
+    /* top:-10px !important;*/
+    width:100% !important; 
+    /* background-color: #262626 !important;*/
+    border-bottom: 3px solid #6888B9;
+    padding: 0px !important;
 }
 .EventTitle {
     padding: 15px;
-/*    font-size: 32pt !important;*/
+    /*    font-size: 32pt !important;*/
 
 }
 .EventPrice {

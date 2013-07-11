@@ -52,25 +52,33 @@
                         <a href="#details" data-toggle="tab">Details</a>
                     </li>
                     <li>
-                        <a href="#comments" data-toggle="tab">Comments</a>
+                        <a href="#comments" data-toggle="tab">Comments</a> 
+
                     </li>
-                    <li>
-                        <a href="#attending" data-toggle="tab">Attending</a>
-                    </li>
+                    
+                    <xsl:if test="./FeaturedEvent/@spots_purchased &gt;= 0.25*./FeaturedEvent/@total_spots">
+
+                        <li>
+                            <a href="#attending" data-toggle="tab">Attending
+                                (<xsl:value-of select="./FeaturedEvent/@spots_purchased" />)
+
+                            </a>
+                        </li>
+                    </xsl:if>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane  active" id="details">
                         <div id='desc'>
                             <span id="Description">
                             </span>
-                            <xsl:if test="string-length(./FeaturedEvent/@description) &gt; 200" >
+                         <!--   <xsl:if test="string-length(./FeaturedEvent/@description) &gt; 200" >
                                 <span>
                                     <a id='SeeMore'>...See more </a>
                                 </span>
-                            </xsl:if>
+                            </xsl:if> 
 
                         
-                            <span id="More_Description"></span>
+                            <span id="More_Description"></span> -->
                         </div>
                
                     </div>
@@ -90,6 +98,7 @@
 
                     </div>
                     <div class='tab-pane' id='attending'>
+                        
                         <div class="Attendees">
                             <div class="AttendeesYes">
                                 <xsl:apply-templates select="./FeaturedEventAttendanceManager/attendanceStatuses/Member" />
@@ -105,7 +114,6 @@
             
                     <div class='booking'>
                         <div id="date">
-                            
                             <xsl:value-of select="./DateObject/@shortDay" />.
 
                             <xsl:value-of select="./DateObject/@shortMonth" />
@@ -152,8 +160,7 @@
 
                                 <xsl:choose>
 
-                                    <xsl:when test="./Viewer/@userId != -1">
-                                
+                                    <xsl:when test="./Viewer/@userId != -1">                                
                                         <button id="payButton" class="joinbutton">Book Now
 
                                             <form id='charge' action="/charge" method="post">
@@ -267,7 +274,7 @@
                     </a>
                 </xsl:when>
                 <xsl:otherwise>
-                      <a data-user-id="{./@userId}">
+                    <a data-user-id="{./@userId}">
                         <img src="/photo/{./@userId}/Medium" class="UserPhoto" />
                     </a>
                 </xsl:otherwise>

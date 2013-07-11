@@ -45,7 +45,7 @@ input[type="color"]:focus,
     font-size: 14px;
     width: 900px;
     margin: 0 auto 0;
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 0 0 25px 25px;
     -moz-border-radius: 0 0 25px 25px;
 }
@@ -59,14 +59,7 @@ strong {
     font-weight: bold;
 }
 
-#Header
-{
-    background-color: #FFF;
-    width: 900px;
-    margin: auto;
-    padding: 5px 0;
-    position: relative;
-}
+
 
 #Navigation
 {
@@ -75,10 +68,48 @@ strong {
     background-color: black;
 }
 
+#Header
+{
+    background-color: #FFF;
+    width: 900px;
+    margin: auto;
+    margin-top: 5px;
+    padding: 5px 0;
+    position: relative;
+}
+
 #Header .Right
 {
     float: right;
 }
+#Header > a div{
+    font-family: comfortaaregular;
+    color: #666;
+    
+}
+#Header > a > div{
+    display: inline-block;
+    margin-left: 45px;
+    
+} 
+#Header > a{
+    background: url('/Photos/favicon.ico') no-repeat;
+    background-size: contain;
+    background-position: left;
+    display: block;
+    width: 300px;
+    padding-bottom: 8px;
+}
+#Header #the{
+    position: relative;
+    left: 20px;
+    font-size: 20px;
+}
+#Header #title{
+    font-size: 42px;
+    font-weight: bold;
+}
+
 h1,
 h2,
 h3,
@@ -194,13 +225,13 @@ button.standard
 { 
     width:850px;
     margin: 0 auto;
-    color: white;
+    color: #666;
 }
 
 
 .Footer a
 { 
-    color: white;
+    color: #666;
     margin-left:10px;
 }
 

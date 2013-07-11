@@ -16,6 +16,7 @@ class LocationShares {
     return $locationShares;
   }
 
+
   public function sendShare( Member $sendingUser, Member $receivingUser, $location_id, $date ) {
     $query = sPDO::getInstance( )->prepare( 'SELECT new_location_share( :sender_id, :recipient_id, :location_id, :location_date )' );
     $query->bindValue( ':sender_id', $sendingUser->userId );

@@ -11,13 +11,18 @@ class AccountConfirmation extends ApplicationBase {
         if (isset($email) && isset($key)) {
             $pdo = sPDO::getInstance();
 
-            if ($this->validConfirmationCode($pdo, $email, $key)) {
+            if ($this->alreadyConfirmed($pdo, $email)) {
+                $confirmNode = $this->dom->createElement('AlreadyConfirmed');
+                $node->appendChild($confirmNode);
+            } else if ($this->validConfirmationCode($pdo, $email, $key)) {
                 $confirmNode = $this->dom->createElement('AccountConfirmed');
                 $node->appendChild($confirmNode);
-              //    $this->viewer->login( $email, $password );
+                //    $this->viewer->login( $email, $password );
+            } else {
+                error_log('email and key set but not valid confirm code');
+                $confirmNode = $this->dom->createElement('LinkExpired');
+                $node->appendChild($confirmNode);
             }
-            else
-                return $this->pageNotFound($x);
         } else if ($_SERVER['REQUEST_URI'] == '/confirm') {
             $confirmNode = $this->dom->createElement('AccountConfirmationSent');
             $node->appendChild($confirmNode);
@@ -50,6 +55,16 @@ class AccountConfirmation extends ApplicationBase {
         $query_activate->execute();
     }
 
+    private function alreadyConfirmed($pdo, $email) {
+
+        $query = $pdo->prepare('SELECT active FROM users WHERE email_address = :email');
+        $query->bindParam(':email', $email);
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+
+        return $row['active']; //already confirmed
+    }
+
     private function validConfirmationCode($pdo, $email, $key) {
 
         $query = $pdo->prepare('SELECT user_id, expiration_date FROM confirm WHERE email = :email AND key = :key');
@@ -62,8 +77,8 @@ class AccountConfirmation extends ApplicationBase {
         $u_id = $row['user_id'];
         if ($u_id && !$expired) { //valid
             $this->activateUserAccount($pdo, $u_id);
-             $this->deleteOldEntries($pdo, $u_id);
-           
+            $this->deleteOldEntries($pdo, $u_id);
+
             return true;
         }
         return false;

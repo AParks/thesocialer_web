@@ -20,6 +20,7 @@
     top: 0;
 }
 #host{
+    min-height: 90px;
     width: 100%;
     position: relative;
     padding-bottom: 5px;
@@ -243,6 +244,7 @@ button[id=fb-share]{
     background-size: contain;
 }
 #desc{
+    color: #666666;
     font-size: 16px;
     padding: 10px;
 }

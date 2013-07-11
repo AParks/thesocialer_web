@@ -35,8 +35,9 @@ var _MessageSender = function( ){
     
     function sendMessageCallback(response) {
 	var markup = '';
-	
-	if ( response.success ) {
+        
+        var resp = $.parseJSON(response);
+	if ( resp.success ) {
 	    markup = 'Message sent!<br /><button class="Blue standard">OK</button>';  
 	}
 	else {

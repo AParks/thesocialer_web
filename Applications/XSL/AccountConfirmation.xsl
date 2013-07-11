@@ -15,26 +15,29 @@
     <xsl:template match="/AccountConfirmation">
         <div id="MainBody">
             
-            <xsl:for-each select="AccountExpired">
+            <xsl:for-each select="LinkExpired">
                 <div style="padding: 20px;">
                     This link has expired.
                 </div>
-            
             </xsl:for-each>
        
             <xsl:for-each select="AccountConfirmed">
                 <div style="padding: 20px;">
                     Welcome to The Socialer! Your account has been confirmed.
                 </div>
-            
             </xsl:for-each>
        
-        
-            <xsl:for-each select="AccountConfirmationSent">
+            <xsl:for-each select="AlreadyConfirmed">
                 <div style="padding: 20px;">
-                    Welcome to The Socialer! Please check your email to confirm your account registration.
+                    Your account has already been confirmed.
                 </div>
             </xsl:for-each>
+
+        <xsl:for-each select="AccountConfirmationSent">
+            <div style="padding: 20px;">
+                Welcome to The Socialer! Please check your email to confirm your account registration.
+            </div>
+        </xsl:for-each>
         
         </div>
                 

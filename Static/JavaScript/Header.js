@@ -5,9 +5,20 @@ Header.showFailedLogin = function( ) {
     $('#QuickLoginFormLoginFailed').show( );
     $('#QuickLoginForm').show( );
 }
+function refresh() {
+
+    //    var minutes = 60 * 20 * 100; //60 sec/min * 20 min * 100 ms/sec
+    //      setTimeout("location.reload(true)", minutes);
+}
 
 $(function() {
 
+
+    if (Viewer.userId != -1) {
+        mixpanel.identify("" + Viewer.userId + "");
+        Viewer["$email"] = Viewer.email;
+        mixpanel.people.set(Viewer);
+    }
     UserVoice = window.UserVoice || [];
     UserVoice.push(['showTab', 'classic_widget', {
             mode: 'full',
@@ -20,9 +31,6 @@ $(function() {
             tab_position: 'bottom-right',
             tab_inverted: false
         }]);
-
-
-
 
 
 
@@ -93,6 +101,7 @@ $(function() {
             });
         });
     }
+
 
     function login() {
         FB.api('/me', function(response) {

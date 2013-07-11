@@ -40,10 +40,10 @@ class Trending extends ApplicationBase {
       $dayNode = $this->dom->createElement( 'Day', $date->format( 'Y-n-j' ) );
 
       if ( $i === 0 ) {
-        $displayText = 'Today';
+        $displayText = 'today';
       }
       elseif ( $i === 1 ) {
-        $displayText = 'Tomorrow';
+        $displayText = 'tomorrow';
       }
       else {
         $displayText = $date->format( 'l' ); 

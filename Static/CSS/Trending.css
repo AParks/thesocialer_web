@@ -1,14 +1,107 @@
+#img{
+    height: 300px;
+    background: url('/Photos/Featured/Philadelphia-Fall.jpeg');
+    /*    background: url(/Photos/Featured/480499_554198984599518_653560464_n.jpeg) no-repeat;*/
+    background-size: 100% 100%;
+}
+body{
+    background-image: none !important;
+    background-color: #eef2f7 !important;
+
+}
+#MainBody, #Header {
+    background-color: #eef2f7;
+
+}
+
+#popup-desc-start{
+
+    font-size: 36pt;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);
+
+    padding-left:20px;
+    padding-top: 40px;
+}
+
+#popup-desc{
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);
+    font-size: 16pt;
+    color: white;
+    padding:20px;
+}
+
 #Top 
 {
     padding:10px 20px;
 }
 
 .WelcomeBack {
-    font-size: 16pt;
-    /* color:#1F61D4; */
+    font-size: 24pt;
     color: #6888B9;
     padding:15px 30px;
+    width : 100%;
+    line-height: 26pt;
+}
+.WelcomeBack .dropdown .caret{
+    border-top-color: #6888B9;
+}
+
+.WelcomeBack .dropdown{
+    width: auto;
     display:inline-block;
+}
+.WelcomeBack .dropdown-menu{
+}
+.WelcomeBack .dropdown-toggle:hover{
+
+    background-image: none;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+.WelcomeBack .dropdown-toggle{
+    padding: 3px;
+    font-size: 24pt;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    color: #6888B9;
+    cursor: pointer;
+
+
+
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    background-color: #fafafa;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+    background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+    background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+    background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+    background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+    border: 1px solid #cccccc;
+
+    border-bottom-color: #bbb;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+}
+
+#EventDays li {
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.WelcomeBack > div{
+    font-size: 12pt;
+    color: #666666;
 }
 
 #EventDays {
@@ -20,7 +113,8 @@
     color: #FFF;
     text-align: center;
     display:inline-block;
-    font-size: 9pt;
+    font-size: 14pt;
+    border-right: #666 solid 1px;
 
     cursor: pointer;
     padding:5px 25px;
@@ -30,7 +124,7 @@
 #EventDays li.selected{
     text-decoration: none;
     color: white;
-        background-color: #6887b9;
+    background-color: #6887b9;
     background-image: -moz-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8ba3c9), to(#6887b9));
     background-image: -webkit-linear-gradient(top, #8ba3c9, #6887b9);
@@ -41,21 +135,15 @@
 }
 
 #EventDays li.Day1 {
-    width: 60px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
-#EventDays li.Day2 {
-    width: 60px;
-}
 
-#EventDays li.last {
-    margin-right: 0;
-    width: 80px;
-}
-
-#EventDays li.last a,
-#EventDays li.last a:hover {
-    color: #FFF;
+#EventDays li.Day4 {
+    border-right: none !important;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 h2 {
@@ -141,7 +229,7 @@ h2 {
 }
 .AttendingCount:hover {
     background-image:url('/Static/Images/star_active.png');
-        color:gold;
+    color:gold;
 
 
 }
@@ -201,7 +289,7 @@ h2 {
 }
 
 .EventTitle {
-    font-size: 13pt;
+    font-size: 14pt;
 }
 
 .EventLocation {
@@ -306,8 +394,9 @@ h2 {
     position:absolute;
     bottom:-100px;
     background-color:white;
-    height:60px;
+    height:40px;
     width:260px;
+    padding: 5px;
 }
 
 .CommentContainer .UserName {
@@ -337,10 +426,10 @@ h2 {
 {
     clear:left;
     font-family: Helvetica, Arial, sans-serif;
-    font-size:8pt;
+    font-size:13pt;
     color:#777;
-    width:200px;
-    height:34px;
+    /*    width:200px;
+        height:auto; */
     overflow:hidden;
     padding: 0 5px;
     white-space: pre-wrap;      /* CSS3 */   

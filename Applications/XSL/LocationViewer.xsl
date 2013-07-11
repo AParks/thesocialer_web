@@ -103,23 +103,34 @@
 
       <div id="rightcontainer">	
 	<div class="LocationInfoContainer">
+            <br/>
+            <xsl:choose>
+	      <xsl:when test='./Location/@userLikes = 1'>
+                  <div class="LocationLikeButton">
+                      Following
+                  </div>
+	      </xsl:when>
+              <xsl:when test="./Viewer/@userId = -1">
+              <div>
+                   <div class="LocationLikeNotLoggedIn"> 
+                      <span id='plus'>+</span>   
+                      <span id='follow'>Follow</span>
+                  </div>
+              </div>
+              </xsl:when>
+	      <xsl:otherwise>
+                  <div class="LocationLikeButton"> 
+                      <span id='plus'>+</span>   
+                      <span id='follow'>Follow</span>
+                  </div>
+	      </xsl:otherwise>
+	    </xsl:choose>
 	  <h1>About The Venue:</h1>
 	  <h5>Popularity</h5>
 	  <p>
-	    <span class="LocationLikeCount"><xsl:value-of select="./Location/@likes" /></span> people like this venue.
-	    <xsl:choose>
-	      <xsl:when test='./Location/@userLikes = 1'>
-		<span class="LocationLikeButton">unlike</span><br /> 
-		<span class="LocationLikeText">You like this.</span>
-	      </xsl:when>
-	      <xsl:otherwise>
-		<span class="LocationLikeButton">like</span><br /> 
-		<span class="LocationLikeText"></span>
-	      </xsl:otherwise>
-	    </xsl:choose>
+	    <span class="LocationLikeCount"><xsl:value-of select="./Location/@likes" /></span> followers
+	    
 	  </p>
-	  <h5>Address:</h5>
-	  <p><xsl:value-of select="./Location/@streetAddress" /></p>
 	  <h5>Website:</h5>
 	  <p>
 	    <a target="_blank">
@@ -131,6 +142,8 @@
 	  </p>
 	  <h5>Description:</h5>
 	  <p><xsl:value-of select="./Location/@description" disable-output-escaping="yes" /></p>
+	  <h5>Address:</h5>
+	  <p><xsl:value-of select="./Location/@streetAddress" /></p>
 	</div>
 	<div id="LocationMap"></div>
       </div>

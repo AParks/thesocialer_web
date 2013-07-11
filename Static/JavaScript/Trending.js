@@ -10,7 +10,9 @@ var Home = function() {
 
     function init() {
         eventDays.click(function( ) {
+            $('.WelcomeBack .dropdown-toggle').find('span').text($(this).text());
             selectDate($(this).attr('data-date'), true);
+
         });
         selectDate(activeDate, true);
         initFeaturedEvents();
@@ -38,15 +40,44 @@ var Home = function() {
         //newComment.find('span.UserName').text(comment.user.firstName);
         //newComment.find('a.UserLink').attr('href', '/profile/' + comment.user.userId);
         //newComment.find('img').attr('src','/photo/' + comment.user.userId + '/Small');
-        newComment.find('.Comment').html(comment.message);
+
+
+        //find the length of the comment without the html
+        var link_start = comment.message.indexOf('<');
+        var link_start_inside = comment.message.indexOf('>');
+        var link_end_inside = comment.message.indexOf('</');
+        var link_end = comment.message.indexOf('>', link_start_inside + 1);
+
+        var before_link_tag = comment.message.substring(0, link_start);
+        var inside_link_tag = comment.message.substring(link_start_inside + 1, link_end_inside);
+        var after_link_tag = comment.message.substring(link_end, comment.message.length);
+        var actual_msg_length = (before_link_tag + inside_link_tag + after_link_tag).length;
+        var before_and_inside = (before_link_tag + inside_link_tag).length;
+
+        var max_length = 49;
+        if (actual_msg_length <= max_length) {
+            newComment.find('.Comment').append(comment.message);
+        }
+        else {
+            if (before_and_inside <= max_length) { //entire message is > 54
+                var remaining = max_length - before_and_inside;
+                newComment.find('.Comment').append(comment.message.substring(0, link_end + remaining));
+            }
+            else if (before_link_tag.length <= max_length) { //before and link is > 54
+                newComment.find('.Comment').append(comment.message.substring(0, link_start));
+            } else { //before > 54
+                newComment.find('.Comment').append(comment.message.substring(0, 54));
+            }
+            newComment.find('.Comment').append("<a id='more' style='text-decoration: underline; color: black'>...more</a>");
+
+        }
+
         newComment.find('.Comment').linkify();
-        //newComment.find('.Comment').find('a').attr('target','_blank');
 
         return newComment;
     }
 
     function selectDate(selectedDate, showLoading) {
-        console.log(selectedDate);
         activeDate = selectedDate;
         eventDays.removeClass('selected');
         eventDays.filter('[data-date=' + selectedDate + ']').addClass('selected');
@@ -56,6 +87,15 @@ var Home = function() {
             $('<li class="Loading"><img src="/Static/Images/General/loading.gif" /><br />Loading...</li>').appendTo(eventList);
         }
         loadEventsForDate(selectedDate);
+
+        window.setTimeout(function() {
+            $('.Comment a[id=more]').attr('href', function()
+            {
+                return $(this).parent().parent().prev().attr('href');
+            }
+            );
+        }, 5000);
+
     }
 
     function loadEventsForDate(selectedDate) {
@@ -89,10 +129,10 @@ var Home = function() {
         locationImage.parent().attr('href', '/location/' + locationInfo.id + '/' + activeDate);
 
         locationInfo['eventDate'] = activeDate;
-        mixpanel.track_links('#LocationImageLink', 'trending event click - live site', locationInfo);
+//        mixpanel.track_links('#LocationImageLink', 'trending event click - live site', locationInfo);
         locationImage.bind('click', function() {
             toggleAttendance($(this).prev().find('.AttendingCount'));
-       //         mixpanel.track('trending event test');
+            //         mixpanel.track('trending event test');
         });
 
         var text = newLocation.find('.Comment').text();

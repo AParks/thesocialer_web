@@ -148,6 +148,10 @@ class NetworkJSON extends JSONApplicationBase {
     return true;
   }
   
+    //SELECT user_id FROM location_likes where location_id = :location_id
+//for each user sendShare (thesocialer, user_id)
+  
+  
   function shareToAllAs(Member $sendingUser, $locationId, $locationDate) {
     // only allows user 193 to send to all, for security purposes
     // right now user 193 is the official socialer account

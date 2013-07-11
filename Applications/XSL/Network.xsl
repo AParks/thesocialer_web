@@ -9,7 +9,12 @@
     <div id="MainBody">
       <div class="FriendsMain">
         <h1>Your Social Network</h1>
+        
        <button id='friend_request'>Friends</button>
+              <button id='invite'>Invite Friends</button>
+
+        <div id="profile_pics"></div>
+<div class="fb-facepile" data-app-id="327877070671041" data-max-rows="1" data-width="300"></div>
         
         <table id="FriendList">
         
@@ -24,11 +29,11 @@
           
         </table>
         <div class="UserSuggestions">
-       <!--   <h2>Members You Might Be Interested In</h2> -->
+          <h2>Members You Might Be Interested In</h2>
           <ul class="UserRecommendationList">
             <xsl:call-template name="UserRecommendationSkeleton" />
           </ul>
-	<!--  <div class="SeeMoreButton">See More Users</div> -->
+	  <div class="SeeMoreButton">See More Users</div>
         </div>
         <div class="clear"></div>
       </div>

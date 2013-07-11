@@ -8,10 +8,7 @@ FeaturedEventViewer = function(evt, userStatus) {
     function init( ) {
 
 
-
         $('#rightcontainer .UserPhoto').load(function() {
-            var min_host = $(this).height();
-            $('#host').css('min-height', min_host + 10);
 
             //make sure the border spans the entire height of the page
             var min = $('#rightcontainer').height();
@@ -53,7 +50,7 @@ FeaturedEventViewer = function(evt, userStatus) {
         //facebook share
         $('a[id=share]').attr('href', "https://www.facebook.com/dialog/feed?" +
                 "app_id=327877070671041" +
-                "&link=" +document.URL+
+                "&link=" + document.URL +
                 "&picture=https://thesocialer.com" + evt.markup +
                 "&name=" + evt.headline +
                 "&caption=" + evt.sub_headline +
@@ -76,13 +73,15 @@ FeaturedEventViewer = function(evt, userStatus) {
 
         //show part of the event description initially, and 
         //show the rest when user clicks on see more
-        $('#Description').append(evt.description.substring(0, 200));
-        var n = evt.description.length;
-        $('#SeeMore').click(function() {
+        // $('#Description').append(evt.description.substring(0, 200));
+        $('#Description').append(evt.description);
 
-            $('#SeeMore').css('display', 'none');
-            $('#More_Description').append(evt.description.substring(200, n));
-        });
+        //   var n = evt.description.length;
+        //   $('#SeeMore').click(function() {
+
+//            $('#SeeMore').css('display', 'none');
+        //           $('#More_Description').append(evt.description.substring(200, n));
+        //      });
 
         if (userStatus) {
             if (userStatus == "yes") {

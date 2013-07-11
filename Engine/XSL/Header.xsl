@@ -13,6 +13,7 @@
                 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
                 <meta http-equiv="Pragma" content="no-cache" />
                 <meta http-equiv="Expires" content="0" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <script type = "text/javascript" src="/Static/JavaScript/Plugins/mixpanel.js"></script>
                 <title>The Socialer</title>
                 <xsl:apply-templates select="CSS/file" />
@@ -21,7 +22,7 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 
             </head>
-            <body class="Socialer">
+            <body class="Socialer" onload='refresh()'>
 
 
                 <div id="fb-root"></div>
@@ -42,7 +43,12 @@
                         
                     </div>
                     <a href="/trending">
-                        <img title="The Socialer" src="/Static/Images/Logo.jpg" id="Logo" />
+                        
+                        <div>
+                            <div id='the'>the</div>
+                            <div id='title'> Socialer</div>
+                        </div>
+                        <!-- <img title="The Socialer" src="/Static/Images/Logo.jpg" id="Logo" /> -->
                         <span id="Beta"> BETA </span>
                     </a>
                     <div id="AccountSettingsContainer">
@@ -108,11 +114,6 @@
                                     </ul>
                                 </div>
                               
-                                
-
-
-
-                                
                                 
                             </xsl:when>
                             <xsl:otherwise>
@@ -298,7 +299,7 @@
                 
                 <div class="Footer">
 
-                   <!-- <a href="https://mixpanel.com/f/partner">
+                    <!-- <a href="https://mixpanel.com/f/partner">
                         <img style='position: fixed; bottom: 0; left: 0' src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" />
                     </a> -->
                     
