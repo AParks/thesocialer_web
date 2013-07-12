@@ -7,7 +7,7 @@
 */
 
 #img{
-   
+
     height: 350px;
     width: 100%;
     background: url('/Photos/Featured/Philadelphia-Fall.jpeg') repeat;
@@ -39,7 +39,7 @@ body{
 
 #popup-desc{
     margin-right: 8%;
-    line-height: 45px;
+    line-height: 25px;
     float:right;
     text-align: center;
     text-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);

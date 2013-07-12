@@ -43,7 +43,7 @@ input[type="color"]:focus,
 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
-    width: 900px;
+    width: 75%;
     margin: 0 auto 0;
     background-color: #fff;
     border-radius: 0 0 25px 25px;
@@ -71,7 +71,7 @@ strong {
 #Header
 {
     background-color: #FFF;
-    width: 900px;
+    width: 75%;
     margin: auto;
     margin-top: 5px;
     padding-top: 5px;

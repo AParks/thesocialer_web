@@ -523,7 +523,7 @@ input[type="checkbox"]{
 
 #Navigation .navcontainer
 {
-    width: 880px;
+    width: 75%;
     margin: auto;
     vertical-align: middle;
     /*   padding: 3px 10px; */
@@ -558,6 +558,8 @@ a:hover{
     background-image: -webkit-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: -o-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: linear-gradient(to bottom, #8ba3c9, #6887b9);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ba3c9', endColorstr='#6887b9', GradientType=0);
+
 
 }
 

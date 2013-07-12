@@ -1,7 +1,14 @@
 
 /*
-    host info
+    popups info
 */
+
+
+
+#MainBody{
+    width: 900px !important;
+}
+
 #host > div{
     width: 200px;
     margin-left: 10px;

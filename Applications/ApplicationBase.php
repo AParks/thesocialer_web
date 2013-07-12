@@ -20,12 +20,13 @@ abstract class ApplicationBase implements IApplication {
         $this->assetsManager->addJavaScript('SocialInboxManager');
         $this->assetsManager->addJavaScript('bootstrap');
         $this->assetsManager->addJavaScript('uservoice');
+        $this->assetsManager->addJavaScript('viewportSize-min');
 
 
         $this->assetsManager->addCSS('Main');
         $this->assetsManager->addCSS('Header');
         $this->assetsManager->addCSS('SocialInboxManager');
-        $this->assetsManager->addCSS( 'bootstrap-responsive' );
+        $this->assetsManager->addCSS('bootstrap-responsive');
 
 
         $this->display = DisplayManager::getInstance();
@@ -40,9 +41,9 @@ abstract class ApplicationBase implements IApplication {
 
         if ($this->viewer->user != null) {
             $viewerDetails['userId'] = $this->viewer->user->userId;
-             if ($this->viewer->user->photo->path == 'facebook'){
+            if ($this->viewer->user->photo->path == 'facebook') {
                 $viewerDetails['photo'] = 'https://graph.facebook.com/' . $this->viewer->user->fb_id . '/picture?type=square';
-             }
+            }
             else
                 $viewerDetails['photo'] = $this->viewer->user->photo->paths[Photo::SIZE_SMALL];
             $viewerDetails['firstName'] = $this->viewer->user->firstName;
@@ -55,7 +56,6 @@ abstract class ApplicationBase implements IApplication {
         }
 
         $this->assetsManager->addInitJavaScript('var Viewer = ' . json_encode($viewerDetails) . ';');
-        
     }
 
     public function setRequestValues($values) {
@@ -81,7 +81,7 @@ abstract class ApplicationBase implements IApplication {
         }
     }
 
-    protected function email($html , $subject, $to_email, $from_email, $from_password) {
+    protected function email($html, $subject, $to_email, $from_email, $from_password) {
         require_once "Mail.php";
         require_once "Mail/mime.php";
 
@@ -92,15 +92,15 @@ abstract class ApplicationBase implements IApplication {
         $options['text_charset'] = 'gb2312';
         $options['head_charset'] = 'UTF-8';
 
-        $headers['From'] = '"The Socialer" <'.$from_email.'>';
+        $headers['From'] = '"The Socialer" <' . $from_email . '>';
         $headers['To'] = '<' . $to_email . '>';
         $headers['Subject'] = $subject;
-        $headers['Reply-To'] = '"The Socialer" <.'.$from_email.'>';
+        $headers['Reply-To'] = '"The Socialer" <.' . $from_email . '>';
         $host = "ssl://smtp.googlemail.com";
         $port = "465";
         $smtp = Mail::factory('smtp', array('host' => $host, 'port' => $port, 'auth' => true, 'username' => $from_email, 'password' => $from_password));
-    
-        
+
+
         $mime = new Mail_mime();
 
         $mime->setHTMLBody($html);
@@ -116,6 +116,5 @@ abstract class ApplicationBase implements IApplication {
         }
         return true;
     }
- 
 
 }
