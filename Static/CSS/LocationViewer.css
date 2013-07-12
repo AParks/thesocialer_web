@@ -132,6 +132,8 @@
     background-image: -webkit-linear-gradient(top, #81d34f, #87b968);
     background-image: -o-linear-gradient(top, #81d34f, #87b968);
     background-image: linear-gradient(to bottom, #81d34f, #87b968);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#81d34f', endColorstr='#87b968', GradientType=0);
+
 }
 .LocationLikeButton:hover, .LocationLikeNotLoggedIn:hover
 {
@@ -141,12 +143,14 @@
     background-image: -webkit-linear-gradient(top, #7de43e, #8ba879);
     background-image: -o-linear-gradient(top, #7de43e, #8ba879);
     background-image: linear-gradient(to bottom, #7de43e, #8ba879);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7de43e', endColorstr='#8ba879', GradientType=0);
+
 }
 
 .LocationLikeButton.active:hover
 {
     background-color: red !important;
-    
+
     background-image: -moz-linear-gradient(top, #e43e7d, #e43e53) !important;
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e43e7d), to(#e43e53)) !important;
     background-image: -webkit-linear-gradient(top, #e43e7d, #e43e53) !important;

@@ -17,7 +17,8 @@ var Thread = function( ){
     
     function sendCallback( response ) {
 	var $result;
-	if ( response.success === true ) {
+                var resp = $.parseJSON(response);
+	if ( resp.success) {
 	    $result = $('<span class="SendResult">Message sent!</span>');
 	    location.reload(true);
 	}
