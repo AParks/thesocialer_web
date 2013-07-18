@@ -23,6 +23,16 @@
 
 }
 
+@media screen and (max-device-width: 480px) {
+    .navcontainer > .btn{
+        display: inline-block !important;
+    }
+    #AccountSettingsContainer > .btn,
+    #AccountSettingsContainer > span{
+        display: none;
+    }
+
+}
 
 
 /* Message Count */
@@ -523,12 +533,13 @@ input[type="checkbox"]{
 
 #Navigation .navcontainer
 {
-    width: 75%;
+    width: 900px;
     margin: auto;
     vertical-align: middle;
     /*   padding: 3px 10px; */
 }
 #Navigation {
+width: 100%;
     background-color: #c2c2c2;
     /* background-color: #1b1b1b; */
     /*    background-image: -moz-linear-gradient(top, #222222, #111111);
@@ -564,14 +575,21 @@ a:hover{
 }
 
 
-#Navigation .NavigationLink
+.navcontainer > .btn{
+    display: none;
+}
+
+#Navigation .NavigationLink{
+    display: inline-block;
+}
+#Navigation .NavigationLink,
+.navcontainer > .btn
 {
     line-height: 30px;
     color: white;
     font-size: 15px;
     padding-left: 13px;
     padding-right: 13px;
-    display: inline-block;
 }
 
 .NavigationLink.first

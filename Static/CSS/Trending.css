@@ -1,6 +1,6 @@
 
 #img{
-   
+
     height: 350px;
     width: 100%;
     background: url('/Photos/Featured/Philadelphia-Fall.jpeg') repeat;
@@ -14,7 +14,12 @@ body{
 
 }
 #MainBody, #Header {
+    width: 75% !important;
     background-color: #eef2f7;
+}
+
+#Navigation .navcontainer, .Footer{
+        width: 75% !important;
 
 }
 
@@ -44,6 +49,7 @@ body{
 {
     padding:10px 20px;
 }
+
 
 .WelcomeBack {
     font-size: 24pt;
@@ -102,19 +108,38 @@ body{
 
 }
 
-#EventDays li {
-    color: white;
-    padding-left: 15px;
-    padding-right: 15px;
-}
 .WelcomeBack > div{
     font-size: 12pt;
     color: #666666;
 }
 
-#EventDays {
-    display:inline-block;
+
+/* responsive */
+@media screen and (max-device-width: 480px) {
+    #MainBody{
+        width: 100% !important
+    }
+    
+    #img{
+        display: none;
+    }
+    
 }
+
+#EventDays {
+    width: 100%;
+    max-width: 100%;
+}
+  #EventDays:before,
+  #EventDays:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+  #EventDays:after {
+    clear: both;
+  }
+
 
 #EventDays li {
     background-color: #c2c2c2;
@@ -122,10 +147,15 @@ body{
     text-align: center;
     display:inline-block;
     font-size: 14pt;
-    border-right: #666 solid 1px;
-
     cursor: pointer;
-    padding:5px 25px;
+   /* padding:5px 25px; */
+    padding-top: 5px;
+    width: 22%;
+    margin-right: 4%;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    min-width: 130px;
+    float: left;
 }
 
 #EventDays li:hover,
@@ -145,15 +175,11 @@ body{
 }
 
 #EventDays li.Day1 {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
 }
 
 
 #EventDays li.Day4 {
-    border-right: none !important;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    margin-right: 0px !important;
 }
 
 h2 {

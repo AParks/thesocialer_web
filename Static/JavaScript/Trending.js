@@ -24,15 +24,34 @@ var Home = function() {
     }
 
     function calculateMargins() {
+        if($('#EventDays').parent().width() <= 591){
+            $('#EventDays').width(130); 
+        }
+        else{
+            $('#EventDays').css('width', '100%'); 
+        }
+        var screen_width = viewportSize.getWidth();
+        $('body').width(screen_width);
 
-        var screen_width =  viewportSize.getWidth();
         var outer_width = 0.75 * screen_width;
         var singleTile = 286;
-        var numTiles = Math.floor(outer_width / singleTile);
-        var inner_width = numTiles * singleTile;
-        var marginLeft = parseInt((outer_width - inner_width) / 2);
-        $('.Home').css('margin-left', marginLeft);
 
+        var numTiles = Math.floor(outer_width / singleTile);
+        console.log('tiles' + numTiles);
+        if (!numTiles) {
+            numTiles = 1;
+            outer_width = screen_width;
+            $('#MainBody').width(screen_width);
+
+           // $('.Home').width(286);
+
+        }
+        var inner_width = numTiles * singleTile;
+                console.log('outer: ' + outerWidth);
+                console.log('innner: ' + innerWidth);
+
+        var marginLeft = parseInt((outer_width - inner_width) / 2);
+            $('.Home').css('margin-left', marginLeft);
         marginLeft_event_days = parseInt((outer_width - $('#EventDays').width()) / 2);
         $('.WelcomeBack').css('margin-left', marginLeft_event_days);
 
@@ -180,14 +199,14 @@ var Home = function() {
                         $(this).find('.CommentContainer').animate({bottom: '-6px'}, 150);
                     }
 
-                 /*   if (($(this).find('.CommentContainer').length == 0)) {
-                        var trend = $(this).find('.TrendContainer');
-                        if ((trend.length == 0)) {
-                            $(this).find('.Event').append('<img src="/Static/Images/trend.png" class="TrendContainer" />');
-                            trend = $(this).find('.TrendContainer');
-                        }
-                        trend.animate({bottom: '0'}, 300);
-                    } */
+                    /*   if (($(this).find('.CommentContainer').length == 0)) {
+                     var trend = $(this).find('.TrendContainer');
+                     if ((trend.length == 0)) {
+                     $(this).find('.Event').append('<img src="/Static/Images/trend.png" class="TrendContainer" />');
+                     trend = $(this).find('.TrendContainer');
+                     }
+                     trend.animate({bottom: '0'}, 300);
+                     } */
                 },
                 function() {
                     if (opacitySupport) {

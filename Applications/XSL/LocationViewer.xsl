@@ -6,7 +6,6 @@
 
   <xsl:template match="/LocationViewer">
     <div class="LocationViewer" id="MainBody">
-
       <div id="leftcontainer">
 	<div class="LocationImage">
 	  <div class="LocationDetails" >
@@ -113,14 +112,18 @@
               <xsl:when test="./Viewer/@userId = -1">
               <div>
                    <div class="LocationLikeNotLoggedIn"> 
-                      <span id='plus'>+</span>   
+                      <span id='plus'>+</span>
+                      <div id='left-border'></div>
+                      <div id='right-border'></div>  
                       <span id='follow'>Follow</span>
                   </div>
               </div>
               </xsl:when>
 	      <xsl:otherwise>
                   <div class="LocationLikeButton"> 
-                      <span id='plus'>+</span>   
+                      <span id='plus'>+</span>
+                      <div id='left-border'></div>
+                      <div id='right-border'></div>  
                       <span id='follow'>Follow</span>
                   </div>
 	      </xsl:otherwise>

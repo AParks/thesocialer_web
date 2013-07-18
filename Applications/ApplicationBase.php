@@ -27,6 +27,10 @@ abstract class ApplicationBase implements IApplication {
         $this->assetsManager->addCSS('Header');
         $this->assetsManager->addCSS('SocialInboxManager');
         $this->assetsManager->addCSS('bootstrap-responsive');
+        $this->assetsManager->addCSS('font-awesome.min');
+        $this->assetsManager->addCSS('font-awesome-ie7.min');
+
+
 
 
         $this->display = DisplayManager::getInstance();

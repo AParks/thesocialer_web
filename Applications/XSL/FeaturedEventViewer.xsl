@@ -122,15 +122,9 @@
                             @
                             <xsl:value-of select="./DateObject/@time" />
                         </div>
-                        <span id="dollar_sign">$</span>
-                        <span id="total_price">
-                            <xsl:value-of select="./FeaturedEvent/@price" /> 
-                        </span>
-                        <div id='fee_text'>
+                       <!-- <div id='fee_text'>
                             + $<span id='fee'></span> in processing fees
-                        </div>
-                        
-                        <br/>
+                        </div> -->
                         
                         <xsl:choose>
                             <xsl:when test="./FeaturedEvent/@total_spots &lt;= ./FeaturedEvent/@spots_purchased">
@@ -161,7 +155,10 @@
                                 <xsl:choose>
 
                                     <xsl:when test="./Viewer/@userId != -1">                                
-                                        <button id="payButton" class="joinbutton">Book Now
+                                        <button id="payButton" class="joinbutton">Pay
+                                            $<span id="total_price">
+                                                <xsl:value-of select="./FeaturedEvent/@price" /> 
+                                            </span>
 
                                             <form id='charge' action="/charge" method="post">
                                                 <script
@@ -190,7 +187,10 @@
                                         </button>
                                     </xsl:when>
                                     <xsl:otherwise>
-                                        <button id="not-logged-in-payButton" class="joinbutton">Book Now</button>
+                                        <button id="not-logged-in-payButton" class="joinbutton">Pay
+                                            <xsl:value-of select="./FeaturedEvent/@price" /> 
+
+                                        </button>
                                     </xsl:otherwise>
                                 </xsl:choose>
                             </xsl:otherwise>

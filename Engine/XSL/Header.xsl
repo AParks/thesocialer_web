@@ -22,7 +22,7 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 
             </head>
-            <body class="Socialer" onload='refresh()'>
+            <body class="Socialer">
 
 
                 <div id="fb-root"></div>
@@ -117,7 +117,8 @@
                                 
                             </xsl:when>
                             <xsl:otherwise>
-                                <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login </a>|
+                                <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login</a>
+                                <span>|</span>
                                 <a href="#myModal2" role="button" class="btn" data-toggle="modal" >Sign Up</a>
                             </xsl:otherwise>
                         </xsl:choose>
@@ -346,8 +347,11 @@
             <a href="/explore" class="second NavigationLink">Browse</a>
             <a href="/popups" class="third NavigationLink">Socialer Popups</a>
             <xsl:choose>
-               
-                <xsl:when test="./Viewer/@userId != -1">
+                <xsl:when test="./Viewer/@userId = -1">
+                    <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login </a>
+                    <a href="#myModal2"  role="button" class="btn" data-toggle="modal" >Sign Up</a>
+                </xsl:when>
+                <xsl:otherwise>
                     <a href="/search" class="sixth last NavigationLink">Search</a>
                     <div id="SocialInbox">
                         <div class="clickRegion">
@@ -377,7 +381,7 @@
                         </ol>
                     </div>
         
-                </xsl:when>
+                </xsl:otherwise>
             </xsl:choose>      
         </div>
     </xsl:template>

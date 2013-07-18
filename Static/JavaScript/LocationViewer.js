@@ -76,7 +76,7 @@ LocationViewer = function(loc, date, userStatus) {
     }
 
     function follow(button) {
-       // mixpanel.track('follow click - live site', {'userId' : Viewer.userId});
+        // mixpanel.track('follow click - live site', {'userId' : Viewer.userId});
         $.ajax({
             url: '/network/json/likelocation',
             type: 'GET',
@@ -93,7 +93,7 @@ LocationViewer = function(loc, date, userStatus) {
     }
 
     function unfollow(button) {
-      //  mixpanel.track('unfollow click - live site', {'userId' : Viewer.userId});
+        //  mixpanel.track('unfollow click - live site', {'userId' : Viewer.userId});
         $.ajax({
             url: '/network/json/unlikelocation',
             type: 'GET',
@@ -105,7 +105,7 @@ LocationViewer = function(loc, date, userStatus) {
             }
         });
         $('.LocationLikeCount').html(--loc.likes);
-        button.removeClass('active').html('<span id="plus">+</span><span id="follow">Follow</span>');
+        button.removeClass('active').html('<span id="plus">+</span><div id="left-border"></div><div id="right-border"></div><span id="follow">Follow</span>');
         button.unbind('mouseenter mouseleave');
     }
 
@@ -135,7 +135,7 @@ LocationViewer = function(loc, date, userStatus) {
         });
 
         $('.LocationLikeButton').bind('click', function() {
-          
+
             if ($(this).hasClass('active'))
                 unfollow($(this));
             else

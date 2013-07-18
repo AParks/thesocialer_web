@@ -3,7 +3,7 @@ body
     background: url(/Static/Images/Background.jpg) no-repeat;
         font-family: comfortaaregular;
 
-   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: normal;
     background-color: #0B233F;
@@ -11,7 +11,7 @@ body
 }
 #MainBody *{
   /*  font-family: comfortaaregular;*/
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
 
 textarea:focus,
@@ -43,7 +43,8 @@ input[type="color"]:focus,
 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
-    width: 75%;
+    
+    width: 900px;
     margin: 0 auto 0;
     background-color: #fff;
     border-radius: 0 0 25px 25px;
@@ -63,7 +64,7 @@ strong {
 
 #Navigation
 {
-    height: 30px;
+   /* height: 30px;*/
     /* #0B233F */
     background-color: black;
 }
@@ -71,7 +72,7 @@ strong {
 #Header
 {
     background-color: #FFF;
-    width: 75%;
+    width: 900px;
     margin: auto;
     margin-top: 5px;
     padding-top: 5px;
@@ -223,7 +224,7 @@ button.standard
 
 .Footer
 { 
-    width:850px;
+    width:900px;
     margin: 0 auto;
     color: #666;
 }

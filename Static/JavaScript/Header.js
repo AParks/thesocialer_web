@@ -5,12 +5,6 @@ Header.showFailedLogin = function( ) {
     $('#QuickLoginFormLoginFailed').show( );
     $('#QuickLoginForm').show( );
 }
-function refresh() {
-
-    //    var minutes = 60 * 20 * 100; //60 sec/min * 20 min * 100 ms/sec
-    //      setTimeout("location.reload(true)", minutes);
-}
-
 $(function() {
 
 
@@ -31,10 +25,16 @@ $(function() {
             tab_position: 'bottom-right',
             tab_inverted: false
         }]);
+ /* 
+  var url = document.URL;
+    var start = url.indexOf('m/');
+    var referring = url.substring(start + 4, url.length);
+    mixpanel.track_links('.NavigationLink.first', 'around the city click - live site', {"previous page": referring, "user_id": Viewer.userId});
+    mixpanel.track_links('.NavigationLink.second', 'browse tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
+    mixpanel.track_links('.NavigationLink.third', 'popup tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
+    mixpanel.track_links('.NavigationLink.sixth', 'search tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
 
-
-
-
+*/
 
     //facebook logout
     $('#fb_logout').click(function() {

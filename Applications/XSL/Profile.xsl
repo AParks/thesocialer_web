@@ -35,7 +35,6 @@
                 <xsl:value-of select="Member/@firstName" />
                 <xsl:text> </xsl:text>
                 <xsl:value-of select="Member/@lastName" />
-                <xsl:text>'s Profile</xsl:text>
             </div>
             <div id="LeftColumn">
                 <xsl:call-template name="LeftColumn" />
@@ -103,8 +102,21 @@
     </xsl:template>
 
     <xsl:template name="RightColumn">
+        <div class="ProfileStats"> 
+            <span id='plus'><i class="icon-map-marker"></i>
+                <span> </span>
+                <xsl:value-of select="./Member/@Location" />
+            </span>
+            <div id='border'></div>
+            <span id='plus'>College: </span>
+            <div id='border'></div>
+            <span id='plus'>
+                <i class="icon-facebook"></i>
+            </span>
+        </div>
+        <br/>
         <div class="UserInfo">
-            <xsl:call-template name="ProfileField">
+         <!--   <xsl:call-template name="ProfileField">
                 <xsl:with-param name="field">FirstName</xsl:with-param>
                 <xsl:with-param name="displayField">First</xsl:with-param>
                 <xsl:with-param name="value" select="./Member/@firstName" />
@@ -113,7 +125,7 @@
                 <xsl:with-param name="field">LastName</xsl:with-param>
                 <xsl:with-param name="displayField">Last</xsl:with-param>
                 <xsl:with-param name="value" select="./Member/@lastName" />
-            </xsl:call-template>
+            </xsl:call-template> -->
 
             <xsl:call-template name="ProfileField">
                 <xsl:with-param name="field">College</xsl:with-param>
@@ -126,13 +138,6 @@
                 <xsl:with-param name="value" select="./Member/@Location" />
             </xsl:call-template>
 
-            <xsl:call-template name="ProfileField">
-                <xsl:with-param name="field">AboutMe</xsl:with-param>
-                <xsl:with-param name="displayField">About Me</xsl:with-param>
-                <xsl:with-param name="value" select="./Member/@AboutMe" />
-            </xsl:call-template>
-
-
             <div class="clear"></div>
             <xsl:if test="./Viewer/Member/@userId = Member/@userId">
                 <button id="SaveProfile" class="standard Teal">Save My Profile</button>
@@ -140,16 +145,32 @@
             </xsl:if>
         </div>
 
+ <div class="ProfileBox">
+            <h2>
+                <xsl:text>About Me</xsl:text>
+                <xsl:if test="./Viewer/Member/@userId = Member/@userId">
+                    <span id='edit'>
+                        <i class="icon-edit icon-large"></i>
+                    </span>
+                </xsl:if>
+                
+            </h2>
+               <textarea id='aboutme' readonly='true'>
+                        <xsl:value-of select="Member/@AboutMe" />
+               </textarea> 
+           
+            <div class="clear"></div>
+        </div>
         <div class="ProfileBox hide">
             <h2>
                 <xsl:text>Places </xsl:text>
                 <xsl:choose>
                     <xsl:when test="./Viewer/Member/@userId = Member/@userId">
-                        <xsl:text>You Like</xsl:text>
+                        <xsl:text>You Follow</xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:value-of select="Member/@firstName" />
-                        <xsl:text> Likes</xsl:text>
+                        <xsl:text> Follows</xsl:text>
                     </xsl:otherwise>
                 </xsl:choose>
             </h2>
@@ -162,11 +183,22 @@
 
         <div class="ProfileBox hide">
             <h2>
-                <xsl:text>Past Events Attended</xsl:text>
+                <xsl:text> Popups Attended</xsl:text>
             </h2>
             <ol id="PastEventsAttended">
                 <xsl:call-template name="PastEventSkeleton" />
             </ol>
+            
+            <div class="clear"></div>
+        </div>
+         <div class="ProfileBox hide">
+            <h2>
+                <xsl:text>PopUps Hosted</xsl:text>
+            </h2>
+            <ol id="PastEventsAttended">
+                <xsl:call-template name="PastEventSkeleton" />
+            </ol>
+            
             <div class="clear"></div>
         </div>
 

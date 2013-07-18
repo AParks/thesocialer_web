@@ -47,28 +47,29 @@
                         <span>today</span>
                         <b class="caret"></b>
 
-                    </a>
-                    <ul id="EventDays" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                   -->
-	
-                       <ol id="EventDays">
-                        <xsl:for-each select="EventDays/Day">
+ </a>
+ <ul id="EventDays" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                -->
+           
+
+                <ol id="EventDays">
+                    <xsl:for-each select="EventDays/Day">
                             <li>
-                                    <xsl:attribute name="class">
-                                        <xsl:text>Day</xsl:text>
-                                        <xsl:value-of select="position()" />
-                                        <xsl:if test="@index = 0">
-                                            <xsl:text> selected</xsl:text>
-                                        </xsl:if>
-                                    </xsl:attribute>
-                                    <xsl:attribute name="data-date">
-                                        <xsl:value-of select="." />
-                                    </xsl:attribute>
-                                    <xsl:value-of select="@text" />
+                                <xsl:attribute name="class">
+                                    <xsl:text>Day</xsl:text>
+                                    <xsl:value-of select="position()" />
+                                    <xsl:if test="@index = 0">
+                                        <xsl:text> selected</xsl:text>
+                                    </xsl:if>
+                                </xsl:attribute>
+                                <xsl:attribute name="data-date">
+                                    <xsl:value-of select="." />
+                                </xsl:attribute>
+                                <xsl:value-of select="@text" />
                                
                             </li>
-                        </xsl:for-each>
-                    </ol>
+                    </xsl:for-each>
+                </ol>
             </div>
       
             <div class="Home">

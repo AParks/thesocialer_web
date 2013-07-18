@@ -5,10 +5,6 @@
 
 
 
-#MainBody{
-    width: 900px !important;
-}
-
 #host > div{
     width: 200px;
     margin-left: 10px;
@@ -89,11 +85,7 @@
     /*    -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7); */
     /*    box-shadow:  0px 1px 4px 1px #6888b9 */
 }
-.booking  #total_price,
-.booking  #dollar_sign{
-    font-size: 54px;
-    font-family: comfortaabold;
-}
+
 .booking  #fee_text{
     margin-top: 10px;
     font-size: 14px;
@@ -102,7 +94,7 @@
 
 .booking  #date{
     font-size: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     font-family: comfortaaregular;
 }
 

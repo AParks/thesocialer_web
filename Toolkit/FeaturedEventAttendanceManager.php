@@ -36,7 +36,6 @@ class FeaturedEventAttendanceManager extends ATransformableObject {
         }
 
         foreach ($query->fetchAll(PDO::FETCH_OBJ) as $row) {
-            error_log('UER IDDDDD' . $row->user_id);
             $this->attendanceStatuses[] = new Member($row->user_id);
         }
     }

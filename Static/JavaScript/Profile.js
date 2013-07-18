@@ -23,8 +23,15 @@ var Profile = function( user ) {
 	getUserLikedLocations();
 	$photos.bind('click', showPhoto);  
 	$('#SendMessage').bind('click', showSendMessage);
+ 
+        $('#edit').bind('click', function(){
+            $(this).html('<i class="icon-save icon-large"></i>');
+            $('textarea').removeAttr('readonly');
+            $('textarea').addClass('editable');
+              $('textarea').focusout(function() {});
+
+    });
     }
-    
     function showSendMessage( ) {
 	MessageSender.showPopup(user);
 	return false;
@@ -160,8 +167,43 @@ var Profile = function( user ) {
     function getUserPastEvents( ) {
 	attendanceManager.getPastAttendedEvents( user.userId, 3, 0, receiveUserPastEvents ); 
     }
-    
     function receiveUserPastEvents( response ) {
+	var $pastEventsAttended = $( '#PastEventsAttended' );
+	var newEvent;
+	var ev;
+	var dateOfAttendance;
+	var eventLink;
+	var hasPastEvents = false;
+	
+	for ( var i = 0, len = response.pastEvents.length; i < len; i++ ){
+	    ev = response.pastEvents[i];
+            console.log(ev);
+	 //   dateOfAttendance = new Date(ev.date * 1000);
+	    eventLink = '/location/featured/' + ev.featured_event_id; 
+	    
+	    newEvent = $pastEventSkeleton.clone(true); 
+	    
+	    newEvent.find('a').text( ev.headline ).attr('href', eventLink); 
+	    newEvent.find('button').bind('click',function( ){
+		top.location = eventLink;
+	    });
+	    newEvent.find('div.PastEventInfo').html(ev.headline + ', '
+						     + ev.description );
+	    
+	    if ( i + 1 === len ){
+		newEvent.addClass('last');
+	    }
+	    
+	    newEvent.appendTo( $pastEventsAttended );
+	    hasPastEvents = true;
+	}
+	
+	if ( hasPastEvents === true ) {
+	    $pastEventsAttended.parent( ).removeClass('hide');
+	}
+    }
+    
+  /*  function receiveUserPastEvents( response ) {
 	var $pastEventsAttended = $( '#PastEventsAttended' );
 	var newEvent;
 	var ev;
@@ -197,7 +239,7 @@ var Profile = function( user ) {
 	if ( hasPastEvents === true ) {
 	    $pastEventsAttended.parent( ).removeClass('hide');
 	}
-    }
+    }*/
     
     function showPhoto( ) {
 	$(document).unbind('keyup.PhotoPopup').bind('keyup.PhotoPopup', function(e){

@@ -7,7 +7,6 @@
 */
 
 #img{
-
     height: 350px;
     width: 100%;
     background: url('/Photos/Featured/Philadelphia-Fall.jpeg') repeat;
@@ -20,6 +19,7 @@ body{
     background-color: #eef2f7 !important;
 
 }
+
 #MainBody, #Header {
     background-color: #eef2f7;
 
@@ -47,7 +47,14 @@ body{
     color: white;
     padding:20px;
 }
-
+#LocationList{
+      -moz-column-count: 2;
+    -moz-column-gap: 0px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 0px;
+    column-count: 2;
+    column-gap: 0px;
+}
 #LocationList .PopUpLocationPicture {    
     width: 100% !important;
     /*  height: auto;*/
@@ -59,42 +66,192 @@ body{
     margin-top: 61px;
 
 }
+
 #LocationList li.loc 
 {
     /*   margin-left: 20px;*/
     width: 430px !important; 
-    height: 300px ! important; 
+    height: auto ! important; 
     background-color: #262626;
     background-size: 100% 100%;
 
 }
-#LocationList li.loc  a
+#LocationList li.loc > a
 {
     width: 430px;
-    height: 300px;
     display: inline-block;
-    background-size: 100% 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
 
 }
+#LocationList li.loc > a > img{
+    width: 100%;
+    margin-bottom: 0px;
+    display: inline-block;
+}
+
+
+.Host{
+    padding: 2px;
+    background-color: white;
+    min-height: 50px;
+    overflow-y: hidden;
+
+}
+.Host .top{
+    height: 50%
+}
+.Host .bottom{
+    height: 50%;
+}
+
+.Host .attendees{
+    width: 71%;
+    float: right;
+}
+.Host .attendees_more{
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+.UserPhoto, .spots{
+    margin-right: 3px;
+    margin-top: 3px;
+}
+.UserPhoto{
+    border-radius: 50%;
+    width: 15.7%;
+    height: 15.7%;
+}
+.spots{
+    width: 12%;
+    line-height: 10px;
+    float: right;
+    vertical-align: text-bottom;
+    color: #88b968;
+    text-align: center;
+    display: inline-block;
+}
+
+
+.spots >span{
+    color: #666;
+}
+
+
+
+#info{
+    float: right;
+    width: 51%;
+}
+#host{
+    background-size: 44px 44px;
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 37%;
+    font-size: 21px;
+    line-height: 44px;
+    height: 44px;
+    float: left;
+    font-family: comfortaaregular;
+    display: block;
+    padding-left: 50px;
+}
+#info > div{
+    display: inline-block;
+    text-align: center;
+    width: 25%;
+    color: #666;
+    font-size: 10pt;
+}
+
+#info > div > i{
+    color: #88b968;
+}
+
+.Host ::-webkit-scrollbar
+{
+    width:9px;
+    height:9px;
+}
+
+.Host ::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius:8px;
+}
+
+.Host ::-webkit-scrollbar-thumb:horizontal{
+    width:50px;
+    background-color:transparent;
+    -webkit-border-radius:8px;
+}
+.Host ::-webkit-scrollbar-thumb:horizontal:hover
+{
+    background-color:#88b968;
+}
+
+
 
 .TitleLocationContainer 
 {
-    /* top:-10px !important;*/
-    width:100% !important; 
-    /* background-color: #262626 !important;*/
+    width:100% !important;
     border-bottom: 3px solid #6888B9;
     padding: 0px !important;
+    background: rgba(255,255,255,0.9);
+    color: #404040; 
 }
-.EventTitle {
-    padding: 15px;
-    /*    font-size: 32pt !important;*/
 
+
+.EventTitle {
+    padding-left: 15px;
+    padding-right: 15px;
+    /*    font-size: 32pt !important;*/
+}
+.EventTitle > div{
+    padding: 20px 5px;
+    width: 85%;
 }
 .EventPrice {
+    color: #88b968;
     float: right;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(50, 50, 50 ,1 );
 
+
+    background-color: #fafafa;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+    background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+    background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+    background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+    background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+    border: 1px solid #cccccc;
+
+    border-bottom-color: #bbb;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+}
+.EventPrice:hover {
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.75);
+    background-image: none;
+
+    background-color: #e6e6e6;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
 }
 
 

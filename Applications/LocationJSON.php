@@ -136,9 +136,10 @@ class LocationJSON extends JSONApplicationBase {
 
     foreach ( $pastAttendedEvents as $event )
     {
-      $eventInfo = $event->location->getPublicProperties( );
-      $eventInfo['date'] = $event->date;
-      $eventInfo['attendanceStatus'] = $event->attendanceStatus;
+        $eventInfo = $event->getPublicProperties();
+     // $eventInfo = $event->location->getPublicProperties( );
+    //  $eventInfo['date'] = $event->date;
+    //  $eventInfo['attendanceStatus'] = $event->attendanceStatus;
       $response[] = $eventInfo;
     }
 

@@ -1,8 +1,8 @@
 #MainBody {
     padding: 20px;
 }
- ol, ul {
-  list-style: none;
+ol, ul {
+    list-style: none;
 } 
 #LeftColumn {
     float: left;
@@ -35,7 +35,7 @@
 }
 
 .UserInfo .value input {
-    
+
     border: 0;
     width: 200px;
     font-family: verdana,arial,sans-serif;
@@ -130,6 +130,40 @@
     border-top: 1px solid #B2B2B2;
     margin: 5px 0;
     clear: both;
+}
+.ProfileBox #edit{
+    color: #666;
+    float: right;
+}
+.ProfileBox #edit:hover{
+    color: #b97168;
+}
+.ProfileBox textarea{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    resize: none;
+    width: 100%;
+    height: 100px;
+    overflow-y: scroll;
+    border: none; 
+    webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    background-color: transparent;
+}
+
+.ProfileBox textarea.editable{
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
 .ProfileBox.Photos {
@@ -269,7 +303,7 @@
 }
 
 #LikedLocations li .LocationName {
-  
+
 }
 
 #PastEventsAttended button {
@@ -379,4 +413,38 @@
     right:-10px;
     top:-10px;
     cursor:pointer;
+}
+
+.ProfileStats div[id=border]{
+    width: 1%;
+    height: 100%;
+    display: inline-block;
+    background-color: #8f978a;
+        float: left;
+
+}
+
+.ProfileStats span[id=plus]{
+    float: left;
+    width: 32%;
+}
+.ProfileStats span[id=follow]{
+    width: 64%;
+    text-align: center;
+    float: right;
+}
+.ProfileStats
+{
+    text-align: center;
+
+    margin-left: 15px;
+    border-radius: 15px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    background-color: #81d34f;
 }

@@ -94,5 +94,6 @@ class FeaturedEvent extends ATransformableObject {
 
         return $properties;
     }
+    
 
 }

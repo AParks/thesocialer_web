@@ -52,9 +52,9 @@ class ChargeCard extends ApplicationBase {
 
                     // set your secret key: remember to change this to your live secret key in production
                     // see your keys here https://manage.stripe.com/account
-                       Stripe::setApiKey("sk_test_i0kS1LRFqvmuGmYLQO3VzFCH");
+                     //  Stripe::setApiKey("sk_test_i0kS1LRFqvmuGmYLQO3VzFCH");
 
-                    //Stripe::setApiKey("sk_live_oZAmTuyJwbxUWN0DYMoCEQgT");
+                    Stripe::setApiKey("sk_live_oZAmTuyJwbxUWN0DYMoCEQgT");
 
                     // Charge the order:
 
