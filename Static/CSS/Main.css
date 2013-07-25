@@ -43,7 +43,6 @@ input[type="color"]:focus,
 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
-    
     width: 900px;
     margin: 0 auto 0;
     background-color: #fff;
@@ -61,55 +60,6 @@ strong {
 }
 
 
-
-#Navigation
-{
-   /* height: 30px;*/
-    /* #0B233F */
-    background-color: black;
-}
-
-#Header
-{
-    background-color: #FFF;
-    width: 900px;
-    margin: auto;
-    margin-top: 5px;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    position: relative;
-}
-
-#Header .Right
-{
-    float: right;
-}
-#Header > a div{
-    font-family: comfortaaregular;
-    color: #666;
-    
-}
-#Header > a > div{
-    display: inline-block;
-    margin-left: 45px;
-    
-} 
-#Header > a{
-    background: url('/Photos/favicon.png') no-repeat;
-    background-size: 50px 50px;
-    background-position: left;
-    display: block;
-    width: 300px;
-}
-#Header #the{
-    position: relative;
-    left: 20px;
-    font-size: 20px;
-}
-#Header #title{
-    font-size: 42px;
-    font-weight: bold;
-}
 
 h1,
 h2,

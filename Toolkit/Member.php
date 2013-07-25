@@ -217,11 +217,14 @@ class Member extends ATransformableObject {
     }
 
     protected function _update($field, $value) {
+        error_log('val' . $value);
         $query = sPDO::getInstance()->prepare('SELECT set_profile_field( :user_id, :field, :value )');
         $query->bindValue(':user_id', $this->userId);
         $query->bindValue(':field', $field);
         $query->bindValue(':value', $value);
-        return $query->execute();
+        $result = $query->execute();
+        error_log($result);
+        return $result;
     }
 
     public function addTag($tag) {

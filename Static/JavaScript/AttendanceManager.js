@@ -29,4 +29,7 @@ var AttendanceManager = function( ){
     this.getPastAttendedEvents = function( userId, limit, offset, callback ) {
 	Main.fetchFromServer('/locations/json/pastEvents', { userId: userId, limit: limit, offset: offset }, callback);
     };
+    this.getPastHostedEvents = function( userId, limit, offset, callback ) {
+	Main.fetchFromServer('/locations/json/hostedEvents', { userId: userId, limit: limit, offset: offset }, callback);
+    };
 }

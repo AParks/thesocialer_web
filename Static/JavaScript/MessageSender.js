@@ -18,7 +18,7 @@ var _MessageSender = function( ){
 	
 	$popup = $(markup).appendTo('body');
 	$popup.find('button:first').bind('click', dismiss);
-	$popup.find('button:last').bind('click', function( ){ _this.sendMessage( userData, $popup.find('textarea').val(), sendMessageCallback); } );
+	$popup.find('button:last').bind('click', function( ){ _this.sendMessage( userData.userId, $popup.find('textarea').val(), sendMessageCallback); } );
 	Main.centerObject( $popup );
     };
     
@@ -29,8 +29,8 @@ var _MessageSender = function( ){
 	}
     }
     
-    this.sendMessage = function(userData, message, callback) {
-	Main.fetchFromServer('/messages/json/send', { to: userData.userId, message: message}, callback);
+    this.sendMessage = function(userId, message, callback) {
+	Main.fetchFromServer('/messages/json/send', { to: userId, message: message}, callback);
     }
     
     function sendMessageCallback(response) {

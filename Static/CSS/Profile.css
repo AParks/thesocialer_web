@@ -1,6 +1,15 @@
 #MainBody {
     padding: 20px;
 }
+body, #Header{
+    background-image: none !important;
+    background-color: #eef2f7 !important;
+
+}
+#MainBody, #Header {
+    width: 75% !important;
+}
+
 ol, ul {
     list-style: none;
 } 
@@ -115,6 +124,13 @@ ol, ul {
 .Photo {
     display: block;
     margin: 0 auto 5px;
+    border: 1px #d0d0d0 solid;
+}
+#Pict{
+    border-radius: 5px;
+    padding: 7px;
+    border: 1px #666 solid;
+
 }
 
 #SaveProfile {
@@ -126,10 +142,23 @@ ol, ul {
 }
 
 .ProfileBox {
-    padding: 5px 10px;
-    border-top: 1px solid #B2B2B2;
+    width: 95%;
     margin: 5px 0;
     clear: both;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+}
+.ProfileBox > .heading{
+    color: #393c3d;
+    padding: 5px;
+    
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid #d0d0d0;
+    background-color: rgba(250,250,250,0.9);
+background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.9) 0%,rgba(250,250,250,0.9) 100%);
+background-image: -moz-linear-gradient(top, rgba(255,255,255,0.9) 0%,rgba(250,250,250,0.9) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5ffffff', endColorstr='#e5fafafa', GradientType=0);
 }
 .ProfileBox #edit{
     color: #666;
@@ -141,8 +170,8 @@ ol, ul {
 .ProfileBox textarea{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     resize: none;
-    width: 100%;
-    height: 100px;
+    width: 612px;
+  /*  height: 100px;*/
     overflow-y: scroll;
     border: none; 
     webkit-box-shadow: none;
@@ -152,11 +181,12 @@ ol, ul {
     -moz-transition: none;
     -o-transition: none;
     background-color: transparent;
+    
 }
 
 .ProfileBox textarea.editable{
     background-color: #ffffff;
-    border: 1px solid #cccccc;
+    border: 1px solid #b97168;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -178,11 +208,17 @@ ol, ul {
 }
 
 .ProfileTitle {
-    class: clear;
-    font-size: 16px;
-    margin: 0 0 5px;
+    font-size: 25px;
+    font-family: comfortaaregular !important;
 }
-
+textarea.ProfileTitle{
+    width: 87%;
+    height: 24px;
+}
+textarea.loc{
+    width: 100%;
+    height: 20px;
+}
 .LinkContainer {
     background-color: #AAABAD;
     padding: 3px;
@@ -256,8 +292,10 @@ ol, ul {
 
 .ProfileBox ::-webkit-scrollbar{width:9px;height:9px;}
 .ProfileBox ::-webkit-scrollbar-button:start:decrement,#doc ::-webkit-scrollbar-button:end:increment{display:block;height:0;background-color:transparent;}
-.ProfileBox ::-webkit-scrollbar-track-piece{background-color:#FAFAFA;-webkit-border-radius:0;-webkit-border-bottom-right-radius:8px;-webkit-border-bottom-left-radius:8px;}
+.ProfileBox ::-webkit-scrollbar-track-piece:horizontal{background-color:#FAFAFA;-webkit-border-radius:0;-webkit-border-bottom-right-radius:8px;-webkit-border-bottom-left-radius:8px;}
+/*
 .ProfileBox ::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#999;-webkit-border-radius:8px;}
+*/
 .ProfileBox ::-webkit-scrollbar-thumb:horizontal{width:50px;background-color:#999;-webkit-border-radius:8px;}
 
 #LocationNamePopup {
@@ -277,6 +315,7 @@ ol, ul {
     white-space:nowrap;
     overflow-x:scroll;
     overflow-y:hidden;
+    padding: 6px;
 }
 
 #LikedLocations li {
@@ -306,7 +345,8 @@ ol, ul {
 
 }
 
-#PastEventsAttended button {
+#PastEventsAttended button,
+#PastEventsHosted button{
     font-weight: normal;
     width: 100%;
     margin-top: 3px;
@@ -318,22 +358,23 @@ ol, ul {
     padding-top: 5px;
 }
 
-#PastEventsAttended li {
-    margin: 0 8px 0 0;
-    padding: 0 8px 0 0;
+#PastEventsAttended > li,
+#PastEventsHosted > li{
+    padding: 1%;
     border-right: 1px solid #EEE;
     line-height: 16px;
     font-size: 11px;
-    width: 196px;
+    width: 31%;
     float: left;
 }
-
+#PastEventsHosted li.last,
 #PastEventsAttended li.last {
     border: 0;
     margin-right: 0; 
 }
 
-#PastEventsAttended li a {
+#PastEventsAttended li a,
+#PastEventsHosted li a{
     font-size: 13px;
 }
 
@@ -350,7 +391,7 @@ ol, ul {
 }
 
 .Photos {
-    margin: 5px 0;
+    margin: 6px;
 }
 
 .PhotoLinks {
@@ -419,32 +460,36 @@ ol, ul {
     width: 1%;
     height: 100%;
     display: inline-block;
-    background-color: #8f978a;
+    background-color: white;
         float: left;
 
 }
 
-.ProfileStats span[id=plus]{
+span.plus{
     float: left;
-    width: 32%;
+    width: 134px;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    background-color: #89b968;
+    margin: 1%;
+    text-align: center;
+    font-size: 15px;
 }
 .ProfileStats span[id=follow]{
     width: 64%;
     text-align: center;
     float: right;
 }
-.ProfileStats
+span.plus.last
 {
-    text-align: center;
 
-    margin-left: 15px;
-    border-radius: 15px;
-    font-size: 15px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 50%;
-    height: 40px;
-    line-height: 40px;
-    color: white;
-    background-color: #81d34f;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+span.plus.first
+{
+
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
 }

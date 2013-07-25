@@ -5,6 +5,7 @@ class LocationJSON extends JSONApplicationBase {
   const ACTION_LOCATIONS_FOR_DATE = 'forDate';
   const ACTION_POPULAR = 'popular';
   const ACTION_PAST_EVENTS = 'pastEvents';
+  const ACTION_HOSTED_EVENTS = 'hostedEvents';
   const ACTION_LIKED_LOCATIONS = 'likedLocations';
 
   const PARAMETER_LIMIT = 'limit';
@@ -39,6 +40,9 @@ class LocationJSON extends JSONApplicationBase {
         break;
       case self::ACTION_PAST_EVENTS:
         $success = $this->getPastAttendedEvents( new Member( $_GET['userId'] ), $_GET['limit'], $_GET['offset'] );
+        break;
+      case self::ACTION_HOSTED_EVENTS:
+        $success = $this->getPastAttendedEvents( new Member( $_GET['userId'] ), $_GET['limit'], $_GET['offset'], true );
         break;
       case self::ACTION_LIKED_LOCATIONS:
       	$success = $this->getLikedLocations( $_GET['userId'] );
@@ -127,21 +131,16 @@ class LocationJSON extends JSONApplicationBase {
     $this->addOutput( 'locations', $response );
   }
 
-  protected function getPastAttendedEvents( Member $user, $limit, $offset )
+  protected function getPastAttendedEvents( Member $user, $limit, $offset, $host = false )
   {
     $response = array( );
 
     $userAttendanceManager = new UserAttendanceManager( );
-    $pastAttendedEvents = $userAttendanceManager->getPastAttendedEvents( $user, $limit, $offset );
+    $pastAttendedEvents = $userAttendanceManager->getPastAttendedEvents( $user, $limit, $offset, $host );
 
     foreach ( $pastAttendedEvents as $event )
-    {
-        $eventInfo = $event->getPublicProperties();
-     // $eventInfo = $event->location->getPublicProperties( );
-    //  $eventInfo['date'] = $event->date;
-    //  $eventInfo['attendanceStatus'] = $event->attendanceStatus;
-      $response[] = $eventInfo;
-    }
+        $response[] = $event->getPublicProperties();
+    
 
     $this->addOutput( 'pastEvents', $response );
     return true;

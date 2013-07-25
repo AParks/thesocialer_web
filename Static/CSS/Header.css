@@ -178,6 +178,48 @@ h1, h2, h3, h4, h5, h6{
     background-color: black;
     color: transparent;
 }
+#Header
+{
+    background-color: #FFF;
+    width: 900px;
+    margin: auto;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+#Header .Right
+{
+    float: right;
+}
+#Header > a div{
+    font-family: comfortaaregular;
+    color: #666;
+    
+}
+#Header > a > div{
+    display: inline-block;
+    margin-left: 45px;
+    
+} 
+#Header > a{
+    background: url('/Photos/favicon.png') no-repeat;
+    background-size: 50px 50px;
+    background-position: left;
+    display: block;
+    width: 300px;
+}
+#Header #the{
+    position: relative;
+    left: 20px;
+    font-size: 20px;
+}
+#Header #company_name{
+    font-size: 42px;
+    font-weight: bold;
+}
+
 
 
 
@@ -214,16 +256,57 @@ a:hover{
 }
 
 
-
+/*
 div.fb-login{
     width: 100%;
     height: 22px !important;
     background-size: 154px 22px;
     background:url('/Static/Images/fb_login_icon.gif') center center no-repeat;
     display: inline-block;
+}*/
+#fb-connect > #left{
+    float: left;
+    width: 18%;
+    text-align: center;
+}
+#fb-connect > #right{
+    float: right;
+    width: 81.5%;
+    text-align: center;
+}
+#border {
+    width: 0.5%;
+    height: 100%;
+    display: inline-block;
+    background-color: #dcebd3;
+
+}
+#fb-connect{
+    color: white;
+    width: 100%;
+    height: 50px !important;
+    line-height: 50px;
+    background-color: #325c99;
+    border-radius: 5px;
+    margin-right: 12.5%;
+    font-size: 17pt;
+    
+    
+    border-top: 1px #f2f7ee solid;
+    box-shadow:  0px 1px 1px 2px rgba(0, 0, 0, .4);
+    cursor: pointer;
+    text-shadow: 0px -1px 1px black;
+    background-image: -moz-linear-gradient(top, #3868ac, #2c5086);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3868ac), to(#2c5086));
+    background-image: -webkit-linear-gradient(top, #3868ac, #2c5086);
+    background-image: -o-linear-gradient(top, #3868ac, #2c5086);
+    background-image: linear-gradient(to bottom, #3868ac, #2c5086);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3868ac', endColorstr='#2c5086', GradientType=0);
+  
 }
 
-#MemberLoginContainer {
+
+#MemberLoginContainer, #registerform {
     width: 75%;
     /*text-align: center;*/
 }
@@ -235,7 +318,6 @@ div.fb-login{
     position:absolute;
     opacity:.9;
     z-index:7;
-
     background-color: #F5F5F5;
     padding: 20px;
     -moz-border-radius: 25px 25px 25px 25px;
@@ -539,9 +621,8 @@ input[type="checkbox"]{
     /*   padding: 3px 10px; */
 }
 #Navigation {
-width: 100%;
+    width: 100%;
     background-color: #c2c2c2;
-    /* background-color: #1b1b1b; */
     /*    background-image: -moz-linear-gradient(top, #222222, #111111);
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
         background-image: -webkit-linear-gradient(top, #222222, #111111);

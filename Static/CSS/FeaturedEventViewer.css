@@ -2,31 +2,46 @@
 /*
     popups info
 */
-
-
-
-#host > div{
-    width: 200px;
-    margin-left: 10px;
-    display: inline-block;
-    float: right;
-
+#MainBody, #Header {
+    background-color: #eef2f7;
 }
-#host > div > div{
+body {
+    background-image: none !important;
+    background-color: #eef2f7 !important;
+}
+
+#host > #right {
+    width: 67%;
+    float: right;
+    padding: 5px;
+}
+
+
+#host > #right > div{
 
     font-weight: bold;
     border-bottom: 1px solid #b97168;
 }
-
+#interact-with-host{
+    width: 50px;
+    float: right;
+}
+#interact-with-host > i{
+    font-size: 10pt;
+    cursor: pointer;
+}
 #host > a{
     position: absolute;
-    top: 0;
+
 }
 #host{
-    min-height: 90px;
-    width: 100%;
+    
+    width: 298px;
     position: relative;
     padding-bottom: 5px;
+    margin-bottom: 5px;
+    float: left;
+    min-height: 90px;
 }
 
 #leftcontainer hr{
@@ -34,86 +49,117 @@
     height: 1px;
     color: #b97168;
     background-color: #b97168;
-    
+
 }
 
 
 #SeeMore{
     color: #b97168;
 }
-.EventTitle{
-    padding: 4px;
-    text-align: center;
-    color: white;
-    line-height: 32px;
+.EventInfo{
+    font-size: 14pt;
+    text-align: left;
+    color: #666;
+    padding: 3%;
+    margin-bottom: 20px;
+
 }
+.EventInfo i{
+    color: #88b968;
+}
+.EventInfo #date, 
+.EventInfo #loc,
+.EventInfo #spots_avail{
+    display: inline;
+    margin-left: 5px;
+}
+
+#deets{
+    width: 50%;
+    float: left;
+    line-height: 38px;
+}
+.EventTitle #head{
+    text-align: center;
+    font-weight: bold;
+    padding: 2px;
+}
+
 /*everything within blue booking form */
-.LocationInfoContainer .joinbutton[id=soldout]{
+.booking .joinbutton[id=soldout]{
     background-color: #e7e7e7;
     border-color: #e7e7e7;
     color: #c2c2c2 !important;
     cursor: auto !important;
+        margin: 21px 0;
+        height: 50px;
+        line-height: 50px;
+
+
 }
 
-.LocationInfoContainer .joinbutton[id=payButton]:hover,
-.LocationInfoContainer .joinbutton[id=not-logged-in-payButton]:hover{
+.booking .joinbutton[id=payButton]:hover,
+.booking .joinbutton[id=not-logged-in-payButton]:hover,
+#freeButton:hover{
     background-color: #73ab4f;
     border-color: #b1b968;
     box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+
 }
 
-.LocationInfoContainer .joinbutton[id=payButton],
-.LocationInfoContainer .joinbutton[id=not-logged-in-payButton]{
+.booking .joinbutton[id=payButton],
+.booking .joinbutton[id=not-logged-in-payButton],
+#freeButton{
     background-color: #89b968;
-    border-color: #b1b968;
+    border-color: #639133;
+    width: 63% !important;
+    margin: 10% 0;
+    height: 52px;
+        line-height: 52px;
+}
+#freeButton{
+    color: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: comfortaaregular !important;
+    cursor: pointer;
+    border: 1px solid #639133;;
 }
 
 .booking{
     color: #fff;
-    margin-left: 11px;
-    margin-top: 9px;
     text-align: center;
-    padding: 20px 10px 20px 10px;
-    width: 80%;
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 46%;
     background-color: #6888b9;
-    border: 10px solid #e7e7e7;
-
+    float: right;
     border-radius: 5px;
     -moz-border-radius: 5px;
+    display: inline-block;
+    
     /*    background-color: #b96887; */
     /*    background-color: #e7e7e7; */
     /*    -webkit-box-shadow:  0px 1px 4px 1px rgba(0, 0, 0, .7); */
     /*    box-shadow:  0px 1px 4px 1px #6888b9 */
 }
 
-.booking  #fee_text{
-    margin-top: 10px;
-    font-size: 14px;
-    font-family: comfortaaregular;
-}
 
-.booking  #date{
-    font-size: 20px;
-    margin-bottom: 5px;
-    font-family: comfortaaregular;
-}
 
 .booking select{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 40%;
+    float: left;
     padding: 3px;
-    height: 30px;
+    height: 52px;
+    margin: 10% 1%;
+    width: 35%;
     background-color: white;
     border-radius: 5px;
     -moz-border-radius: 5px;
 
 }
-.booking > .joinbutton{
-    height: 50px;
-    line-height: 50px;
 
-}
 .encrypted {
     float: left;
     font-size: 12px;
@@ -219,13 +265,13 @@ button[id=fb-share]{
     float:left;
     padding:5px;
     border-right:solid 1px #6888b9;
-    
+
 }
 
 #FeaturedEvent 
 {
     border: 1px solid #b97168;
-    width:570px;
+    width:100%;
     height: auto;
     margin-bottom: 5px;
     line-height: 18px;
@@ -239,13 +285,14 @@ button[id=fb-share]{
 }
 #myCarousel{
     height: 300px;
-    width: 570px;
+    width: 100%;
     background-size: contain;
 }
 #desc{
     color: #666666;
     font-size: 16px;
     padding: 10px;
+    margin-top: 95px;
 }
 
 
@@ -418,30 +465,66 @@ button[id=fb-share]{
     margin: 4px 0;
 }
 
-.Attendees
+/*.Attendees
 {
     margin: 15px 0;
-}
+}*/
 
 .Attendees strong
 {
     display: block;
 }
 
-.Attendees .UserPhoto
+.AttendeesYes .UserPhoto
 {
     margin: 4px;
     width:50px;
     height:50px;
     border: 1px solid #6888b9;
 }
+#disqus_thread{
+  padding: 15px;
+}
+#location{
+    float: left;
+    padding: 6px;
+}
+.AttendeesYes,
+#host,
+#location,
+#Comments,
+.EventInfo{
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    
+    background: white;
+    
+    
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#title{
+    background-color: #6888b9;
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-family: comfortaaregular;
+    font-size: 24.5px;
+    padding: 9px;
+}
+.loc#title{
+    width: 282px;
+    float: left;
+}
+
 
 .AttendeesYes,
 .AttendeesMaybe
 {
     float: left;
-    width: 290px;
-    margin:15px 0;
+    width: 99%;
+    margin-bottom:15px;
 }
 
 #rightcontainer
@@ -485,9 +568,8 @@ button[id=fb-share]{
 
 #LocationMap
 {
-    height: 270px;
-    width: 270px;
-    border: solid 1px #b97168;
+    height: 300px;
+    width: 286px;
     margin: 0 auto;
 }
 

@@ -46,7 +46,7 @@
                         
                         <div>
                             <div id='the'>the</div>
-                            <div id='title'> Socialer</div>
+                            <div id='company_name'> Socialer</div>
                         </div>
                         <!-- <img title="The Socialer" src="/Static/Images/Logo.jpg" id="Logo" /> -->
                         <span id="Beta"> BETA </span>
@@ -140,7 +140,13 @@
 
                         <hr/>
                         <br/>
-                        <div class="fb-login"/>
+                        <div id='fb-connect' class="fb-login">
+                            <div id='left'>
+                                <i class="icon-facebook icon-large"></i>
+                            </div>
+                            <span id='border'></span>
+                            <div id='right'>Connect with Facebook</div>
+                        </div>
 
                         <h3 id='or'> or </h3>
                         <div id="QuickLoginFormLoginFailed"></div>
@@ -179,13 +185,19 @@
                 <div id="myModal2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div id="registerform">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3>Cool People, Cool Places</h3>
-                        Get a better way to experience your city. It's free. Already a member? <a href="#myModal" role="button" class="btn" data-toggle="modal">Login </a>
+                        <h3>Explore outside your circle</h3>
+                        Host and discover unique and engaging events. Already a member? <a href="#myModal" role="button" class="btn" data-toggle="modal">Login </a>
 
                         <hr/>
                         <div class="inner">
                             <br/>
-                            <div class="fb-login"/> 
+                            <div id='fb-connect' class="fb-login">
+                                <div id='left'>
+                                    <i class="icon-facebook icon-large"></i>
+                                </div>
+                                <span id='border'></span>
+                                <div id='right'>Connect with Facebook</div>
+                            </div>
                         
                             <h3 id='or'> or </h3>
                             
@@ -344,8 +356,9 @@
         <div class="navcontainer">
             
             <a href="/trending" class="first NavigationLink" >Around The City</a>
-            <a href="/explore" class="second NavigationLink">Browse</a>
+            
             <a href="/popups" class="third NavigationLink">Socialer Popups</a>
+            <a href="/explore" class="second NavigationLink">Browse</a>
             <xsl:choose>
                 <xsl:when test="./Viewer/@userId = -1">
                     <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login </a>

@@ -12,34 +12,63 @@
     <xsl:output method="html" omit-xml-declaration="yes"/>
 
     <xsl:template match="/Popups">
-        <div id='img'> 
-            <div id='popup-desc-start'>Socialer Popups are ... </div>
+        <div id='img'>
+            
+            <div id='container-black'></div>
+            <div id='container'>
+            <div id='popup-desc-start'>Explore outside your circle.</div><br/>
             <div id='popup-desc'>
-                unique events hosted by and 
-                <br/>
-                for members of our
-                <br/> community. 
+                Host and discover unique and engaging events, <br/> while meeting new, interesting people.
+                <br/>If you have an idea you're passionate about, <br/>contact <strong>concierge@thesocialer.com</strong> to be a host.
+            </div><br/>
+            <div id='button-container'>
+                <div id='fb-connect' class="fb-login">
+                     <div id='left'>
+                    <i class="icon-facebook icon-large"></i>
+                    </div>
+                    <span id='border'></span>
+                    <div id='right'>Connect with Facebook</div>
+                </div>
+            </div>
             </div>
         </div>
         <div id="MainBody">
             
             <ol id="LocationList">
+                                                            
                 <xsl:for-each select="images/image">
+
                     <li class="loc">
                         <div class="TitleLocationContainer">
                             <div class="EventTitle">
                                 <div><xsl:value-of select="./@headline"/></div>
-                                <a href='#' data-placement='top' data-toggle="tooltip" title="Bookmark it" class="EventPrice">
+                                <xsl:choose>
+                            <xsl:when test='../../Viewer/@userId != -1'>
+                                 <a data-placement='top' data-toggle="tooltip" title="Bookmark it" class="logged_in EventPrice">
                                     <i class="icon-bookmark icon-large"></i>
-
                                 </a>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <a data-placement='top' data-toggle="tooltip" title="Bookmark it" class="notLoggedIn EventPrice">
+                                    <i class="icon-bookmark icon-large"></i>
+                                </a>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                               
                             </div>
                         </div>
-
-                        <a href="/location/featured/{./@id}">
-                            <img src="{.}"></img>
-                            
-                        </a>
+                        <xsl:choose>
+                            <xsl:when test='../../Viewer/@userId != -1'>
+                                <a href="/location/featured/{./@id}">
+                                    <img src="{.}"></img>
+                                </a>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <a class='notLoggedIn'>
+                                    <img src="{.}"></img>
+                                </a>
+                            </xsl:otherwise>
+                        </xsl:choose>
                         
                         <div class="Host">
                             <xsl:apply-templates select="./Host/Member" />
@@ -105,7 +134,14 @@
             <div>
                 <i class="icon-usd icon-large"></i>
                 <br/>
-                <xsl:value-of select="../../@price"/>
+                <xsl:choose>
+                    <xsl:when test="../../@price = 0">
+                        free
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="../../@price"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </div>
             <div>
                 <i class="icon-user icon-large"></i>

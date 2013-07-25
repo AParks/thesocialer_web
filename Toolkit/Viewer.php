@@ -1,6 +1,6 @@
 <?php
-require_once 'mixpanel-php/lib/Mixpanel.php';
 
+require_once 'mixpanel-php/lib/Mixpanel.php';
 
 class Viewer extends ATransformableObject {
 
@@ -41,10 +41,6 @@ class Viewer extends ATransformableObject {
         $_SESSION['userId'] = $this->userId;
         try {
             $this->user = new Member($this->userId);
-          // $prop = $this->user->getProperties();
-          //  $mp = Mixpanel::getInstance("0e2c09979dc8b604e9c3aebcdea9bdaf");
-          //  $result = $mp->people->set($userId, json_encode($prop));
-          //  echo('hey '.$result);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -69,7 +65,6 @@ class Viewer extends ATransformableObject {
     }
 
     public function fb_login($user_info, $fb_id) {
-
         $pdo = sPDO::getInstance();
         $query = $pdo->prepare('SELECT user_id, fb_id FROM users WHERE email_address = :email OR fb_id= :fb_id');
         $query->bindParam(':email', $user_info['email']);
@@ -81,26 +76,47 @@ class Viewer extends ATransformableObject {
         if ($user_id) {
             if (!$row['fb_id'])
                 $this->addFaceBookId($pdo, $user_id, $fb_id);
+
+            
+            $this->setCookie($user_id);
+            $this->setUserId($user_id);
+            
+            
+            if($this->aboutMeEmpty($pdo, $user_id)){
+                $about = array("AboutMe" => $user_info['bio']);
+                $this->user->update($about);
+            }
         }
         else {
             $user_id = $this->createNewUser($user_info, $fb_id);
-        }
- 
-        $this->setCookie($user_id);
-        $this->setUserId($user_id);
-        Photo::create($this->user, 'facebook');
 
+            $this->setCookie($user_id);
+            $this->setUserId($user_id);
+        }
+
+        Photo::create($this->user, 'facebook');
+    }
+    
+    private function aboutMeEmpty($pdo, $user_id){
+        $query = $pdo->prepare('SELECT profile_field_value FROM profile_field_values WHERE profile_field_id = 3 AND user_id = :user_id');
+        $query->bindParam(':user_id', $user_id);
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        $bio = $row['profile_field_value'];
+        return (!bio || $bio == '') ;
     }
 
     private function createNewUser($user_info, $fb_id) {
         $fname = $user_info['first_name'];
         $lname = $user_info['last_name'];
         $email = $user_info['email'];
+        $bio = $user_info['bio'];
         $dob = $this->formatDOB($user_info['birthday']);
         $college = $this->getCollege($user_info['education']);
         $gender = ($user_info['gender'] == "female" ? 'f' : 'm');
         $registration = new MemberRegistration($fname, $lname, $email, $dob, $gender, NULL, $fb_id, 1);
         $registration->setCollege($college);
+        $registration->setBio($bio);
         $registration->setLocation($user_info['location']['name']);
         $user_id = $registration->complete();
         return $user_id;

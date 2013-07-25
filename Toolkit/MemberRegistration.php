@@ -7,6 +7,7 @@ class MemberRegistration {
     protected $emailAddress;
     protected $dob;
     protected $college;
+    protected $bio;
     protected $gender;
     protected $password;
     protected $location;
@@ -27,6 +28,10 @@ class MemberRegistration {
     public function setCollege($college) {
         $this->college = $college;
     }
+    public function setBio($bio) {
+        $this->bio = $bio;
+    }
+
 
     public function setLocation($loc) {
         $this->location = $loc;
@@ -57,6 +62,10 @@ class MemberRegistration {
         if ($this->location) {
             $loc = array("Location" => $this->location);
             $user->update($loc);
+        }
+        if ($this->bio) {
+            $bio = array("AboutMe" => $this->bio);
+            $user->update($bio);
         }
 
 

@@ -73,6 +73,15 @@ $(function() {
 
 
     });
+    function calculateMargins() {
+        var screen_width = viewportSize.getWidth();
+        var outer_width = 0.75 * screen_width;
+        var inner_width = $('#MemberLoginContainer').width();
+
+        var marginLeft = parseInt((outer_width - inner_width) / 2);
+        $('#MemberLoginContainer').css('margin-left', marginLeft);
+
+    }
 
     function resend() {
         $('#confirm').click(function() {
@@ -173,7 +182,7 @@ $(function() {
                     if (response.authResponse)
                         login();
 
-                }, {scope: 'email,user_birthday, user_education_history, user_location'});
+                }, {scope: 'email,user_birthday, user_education_history, user_location, user_about_me'});
 
             } else {
                 // the user isn't logged in to Facebook.
@@ -183,7 +192,7 @@ $(function() {
                         login();
 
 
-                }, {scope: 'email,user_birthday, user_education_history, user_location'});
+                }, {scope: 'email,user_birthday, user_education_history, user_location,user_about_me'});
 
             }
         });

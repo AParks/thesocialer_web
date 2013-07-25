@@ -31,11 +31,7 @@
                     </div>
                 </xsl:otherwise>
             </xsl:choose>
-            <div class="ProfileTitle">
-                <xsl:value-of select="Member/@firstName" />
-                <xsl:text> </xsl:text>
-                <xsl:value-of select="Member/@lastName" />
-            </div>
+          
             <div id="LeftColumn">
                 <xsl:call-template name="LeftColumn" />
             </div>
@@ -47,8 +43,32 @@
     </xsl:template>
 
     <xsl:template name="LeftColumn">
-        <xsl:choose>
+        <div class='ProfileBox'>
+             <div class='heading'>
+                 <xsl:if test="./Viewer/Member/@userId = Member/@userId">
+                     <span id='edit'>
+                         <i class="icon-edit icon-large"></i>
+                         <i style='display: none' class="icon-save icon-large"></i>
+                     </span> 
+                 </xsl:if>
+                 <div class='ProfileTitle'>
+                     <xsl:value-of select="Member/@firstName" />
+                     <xsl:text> </xsl:text>
+                     <xsl:value-of select="Member/@lastName" />
+                 </div>
 
+                     <textarea style='display: none' data-field='FirstName' class="ProfileTitle"  readonly='true'>
+                         <xsl:value-of select="Member/@firstName" />
+                     </textarea>
+                     <textarea style='display: none'  data-field='LastName' class="ProfileTitle"  readonly='true'>
+                         <xsl:value-of select="Member/@lastName" />
+                     </textarea>
+                     <textarea class='loc' data-field='Location' readonly='true'>
+                         <xsl:value-of select="Member/@Location" />
+                     </textarea>
+             </div>
+        <xsl:choose>
+            
             <xsl:when test="./Member/@fb_id and count(photos/Photo[@isDefault='1']) = 0 ">
                 <img src="https://graph.facebook.com/{./Member/@fb_id}/picture?type=large" class='Photo'/>
             </xsl:when>
@@ -60,6 +80,10 @@
                 </soc:photo>
             </xsl:otherwise>
         </xsl:choose>
+        
+        
+
+        </div>
 
         
         <xsl:if test="count(photos/Photo) = 0 and Member/@fb_id = '' ">  
@@ -68,7 +92,7 @@
             </xsl:if>
         </xsl:if>
         <div class="ProfileBox">
-            <h2>
+            <div class='heading'>
                 <xsl:choose>
                     <xsl:when test="./Viewer/Member/@userId = Member/@userId">
                         <xsl:text>Your</xsl:text>
@@ -79,7 +103,7 @@
                     </xsl:otherwise>
                 </xsl:choose>
                 <xsl:text> Connections</xsl:text>
-            </h2>
+            </div>
             <div class="FriendContainer">
                 <xsl:for-each select="Friends/friend">
                     <soc:photo size="Small" link="true">
@@ -102,67 +126,52 @@
     </xsl:template>
 
     <xsl:template name="RightColumn">
-        <div class="ProfileStats"> 
-            <span id='plus'><i class="icon-map-marker"></i>
-                <span> </span>
-                <xsl:value-of select="./Member/@Location" />
+       <!--  <div class="ProfileStats"> 
+            <span class='plus first'>
+                <i class="icon-star"></i> 25 reviews
             </span>
-            <div id='border'></div>
-            <span id='plus'>College: </span>
-            <div id='border'></div>
-            <span id='plus'>
+            <xsl:choose>
+            <xsl:when test='Member/@fb_id'>
+            <span class='plus first' id='fb'>
                 <i class="icon-facebook"></i>
+                <span> friends</span>
             </span>
-        </div>
-        <br/>
-        <div class="UserInfo">
-         <!--   <xsl:call-template name="ProfileField">
-                <xsl:with-param name="field">FirstName</xsl:with-param>
-                <xsl:with-param name="displayField">First</xsl:with-param>
-                <xsl:with-param name="value" select="./Member/@firstName" />
-            </xsl:call-template>
-            <xsl:call-template name="ProfileField">
-                <xsl:with-param name="field">LastName</xsl:with-param>
-                <xsl:with-param name="displayField">Last</xsl:with-param>
-                <xsl:with-param name="value" select="./Member/@lastName" />
-            </xsl:call-template> -->
+            <span class='plus last'>
+                <i class="icon-envelope"></i> Email verified
+            </span>
+            </xsl:when>
+            <xsl:otherwise>
+                <span class='plus first last'>
+                    <i class="icon-envelope"></i> Email verified
+                </span>
+            </xsl:otherwise>
+            </xsl:choose>
+            <<span class='plus'>
+                <i class="icon-heart"></i> 20 likes
+            </span> </div> -->
+        
+               <div class="ProfileBox">
+                    <div class='heading'>
+                        <xsl:text>About Me</xsl:text>
+                        <xsl:if test="./Viewer/Member/@userId = Member/@userId">
+                            <span id='edit'>
+                                <i class="icon-edit icon-large"></i>
+                                <i style='display: none' class="icon-save icon-large"></i>
+                            </span>
+                        </xsl:if>
+                    </div>
+                    <strong>School: </strong> 
+                    <xsl:value-of select="Member/@College" />
+                       
+                   <textarea id='aboutme' readonly='true' data-field='AboutMe'>
+                       
+                       <xsl:value-of select="Member/@AboutMe" />
+                   </textarea>
 
-            <xsl:call-template name="ProfileField">
-                <xsl:with-param name="field">College</xsl:with-param>
-                <xsl:with-param name="displayField">College</xsl:with-param>
-                <xsl:with-param name="value" select="./Member/@College" />
-            </xsl:call-template>
-            <xsl:call-template name="ProfileField">
-                <xsl:with-param name="field">Location</xsl:with-param>
-                <xsl:with-param name="displayField">Location</xsl:with-param>
-                <xsl:with-param name="value" select="./Member/@Location" />
-            </xsl:call-template>
-
-            <div class="clear"></div>
-            <xsl:if test="./Viewer/Member/@userId = Member/@userId">
-                <button id="SaveProfile" class="standard Teal">Save My Profile</button>
                 <div class="clear"></div>
-            </xsl:if>
-        </div>
-
- <div class="ProfileBox">
-            <h2>
-                <xsl:text>About Me</xsl:text>
-                <xsl:if test="./Viewer/Member/@userId = Member/@userId">
-                    <span id='edit'>
-                        <i class="icon-edit icon-large"></i>
-                    </span>
-                </xsl:if>
-                
-            </h2>
-               <textarea id='aboutme' readonly='true'>
-                        <xsl:value-of select="Member/@AboutMe" />
-               </textarea> 
-           
-            <div class="clear"></div>
-        </div>
+                </div>
         <div class="ProfileBox hide">
-            <h2>
+            <div class='heading'>
                 <xsl:text>Places </xsl:text>
                 <xsl:choose>
                     <xsl:when test="./Viewer/Member/@userId = Member/@userId">
@@ -173,7 +182,7 @@
                         <xsl:text> Follows</xsl:text>
                     </xsl:otherwise>
                 </xsl:choose>
-            </h2>
+            </div>
             <div id="LocationNamePopup" class="hide"></div>
             <ol id="LikedLocations">
                 <xsl:call-template name="LikedLocationSkeleton" />
@@ -182,9 +191,9 @@
         </div>
 
         <div class="ProfileBox hide">
-            <h2>
+            <div class='heading'>
                 <xsl:text> Popups Attended</xsl:text>
-            </h2>
+            </div>
             <ol id="PastEventsAttended">
                 <xsl:call-template name="PastEventSkeleton" />
             </ol>
@@ -192,22 +201,28 @@
             <div class="clear"></div>
         </div>
          <div class="ProfileBox hide">
-            <h2>
+            <div class='heading'>
                 <xsl:text>PopUps Hosted</xsl:text>
-            </h2>
-            <ol id="PastEventsAttended">
+            </div>
+            <ol id="PastEventsHosted">
                 <xsl:call-template name="PastEventSkeleton" />
             </ol>
             
             <div class="clear"></div>
         </div>
 
-        <xsl:if test="count(photos/Photo) >= 0">
-            <div class="ProfileBox">
-                <h2>Photos</h2>
-                <xsl:call-template name="Photos" />
-            </div>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test="count(photos/Photo) > 1">
+                <div class="ProfileBox">
+                      <div class='heading'>Photos</div>
+                    <xsl:call-template name="Photos" />
+                </div>
+            </xsl:when>
+            <xsl:when test="./Viewer/Member/@userId = Member/@userId">
+                <a href="#" id="UploadPhotoLink">Add Photos</a> 
+            </xsl:when>
+        </xsl:choose>
+
 
     </xsl:template>
 

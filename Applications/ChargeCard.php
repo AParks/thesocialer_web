@@ -10,8 +10,22 @@ class ChargeCard extends ApplicationBase {
             // Stores errors:
             $errors = array();
 
+            
+            $amount = $_POST['checkout_total']; // in dollars
+            $email = $_POST['email'];
+            $userId = $_POST['userId'];
+            $featured_event_id = $_POST['featured_event_id'];
+            $spots = $_POST['spots'];
+            error_log(print_r($_POST, true));
+            $pdo = sPDO::getInstance();
+                       
+            if($amount == 0){
+                $this->storeOrder($pdo, 'free', $userId, $featured_event_id, $spots);
+                $this->updateSpots($pdo, $spots, $featured_event_id);
+
+                exit();
             // Need a payment token:
-            if (isset($_POST['stripeToken'])) {
+            } else if (isset($_POST['stripeToken'])) {
 
                 $token = $_POST['stripeToken'];
 
@@ -26,13 +40,7 @@ class ChargeCard extends ApplicationBase {
                 $errors['token'] = 'The order cannot be processed. Please make sure you have JavaScript enabled and try again.';
             }
 
-            // Set the order amount somehow:
-            $amount = $_POST['checkout_total']; // in dollars
-            $email = $_POST['email'];
-            $userId = $_POST['userId'];
-            $featured_event_id = $_POST['featured_event_id'];
-            $spots = $_POST['spots'];
-            error_log(print_r($_POST, true));
+            
 
             
 
@@ -70,7 +78,6 @@ class ChargeCard extends ApplicationBase {
                     if ($charge->paid == true) {
 
                         // Store the order in the database.
-                        $pdo = sPDO::getInstance();
                         $this->storeOrder($pdo, $token, $userId, $featured_event_id, $spots);
                         $this->updateSpots($pdo, $spots, $featured_event_id);
 

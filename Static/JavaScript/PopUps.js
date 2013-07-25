@@ -4,12 +4,15 @@
 
 
 $(function( ) {
-    $('.EventPrice').tooltip();
+    //$('.EventPrice').tooltip();
 
-    $('.EventPrice').bind('click', function() {
+    $('.EventPrice.logged_in').bind('click', function() {
         mixpanel.track("Bookmarked", {
             "userId": Viewer.userId,
             "Event Title": $(this).prev()
         });
+    });
+     $('.notLoggedIn').bind('click', function() {
+                    $('#myModal').modal('show');
     });
 });

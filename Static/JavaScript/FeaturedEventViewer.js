@@ -47,25 +47,9 @@ FeaturedEventViewer = function(evt, userStatus) {
             }
         });
 
-        //facebook share
-        $('a[id=share]').attr('href', "https://www.facebook.com/dialog/feed?" +
-                "app_id=327877070671041" +
-                "&link=" + document.URL +
-                "&picture=https://thesocialer.com" + evt.markup +
-                "&name=" + evt.headline +
-                "&caption=" + evt.sub_headline +
-                "&description=" + evt.description +
-                "&redirect_uri=https://thesocialer.com" +
-                "&display=popup");
-        //facebook share count
-        var url = 'https://graph.facebook.com/fql?q=select%20%20share_count%20from%20link_stat%20where%20url=%22' + document.URL + '%22';
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: function(data) {
-                var share_count = data['data'][0].share_count;
-                $('#share-count').append(share_count);
-            }
+      facebookShare();
+       $('#notLoggedInSendMessage').bind('click', function(){
+            $('#myModal').modal('show');
         });
 
 
@@ -134,12 +118,48 @@ FeaturedEventViewer = function(evt, userStatus) {
         $("#FeaturedTime").text($('.FeaturedEventTime').text());
 
         if (Viewer.userId != -1) {
-            $('.Attendees').find('a').hover(hoverOverMember, hoverOutMember);
+            $('.AttendeesYes').find('a').hover(hoverOverMember, hoverOutMember);
         }
 
         _this.drawMap( );
+        $('#SendMessage').bind('click',
+                function(){
+            MessageSender.showPopup({
+                'firstName': $(this).attr('name'),
+                'userId':evt.host});
+            return false;
+                
+    });
+
+    }
+     function showSendMessage(name) {
+         console.log(evt.host);
+	MessageSender.showPopup({'firstName': name, 'userId':evt.host});
+	return false;
     }
 
+    function facebookShare(){
+          //set up share frame
+        $('a[id=share]').attr('href', "https://www.facebook.com/dialog/feed?" +
+                "app_id=327877070671041" +
+                "&link=" + document.URL +
+                "&picture=https://thesocialer.com" + evt.markup +
+                "&name=" + evt.headline +
+                "&caption=" + evt.sub_headline +
+                "&description=" + evt.description +
+                "&redirect_uri=" + document.URL +
+                "&display=popup");
+        //facebook share count
+        var url = 'https://graph.facebook.com/fql?q=select%20%20share_count%20from%20link_stat%20where%20url=%22' + document.URL + '%22';
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(data) {
+                var share_count = data['data'][0].share_count;
+                $('#share-count').append(share_count);
+            }
+        });
+    }
     function calculateMarginsForImage(img) {
 
         var width = img.width();
@@ -223,6 +243,21 @@ $(function( ) {
         $('#myModal').modal('show');
     });
 
+    $('#freeButton').click(function(){
+        $.ajax({
+            url: '/charge',
+            type: 'POST',
+            data: {
+                userId: Viewer.userId,
+                featured_event_id: evt.featured_event_id,
+                spots: parseFloat($('select[type=number]').val()),
+                checkout_total: 0
+            },
+            success: function(data) {
+                location.reload(true);
+            }
+        });
+    });
     $('#payButton').click(function() {
         if (Viewer.userId != -1) {
 
@@ -237,7 +272,7 @@ $(function( ) {
 //pk_test_tPl6A15XRwUWmiz0bEB280hN
 //pk_live_lIxCZIgFwI8gw5HTSZ7nZrP7
             StripeCheckout.open({
-                key: 'pk_test_tPl6A15XRwUWmiz0bEB280hN',
+                key: 'pk_live_lIxCZIgFwI8gw5HTSZ7nZrP7',
                 address: true,
                 amount: calculatePrice().replace(/\./g, ""),
                 currency: 'usd',
@@ -268,12 +303,13 @@ $(function( ) {
             spots = 1;
         var price = spots * parseFloat(evt.price);
         var fee = parseFloat(price * STRIPE_FEE_PERCENT + STRIPE_FEE_FLAT);
-        var total = (price + fee).toFixed(2);
+        var total = price.toFixed(2);
+        //var total = (price + fee).toFixed(2);
         $('#total_price').text(price.toFixed(2));
 
 
         //change fee amount
-        $('#fee').text(fee.toFixed(2));
+        //$('#fee').text(fee.toFixed(2));
 
         //add the amount to the post value
         $('input[name=checkout_total]').remove();

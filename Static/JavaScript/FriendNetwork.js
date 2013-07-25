@@ -9,11 +9,11 @@ var FriendNetwork = function() {
 
 //        getFbFriendList(friend_start);
 
-        $(window).scroll(function() {
-            if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-                getFbFriendList(friend_start);
-            }
-        });
+      //  $(window).scroll(function() {
+      //      if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+      //          getFbFriendList(friend_start);
+      //      }
+      //  });
          loadUserRecommendations();
     }
 

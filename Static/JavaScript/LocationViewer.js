@@ -155,7 +155,6 @@ LocationViewer = function(loc, date, userStatus) {
                 var locid = loc.id;
 
                 _this.makeComment(locid, date, comment);
-                console.log('waddup');
                 $(this).val('');  //clear the text from the text area
                 $(this).blur();   //remove focus from the text area
 

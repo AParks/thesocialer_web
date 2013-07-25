@@ -22,7 +22,6 @@ class LocationViewer extends ApplicationBase {
     $this->display->appendOutput( $output );
     $this->assetsManager->addJavaScript( 'jquery.corner' );
     $this->assetsManager->addJavaScript( 'jquery.linkify-1.0-min' );
-    $this->assetsManager->addJavaScript( 'jquery.autosize' );
     $this->assetsManager->addJavaScript( 'LocationViewer' );
     $this->assetsManager->addJavaScript( 'AttendanceManager' );
     $this->assetsManager->addJavaScript( 'EventSharer' );

@@ -4,6 +4,9 @@ class FeaturedEventViewer extends ApplicationBase {
 
     public function execute() {
 
+        if (!$this->viewer->isAuthenticated()) {
+            $this->redirect('/popups');
+        }
         $x = XSLTransformer::getInstance();
 
         $event = $this->getEvent();
@@ -30,6 +33,8 @@ class FeaturedEventViewer extends ApplicationBase {
         $this->assetsManager->addJavaScript('AttendanceManager');
         $this->assetsManager->addJavascript('https://maps.googleapis.com/maps/api/js?sensor=false', true);
         $this->assetsManager->addInitJavaScript("$('.NavigationLink.third').addClass('active');");
+        $this->assetsManager->addJavaScript('MessageSender');
+        $this->assetsManager->addCSS('MessageSender');
         $this->assetsManager->addCSS('FeaturedEventViewer');
 
         $output = $x->transform('FeaturedEventViewer', $node);
