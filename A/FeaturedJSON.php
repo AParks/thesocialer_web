@@ -64,6 +64,7 @@ function create() {
 //  print_r(count($_FILES['file']['tmp_name']));
 //($_FILES["file"]["size"] / 1024 < 20000)
     if (true) {
+        print_r($_FILES['file'], true);
         $no_errors = true;
         for ($i = 0; $i < count($_FILES['file']['error']); $i++) {
             if ($_FILES["file"]["error"][$i] > 0) {
@@ -90,8 +91,9 @@ function create() {
                 echo "Stored in: " . "/var/www/Photos/Featured/" . $_FILES["file"]["name"];
                 $query = sPDO::getInstance()->prepare('SELECT new_featured_event( :description, :startsAt, :endsAt, :location, :markup, :price, :headline, :is_private, :sub_headline, :host, :priority, :total_spots )');
                 $query->bindValue(':description', str_replace('&', '&amp;', $_POST['description']));
-                $query->bindValue(':startsAt', $_POST['startDate']);
-                $query->bindValue(':endsAt', $_POST['endDate']);
+                
+                $query->bindValue(':startsAt', date("Y-m-d H:i", strtotime($_POST['startDate'])));
+                $query->bindValue(':endsAt', date("Y-m-d H:i", strtotime($_POST['endDate'])));
                 $query->bindValue(':location', $_POST['location']);
                 $query->bindValue(':markup', $markup);
                 $query->bindValue(':price', $_POST['price']);
@@ -100,7 +102,10 @@ function create() {
                 $query->bindValue(':is_private', $_POST['is_private']);
                 $query->bindValue(':host', $_POST['host']);
                 $query->bindValue(':priority', $_POST['priority']);
-                $query->bindValue(':total_spots', $_POST['spots']);
+                $spots = $_POST['spots'];
+                if($spots == '')
+                    $spots = 0;
+                $query->bindValue(':total_spots', $spots );
 
 
 
@@ -109,6 +114,8 @@ function create() {
 
                 if ($query->execute())
                     echo '<br/> SUCCESSFUL INSERTION INTO DATABASE';
+                header("Location: /");
+                die();
             }
             else
                 echo "Unable to store file";

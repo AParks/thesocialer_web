@@ -19,8 +19,9 @@
                 <xsl:apply-templates select="CSS/file" />
                 <soc:googleAnalytics environment="dev" />
                 <link rel="icon" href="/Photos/favicon.ico" type="image/x-icon" />
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
+               
             </head>
             <body class="Socialer">
 
@@ -354,10 +355,9 @@
 
     <xsl:template name="LoggedInNavigation">
         <div class="navcontainer">
-            
+            <a href="/popups" class="third NavigationLink">Socialer Popups</a>
             <a href="/trending" class="first NavigationLink" >Around The City</a>
             
-            <a href="/popups" class="third NavigationLink">Socialer Popups</a>
             <a href="/explore" class="second NavigationLink">Browse</a>
             <xsl:choose>
                 <xsl:when test="./Viewer/@userId = -1">

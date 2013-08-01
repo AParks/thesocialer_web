@@ -43,7 +43,8 @@ class AssetsManager
     }
     elseif ( ( $file = $this->autoLoader->getFile( 'CSS', $fileName ) ) )
     {
-      $this->css[] = $file;
+      $mtime = filemtime($_SERVER['DOCUMENT_ROOT'] . '/' . $file);
+      $this->css[] = $file . '?' . $mtime;
     }
   }
 
@@ -55,10 +56,11 @@ class AssetsManager
     }
     elseif ( ( $file = $this->autoLoader->getFile( 'JavaScript', $fileName ) ) )
     {
-      $this->javaScript[] = $file . '?' . rand(1,10);
+      $mtime = filemtime($_SERVER['DOCUMENT_ROOT'] . '/' . $file);
+      $this->javaScript[] = $file . '?' . $mtime;
     }
   }
-
+  
   public function addInitJavaScript( $script )
   {
     $this->initJavaScript[] = $script;
@@ -78,4 +80,6 @@ class AssetsManager
   {
     return $this->javaScript;
   }
+  
+
 }

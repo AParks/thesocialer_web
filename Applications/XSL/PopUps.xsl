@@ -34,6 +34,68 @@
         </div>
         <div id="MainBody">
             
+            <div id='popup-what' class="modal hide fade">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3>Create a popup</h3>
+                </div>
+
+                <div class="modal-body">
+                    <form action="/A/FeaturedJSON.php" method="post" enctype="multipart/form-data" onSubmit="return validateForm()">
+
+                    <fieldset id='first' class='active'>
+                        <input id="headinput" type="text" name="headline" placeholder='Event Headline' />
+                        <input id="subheadinput" type="text" name="sub_headline" placeholder='Event Subheadline'/>
+                        <textarea name="description" placeholder="Describe what you are going to share and why you think it's awesome"></textarea>
+                        <label>
+                            <input checked="checked" type="radio" name="is_private" value="false"/>
+                            Public
+                        </label>
+                        <label>
+                           <input type="radio" name="is_private" value="true" />
+                            Invite Only     
+                       </label>
+                    </fieldset>
+                    <fieldset id='second' class='inactive'>
+                         <input class="date datepicker" type="text" name="startDate"/>
+                        <input class="date time" type="text" name="startTime" placeholder="HH:MM" />
+                          <a id='end_time'>End time?</a><br/>
+                        <input class="date datepicker" type="text" name="endDate" />
+                        <input class="date time" type="text" name="endTime" placeholder="HH:MM"/>
+                        <br/>          
+                       <input type="text" id='popup_location' name="location" placeholder="Location" />
+                       <div id="map-canvas"></div>
+                    </fieldset>
+                    <fieldset id='3' class='inactive'>
+                           <input id="extrainput" type="text" min="0" name="price" placeholder='Price'/>
+<input type="file" name="file[]" id="file" multiple='true' placeholder='Choose images'></input>
+                        Spots <input type="number" style="width: 80%; height:100%" id="spots" name="spots" value='0' />
+                    </fieldset>
+                    <input type="hidden" name="startDate" value="" />
+                    <input type="hidden" name="endDate" value="" />
+                    <input type="hidden" name="markup" value="" />
+                    <input type="hidden" name="action" value="create" />
+                    <input type="hidden" name="host" value="{./Viewer/@userId}" />
+
+                </form>
+                </div>
+                <div class="modal-footer">
+                  <a href="#" class="butn">Back</a>
+                  <a href="#" class="new_popup_button" id='next'>Next</a>
+                </div>
+            </div>
+            
+            
+            <a href='/popups/new'>
+            <div id='new_popup_button' class='new_popup_button'>
+                <i class="icon-edit"></i>
+            Create a new popup
+            
+            </div>
+            </a>
+            
+       
+
             <ol id="LocationList">
                                                             
                 <xsl:for-each select="images/image">
@@ -108,8 +170,7 @@
     </xsl:template>
 
     <xsl:template match="Host/Member">
-        
-                           
+               
         <a id='host' href="/profile/{../../@host}" style="background-image: url('/photo/{../../@host}/Small')">
             <!--<a data-user-id="{../../@host}" href="/profile/{../../@host}">
                 <img width='44px' height='44px' src="/photo/{../../@host}/Small"  />
@@ -170,6 +231,8 @@
             </xsl:choose>
         </xsl:if>
     </xsl:template>
+    
+
 
 
 </xsl:stylesheet>

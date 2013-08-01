@@ -1,5 +1,5 @@
 <site>
-    <entry uri="/">Trending</entry>
+    <entry uri="/">PopUps</entry>
     <entry uri="/about">About</entry>
     <entry uri="/landing">AdminLocationManager</entry>
     <entry uri="/admin/locations">AdminLocationManager</entry>

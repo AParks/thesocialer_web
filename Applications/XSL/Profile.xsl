@@ -160,9 +160,10 @@
                             </span>
                         </xsl:if>
                     </div>
-                    <strong>School: </strong> 
-                    <xsl:value-of select="Member/@College" />
-                       
+                    <xsl:if test="Member/@College != '' ">
+                        <strong>School: </strong> 
+                        <xsl:value-of select="Member/@College" />
+                    </xsl:if>   
                    <textarea id='aboutme' readonly='true' data-field='AboutMe'>
                        
                        <xsl:value-of select="Member/@AboutMe" />

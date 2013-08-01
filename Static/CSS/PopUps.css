@@ -44,7 +44,7 @@ body{
 }
 #button-container{
     width: 360px;
-    margin-left: 140px;
+    margin: auto;
 }
 #popup-desc-start{
     font-size: 30pt;
@@ -293,4 +293,49 @@ body{
     line-height: 17px;
     position: absolute;
     margin-top: 10px;
+}
+
+#new_popup_button{
+    width: 300px;
+    font-size: 15pt;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.new_popup_button:active,
+.new_popup_button:hover{
+    background-image: none;
+  -webkit-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+  outline: 0;
+}
+.new_popup_button{
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    padding: 4px 10px 4px;
+    
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border-top: 1px #f2f7ee solid;
+    cursor: pointer;
+    text-shadow: 0px -1px 1px #779762;
+       background-color: #81d34f;
+
+     box-shadow:  0px 1px 1px 2px rgba(0, 0, 0, .4);
+    
+    background-image: -moz-linear-gradient(top, #81d34f, #87b968);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#81d34f), to(#87b968));
+    background-image: -webkit-linear-gradient(top, #81d34f, #87b968);
+    background-image: -o-linear-gradient(top, #81d34f, #87b968);
+    background-image: linear-gradient(to bottom, #81d34f, #87b968);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#81d34f', endColorstr='#87b968', GradientType=0);
+
 }

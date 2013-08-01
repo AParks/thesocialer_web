@@ -112,7 +112,8 @@ body {
 #freeButton{
     background-color: #89b968;
     border-color: #639133;
-    width: 63% !important;
+    width: 144px !important;
+  /*  width: 63% !important;*/
     margin: 10% 0;
     height: 52px;
         line-height: 52px;
@@ -153,7 +154,8 @@ body {
     padding: 3px;
     height: 52px;
     margin: 10% 1%;
-    width: 35%;
+  /*  width: 35%;*/
+  width: 79px;
     background-color: white;
     border-radius: 5px;
     -moz-border-radius: 5px;
