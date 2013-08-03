@@ -5,13 +5,16 @@ class PopUps extends ApplicationBase {
     public function execute() {
         $x = XSLTransformer::getInstance();
 
-        $this->assetsManager->addInitJavaScript("$('.NavigationLink.third').addClass('active');");
         
         if($this->requestValues[0] == 'new'){
             $output = $this->newEvent($x);
+                    $this->assetsManager->addInitJavaScript("$('.NavigationLink.third').addClass('active');");
+
 
         }else{
-            //display all the featured events
+            //display all the popups
+            $this->assetsManager->addInitJavaScript("$('.NavigationLink.first').addClass('active');");
+
             $output = $this->displayEventsPage($x);
         }
         $this->display->appendOutput($output);
@@ -32,7 +35,6 @@ class PopUps extends ApplicationBase {
         $this->assetsManager->addJavascript('jquery.ui.menu');
         $this->assetsManager->addJavascript('jquery.ui.position');
         $this->assetsManager->addJavascript('GoogleMapAutoComplete');
-        //$this->assetsManager->addJavascript('filepicker');
 
         $this->assetsManager->addInitJavaScript('var times = ' . json_encode($this->generateTimes()) . ';');
 

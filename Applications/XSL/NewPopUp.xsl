@@ -68,8 +68,8 @@
                     <fieldset id='last' class='inactive'>
                         <!--     <input type="filepicker-dragdrop" data-fp-button-text='Add photos' data-fp-button-class='add-photo' data-fp-extensions='.jpg,.png,.jpeg,.gif,.bmp' data-fp-apikey='ATkirnHVuRJyx5NEogt6gz' data-fp-multiple="true"/>
                         -->
-                        <div style="height:0px;margin-left: 72px;">
-                            <input class='required' type="file" name="file[]"  id="file" multiple='true' placeholder='Choose images'></input>
+                        <div style="height:0px;margin-left: 80px;">
+                            <input class='required' type="file" name="file[]"  id="file" multiple='true'/>
                         </div>
                         <div class='add-photo'>Add photos</div>
                         <br/>

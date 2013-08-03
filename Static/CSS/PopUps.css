@@ -6,13 +6,83 @@
         Purpose of the stylesheet follows.
 */
 
+@media screen and (max-device-width: 1130px) and (min-device-width: 730px),
+only screen and (max-width : 1130px) and (min-width: 730px){
+
+    #LocationList{
+
+        width: 430px !important;
+        -moz-column-count: 1 !important;
+        -moz-column-gap: 0px !important;
+        -webkit-column-count: 1 !important;
+        -webkit-column-gap: 0px !important;
+        column-count: 1 !important;
+        column-gap: 0px !important;
+    }
+
+
+}
+@media screen and (max-device-width: 730px),
+only screen and (max-width : 730px){
+ #container, #container-black{
+        width: 96% !important;
+        margin-right: 0 !important;
+    }
+    
+#container-black{
+    opacity: 0.5 !important;
+}
+    #img{
+        height: 400px !important;
+        background-position: right top !important;
+    }
+    #LocationList li.loc 
+    {
+        width: 80% !important; 
+    }
+    #LocationList li.loc > a {
+
+        width: 100% !important; 
+    }
+
+    #LocationList{
+        width: 100% !important;
+    }
+     #LocationList{
+
+        width: 430px !important;
+        -moz-column-count: 1 !important;
+        -moz-column-gap: 0px !important;
+        -webkit-column-count: 1 !important;
+        -webkit-column-gap: 0px !important;
+        column-count: 1 !important;
+        column-gap: 0px !important;
+    }
+}
+
+
+
+#MainBody {
+    width: 100%;
+}
+#LocationList{
+    width: 900px;
+    margin: 0 auto;
+    -moz-column-count: 2;
+    -moz-column-gap: 0px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 0px;
+    column-count: 2;
+    column-gap: 0px;
+}
+
 #img{
     height: 350px;
     width: 100%;
     background: url('/Photos/Featured/Philadelphia-Fall.jpeg') repeat;
     overflow: hidden;
     background-size: cover;
-    background-position: right 60%;
+    background-position: right 70%;
     position: relative;
     z-index: 0;
 }
@@ -28,10 +98,7 @@ body{
     width: 600px;
     float: right;
     margin-right: 2%;
-    padding: 20px;
-}
-#container{
-    padding: 20px
+    padding: 2%;
 }
 #container-black{
     height: 70%;
@@ -46,45 +113,54 @@ body{
     width: 360px;
     margin: auto;
 }
+#join-email{
+    height: 50px !important;
+    line-height: 50px;
+    font-size: 17pt;
+    background-color: #81d34f;
+    background-image: -moz-linear-gradient(top, #81d34f, #87b968);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#81d34f), to(#87b968));
+    background-image: -webkit-linear-gradient(top, #81d34f, #87b968);
+    background-image: -o-linear-gradient(top, #81d34f, #87b968);
+    background-image: linear-gradient(to bottom, #81d34f, #87b968);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#81d34f', endColorstr='#87b968', GradientType=0);
+
+}
 #popup-desc-start{
     font-size: 30pt;
     font-weight: bold;
     line-height: 35px;
 }
 
-#popup-desc-start, #popup-desc{
+#popup-desc-start, #popup-desc, #popup-safety{
     width: 100%;
     text-align: center;
     text-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);
     color: white;
 }
+#popup-safety{
+    font-size: 10pt;
+}
 #popup-desc{
     line-height: 25px;
     font-size: 16pt;
 }
-#LocationList{
-      -moz-column-count: 2;
-    -moz-column-gap: 0px;
-    -webkit-column-count: 2;
-    -webkit-column-gap: 0px;
-    column-count: 2;
-    column-gap: 0px;
-}
+
 #LocationList .PopUpLocationPicture {    
     width: 100% !important;
     /*  height: auto;*/
     max-height: 400px;
     max-width: 100%;
-
+    
     display: block; 
-    margin-left: auto; margin-right: auto; 
+    margin-left: auto;
+    margin-right: auto; 
     margin-top: 61px;
 
 }
 
 #LocationList li.loc 
 {
-    /*   margin-left: 20px;*/
     width: 430px !important; 
     height: auto ! important; 
     background-color: #262626;
@@ -101,6 +177,8 @@ body{
     width: 100%;
     margin-bottom: 0px;
     display: inline-block;
+    
+    vertical-align: middle;
 }
 
 
@@ -123,7 +201,7 @@ body{
     float: right;
 }
 .Host .attendees_more{
-  /*  overflow-x: scroll;*/
+    /*  overflow-x: scroll;*/
     white-space: nowrap;
 }
 .UserPhoto, .spots{
@@ -220,9 +298,39 @@ body{
     padding-right: 15px;
     /*    font-size: 32pt !important;*/
 }
-.EventTitle > div{
+.EventTitle > #title{
     padding: 20px 5px;
     width: 85%;
+}
+#popup-safety #verified{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+#popup-safety i{
+    color: #88b968;
+}
+.EventTitle  #verified,
+#popup-safety #verified{
+    background-color: white;
+    color: #88b968;
+    border-radius: 50%;
+
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(50, 50, 50 ,1 );
+}
+
+.EventTitle  #verified{
+    position: absolute;
+    float: right;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
 }
 .EventPrice {
     color: #88b968;
@@ -305,37 +413,39 @@ body{
     margin-left: auto;
     margin-bottom: 10px;
     margin-top: 10px;
+
+    background-color: #58A5D7;
+    background-image: -moz-linear-gradient(top, #58A5D7, #318ecb);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#58A5D7), to(#318ecb));
+    background-image: -webkit-linear-gradient(top, #58A5D7, #318ecb);
+    background-image: -o-linear-gradient(top, #58A5D7, #318ecb);
+    background-image: linear-gradient(to bottom, #58A5D7, #318ecb);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#58A5D7', endColorstr='#318ecb', GradientType=0);
+
 }
 
 .new_popup_button:active,
 .new_popup_button:hover{
     background-image: none;
-  -webkit-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
-  outline: 0;
+    -webkit-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+    outline: 0;
 }
 .new_popup_button{
     color: white;
     font-size: 13px;
     text-align: center;
-    padding: 4px 10px 4px;
-    
+    /*   padding: 4px 10px 4px;*/
+
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
     border-top: 1px #f2f7ee solid;
     cursor: pointer;
     text-shadow: 0px -1px 1px #779762;
-       background-color: #81d34f;
 
-     box-shadow:  0px 1px 1px 2px rgba(0, 0, 0, .4);
-    
-    background-image: -moz-linear-gradient(top, #81d34f, #87b968);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#81d34f), to(#87b968));
-    background-image: -webkit-linear-gradient(top, #81d34f, #87b968);
-    background-image: -o-linear-gradient(top, #81d34f, #87b968);
-    background-image: linear-gradient(to bottom, #81d34f, #87b968);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#81d34f', endColorstr='#87b968', GradientType=0);
+    box-shadow:  0px 1px 1px 2px rgba(0, 0, 0, .4);
+
 
 }

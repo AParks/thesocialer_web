@@ -24,7 +24,7 @@ var Home = function() {
     }
 
     function calculateMargins() {
-        if($('#EventDays').parent().width() <= 591){
+      if($('#EventDays').parent().width() <= 591){
             $('#EventDays').width(130); 
         }
         else{

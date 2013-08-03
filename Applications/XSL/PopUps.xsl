@@ -19,81 +19,55 @@
             <div id='popup-desc-start'>Explore outside your circle.</div><br/>
             <div id='popup-desc'>
                 Host and discover unique and engaging events, <br/> while meeting new, interesting people.
-                <br/>If you have an idea you're passionate about, <br/>contact <strong>concierge@thesocialer.com</strong> to be a host.
-            </div><br/>
-            <div id='button-container'>
-                <div id='fb-connect' class="fb-login">
-                     <div id='left'>
-                    <i class="icon-facebook icon-large"></i>
-                    </div>
-                    <span id='border'></span>
-                    <div id='right'>Connect with Facebook</div>
-                </div>
+              <!--  <br/>If you have an idea you're passionate about, <br/>contact <strong>concierge@thesocialer.com</strong> to be a host.-->
+                
             </div>
+            <xsl:choose>
+            <xsl:when test='./Viewer/@userId = -1'>
+                    <br/>
+                <div id='button-container'>
+                    <div id='fb-connect' class="fb-login">
+                         <div id='left'>
+                        <i class="icon-facebook icon-large"></i>
+                        </div>
+                        <span id='border'></span>
+                        <div id='right'>Connect with Facebook</div>
+                    </div>
+                </div>
+                <div id='popup-desc'>
+                    or
+                </div>
+                <div id='button-container'>
+                    <div id='join-email' class='new_popup_button'>
+                         Join with Email
+                    </div>
+                </div>
+            </xsl:when>
+            <xsl:otherwise>
+                <br/>
+                 <a href='/popups/new'>
+            <div id='new_popup_button' class='new_popup_button'>
+                <i class="icon-edit"></i>
+                Create a new popup</div>
+                 </a> <br/>
+                 <div id='popup-safety'>
+                     <div id='verified'>
+                         <i class="icon-ok-sign icon-large"></i>
+                     </div>
+                     Safety guaranteed. All hosts and events are personally verified by the Socialer team.
+                <!--    <br/>
+                         <i class="icon-envelope  icon-large"></i>
+                     
+                     Get to know each other before the event via our messaging system
+                     <br/>
+                         <i class="icon-lock  icon-large"></i>
+                     Pay and get paid via Stripe, a secure payments system.-->
+                 </div>
+            </xsl:otherwise>
+            </xsl:choose>
             </div>
         </div>
         <div id="MainBody">
-            
-            <div id='popup-what' class="modal hide fade">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3>Create a popup</h3>
-                </div>
-
-                <div class="modal-body">
-                    <form action="/A/FeaturedJSON.php" method="post" enctype="multipart/form-data" onSubmit="return validateForm()">
-
-                    <fieldset id='first' class='active'>
-                        <input id="headinput" type="text" name="headline" placeholder='Event Headline' />
-                        <input id="subheadinput" type="text" name="sub_headline" placeholder='Event Subheadline'/>
-                        <textarea name="description" placeholder="Describe what you are going to share and why you think it's awesome"></textarea>
-                        <label>
-                            <input checked="checked" type="radio" name="is_private" value="false"/>
-                            Public
-                        </label>
-                        <label>
-                           <input type="radio" name="is_private" value="true" />
-                            Invite Only     
-                       </label>
-                    </fieldset>
-                    <fieldset id='second' class='inactive'>
-                         <input class="date datepicker" type="text" name="startDate"/>
-                        <input class="date time" type="text" name="startTime" placeholder="HH:MM" />
-                          <a id='end_time'>End time?</a><br/>
-                        <input class="date datepicker" type="text" name="endDate" />
-                        <input class="date time" type="text" name="endTime" placeholder="HH:MM"/>
-                        <br/>          
-                       <input type="text" id='popup_location' name="location" placeholder="Location" />
-                       <div id="map-canvas"></div>
-                    </fieldset>
-                    <fieldset id='3' class='inactive'>
-                           <input id="extrainput" type="text" min="0" name="price" placeholder='Price'/>
-<input type="file" name="file[]" id="file" multiple='true' placeholder='Choose images'></input>
-                        Spots <input type="number" style="width: 80%; height:100%" id="spots" name="spots" value='0' />
-                    </fieldset>
-                    <input type="hidden" name="startDate" value="" />
-                    <input type="hidden" name="endDate" value="" />
-                    <input type="hidden" name="markup" value="" />
-                    <input type="hidden" name="action" value="create" />
-                    <input type="hidden" name="host" value="{./Viewer/@userId}" />
-
-                </form>
-                </div>
-                <div class="modal-footer">
-                  <a href="#" class="butn">Back</a>
-                  <a href="#" class="new_popup_button" id='next'>Next</a>
-                </div>
-            </div>
-            
-            
-            <a href='/popups/new'>
-            <div id='new_popup_button' class='new_popup_button'>
-                <i class="icon-edit"></i>
-            Create a new popup
-            
-            </div>
-            </a>
-            
        
 
             <ol id="LocationList">
@@ -103,8 +77,11 @@
                     <li class="loc">
                         <div class="TitleLocationContainer">
                             <div class="EventTitle">
-                                <div><xsl:value-of select="./@headline"/></div>
-                                <xsl:choose>
+                                <div id='title'><xsl:value-of select="./@headline"/></div>
+                             <!--    <div title="Verified" id='verified'>
+                                    <i class="icon-ok-sign icon-large"></i>
+                                </div> -->
+                           <!--     <xsl:choose>
                             <xsl:when test='../../Viewer/@userId != -1'>
                                  <a data-placement='top' data-toggle="tooltip" title="Bookmark it" class="logged_in EventPrice">
                                     <i class="icon-bookmark icon-large"></i>
@@ -115,7 +92,7 @@
                                     <i class="icon-bookmark icon-large"></i>
                                 </a>
                             </xsl:otherwise>
-                        </xsl:choose>
+                        </xsl:choose>-->
                                
                             </div>
                         </div>

@@ -43,7 +43,7 @@
                         </span>
                         
                     </div>
-                    <a href="/trending">
+                    <a href="/popups">
                         
                         <div>
                             <div id='the'>the</div>
@@ -297,13 +297,14 @@
                                     <label>
                                         <input type="radio" name="gender" value="f" /> Female</label>
                                 </div>
-                                <label id="lloc" for="location">Location:</label>
+                             <!--   <label id="lloc" for="location">Location:</label>
                                 <div id="loccontainer">
                                     <label>
-                                        <input type="radio" name="location" value="Philadelphia" checked="checked" /> Philadelphia</label>
+                                        <input type="hidden" name="location" value="Philadelphia" /> Philadelphia</label>
                                     <label>
                                         <input type="radio" name="location" value="Other" /> Other</label>
-                                </div>
+                                </div> -->
+                                <input type="hidden" name="location" value="Philadelphia" /> 
                                 <input class="joinbutton" id="signupsubmit" name="signup" type="submit" value="Join" />
                             </form>
                         </div>
@@ -355,16 +356,18 @@
 
     <xsl:template name="LoggedInNavigation">
         <div class="navcontainer">
-            <a href="/popups" class="third NavigationLink">Socialer Popups</a>
-            <a href="/trending" class="first NavigationLink" >Around The City</a>
+            <a href="/popups" class="first NavigationLink">Socialer Popups</a>
+            <a href="/trending" class="second NavigationLink" >Around The City</a>
             
-            <a href="/explore" class="second NavigationLink">Browse</a>
+       <!--     <a href="/explore" class="second NavigationLink">Browse</a>-->
             <xsl:choose>
                 <xsl:when test="./Viewer/@userId = -1">
                     <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login </a>
                     <a href="#myModal2"  role="button" class="btn" data-toggle="modal" >Sign Up</a>
                 </xsl:when>
                 <xsl:otherwise>
+                    <a href="/popups/new" class="third NavigationLink">Host a Popup</a>
+                    <a href="/community" class="fourth last NavigationLink">Community</a>
                     <a href="/search" class="sixth last NavigationLink">Search</a>
                     <div id="SocialInbox">
                         <div class="clickRegion">

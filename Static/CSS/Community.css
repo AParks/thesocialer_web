@@ -1,0 +1,43 @@
+/* 
+    Document   : Community
+    Created on : Aug 2, 2013, 4:55:10 PM
+    Author     : anna parks
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+body{
+    background-image: none !important;
+    background-color: #eef2f7 !important;
+}
+
+#MainBody, #Header {
+    background-color: #eef2f7;
+    
+}
+#MainBody{
+    width: 70%
+}
+
+#photos{
+    width: 100%;
+    -moz-column-count: 4;
+    -moz-column-gap: 0px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 0px;
+    column-count: 4;
+    column-gap: 0px;
+}
+.popup_photo img{
+    width: 245px;
+    height: auto;
+    vertical-align: middle;
+}
+.popup_photo{
+    display: inline-block;
+    
+    margin: 5px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px #000;
+}
