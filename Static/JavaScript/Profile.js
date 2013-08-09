@@ -39,8 +39,6 @@ var Profile = function(user) {
             $text.css('display', 'inline');
             $text.removeAttr('readonly');
             $text.addClass('editable');
-
-
         });
     }
 

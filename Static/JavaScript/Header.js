@@ -26,13 +26,13 @@ $(function() {
             tab_inverted: false
         }]);
  /* 
-  var url = document.URL;
-    var start = url.indexOf('m/');
+ var url = document.URL;
+    var start = url.indexOf('.com');
     var referring = url.substring(start + 4, url.length);
-    mixpanel.track_links('.NavigationLink.first', 'around the city click - live site', {"previous page": referring, "user_id": Viewer.userId});
-    mixpanel.track_links('.NavigationLink.second', 'browse tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
-    mixpanel.track_links('.NavigationLink.third', 'popup tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
-    mixpanel.track_links('.NavigationLink.sixth', 'search tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
+    mixpanel.track_links('.NavigationLink.first', 'popup tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
+    mixpanel.track_links('.NavigationLink.second', 'host a popup click - live site', {"previous page": referring, "user_id": Viewer.userId});
+    mixpanel.track_links('.NavigationLink.last', 'community tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
+
 
 */
 
@@ -41,8 +41,6 @@ $(function() {
         //.reload(true);
         FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
-                console.log('connected');
-                console.log(response.session);
                 // the user is logged in and has authenticated your
                 // app, and response.authResponse supplies
                 // the user's ID, a valid access token, a signed
@@ -101,7 +99,6 @@ $(function() {
                 },
                 success: function(data) {
                     if (data) {
-                        console.log(data);
                         failedForm.html(data);
                         failedForm.show();
                     } else
@@ -213,7 +210,7 @@ $(function() {
 
 
 
-    $('#ForgotLink').click(
+    $('.ForgotLink').click(
             function() {
                 $('#QuickLoginFormLoginFailed').hide();
                 $('#break').hide();
@@ -449,6 +446,15 @@ $(function() {
             success: function(data, textStatus, jqXHR) {
                 if (data) {
                     $('#QuickLoginFormLoginFailed').html(data);
+                    
+    $('.ForgotLink').click(
+            function() {
+                $('#QuickLoginFormLoginFailed').hide();
+                $('#break').hide();
+                $('#QuickLoginForm').slideUp();
+                $('#ForgotPasswordForm').show("slow");
+            }
+    );
                     $('#QuickLoginFormLoginFailed').show();
                     $('#break').show();
                     resend();
@@ -462,7 +468,6 @@ $(function() {
 
             },
             error: function(data) {
-                console.log(data);
                 $('#QuickLoginFormLoginFailed').show();
                 $('#break').show;
 

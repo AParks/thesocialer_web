@@ -188,10 +188,9 @@ class Member extends ATransformableObject {
             $query->execute();
         }
         catch(Exception $e){
-            error_log('email yo' . $e);
+            error_log('email not updated:' . $e);
             return false;
         }
-        error_log('beyond the wall');
         return true;
     }
 

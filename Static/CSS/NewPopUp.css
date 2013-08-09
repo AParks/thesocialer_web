@@ -1,213 +1,240 @@
-/* 
-    Document   : NewPopUp
-    Created on : Jul 29, 2013, 12:48:28 PM
-    Author     : anna parks
-    Description:
-        Purpose of the stylesheet follows.
-*/
+    /* 
+        Document   : NewPopUp
+        Created on : Jul 29, 2013, 12:48:28 PM
+        Author     : anna parks
+        Description:
+            Purpose of the stylesheet follows.
+    */
 
-body{
-    background-image: none !important;
-    background-color: #eef2f7 !important;
-}
+    body{
+        background-image: none !important;
+        background-color: #eef2f7 !important;
+    }
 
-#MainBody, #Header {
-    background-color: #eef2f7;
-}
-
-textarea{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    resize: none;
-    padding: 5px;
-    margin-bottom: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 2px inset;
-    height: 100px;
-}
-.butn{
-    display: none;
-}
-
-#map-canvas{
-    width: 600px;
-    height: 200px;
-}
-
-#new_pop input[type=text].error,
-#new_pop textarea.error{
-    color: #b94a48;
-    border-color: #b94a48;
-     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
-     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
-}
-#new_pop input[type=file].error{
-    color: #b94a48;
-}
-
-#first input[type=text]{
-    width: 95%;
-    height: 25px;
-}
-#first textarea{
-    width: 95%;
-    height: 45px;  
-}
-#first label{
-    margin-right: 15px;
-}
-#second span{
-    display: inline-block;
-    width: 40px;
-}
-#second span#to{
-    display: none;
-}
-
-#second .datepicker{  
-    background: #fff url(/Static/Images/glyphicons-halflings-calendar.png)  no-repeat;
-    background-position: 98% center;
-    background-size: 23px 25px;
-}
-#second input[type=text]{
-    height: 25px;
-}
-#last input[type=text],
-#last input[type=number]{
-    width: 30px;
-    height: 25px;
-}
-input.new_popup_button[type=submit]{
-    display: none;
-}
-.date{
-    margin-right: 10px
-}
-input[name=endDate],
-input[name=endTime]{
-    display: none;
-}
-#popup_location{
-    width:  95% !important;
-} 
-/*.pac-container {
-    z-index: 1051 !important;
-}*/
-fieldset.inactive{
-
-    visibility: hidden;
-    position: absolute;
-    bottom: 0;
-}
-fieldset.active{
-
-    visibility: visible;
-    position: relative;
-}
-
-.add-photo{
-    background-color: #19c3ee;
-    width: 150px;
-    margin-bottom: 10px;
     
+    #MainBody {
+        width: 100% !important;
+    }
+    #MainBody, #Header {
+        background-color: #eef2f7;
+    }
 
-}
-.new_popup_button, .add-photo{
-    line-height: 30px;
-    font-size: 12pt;
-    padding: 4px 10px 4px;
-    
+    textarea{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        resize: none;
+        padding: 5px;
+        margin-bottom: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 2px inset;
+        height: 100px;
+    }
+    .butn{
+        display: none;
+    }
 
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    text-align: center;
-    color: white;
-    display: inline-block;
-}
-.butn{
-    margin-right: 10px;
-}
-.new_popup_button:active,
-.new_popup_button:hover{
-    background-image: none;
-  -webkit-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
-  outline: 0;
-}
-.new_popup_button{
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-    background-color: #81d34f;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#79f52d), color-stop(50%, #81d34f), to(#87b968));
-    background-image: -webkit-linear-gradient(#79f52d, #81d34f 50%, #87b968);
-    background-image: -moz-linear-gradient(top, #79f52d, #81d34f 50%, #87b968);
-    background-image: -ms-linear-gradient(#79f52d, #81d34f 50%, #87b968);
-    background-image: -o-linear-gradient(#79f52d, #81d34f 50%, #87b968);
-    background-image: linear-gradient(#79f52d, #81d34f 50%, #87b968);
-    background-repeat: no-repeat;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79f52d', endColorstr='#87b968', GradientType=0);
-    border: 1px solid #ccc;
-    border-bottom-color: #bbb;
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
+    #map-canvas{
+        width: 600px;
+        height: 200px;
+    }
+    .error{
+        color: #b94a48;
+    }
+    #new_pop input[type=text].error,
+    #new_pop textarea.error{
+        border-color: #b94a48;
+         -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+         -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+    }
+    #new_pop input[type=file].error{
+        color: #b94a48;
+    }
 
-}
-#popup{
-    background-color: white;
-    border: 1px solid #ddd;
-    border-bottom: none;
-}
-.header, #popup, .modal-footer {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-}
-.header{
-    margin-top: 15px;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
+    .placeholder{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        left: 5px; top: 3px;
+        width: 147px;
+        height: 15px;
+        color: rgb(186, 186, 186);
+        position: absolute;
+        overflow-x: hidden;
+        font-size-adjust: none;
+        font-stretch: normal;
+    }
+    #first input[type=text]{
+        width: 95%;
+        height: 25px;
+    }
+    #first textarea{
+        width: 95%;
+        height: 45px;  
+    }
+    #first label{
+        margin-right: 15px;
+    }
+    #second span{
+        display: inline-block;
+        width: 40px;
+    }
+    #second span#to{
+        display: none;
+    }
 
-    -webkit-border-radius: 6px 6px 0 0;
-    -moz-border-radius: 6px 6px 0 0;
-    border-radius: 6px 6px 0 0;
-}
+    #second .datepicker{  
+        background: #fff url(/Static/Images/glyphicons-halflings-calendar.png)  no-repeat;
+        background-position: 98% center;
+        background-size: 23px 25px;
+    }
+    #second input[type=text]{
+        height: 25px;
+    }
+    #last input[type=number],
+    #last input[type=text]{
+        width: 50px;
+        height: 25px;   
+    }
+    #file-input{
+        height:0px;
+        position: relative;
+    }
+     #last input[type=file]{
+	-moz-opacity:0 ;
+	/*filter:alpha(opacity:0);*/
+	opacity: 0;
+	z-index: 2;
+    }
+    input.new_popup_button[type=submit]{
+        display: none;
+    }
+    .date{
+        margin-right: 10px
+    }
+    input[name=endDate],
+    input[name=endTime]{
+        display: none;
+    }
+    #popup_location{
+        width:  95% !important;
+    } 
+    /*.pac-container {
+        z-index: 1051 !important;
+    }*/
+    fieldset.inactive{
 
-.modal-footer{
+        visibility: hidden;
+        position: absolute;
+        bottom: 0;
+    }
+    fieldset.active{
 
-    margin-bottom: 0;
-    text-align: right;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    -webkit-border-radius: 0 0 6px 6px;
-    -moz-border-radius: 0 0 6px 6px;
-    border-radius: 0 0 6px 6px;
-    -webkit-box-shadow: inset 0 1px 0 #ffffff;
-    -moz-box-shadow: inset 0 1px 0 #ffffff;
-    box-shadow: inset 0 1px 0 #ffffff;
-}
-.step-container{
-    width: 33%;
-    text-align: center;
-    display: inline-block;
-}
-.step-container.active > .step{
-    background-color: #81d34f;
+        visibility: visible;
+        position: relative;
+    }
 
-}
-.step{
-    display: inline-block;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    color: white;
-    background-color: #c2c2c2;
+    .add-photo{
+        background-color: #19c3ee;
+        padding: 15px;
+        margin-bottom: 10px;
 
-}
+
+    }
+    .new_popup_button, .add-photo{
+        line-height: 30px;
+        font-size: 12pt;
+        padding: 4px 10px 4px;
+
+
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        text-align: center;
+        color: white;
+        display: inline-block;
+    }
+    .butn{
+        margin-right: 10px;
+    }
+    .new_popup_button:active,
+    .new_popup_button:hover{
+        background-image: none;
+      -webkit-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+      -moz-box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+      box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(0, 0, 0, 0.05);
+      outline: 0;
+    }
+    .new_popup_button{
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+        background-color: #81d34f;
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#79f52d), color-stop(50%, #81d34f), to(#87b968));
+        background-image: -webkit-linear-gradient(#79f52d, #81d34f 50%, #87b968);
+        background-image: -moz-linear-gradient(top, #79f52d, #81d34f 50%, #87b968);
+        background-image: -ms-linear-gradient(#79f52d, #81d34f 50%, #87b968);
+        background-image: -o-linear-gradient(#79f52d, #81d34f 50%, #87b968);
+        background-image: linear-gradient(#79f52d, #81d34f 50%, #87b968);
+        background-repeat: no-repeat;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79f52d', endColorstr='#87b968', GradientType=0);
+        border: 1px solid #ccc;
+        border-bottom-color: #bbb;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+
+    }
+    #popup{
+        background-color: white;
+        border: 1px solid #ddd;
+        border-bottom: none;
+    }
+    .header, #popup, .modal-footer {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+    }
+    .header{
+        margin-top: 15px;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+
+        -webkit-border-radius: 6px 6px 0 0;
+        -moz-border-radius: 6px 6px 0 0;
+        border-radius: 6px 6px 0 0;
+    }
+
+    .modal-footer{
+
+        margin-bottom: 0;
+        text-align: right;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        -webkit-border-radius: 0 0 6px 6px;
+        -moz-border-radius: 0 0 6px 6px;
+        border-radius: 0 0 6px 6px;
+        -webkit-box-shadow: inset 0 1px 0 #ffffff;
+        -moz-box-shadow: inset 0 1px 0 #ffffff;
+        box-shadow: inset 0 1px 0 #ffffff;
+    }
+    .step-container{
+        width: 33%;
+        text-align: center;
+        display: inline-block;
+        vertical-align: text-top;
+    }
+    .step-container.active > .step{
+        background-color: #81d34f;
+
+    }
+    .step{
+        display: inline-block;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50%;
+        color: white;
+        background-color: #c2c2c2;
+
+    }

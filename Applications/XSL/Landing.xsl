@@ -11,14 +11,14 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" omit-xml-declaration="yes"/>
 
-    <xsl:template match="/Popups">
+    <xsl:template match="/Landing">
         <div id='img'>
             
             <div id='container-black'></div>
             <div id='container'>
             <div id='popup-desc-start'>Explore outside your circle.</div><br/>
             <div id='popup-desc'>
-                Host and discover unique and engaging events, <br/> while meeting new, interesting people.
+                Try something different. Meet someone interesting.
               <!--  <br/>If you have an idea you're passionate about, <br/>contact <strong>concierge@thesocialer.com</strong> to be a host.-->
                 
             </div>
@@ -50,26 +50,165 @@
                 <i class="icon-edit"></i>
                 Create a new popup</div>
                  </a> <br/>
-              <!--    <div id='popup-safety'>
-                     <div id='verified'>
+                 <div id='popup-safety'>
+                <!--     <div id='verified'>
                          <i class="icon-ok-sign icon-large"></i>
                      </div>
-                     Safety guaranteed. All hosts and events are personally verified by the Socialer team.
-                   <br/>
+                     Safety guaranteed. BLAH All hosts and events are personally verified by the Socialer team.
+                    <br/>
                          <i class="icon-envelope  icon-large"></i>
                      
                      Get to know each other before the event via our messaging system
                      <br/>
                          <i class="icon-lock  icon-large"></i>
-                     Pay and get paid via Stripe, a secure payments system.
-                 </div>-->
+                     Pay and get paid via Stripe, a secure payments system.-->
+                 </div>
             </xsl:otherwise>
             </xsl:choose>
             </div>
         </div>
-        <div id="MainBody">
-       
+        
+      <!--   <div id='become-host'>
+            <div id='how-it-works'>
+                <div id='text'>1. Create a popup.</div>
+                <div class='community'>
+                   <i class="icon-edit icon-large"></i>
+                </div>
+                
+            </div>
+            <div id='how-it-works'>
+                <div id='text'>2. Invite people inside and outside your circle.</div>
+                <div class='community' style='background-image: url(/Static/Images/circle.jpg)'></div>
 
+
+                
+            </div>
+            <div id='how-it-works'>
+                <div id='text'>3. Share your passion</div>
+                <div class='community' style='background-image: url(http://3.bp.blogspot.com/-Pa58x-XmSk8/UeYm3N4MSnI/AAAAAAAACYg/P6gw_lPI-bY/s1600/Aneta-Ivanova1.jpg)'></div>
+
+            </div>
+            
+            
+        </div>
+        
+        
+        
+       <div id='engage'>
+            <div 
+                class='community first' style='background-image: url(https://www.filepicker.io/api/file/kz76JO36R5aOYk9PWCHf)'></div>
+            <div class='community' style='background-image: url(https://www.filepicker.io/api/file/Q439iJ3hS0ekqiZMhIgx)'></div>
+        </div>-->
+        
+        <div id='host-discover'>
+            <div id='partition'>
+                <h2>Discover Popups</h2>
+                <div>
+                    <div class='iconContainer'>
+                        <i class="icon-search"></i>
+                    </div> 
+                    <div class='list-item'>Learn, make, play; experience something <strong>new</strong>.</div>
+                </div>
+                <div>
+                    <div class='iconContainer'>
+                        <i class="icon-user"></i>
+                    </div>
+                        <div class='list-item'>
+                            See who's going, bring a friend, and meet someone <strong>outside your</strong> personal <strong>networks</strong>.
+                        </div>
+                </div>
+                <div>
+                    <div class='iconContainer'>
+                        <i class="icon-credit-card"></i>
+                    </div>
+                    <div class='list-item'>
+                        Make seamless and secure payments.
+                    </div>
+                </div>
+                <a href='/popups/new'>
+            <div id='new_popup_button' class='new_popup_button'>
+                <i class="icon-search"></i>
+                Discover now</div>
+                 </a> 
+            </div>
+            <div id='partition'>
+                <div id="myCarousel" class="carousel slide">
+                        <ol class="carousel-indicators">
+                            <!--    <li data-target="#myCarousel" data-slide="next" class="active"></li>-->
+                        </ol>
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                <div class='item active' >
+                     <div class='community' style='background-image: url(http://3.bp.blogspot.com/-Pa58x-XmSk8/UeYm3N4MSnI/AAAAAAAACYg/P6gw_lPI-bY/s1600/Aneta-Ivanova1.jpg)'></div>
+   
+                </div>    
+                <div class='item'>
+                     <div class='community' style='background-image: url(https://www.filepicker.io/api/file/tYSSbhJIQu8LfXAoujfW)'/>
+                </div>
+                <div class='item'>
+                                        <div class='community' style='background-image: url(/Static/Images/circle.jpg)'></div>
+
+                     </div>
+                <div class='item'> 
+                     <div class='community' style='background-image: url(https://www.filepicker.io/api/file/Q439iJ3hS0ekqiZMhIgx)'/>
+                </div>
+                <div class='item'> 
+<div class='community' style='background-image: url(https://www.filepicker.io/api/file/kz76JO36R5aOYk9PWCHf)'/>
+                
+                </div>                 
+                
+                        </div>
+                        <!-- Carousel nav -->
+                     <!--   <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                            <xsl:text disable-output-escaping="yes">&#8249;</xsl:text>
+
+                        </a>
+
+                        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                            <xsl:text disable-output-escaping="yes">&#8250;</xsl:text>
+
+                        </a>-->
+ 
+            </div>
+            </div>      
+            <div id='partition'>
+                <h2>Create a popup</h2>
+                <div>
+                    <div class='iconContainer'>
+                        <i class="icon-edit"></i>
+                    </div>
+                    <div class='list-item'>
+                        Easily create experiences to share your <strong>passion</strong> and skills.
+                    </div>
+                </div>
+                <div>
+                    <div class='iconContainer'>
+                        <i class="icon-envelope"></i>
+                    </div>
+                    <div class='list-item'>
+                        We'll broadcast to interesting people <strong>outside your network</strong>. You control who can attend.
+                    </div>
+                </div>
+                <div>
+                    <div class='iconContainer'>
+                        <i class="icon-dollar"></i>
+                    </div>
+                    <div class='list-item'>
+                    Get <strong>paid</strong>, or host something for free. 
+                    </div>
+                </div>
+               <a href='/popups/new'>
+            <div id='new_popup_button' class='new_popup_button'>
+                <i class="icon-edit"></i>
+                Host now</div>
+                 </a> 
+            </div>
+            
+            
+            
+        </div>
+        <div id='discover'>
+            <h2>Featured Popups</h2>
             <ol id="LocationList">
                                                             
                 <xsl:for-each select="images/image">
@@ -78,21 +217,7 @@
                         <div class="TitleContainer">
                             <div class="EventTitle">
                                 <div id='title'><xsl:value-of select="./@headline"/></div>
-                             <!--    <div title="Verified" id='verified'>
-                                    <i class="icon-ok-sign icon-large"></i>
-                                </div> -->
-                           <!--     <xsl:choose>
-                            <xsl:when test='../../Viewer/@userId != -1'>
-                                 <a data-placement='top' data-toggle="tooltip" title="Bookmark it" class="logged_in EventPrice">
-                                    <i class="icon-bookmark icon-large"></i>
-                                </a>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <a data-placement='top' data-toggle="tooltip" title="Bookmark it" class="notLoggedIn EventPrice">
-                                    <i class="icon-bookmark icon-large"></i>
-                                </a>
-                            </xsl:otherwise>
-                        </xsl:choose>-->
+                     
                                
                             </div>
                         </div>
@@ -108,7 +233,6 @@
                                 </a>
                             </xsl:otherwise>
                         </xsl:choose>
-                        
                         <div class="Host">
                             <xsl:apply-templates select="./Host/Member" />
                             
@@ -136,15 +260,36 @@
                                     </div>
                                 </xsl:when>
                             </xsl:choose>
-                            
-                            </div>
+                        </div>
                     </li>
                 
                 </xsl:for-each>
             </ol>
+        
+
+        </div>
+        <div id='trust'>
+            <h2>Trust and Safety</h2>
+             <div id='popup-safety'>
+                         <i class="icon-ok-sign icon-large"></i>
+                      All hosts and events are personally verified by the Socialer team.
+                <br/>
+                         <i class="icon-envelope  icon-large"></i>
+                     
+                     Get to know each other before the event via our messaging system
+                     <br/>
+                         <i class="icon-lock  icon-large"></i>
+                     Pay and get paid via Stripe, a secure payments system.
+                     <br/>
+                     <i class="icon-phone-sign icon-large"></i>
+                     Contact us anytime about anything at concierge@thesocialer.com
+                 </div>
+            
         </div>
 
     </xsl:template>
+
+
 
     <xsl:template match="Host/Member">
                
@@ -192,7 +337,7 @@
                         <xsl:value-of select="../../@spots"/>
                     </xsl:otherwise>
                 </xsl:choose>
-            <span> spots</span> 
+                <span> spots</span> 
             </div>
         </div>
                 

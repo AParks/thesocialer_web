@@ -10,9 +10,12 @@ class Community extends ApplicationBase {
         
         $x = XSLTransformer::getInstance();
         $this->assetsManager->addCSS('Community');
+        $this->assetsManager->addCSS('UserPhotos');
+
         $this->assetsManager->addJavascript('filepicker');
+        $this->assetsManager->addJavascript('UserPhotos');
         $this->assetsManager->addJavascript('Community');
-        $this->assetsManager->addInitJavaScript("$('.NavigationLink.fourth').addClass('active');");
+        $this->assetsManager->addInitJavaScript("$('.NavigationLink.last').addClass('active');");
 
 
         $node = $this->dom->createElement('Community');

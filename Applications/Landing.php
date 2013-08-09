@@ -1,68 +1,42 @@
 <?php
 
-class PopUps extends ApplicationBase {
+class Landing extends ApplicationBase {
 
     public function execute() {
         $x = XSLTransformer::getInstance();
 
         
-        if($this->requestValues[0] == 'new'){
-            if ($this->viewer->isAuthenticated() === false) {
-                $this->redirect('/popups');
-            }
-            $output = $this->newEvent($x);
-            $this->assetsManager->addInitJavaScript("$('.NavigationLink.second').addClass('active');");
-
-
-        }else{
-            //display all the popups
-            $this->assetsManager->addInitJavaScript("$('.NavigationLink.first').addClass('active');");
+           //display all the popups
+        //    $this->assetsManager->addInitJavaScript("$('.NavigationLink.first').addClass('active');");
 
             $output = $this->displayEventsPage($x);
-        }
+        
         $this->display->appendOutput($output);
     }
     
-    function newEvent($x) {
-        
-        $this->assetsManager->addJavascript('CreateEvent');
-      
-        $this->assetsManager->addCSS('NewPopUp');
-        
-        $this->assetsManager->addCSS('jquery.ui.all');
-        $this->assetsManager->addCSS('jquery.ui.autocomplete');
-        $this->assetsManager->addJavascript('jquery.ui.core');
-        $this->assetsManager->addJavascript('jquery.ui.widget');
-        $this->assetsManager->addJavascript('jquery.ui.datepicker');
-        $this->assetsManager->addJavascript('jquery.ui.autocomplete');
-        $this->assetsManager->addJavascript('jquery.ui.menu');
-        $this->assetsManager->addJavascript('jquery.ui.position');
-        $this->assetsManager->addJavascript('GoogleMapAutoComplete');
-
-        $this->assetsManager->addInitJavaScript('var times = ' . json_encode($this->generateTimes()) . ';');
-
-        
-        $node = $this->dom->createElement('NewPopUp');
-        $node->appendChild($this->getLoggedInMemberNode());
-        return $x->transform('NewPopUp', $node);
-    }
+    
 
     function displayEventsPage($x) {
 
 
-      //  $this->assetsManager->addCSS('Explore');
+        $this->assetsManager->addCSS('Landing');
         $this->assetsManager->addCSS('PopUps');
+
         $this->assetsManager->addJavascript('PopUps');
-        $node = $this->dom->createElement('Popups');
+        $this->assetsManager->addJavascript('Landing');
+        $this->assetsManager->addJavascript('jquery.scrollTo');
+        $this->assetsManager->addJavascript('jquery.nav');
+
+        $node = $this->dom->createElement('Landing');
         $node->appendChild($this->getLoggedInMemberNode());
         $node->appendChild($this->getFeaturedEvents());
 
-        return $x->transform('PopUps', $node);
+        return $x->transform('Landing', $node);
     }
 
     function getFeaturedEvents() {
         $query = sPDO::getInstance()->prepare("SELECT * FROM featured_events WHERE starts_at > '" .
-                date("Y-m-d H:i:s") . "' ORDER BY priority DESC");
+                date("Y-m-d H:i:s") . "' ORDER BY priority DESC LIMIT 2");
         $query->execute();
         $node = $this->dom->createElement('images');
 

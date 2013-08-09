@@ -37,7 +37,6 @@ var Home = function() {
         var singleTile = 286;
 
         var numTiles = Math.floor(outer_width / singleTile);
-        console.log('tiles' + numTiles);
         if (!numTiles) {
             numTiles = 1;
             outer_width = screen_width;
@@ -47,8 +46,6 @@ var Home = function() {
 
         }
         var inner_width = numTiles * singleTile;
-                console.log('outer: ' + outerWidth);
-                console.log('innner: ' + innerWidth);
 
         var marginLeft = parseInt((outer_width - inner_width) / 2);
             $('.Home').css('margin-left', marginLeft);

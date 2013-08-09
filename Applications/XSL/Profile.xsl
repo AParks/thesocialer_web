@@ -40,6 +40,18 @@
             </div>
             <div class="clear"><![CDATA[]]></div>
         </div>
+     <div class="PhotoUploader">
+            
+            <div class="PhotoUploader_FormContainer">
+                <a href="#" class="PhotoUploader_Close">x</a>
+                    <form id='uploader' method="post" enctype="multipart/form-data" action="/photoManager/json/upload">
+                        <h2>Choose a new photo to upload</h2>
+                        <input type="file" name="photo"/>
+                        <div class="Thumbnail" />
+                        <button id='upload' class="standard Blue">Upload</button>
+                    </form>
+           </div>
+        </div> 
     </xsl:template>
 
     <xsl:template name="LeftColumn">

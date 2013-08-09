@@ -78,10 +78,14 @@ class Register extends ApplicationBase {
                 . '</head>'
                 . '<body>'
                 . 'Dear ' . $this->fname . ', <br/>'
-                . 'Please confirm that you signed up for the Socialer with this email address.  '
+                . 'Welcome to the Socialer! You have successfully signed up.'
                 . '<br/>'
-                . "<a href=$confirm_email>Confirm</a><br/>"
-                . 'The Socialer'
+                . "To activate your account, just follow this link:
+                    <br/>
+                    <a href=$confirm_email>$confirm_email</a>
+                    <br/>"
+                . 'Thanks for joining!<br/>'
+                . 'The Socialer team'
                 . '</body>'
                 . '</html>';
         return $this->email($html, $subject, $this->email, $from_email, $from_password);

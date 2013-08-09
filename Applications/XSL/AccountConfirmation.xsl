@@ -35,7 +35,9 @@
 
         <xsl:for-each select="AccountConfirmationSent">
             <div style="padding: 20px;">
-                Welcome to The Socialer! Please check your email to confirm your account registration.
+                <h2>Please check your email</h2> 
+                Because you typed in your email address, it's important we make sure we've got it right so you can login in the future. 
+                This will only happen once and should only take a moment. If an email from the Socialer hasn't arrived in the next few seconds check your junk folder.
             </div>
         </xsl:for-each>
         

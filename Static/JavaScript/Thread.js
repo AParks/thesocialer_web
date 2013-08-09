@@ -12,7 +12,7 @@ var Thread = function( ){
 	if ( message === '' ) {
 	    return;
 	}
-	MessageSender.sendMessage( { userId: $input.attr('recipient') }, message, sendCallback)
+	MessageSender.sendMessage(  $input.attr('recipient'), message, sendCallback)
     }
     
     function sendCallback( response ) {

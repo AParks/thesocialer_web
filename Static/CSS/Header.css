@@ -23,6 +23,21 @@
 
 }
 
+@media screen and (max-device-width: 900px),
+only screen and (max-width : 900px){
+   /* .navcontainer > .btn{
+        display: inline-block !important;
+    }
+    #AccountSettingsContainer > .btn,
+    #AccountSettingsContainer > span{
+        display: none;
+    }*/
+    #Header{
+        width: 100% !important;
+    }
+
+}
+
 @media screen and (max-device-width: 480px) {
     .navcontainer > .btn{
         display: inline-block !important;
@@ -223,7 +238,7 @@ h1, h2, h3, h4, h5, h6{
 
 
 
-#ForgotLink
+div.ForgotLink
 {
     text-align: center;
     text-decoration: none;
@@ -236,7 +251,7 @@ h1, h2, h3, h4, h5, h6{
     cursor:pointer;
     margin-right: 50px;
 }
-#ForgotLink:hover:before{
+div.ForgotLink:hover:before{
     position:absolute; 
     content: '';
     color: white;
@@ -247,7 +262,7 @@ h1, h2, h3, h4, h5, h6{
     left: 0 ; 
     right: 0 ;    
 }
-#ForgotLink:hover{
+div.ForgotLink:hover{
     position:relative;
 }
 
@@ -615,7 +630,7 @@ input[type="checkbox"]{
 
 #Navigation .navcontainer
 {
-    width: 900px;
+    width: 345px;
     margin: auto;
     vertical-align: middle;
     /*   padding: 3px 10px; */
@@ -639,9 +654,11 @@ input[type="checkbox"]{
 a:hover{
     text-decoration: none;
 }
-
+#Navigation li{
+    display: inline-block;
+}
 #Navigation a:hover,
-#Navigation .active{
+#Navigation a.active{
     color:white !important;
 
     background-color: #6887b9;
@@ -651,10 +668,15 @@ a:hover{
     background-image: -o-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: linear-gradient(to bottom, #8ba3c9, #6887b9);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ba3c9', endColorstr='#6887b9', GradientType=0);
-
+}
+#Navigation a > div{
+    font-size: 18pt;
+    font-family: comfortaabold;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
 
 }
-
 
 .navcontainer > .btn{
     display: none;
@@ -662,13 +684,15 @@ a:hover{
 
 #Navigation .NavigationLink{
     display: inline-block;
+
+
 }
 #Navigation .NavigationLink,
 .navcontainer > .btn
 {
-    line-height: 30px;
+    line-height: 22px;
     color: white;
-    font-size: 15px;
+    font-size: 14px;
     padding-left: 13px;
     padding-right: 13px;
 }

@@ -156,7 +156,6 @@ class Viewer extends ATransformableObject {
     public function logout() {
         setcookie('userlogin', NULL, time() - 86400, '/', 'thesocialer.com');
         setcookie(session_name(), '', time() - 86400, '/');
-        error_log("logging out yo");
         session_destroy();
     }
 
@@ -187,6 +186,9 @@ class Viewer extends ATransformableObject {
 
                     return $userId;
                 }
+                else
+                    throw new Exception(" Sorry, that password isn't right. We can help you <a class='ForgotLink'>recover your password</a>.");
+                    
             }else if ($row['active'] == 0) {
                 $name = $row['first_name'];
                 throw new Exception(" An account with that email has already 
@@ -194,7 +196,7 @@ class Viewer extends ATransformableObject {
                     <a id='confirm' user_id=$userId email='$email' firstName='$name'>Resend confirmation email</a>.");
             }
         }
-        throw new Exception(' Incorrect email or password.');
+        throw new Exception(' Sorry, we could not find an account with that email.');
     }
 
     protected function setCookie($userId) {

@@ -6,6 +6,7 @@
   border-radius: 15px;
   -moz-border-radius: 15px;
   padding: 20px;
+  display: none;
 }
 
 #ThumbnailSquare

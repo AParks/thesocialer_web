@@ -32,7 +32,7 @@ class FeaturedEventViewer extends ApplicationBase {
         $this->assetsManager->addJavaScript('FeaturedEventViewer');
         $this->assetsManager->addJavaScript('AttendanceManager');
         $this->assetsManager->addJavascript('https://maps.googleapis.com/maps/api/js?sensor=false', true);
-        $this->assetsManager->addInitJavaScript("$('.NavigationLink.third').addClass('active');");
+        $this->assetsManager->addInitJavaScript("$('.NavigationLink.first').addClass('active');");
         $this->assetsManager->addJavaScript('MessageSender');
         $this->assetsManager->addCSS('MessageSender');
         $this->assetsManager->addCSS('FeaturedEventViewer');

@@ -4,8 +4,11 @@
 
 
 $(function( ) {
-        
-    window.onresize=function(){
+
+
+    var height = $('#container').height();
+    $('#container-black').height(height);
+    window.onresize = function() {
         var height = $('#container').height();
         $('#container-black').height(height);
     };
@@ -23,9 +26,6 @@ $(function( ) {
         $('#myModal2').modal('show');
 
     });
-    if(Viewer.userId != -1){
-//                $('#container-black').remove();
-        $('#container-black').addClass('height');
-    }
+
 
 });

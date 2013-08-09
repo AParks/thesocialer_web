@@ -6,6 +6,13 @@ FeaturedEventViewer = function(evt, userStatus) {
 
 
     function init( ) {
+        $('.booking').height($('#deets').height());
+        $('#deets').width($('.EventInfo').width() - 25 - $('.booking').width());
+        window.onresize = function() {
+            
+            $('.booking').height($('#deets').height());
+            $('#deets').width($('.EventInfo').width() - 25 - $('.booking').width());
+        };
 
 
         $('#rightcontainer .UserPhoto').load(function() {
@@ -15,6 +22,7 @@ FeaturedEventViewer = function(evt, userStatus) {
             $('#leftcontainer').css('min-height', min);
 
         });
+
 
         //add images to carousel
         var images = evt.markup.split(" ");
@@ -47,8 +55,8 @@ FeaturedEventViewer = function(evt, userStatus) {
             }
         });
 
-      facebookShare();
-       $('#notLoggedInSendMessage').bind('click', function(){
+        facebookShare();
+        $('#notLoggedInSendMessage').bind('click', function() {
             $('#myModal').modal('show');
         });
 
@@ -58,7 +66,7 @@ FeaturedEventViewer = function(evt, userStatus) {
         //show part of the event description initially, and 
         //show the rest when user clicks on see more
         // $('#Description').append(evt.description.substring(0, 200));
-        $('#Description').append(evt.description);
+        $('#desc').html(evt.description);
 
         //   var n = evt.description.length;
         //   $('#SeeMore').click(function() {
@@ -123,23 +131,23 @@ FeaturedEventViewer = function(evt, userStatus) {
 
         _this.drawMap( );
         $('#SendMessage').bind('click',
-                function(){
-            MessageSender.showPopup({
-                'firstName': $(this).attr('name'),
-                'userId':evt.host});
-            return false;
-                
-    });
+                function() {
+                    MessageSender.showPopup({
+                        'firstName': $(this).attr('name'),
+                        'userId': evt.host});
+                    return false;
+
+                });
 
     }
-     function showSendMessage(name) {
-         console.log(evt.host);
-	MessageSender.showPopup({'firstName': name, 'userId':evt.host});
-	return false;
+    function showSendMessage(name) {
+        console.log(evt.host);
+        MessageSender.showPopup({'firstName': name, 'userId': evt.host});
+        return false;
     }
 
-    function facebookShare(){
-          //set up share frame
+    function facebookShare() {
+        //set up share frame
         $('a[id=share]').attr('href', "https://www.facebook.com/dialog/feed?" +
                 "app_id=327877070671041" +
                 "&link=" + document.URL +
@@ -243,7 +251,7 @@ $(function( ) {
         $('#myModal').modal('show');
     });
 
-    $('#freeButton').click(function(){
+    $('#freeButton').click(function() {
         $.ajax({
             url: '/charge',
             type: 'POST',

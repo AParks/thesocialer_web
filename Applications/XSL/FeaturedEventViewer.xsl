@@ -42,9 +42,14 @@
                         <i class="icon-user"></i>
 
                         <span id='spots_avail'>
-                            <xsl:value-of select="./FeaturedEvent/@total_spots - ./FeaturedEvent/@spots_purchased" />
-                                    available spots
-                                </span>
+                            <xsl:choose>
+                    <xsl:when test='./FeaturedEvent/@total_spots &lt; 0'>
+                    &#8734;
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="./FeaturedEvent/@total_spots - ./FeaturedEvent/@spots_purchased"/>
+                    </xsl:otherwise>
+                </xsl:choose> available spots</span>
                     </div>
                     
                    </div>
@@ -149,7 +154,7 @@
                     </div>
                     <br/> 
                       <p id='desc'>
-                          <xsl:value-of select="FeaturedEvent/@description" disable-output-escaping="yes" />
+                        <!--  <xsl:value-of select="FeaturedEvent/@description" disable-output-escaping="yes" />-->
                       </p>
                       <div id="FeaturedEvent">    
                     
@@ -302,7 +307,7 @@
         <div id='host'>
             
             <a data-user-id="{./@userId}" href="/profile/{./@userId}">
-                <img src="/photo/{./@userId}/Medium" class="UserPhoto" />
+                <img width='80px' src="/photo/{./@userId}/Medium" class="UserPhoto" />
             </a>
             <div id='right'>
                 <div id='name'  style='vertical-align: text-top'>

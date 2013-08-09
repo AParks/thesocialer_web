@@ -1,6 +1,6 @@
 var UserPhotos = function( )
 {
-  var $photos = $('img.UserPhoto');
+  var $photos = $('.UserPhoto');
   var photoCount = $photos.length;
   var $popup;
   var $active;
@@ -16,7 +16,7 @@ var UserPhotos = function( )
     var markup = '<div id="PhotoPopup">'
                +   '<div class="inner">'
                +     ( photoCount ? '<a href="#" id="PhotoPopup_Prev">Previous</a>' : '' )
-               +     '<img src="' + $active.attr('data-large') + '" />'
+               +     '<img style="max-width: 100%" src="' + $active.attr('data-large') + '" />'
                +     ( photoCount ? '<a href="#" id="PhotoPopup_Next">Next</a>' : '' )
                +   '</div>'
                + '</div>';
@@ -29,7 +29,7 @@ var UserPhotos = function( )
 
     $( '#PhotoPopup_Prev' ).bind('click', function( ){
       $active = $active.prev();
-      if ( $active.is('img.UserPhoto') === false )
+      if ( $active.is('.UserPhoto') === false )
       {
         $active = $photos.filter(':last');
       }
@@ -39,7 +39,7 @@ var UserPhotos = function( )
 
     $( '#PhotoPopup_Next' ).bind('click', function( ){
       $active = $active.next();
-      if ( $active.is('img.UserPhoto') === false )
+      if ( $active.is('.UserPhoto') === false )
       {
         $active = $photos.filter(':first');
       }

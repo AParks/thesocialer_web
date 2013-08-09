@@ -34,13 +34,18 @@
                 </div>
 
             </div>
-            <form id='new_pop' action="/A/FeaturedJSON.php" method="post" enctype="multipart/form-data" onSubmit="return validateForm()">
+            <form id='new_pop' action="/featured/json" method="post" enctype="multipart/form-data" onSubmit="return validateForm()">
 
                 <div id='popup'>
 
 
                     <fieldset id='first' class='active'>
-                        <input id="headinput" type="text" name="headline" placeholder='Event Headline' class='required'/>
+                          <input id="headinput" type="text" name="headline" class='required' placeholder='Event Headline'/>
+
+                        <!--<span style="position: relative;">
+                          
+                        <label class='placeholder' for="headinput">Event Headline</label>
+                        </span>-->
                         <input id="subheadinput" type="text" name="sub_headline" placeholder='Event Subheadline (Optional)'/>
                         <textarea name="description"  class='required' placeholder="Describe what you will share and why you think it's awesome"></textarea>
                         <br/>
@@ -68,14 +73,15 @@
                     <fieldset id='last' class='inactive'>
                         <!--     <input type="filepicker-dragdrop" data-fp-button-text='Add photos' data-fp-button-class='add-photo' data-fp-extensions='.jpg,.png,.jpeg,.gif,.bmp' data-fp-apikey='ATkirnHVuRJyx5NEogt6gz' data-fp-multiple="true"/>
                         -->
-                        <div style="height:0px;margin-left: 80px;">
+                        <div id='file-input'>
                             <input class='required' type="file" name="file[]"  id="file" multiple='true'/>
                         </div>
                         <div class='add-photo'>Add photos</div>
+                        <span style='padding: 5px'></span>
                         <br/>
-                        Price: $ <input id="extrainput" type="text" min="0" name="price" placeholder='Price' value='0'/>
-                        <error></error><br/>
-                        Max number of guests: <input type="number" id="spots" name="spots" value='10' />
+                        Price: $ <input id="extrainput" type="text" min="0" name="price" placeholder='20' value='0'/>
+                        <error ></error><br/>
+                        Max number of guests: <input type="number" min='1' id="spots" name="spots" value='10' />
                     </fieldset>
                     <input type="hidden" name="startDate" value="" />
                     <input type="hidden" name="endDate" value="" />

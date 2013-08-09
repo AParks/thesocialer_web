@@ -1,5 +1,5 @@
 <site>
-    <entry uri="/">PopUps</entry>
+    <entry uri="/">Landing</entry>
     <entry uri="/community">Community</entry>
     <entry uri="/about">About</entry>
     <entry uri="/landing">AdminLocationManager</entry>
@@ -8,6 +8,7 @@
     <entry uri="/charge">ChargeCard</entry>
     <entry uri="/confirm">AccountConfirmation</entry>
     <entry uri="/explore">Explore</entry>
+    <entry uri="/featured/json">FeaturedJSON</entry>
     <entry uri="/location">LocationViewer</entry>
     <entry uri="/location/featured">FeaturedEventViewer</entry>
     <entry uri="/locations/json">LocationJSON</entry>

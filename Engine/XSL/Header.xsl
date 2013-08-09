@@ -43,7 +43,7 @@
                         </span>
                         
                     </div>
-                    <a href="/popups">
+                    <a href="/">
                         
                         <div>
                             <div id='the'>the</div>
@@ -66,7 +66,6 @@
                                         <li>
                                             <a href="/profile">
                                                 <img width='25' height='25' src="/photo/{./Viewer/@userId}/Small"/> 
-
                                                 <div class='profile'>Profile</div>
                                             </a>
                                         </li>
@@ -114,6 +113,34 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <div id="SocialInbox">
+                                    <div class="clickRegion">
+                                        <span>Social Inbox</span>
+                                        <div id="SocialInboxCount">
+                                            <xsl:value-of select="count(SocialInbox/FriendRequests/FriendRequest)+count(SocialInbox/LocationShares/LocationShare)" />
+                                            <b class="caret"></b>
+                                        </div>
+                                    </div>
+                                    <ol id="SocialInboxNotifications">
+                                        <xsl:choose>
+                                            <xsl:when test="count(SocialInbox/FriendRequests/FriendRequest) > 0"> 
+                                                <xsl:apply-templates select="SocialInbox/FriendRequests" />
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <li class="Notification none">No new friend requests.</li>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                        <xsl:choose>
+                                            <xsl:when test="count(SocialInbox/LocationShares/LocationShare) > 0"> 
+                                                <xsl:apply-templates select="SocialInbox/LocationShares" />
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <li class="Notification none">No new shares.</li>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </ol>
+                                </div>
+        
                               
                                 
                             </xsl:when>
@@ -124,11 +151,12 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </div>
+                    
                 </div>
                 <div id="Navigation">
                     <xsl:call-template name="LoggedInNavigation" />
 
-                    <xsl:call-template name="HowItWorks" />
+                  <!--  <xsl:call-template name="HowItWorks" />-->
                 </div>
                 <xsl:value-of select="markup" disable-output-escaping="yes" />
  
@@ -157,7 +185,7 @@
                             <input type="email" name="LoginEmail" placeholder="Email" />
                             <div class="pass">
                                 <input type="password" name="LoginPassword" placeholder="Password" />
-                                <div id="ForgotLink">?</div>
+                                <div class="ForgotLink">?</div>
                             </div>
                             <br/>
                             <div class="remember">
@@ -297,7 +325,7 @@
                                     <label>
                                         <input type="radio" name="gender" value="f" /> Female</label>
                                 </div>
-                             <!--   <label id="lloc" for="location">Location:</label>
+                                <!--   <label id="lloc" for="location">Location:</label>
                                 <div id="loccontainer">
                                     <label>
                                         <input type="hidden" name="location" value="Philadelphia" /> Philadelphia</label>
@@ -314,7 +342,8 @@
                 
                 <div class="Footer">
 
-                    <!-- <a href="https://mixpanel.com/f/partner">
+                    <!-- 
+                    <a href="https://mixpanel.com/f/partner">
                         <img style='position: fixed; bottom: 0; left: 0' src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" />
                     </a> -->
                     
@@ -355,51 +384,29 @@
     </xsl:template>
 
     <xsl:template name="LoggedInNavigation">
-        <div class="navcontainer">
-            <a href="/popups" class="first NavigationLink">Socialer Popups</a>
-            <a href="/trending" class="second NavigationLink" >Around The City</a>
-            
-       <!--     <a href="/explore" class="second NavigationLink">Browse</a>-->
+        <ul class="navcontainer">
+            <a href="/popups" class="NavigationLink first"> 
+                <div>Discover</div>a social popup</a>
+            <a href="/popups/new" class=" NavigationLink second">
+                <div>Host</div>a social popup</a>
+            <a href="/community" class="last NavigationLink last">
+                <div>Engage</div> with people</a>
+
+            <!--   <a href="/trending" class="second NavigationLink" >Around The City</a> -->
+           
+            <!--     <a href="/explore" class="second NavigationLink">Browse</a>-->
             <xsl:choose>
                 <xsl:when test="./Viewer/@userId = -1">
                     <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login </a>
                     <a href="#myModal2"  role="button" class="btn" data-toggle="modal" >Sign Up</a>
                 </xsl:when>
                 <xsl:otherwise>
-                    <a href="/popups/new" class="third NavigationLink">Host a Popup</a>
-                    <a href="/community" class="fourth last NavigationLink">Community</a>
-                    <a href="/search" class="sixth last NavigationLink">Search</a>
-                    <div id="SocialInbox">
-                        <div class="clickRegion">
-                            <span>Social Inbox</span>
-                            <div id="SocialInboxCount">
-                                <xsl:value-of select="count(SocialInbox/FriendRequests/FriendRequest)+count(SocialInbox/LocationShares/LocationShare)" />
-                                <b class="caret"></b>
-                            </div>
-                        </div>
-                        <ol id="SocialInboxNotifications">
-                            <xsl:choose>
-                                <xsl:when test="count(SocialInbox/FriendRequests/FriendRequest) > 0"> 
-                                    <xsl:apply-templates select="SocialInbox/FriendRequests" />
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <li class="Notification none">No new friend requests.</li>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                            <xsl:choose>
-                                <xsl:when test="count(SocialInbox/LocationShares/LocationShare) > 0"> 
-                                    <xsl:apply-templates select="SocialInbox/LocationShares" />
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <li class="Notification none">No new shares.</li>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </ol>
-                    </div>
-        
+
+                    <!--   <a href="/search" class="sixth last NavigationLink">Search</a> -->
+                  
                 </xsl:otherwise>
             </xsl:choose>      
-        </div>
+        </ul>
     </xsl:template>
 
     <xsl:template match="FriendRequest">
@@ -407,11 +414,12 @@
             <xsl:attribute name="data-sender">
                 <xsl:value-of select="Member/@userId" />
             </xsl:attribute>
-            <soc:photo size="Medium">
+            <img width='80px' src='/photo/{Member/@userId}/Medium'></img>
+           <!-- <soc:photo size="Medium">
                 <xsl:attribute name="userId">
                     <xsl:value-of select="Member/@userId" />
                 </xsl:attribute>
-            </soc:photo>
+            </soc:photo>-->
             <ol class="userDetails">
                 <li class="userName">
                     <strong>

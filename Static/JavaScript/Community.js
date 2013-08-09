@@ -7,6 +7,11 @@
 $(function( ) {
     
     filepicker.setKey('ATkirnHVuRJyx5NEogt6gz');
+  //  $('.popup_photo').bind('click', function(){
+  //      console.log($(this).attr('url'));
+  //      $('.modal-photo img').attr('src', $(this).attr('url'));
+  //      $('.modal-photo').modal('show');
+  //  });
     $('#image-upload').bind('click', function(){
     filepicker.pickMultiple(
             {
@@ -15,8 +20,6 @@ $(function( ) {
             },
             function(InkBlobs) {
                 
-                for(i=0; i< InkBlobs.length; i++)
-                    console.log(InkBlobs[i].url);
                 
                 $.ajax({
                 url: '/community',

@@ -1,0 +1,132 @@
+/* 
+    Document   : Landing
+    Created on : Aug 6, 2013, 12:39:57 PM
+    Author     : root
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#img{
+    height: 500px !important;
+    vertical-align: middle;
+}
+#Navigation{
+    top: 0;
+    z-index: 1; 
+}
+
+#become-host, #discover, #engage, #trust, #host-discover{
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+}
+#host-discover{
+    color: #666;
+}
+#become-host, #discover, #trust{
+    color: white;
+}
+
+#Navigation li.active{
+    background-image: none !important;
+}
+
+#trust, #Navigation .first.active{
+    background-color: #6887b9 !important;
+}
+#discover, #become-host, #Navigation .second.active{
+    background-color: #87b968;
+} 
+#engage,  #Navigation .last.active{
+    background-color: #b96887 !important;
+}
+#host-discover{
+    
+    background-color: #eef2f7;
+}
+ol {
+list-style-type: decimal !important;
+}
+
+#Navigation .last.active{
+
+    background-color: #6887b9;
+}
+
+#how-it-works{
+    display: inline-block;
+    margin: 10px;
+    vertical-align: middle;
+    
+}
+ #text{
+    font-family: comfortaabold;
+    font-size: 19pt;
+    text-align: center;
+    width: 300px;
+    text-shadow: 0 1px 1px rgba(50, 50, 50 ,1 );
+    padding: 5px;
+    margin: auto;
+}
+#how-it-works > #pic{
+    
+    width: 300px;
+    height: 200px;
+    background-color: white;
+}
+ 
+ .community.first{
+    
+    background-position: top center !important;
+}
+ .community.second{
+    
+    background-position: center right !important;
+}
+ .community{
+     background-color: white;
+     font-size: 130px;
+     color: #87b968;
+     line-height: 300px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 400px;
+   /* margin: 10px;*/
+    border: 1px #666 solid;
+    border-radius: 50%;
+    
+}
+
+#partition{
+    display: inline-block;
+    width: 402px;
+    font-size: 15pt;
+    text-align: left;
+    margin: 10px;
+    vertical-align: middle;
+    
+}
+.iconContainer{
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+    float: left;
+    
+}
+.list-item{
+    display: inline-block;
+    width: 370px;
+    padding-bottom: 7px;
+}
+
+
+.item img{
+    border-radius: 50%;
+    overflow: hidden;
+}
+h2{
+    text-align: center;
+}

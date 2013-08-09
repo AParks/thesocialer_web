@@ -6,10 +6,12 @@ class AccountConfirmation extends ApplicationBase {
         $x = XSLTransformer::getInstance();
         $node = $this->dom->createElement('AccountConfirmation');
 
-        $key = $_GET['key'];
-        $email = $_GET['email'];
-        if (isset($email) && isset($key)) {
+        
+        if (isset($_GET['email']) && isset($_GET['key'])) {
             $pdo = sPDO::getInstance();
+            
+            $key = $_GET['key'];
+            $email = $_GET['email'];
 
             if ($this->alreadyConfirmed($pdo, $email)) {
                 $confirmNode = $this->dom->createElement('AlreadyConfirmed');

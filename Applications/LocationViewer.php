@@ -17,6 +17,7 @@ class LocationViewer extends ApplicationBase {
     $this->assetsManager->addInitJavaScript( 'var loc = ' . json_encode( $location->getPublicProperties( ) ) . ';' );
     $this->assetsManager->addInitJavaScript( 'var date = "' . $date->format( 'Y-m-d' ) . '";' );
     $this->assetsManager->addInitJavaScript( 'var userStatus = "' . $attendanceManager->getUserStatus( $this->viewer->userId ) . '";' );
+    $this->assetsManager->addInitJavaScript("$('.NavigationLink.second').addClass('active');");
 
     $output = $x->transform( 'LocationViewer', $node );
     $this->display->appendOutput( $output );

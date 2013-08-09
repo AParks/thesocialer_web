@@ -6,8 +6,8 @@
         Purpose of the stylesheet follows.
 */
 
-@media screen and (max-device-width: 1130px) and (min-device-width: 730px),
-only screen and (max-width : 1130px) and (min-width: 730px){
+@media screen and (max-device-width: 1130px) and (min-device-width: 430px),
+only screen and (max-width : 1130px) and (min-width: 430px){
 
     #LocationList{
 
@@ -22,23 +22,32 @@ only screen and (max-width : 1130px) and (min-width: 730px){
 
 
 }
+
 @media screen and (max-device-width: 730px),
 only screen and (max-width : 730px){
- #container, #container-black{
+
+   #container, #container-black{
         width: 96% !important;
         margin-right: 0 !important;
     }
-    
-#container-black{
-    opacity: 0.5 !important;
+    #container-black{
+        opacity: 0.5 !important;
+    }
 }
+
+@media screen and (max-device-width: 430px),
+only screen and (max-width : 430px){
+ 
+    
+
     #img{
         height: 400px !important;
         background-position: right top !important;
     }
     #LocationList li.loc 
     {
-        width: 80% !important; 
+        width: 100% !important; 
+        margin: 10px 0 !important;
     }
     #LocationList li.loc > a {
 
@@ -50,7 +59,7 @@ only screen and (max-width : 730px){
     }
      #LocationList{
 
-        width: 430px !important;
+        width: 100% !important;
         -moz-column-count: 1 !important;
         -moz-column-gap: 0px !important;
         -webkit-column-count: 1 !important;
@@ -101,7 +110,7 @@ body{
     padding: 2%;
 }
 #container-black{
-    height: 70%;
+/*    height: 70%;*/
     position: absolute;
     top: 0;
     right: 0;
@@ -128,6 +137,7 @@ body{
 }
 #popup-desc-start{
     font-size: 30pt;
+    font-family: comfortaaregular;
     font-weight: bold;
     line-height: 35px;
 }
@@ -139,7 +149,7 @@ body{
     color: white;
 }
 #popup-safety{
-    font-size: 10pt;
+    font-size: 12pt;
 }
 #popup-desc{
     line-height: 25px;
@@ -148,7 +158,6 @@ body{
 
 #LocationList .PopUpLocationPicture {    
     width: 100% !important;
-    /*  height: auto;*/
     max-height: 400px;
     max-width: 100%;
     
@@ -161,12 +170,24 @@ body{
 
 #LocationList li.loc 
 {
-    width: 430px !important; 
-    height: auto ! important; 
-    background-color: #262626;
-    background-size: 100% 100%;
+  position:relative;
+  display:inline-block;
+  width:430px;
+  margin:10px 10px;
+  -webkit-box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+  box-shadow:  1px 1px 2px 1px rgba(0, 0, 0, .4);
+  cursor:pointer;
+  background-size: 100% 100%;
 
 }
+.EventTitle {
+    font-size: 18pt;
+      font-family: comfortaaregular !important;
+
+}
+
+
+
 #LocationList li.loc > a
 {
     width: 430px;
@@ -283,8 +304,10 @@ body{
 
 
 
-.TitleLocationContainer 
+.TitleContainer 
 {
+    position: absolute;
+    top: 0;
     width:100% !important;
     border-bottom: 3px solid #6888B9;
     padding: 0px !important;
@@ -305,16 +328,14 @@ body{
 #popup-safety #verified{
     display: inline-block;
     width: 20px;
-    height: 20px;
-    line-height: 20px;
+    height: 34px;
+    line-height: 34px;
 }
-#popup-safety i{
-    color: #88b968;
-}
+
 .EventTitle  #verified,
 #popup-safety #verified{
-    background-color: white;
-    color: #88b968;
+   /* background-color: white;
+    color: #88b968;*/
     border-radius: 50%;
 
     text-align: center;
