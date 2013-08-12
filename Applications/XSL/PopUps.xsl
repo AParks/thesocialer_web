@@ -81,7 +81,7 @@
                              <!--    <div title="Verified" id='verified'>
                                     <i class="icon-ok-sign icon-large"></i>
                                 </div> -->
-                           <!--     <xsl:choose>
+                           <!--    <xsl:choose>
                             <xsl:when test='../../Viewer/@userId != -1'>
                                  <a data-placement='top' data-toggle="tooltip" title="Bookmark it" class="logged_in EventPrice">
                                     <i class="icon-bookmark icon-large"></i>
@@ -93,7 +93,11 @@
                                 </a>
                             </xsl:otherwise>
                         </xsl:choose>-->
-                               
+                                <xsl:if test='../../Viewer/@userId = ./@host'>
+                                 <a title="Cancel Event" class="EventPrice" data-event-id='{./@id}'>
+                                    <i class="icon-trash icon-large"></i>
+                                </a>
+                            </xsl:if>
                             </div>
                         </div>
                         <xsl:choose>

@@ -1,12 +1,14 @@
 body
 {
-    background: url(/Static/Images/Background.jpg) no-repeat;
+ /*  background: url(/Static/Images/Background.jpg) no-repeat;
+ 
+    background-color: #0B233F;*/
         font-family: comfortaaregular;
+    background-color: #eef2f7;
 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: normal;
-    background-color: #0B233F;
     line-height: 20px;
 }
 #MainBody *{
@@ -180,10 +182,17 @@ button.standard
 }
 
 
-.Footer a
+.RightFoot > a:hover,
+.RightFoot > a:active,
+.RightFoot > a.active{
+    
+    color: black !important;
+}
+.RightFoot > a
 { 
     color: #666;
-    margin-left:10px;
+    text-align: center;
+    display: block;
 }
 
 .LeftFoot
@@ -193,8 +202,10 @@ button.standard
 }
 .RightFoot
 { 
-    float:right;
     padding:10px;
+    
+    display: table;
+    margin: auto;
 }
 
 .TOS

@@ -1,11 +1,7 @@
 #MainBody {
     padding: 20px;
 }
-body, #Header{
-    background-image: none !important;
-    background-color: #eef2f7 !important;
 
-}
 #MainBody, #Header {
     width: 75% !important;
 }

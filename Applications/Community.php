@@ -15,7 +15,7 @@ class Community extends ApplicationBase {
         $this->assetsManager->addJavascript('filepicker');
         $this->assetsManager->addJavascript('UserPhotos');
         $this->assetsManager->addJavascript('Community');
-        $this->assetsManager->addInitJavaScript("$('.NavigationLink.last').addClass('active');");
+        $this->assetsManager->addInitJavaScript("$('.NavigationLink.third').addClass('active');");
 
 
         $node = $this->dom->createElement('Community');

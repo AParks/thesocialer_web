@@ -1,13 +1,11 @@
 /* 
     Document   : Landing
     Created on : Aug 6, 2013, 12:39:57 PM
-    Author     : root
-    Description:
-        Purpose of the stylesheet follows.
+    Author     : anna parks
+    Description: css for the landing/home page. url is : thesocialer.com
 */
 
 #img{
-    height: 500px !important;
     vertical-align: middle;
 }
 #Navigation{

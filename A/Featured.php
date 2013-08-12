@@ -129,7 +129,7 @@
                 });
                 $('#events input[type=text], #events textarea').focusout(function() {
                     $.ajax({
-                        url: '/A/FeaturedJSON.php',
+                        url: '/featured/json',
                         type: 'POST',
                         data: {
                             action: 'edit',
@@ -147,7 +147,7 @@
                 $('a.delete').click(function() {
                     if (confirm("Are you sure you want to delete this event? This can't be undone.")) {
                         $.ajax({
-                            url: '/A/FeaturedJSON.php',
+                            url: 'featured/json',
                             type: 'POST',
                             data: {action: 'delete', eventId: $(this).attr('data-event-id')},
                             success: function(data) {
@@ -163,7 +163,7 @@
                     var title = thisrow.find('h1').html();
                     var desc = thisrow.find('.subhead').html();
                     $.ajax({
-                        url: '/A/FeaturedJSON.php',
+                        url: '/featured/json',
                         type: 'POST',
                         data: {
                             action: 'email',
@@ -201,7 +201,7 @@
         <h1>Create a new featured event:</h1>
         <div id="event_container">
             <div id="new_event">
-                <form action="/A/FeaturedJSON.php" method="post" enctype="multipart/form-data" onSubmit="return validateForm()">
+                <form action="/featured/json" method="post" enctype="multipart/form-data" onSubmit="return validateForm()">
                     <table class="table table-striped table-bordered table-condensed">
 
                         <tr>
@@ -306,7 +306,7 @@
             foreach ($featured as $key => $value) {
                 if ($key == 'markup') {
                     echo "<td>";
-                    echo "<form action='/A/FeaturedJSON.php' method='post' enctype='multipart/form-data' >";
+                    echo "<form action='/featured/json' method='post' enctype='multipart/form-data' >";
                     echo "<input type='file' name='file[]' id='file' multiple>$value</>";
                     echo '<input type="hidden" name="eventId" />';
                     echo "<input type='hidden' name='action' value='edit' />";

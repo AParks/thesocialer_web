@@ -13,7 +13,7 @@ $(function() {
         Viewer["$email"] = Viewer.email;
         mixpanel.people.set(Viewer);
     }
-    UserVoice = window.UserVoice || [];
+ /*   UserVoice = window.UserVoice || [];
     UserVoice.push(['showTab', 'classic_widget', {
             mode: 'full',
             primary_color: '#88b968',
@@ -22,15 +22,18 @@ $(function() {
             forum_id: 212307,
             tab_label: 'Feedback & Support',
             tab_color: '#88b968',
-            tab_position: 'bottom-right',
+            tab_position: 'bottom-left',
             tab_inverted: false
-        }]);
+        }]);*/
+ 
+    
  /* 
  var url = document.URL;
     var start = url.indexOf('.com');
     var referring = url.substring(start + 4, url.length);
     mixpanel.track_links('.NavigationLink.first', 'popup tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
     mixpanel.track_links('.NavigationLink.second', 'host a popup click - live site', {"previous page": referring, "user_id": Viewer.userId});
+    mixpanel.track_links('.NavigationLink.third', 'around the city click - live site', {"previous page": referring, "user_id": Viewer.userId});
     mixpanel.track_links('.NavigationLink.last', 'community tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
 
 

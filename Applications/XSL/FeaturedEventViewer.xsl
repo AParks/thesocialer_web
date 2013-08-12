@@ -11,10 +11,8 @@
             <div id="leftcontainer">
                 <div class="EventTitle" id='title'>
                      <p id='head'>
-                         <xsl:value-of select="./FeaturedEvent/@headline"/>
                      </p>
                      <p id='head'>
-                         <xsl:value-of select="./FeaturedEvent/@sub_headline"/>
                      </p> 
                     </div>
                 <div class="EventInfo">

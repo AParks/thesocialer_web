@@ -31,18 +31,7 @@
 
 
                 <div id="Header">
-                    <div class="pane-content">
-                        <span class="social-link">
-                            <a  data-toggle="tooltip" data-placement='bottom' id='Twitter' href="https://twitter.com/@socialerphilly" title="Check out our Twitter!" >L</a>
-                        </span>
-                        <span class="social-link">
-                            <a data-toggle="tooltip" data-placement='top'  id='Facebook' href="https://www.facebook.com/TheSocialer" title="Check out our Facebook!">F</a>
-                        </span>
-                        <span class="social-link">
-                            <a  id='Blog' href="http://socialerblog.com/" title="Check out our blog!">F</a>
-                        </span>
-                        
-                    </div>
+                    
                     <a href="/">
                         
                         <div>
@@ -156,7 +145,7 @@
                 <div id="Navigation">
                     <xsl:call-template name="LoggedInNavigation" />
 
-                  <!--  <xsl:call-template name="HowItWorks" />-->
+                    <!--  <xsl:call-template name="HowItWorks" />-->
                 </div>
                 <xsl:value-of select="markup" disable-output-escaping="yes" />
  
@@ -349,12 +338,32 @@
                     
                     <div class="LeftFoot">
                         TheSocialer © 2013
+                       
                     </div>
                     <div class="RightFoot">
-                        <a href="/tos">Terms of Use</a>
-                        <a href="/about">About</a>
-                        <a href="/privacy">Privacy</a>
+                        <div class="pane-content ">
+                            <span class="social-link ">
+                                <a  data-toggle="tooltip" data-placement='bottom' id='Twitter' href="https://twitter.com/@socialerphilly" title="Check out our Twitter!" >L</a>
+                            </span>
+                            <span class="social-link">
+                                <a data-toggle="tooltip" data-placement='top'  id='Facebook' href="https://www.facebook.com/TheSocialer" title="Check out our Facebook!">F</a>
+                            </span>
+                            <span class="social-link">
+                                <a  id='Blog' href="http://socialerblog.com/" title="Check out our blog!">F</a>
+                            </span>
+                        
+                        </div>
+                        <br/>
+                        <!-- A link to launch the User Voice Classic Widget -->
+                        
+                        <a class='first' href="javascript:void(0)" data-uv-lightbox="classic_widget" data-uv-mode="full" data-uv-primary-color="#88b968" data-uv-link-color="#6887b9" data-uv-default-mode="feedback" data-uv-forum-id="212307">Feedback &amp; Support</a>
+                        <a class='second' href="/tos">Terms of Use</a>
+                        <a class='third' href="/privacy">Privacy</a>
+                        <a class='last' href="/about">About</a>
+
+                       
                     </div>
+                     
                 </div>
                 <xsl:apply-templates select="JavaScript/file" />
                 <xsl:if test="string-length(initJavaScript)">
@@ -384,29 +393,33 @@
     </xsl:template>
 
     <xsl:template name="LoggedInNavigation">
-        <ul class="navcontainer">
-            <a href="/popups" class="NavigationLink first"> 
-                <div>Discover</div>a social popup</a>
-            <a href="/popups/new" class=" NavigationLink second">
-                <div>Host</div>a social popup</a>
-            <a href="/community" class="last NavigationLink last">
-                <div>Engage</div> with people</a>
-
-            <!--   <a href="/trending" class="second NavigationLink" >Around The City</a> -->
-           
-            <!--     <a href="/explore" class="second NavigationLink">Browse</a>-->
+        <div class="navcontainer">
+            <a href="/popups" class="NavigationLink first">
+                <div>Discover</div>a social popup
+            </a>
             <xsl:choose>
-                <xsl:when test="./Viewer/@userId = -1">
-                    <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login </a>
-                    <a href="#myModal2"  role="button" class="btn" data-toggle="modal" >Sign Up</a>
+                <xsl:when test="./Viewer/@userId != -1">
+                    <a href="/popups/new" class=" NavigationLink second">
+                        <div>Host</div>a social popup
+                    </a>
                 </xsl:when>
                 <xsl:otherwise>
-
-                    <!--   <a href="/search" class="sixth last NavigationLink">Search</a> -->
-                  
+                    <div class="NavigationLink second notLoggedIn">
+                        <div>Host</div>a social popup
+                    </div>
                 </xsl:otherwise>
-            </xsl:choose>      
-        </ul>
+            </xsl:choose>     
+            <a href="/community" class="NavigationLink third">
+                <div>Engage</div> with real people</a>
+
+            <a href="/trending" class="NavigationLink last">
+                <div>Explore</div> around the city</a>
+
+                <xsl:if test="./Viewer/@userId = -1">
+                    <a href="#myModal" role="button" class="btn" data-toggle="modal" >Login </a>
+                    <a href="#myModal2"  role="button" class="btn" data-toggle="modal" >Sign Up</a>
+                </xsl:if>  
+        </div>
     </xsl:template>
 
     <xsl:template match="FriendRequest">
@@ -415,7 +428,7 @@
                 <xsl:value-of select="Member/@userId" />
             </xsl:attribute>
             <img width='80px' src='/photo/{Member/@userId}/Medium'></img>
-           <!-- <soc:photo size="Medium">
+            <!-- <soc:photo size="Medium">
                 <xsl:attribute name="userId">
                     <xsl:value-of select="Member/@userId" />
                 </xsl:attribute>
@@ -480,43 +493,5 @@
         </li>
     </xsl:template>
 
-    <xsl:template name="HowItWorks">
-        <div class="HowItWorks hide">
-            <div class="CloseWindow">&#10006;</div>
-            <h2>Discover</h2>
-            <p>
-                Navigate the homepage and discover exciting things going on in your city. 
-                Places will trend according to the popularity of a particular event each day. 
-                Popularity is determined by a few factors, including the number of people “Going”... 
-            </p>
-            <br />
-
-            <h2>Explore</h2>
-            <p>
-                With the “Explore Your City” tab you are now in control of your experience. 
-                Find new places and locations based on your current interests. 
-                Whether it be a rooftop bar, a great live music venue, or simply a park to relax in--  it’s on The Socialer.  
-                Further, “liking” your favorite places allows us to curate the content most appealing to you. 
-                If there is a place you love and it’s not on the site, let us know and we’ll add it!
-            </p>
-            <br />
-
-            <h2>Connect</h2>
-            <p>
-                Connect with people who share your interests and discover more relevant experiences. 
-                We find that searching based on college is a good starting point. 
-                Feel free to “Get Social” with anyone who might be interesting- it’s not necessarily about getting personal, but rather sharing awesome content.
-            </p>
-            <br />
-
-            <h2>Start a trend</h2>
-            <p>
-                Be a trendsetter by sharing and commenting about something you think is cool or exciting... 
-                It’s a big world, someone is bound to agree with you. 
-                Selecting the “Going” button automatically starts a trend for a particular day. 
-                Oh, and don’t feel like “Going” binds you to a certain event, we aren’t taking attendance!
-            </p>
-            <br/>
-        </div>
-    </xsl:template>
+    
 </xsl:stylesheet>

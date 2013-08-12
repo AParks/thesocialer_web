@@ -25,6 +25,7 @@ class FeaturedJSON extends ApplicationBase {
 
     function edit() {
         $query = sPDO::getInstance()->prepare('UPDATE featured_events SET ' . $_POST['key'] . '= :value WHERE featured_event_id = :event_id');
+        $val = $_POST['value'];
 
         if ($_POST['key'] === 'markup') {
             $arry = $this->move_files();
@@ -32,8 +33,11 @@ class FeaturedJSON extends ApplicationBase {
             $markup = $arry[1];
             $_POST['value'] = $markup;
         }
+        else if($_POST['key'] === 'description'){
+            $val = str_replace('&', '&amp;', $_POST['value']);
+        }
 
-        $query->bindValue(':value', str_replace('&', '&amp;', $_POST['value']));
+        $query->bindValue(':value', $val);
         $query->bindValue(':event_id', $_POST['eventId']);
         $query->execute();
         header('Location: http://thesocialer.com/A/Featured.php');
@@ -97,7 +101,7 @@ class FeaturedJSON extends ApplicationBase {
                     $query->bindValue(':markup', $markup);
                     $query->bindValue(':price', $_POST['price']);
                     $query->bindValue(':headline', $_POST['headline']);//str_replace('&', '&amp;', $_POST['headline'])
-                    $query->bindValue(':sub_headline', $_POST['sub_headline']); //
+                    $query->bindValue(':sub_headline', str_replace('&', '&amp;', $_POST['sub_headline'])); //
                     $query->bindValue(':is_private', $_POST['is_private']);
                     $query->bindValue(':host', $_POST['host']);
                     $query->bindValue(':priority', $_POST['priority']);
@@ -130,7 +134,7 @@ class FeaturedJSON extends ApplicationBase {
             }
         }
         else {
-            echo "File too big. It should only be 400x200 pixels and under 2MB";
+            echo "File too big. It should only be 400x200 pixels and under 8MB";
         }
     }
 

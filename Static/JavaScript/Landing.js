@@ -15,6 +15,13 @@ $(function( ) {
             $('#Navigation').css('position', 'fixed');
 
     });
+     $('.notLoggedIn').bind('click', function() {
+        $('#myModal').modal('show');
+    });
+    mixpanel.track_links('a.host-now', "'Host now' button click", { "user_id": Viewer.userId});
+    mixpanel.track_links('a.create-popup', "'Create a new popup' button click- landing page", {"user_id": Viewer.userId});
+    mixpanel.track_links('a.discover-now', "'Discover now' button click", { "user_id": Viewer.userId});
+
 
 
     $('#myCarousel').carousel({

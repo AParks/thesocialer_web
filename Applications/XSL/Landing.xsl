@@ -45,8 +45,8 @@
             </xsl:when>
             <xsl:otherwise>
                 <br/>
-                 <a href='/popups/new'>
-            <div id='new_popup_button' class='new_popup_button'>
+                 <a class='create-popup' href='/popups/new'>
+                <div id='new_popup_button' class='new_popup_button'>
                 <i class="icon-edit"></i>
                 Create a new popup</div>
                  </a> <br/>
@@ -107,7 +107,7 @@
                     <div class='iconContainer'>
                         <i class="icon-search"></i>
                     </div> 
-                    <div class='list-item'>Learn, make, play; experience something <strong>new</strong>.</div>
+                    <div class='list-item'>Learn, make, play - experience something <strong>new</strong>.</div>
                 </div>
                 <div>
                     <div class='iconContainer'>
@@ -125,11 +125,12 @@
                         Make seamless and secure payments.
                     </div>
                 </div>
-                <a href='/popups/new'>
-            <div id='new_popup_button' class='new_popup_button'>
-                <i class="icon-search"></i>
-                Discover now</div>
-                 </a> 
+                <a class='discover-now' href='/popups/new'>
+                    <div id='new_popup_button' class='new_popup_button'>
+                        <i class="icon-search"></i>
+                        Discover now
+                    </div>
+                </a>
             </div>
             <div id='partition'>
                 <div id="myCarousel" class="carousel slide">
@@ -139,7 +140,7 @@
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                 <div class='item active' >
-                     <div class='community' style='background-image: url(http://3.bp.blogspot.com/-Pa58x-XmSk8/UeYm3N4MSnI/AAAAAAAACYg/P6gw_lPI-bY/s1600/Aneta-Ivanova1.jpg)'></div>
+                     <div class='community' style='background-image: url(/Static/Images/Aneta-Ivanova1.jpg)'></div>
    
                 </div>    
                 <div class='item'>
@@ -197,11 +198,25 @@
                     Get <strong>paid</strong>, or host something for free. 
                     </div>
                 </div>
-               <a href='/popups/new'>
-            <div id='new_popup_button' class='new_popup_button'>
-                <i class="icon-edit"></i>
-                Host now</div>
-                 </a> 
+                
+            <xsl:choose>
+                <xsl:when test='./Viewer/@userId != -1'>
+                    <a class='host-now' href='/popups/new'>
+                        <div id='new_popup_button' class='new_popup_button'>
+                            <i class="icon-edit"></i>
+                            Host now
+                        </div>
+                    </a>
+                </xsl:when>
+                <xsl:otherwise>
+                    <a class='host-now notLoggedIn' href='#'>
+                        <div id='new_popup_button' class='new_popup_button'>
+                            <i class="icon-edit"></i>
+                            Host now
+                        </div>
+                    </a>
+                </xsl:otherwise>
+            </xsl:choose>
             </div>
             
             

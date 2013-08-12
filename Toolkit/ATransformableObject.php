@@ -22,13 +22,18 @@ abstract class ATransformableObject {
   }
 
   protected function toValue( $dom, & $node, $key, $value ) {
+   
     if ( is_scalar( $value ) ) {
       // can't have an attribute that starts with a number, so prepend an 'a'
       if (is_numeric($key)) {
       	$node->setAttribute( 'a'.$key, $value);
       }
       else {
+          if($key === 'description'){
+              error_log("key: " . $key . " value: " .  $value);
+          }
       	$node->setAttribute( $key, $value);
+
       }
     }
     elseif ( $value instanceof ATransformableObject ) {

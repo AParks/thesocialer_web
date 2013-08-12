@@ -7,12 +7,7 @@
 */
 
 
-body{
-    background-image: none !important;
-    background-color: #eef2f7 !important;
-}
-
-#MainBody, #Header {
+#MainBody {
     background-color: #eef2f7;
 
 }

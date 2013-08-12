@@ -25,7 +25,7 @@ class Trending extends ApplicationBase {
     $this->assetsManager->addJavaScript( 'jquery.linkify-1.0-min' );
     $this->assetsManager->addJavaScript( 'AttendanceManager' );
     $this->assetsManager->addJavaScript( 'FriendRequestManager' );
-    $this->assetsManager->addInitJavaScript("$('.NavigationLink.second').addClass('active')");
+    $this->assetsManager->addInitJavaScript("$('.NavigationLink.last').addClass('active')");
 
     $this->assetsManager->addCSS( 'FriendRequestManager' );
     $this->assetsManager->addCSS( 'Trending' );

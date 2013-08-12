@@ -8,18 +8,13 @@
     background-size: cover;
     background-position: right 60%;
 }
-body{
-    background-image: none !important;
-    background-color: #eef2f7 !important;
 
-}
 #MainBody, #Header {
     width: 75% !important;
     background-color: #eef2f7;
 }
-
-#Navigation .navcontainer, .Footer{
-        width: 75% !important;
+.Footer{
+    width: 75% !important;
 
 }
 

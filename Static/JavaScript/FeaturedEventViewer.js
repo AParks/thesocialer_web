@@ -67,6 +67,9 @@ FeaturedEventViewer = function(evt, userStatus) {
         //show the rest when user clicks on see more
         // $('#Description').append(evt.description.substring(0, 200));
         $('#desc').html(evt.description);
+        //$('#head').text(evt.headline);
+        //$('#head').text(evt.sub_headline);
+
 
         //   var n = evt.description.length;
         //   $('#SeeMore').click(function() {
