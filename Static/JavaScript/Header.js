@@ -1,4 +1,6 @@
 var Header = function( ) {
+       
+
 };
 
 Header.showFailedLogin = function( ) {
@@ -6,7 +8,6 @@ Header.showFailedLogin = function( ) {
     $('#QuickLoginForm').show( );
 }
 $(function() {
-
 
     if (Viewer.userId != -1) {
         mixpanel.identify("" + Viewer.userId + "");
@@ -27,8 +28,7 @@ $(function() {
         }]);*/
  
     
- /* 
- var url = document.URL;
+    var url = document.URL;
     var start = url.indexOf('.com');
     var referring = url.substring(start + 4, url.length);
     mixpanel.track_links('.NavigationLink.first', 'popup tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
@@ -36,8 +36,12 @@ $(function() {
     mixpanel.track_links('.NavigationLink.third', 'around the city click - live site', {"previous page": referring, "user_id": Viewer.userId});
     mixpanel.track_links('.NavigationLink.last', 'community tab click - live site', {"previous page": referring, "user_id": Viewer.userId});
 
+   $('.notLoggedIn').bind('click', function(event) {
+        url = $(this).attr('url');
+        $('#myModal').modal('show');
+    });
 
-*/
+
 
     //facebook logout
     $('#fb_logout').click(function() {
@@ -112,9 +116,9 @@ $(function() {
     }
 
 
-    function login() {
+    function login(url) {
+
         FB.api('/me', function(response) {
-            var url = document.URL;
 
             $.ajax({
                 url: '/login/fb',
@@ -173,14 +177,14 @@ $(function() {
                 // and signed request each expire
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
-                login();
+                login(url);
             } else if (response.status === 'not_authorized') {
                 // the user is logged in to Facebook, 
                 // but has not authenticated your app
                 FB.login(function(response) {
                     // handle the response
                     if (response.authResponse)
-                        login();
+                        login(url);
 
                 }, {scope: 'email,user_birthday, user_education_history, user_location, user_about_me'});
 
@@ -189,7 +193,7 @@ $(function() {
                 FB.login(function(response) {
                     // handle the response
                     if (response.authResponse)
-                        login();
+                        login(url);
 
 
                 }, {scope: 'email,user_birthday, user_education_history, user_location,user_about_me'});

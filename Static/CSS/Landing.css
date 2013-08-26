@@ -7,40 +7,38 @@
 
 #img{
     vertical-align: middle;
+    text-align: center;
+    color: #333;
+    width: 55% !important;
+    display: inline-block;
 }
 #Navigation{
     top: 0;
     z-index: 1; 
 }
-
+.carousel {
+margin-top: 18px;
+}
 #become-host, #discover, #engage, #trust, #host-discover{
+    
     width: 100%;
     text-align: center;
-    padding: 5px 0;
-}
-#host-discover{
-    color: #666;
-}
-#become-host, #discover, #trust{
-    color: white;
 }
 
-#Navigation li.active{
-    background-image: none !important;
+#discover{
 }
-
-#trust, #Navigation .first.active{
-    background-color: #6887b9 !important;
-}
-#discover, #become-host, #Navigation .second.active{
-    background-color: #87b968;
-} 
-#engage,  #Navigation .last.active{
-    background-color: #b96887 !important;
-}
-#host-discover{
+#trust{
+    color: #79a161;
     
-    background-color: #eef2f7;
+}
+#discover{
+    background-color: #79a161;
+    color: white;
+} 
+
+#host-discover, #trust{
+    background-color: #f3f3f3;
+    
 }
 ol {
 list-style-type: decimal !important;
@@ -97,26 +95,50 @@ list-style-type: decimal !important;
     border-radius: 50%;
     
 }
-
+.box{
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #d0d0d0;
+}
 #partition{
     display: inline-block;
-    width: 402px;
+    max-width: 402px;
     font-size: 15pt;
     text-align: left;
     margin: 10px;
     vertical-align: middle;
     
 }
-.iconContainer{
-    width: 30px;
-    text-align: center;
+#circle{
+    margin: auto;
+    max-width: 402px;
     display: inline-block;
-    float: left;
-    
+    vertical-align: middle;
 }
+#partition .iconContainer {
+ width: 8% !important;
+}
+.carousel-inner{
+    border-radius: 50%;
+}
+@media screen and (max-device-width: 430px),
+only screen and (max-width : 430px){
+    
+    #partition{
+        display: block;
+        width: 85%;
+        margin: 10px auto;
+    }
+     .community{
+        width: 100%;
+        border: none;
+     }
+}
+
 .list-item{
     display: inline-block;
-    width: 370px;
+    width: 92%;
     padding-bottom: 7px;
 }
 

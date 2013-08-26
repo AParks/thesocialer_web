@@ -14,15 +14,36 @@
     <xsl:template match="/Popups">
         <div id='img'>
             
-            <div id='container-black'></div>
+        <!--    <div id='container-black'></div>-->
             <div id='container'>
             <div id='popup-desc-start'>Explore outside your circle.</div><br/>
             <div id='popup-desc'>
+                                        
                 Host and discover unique and engaging events, <br/> while meeting new, interesting people.
               <!--  <br/>If you have an idea you're passionate about, <br/>contact <strong>concierge@thesocialer.com</strong> to be a host.-->
-                
+                <xsl:if test='./Viewer/@userId = -1'>
+                    <br/>
+                <div id='button-container'>
+                    <div id='fb-connect' class="fb-login">
+                         <div id='left'>
+                        <i class="icon-facebook icon-large"></i>
+                        </div>
+                        <span id='border'></span>
+                        <div id='right'>Connect with Facebook</div>
+                    </div>
+                </div>
+                <div id='popup-or'>
+                    or
+                </div>
+                <div id='button-container'>
+                    <div id='join-email' class='new_popup_button'>
+                         Join with Email
+                    </div>
+                </div>
+            </xsl:if>
+            
             </div>
-            <xsl:choose>
+           <!-- <xsl:choose>
             <xsl:when test='./Viewer/@userId = -1'>
                     <br/>
                 <div id='button-container'>
@@ -50,7 +71,7 @@
                 <i class="icon-edit"></i>
                 Create a new popup</div>
                  </a> <br/>
-              <!--    <div id='popup-safety'>
+               <div id='popup-safety'>
                      <div id='verified'>
                          <i class="icon-ok-sign icon-large"></i>
                      </div>
@@ -62,9 +83,9 @@
                      <br/>
                          <i class="icon-lock  icon-large"></i>
                      Pay and get paid via Stripe, a secure payments system.
-                 </div>-->
+                 </div>
             </xsl:otherwise>
-            </xsl:choose>
+            </xsl:choose>-->
             </div>
         </div>
         <div id="MainBody">
@@ -100,18 +121,21 @@
                             </xsl:if>
                             </div>
                         </div>
-                        <xsl:choose>
+                         <a href="/location/featured/{./@id}">
+                                    <img src="{.}"></img>
+                                </a>
+                        <!-- <xsl:choose>
                             <xsl:when test='../../Viewer/@userId != -1'>
                                 <a href="/location/featured/{./@id}">
                                     <img src="{.}"></img>
                                 </a>
                             </xsl:when>
                             <xsl:otherwise>
-                                <a class='notLoggedIn'>
+                                <a url="/location/featured/{./@id}" class='notLoggedIn'>
                                     <img src="{.}"></img>
                                 </a>
                             </xsl:otherwise>
-                        </xsl:choose>
+                        </xsl:choose> -->
                         
                         <div class="Host">
                             <xsl:apply-templates select="./Host/Member" />
@@ -196,7 +220,7 @@
                         <xsl:value-of select="../../@spots"/>
                     </xsl:otherwise>
                 </xsl:choose>
-            <span> spots</span> 
+                <span> spots</span> 
             </div>
         </div>
                 

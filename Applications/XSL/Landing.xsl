@@ -12,17 +12,47 @@
     <xsl:output method="html" omit-xml-declaration="yes"/>
 
     <xsl:template match="/Landing">
+        <div id='top' style='text-align: center'>
+        <div id='circle'>
+                <div id="myCarousel" class="carousel slide">
+                        
+                        <div class="carousel-inner">
+                            <div class='item active' >
+                                 <div class='community' style='background-image: url(/Static/Images/Aneta-Ivanova1.jpg)'/>
+                            </div>    
+                            <div class='item'>
+                                 <div class='community' style='background-image: url(https://www.filepicker.io/api/file/tYSSbhJIQu8LfXAoujfW)'/>
+                            </div>
+                            <div class='item'>
+                                <div class='community' style='background-image: url(/Static/Images/circle.jpg)'/>
+                            </div>
+                            <div class='item'> 
+                                 <div class='community' style='background-image: url(https://www.filepicker.io/api/file/Q439iJ3hS0ekqiZMhIgx)'/>
+                            </div>
+                            <div class='item'>
+                                <div class='community' style='background-image: url(https://www.filepicker.io/api/file/kz76JO36R5aOYk9PWCHf)'/>
+                            </div>
+                        </div>
+                </div>
+            </div>
         <div id='img'>
             
-            <div id='container-black'></div>
+        <!--    <div id='container-black'></div>-->
+        
             <div id='container'>
-            <div id='popup-desc-start'>Explore outside your circle.</div><br/>
+            <div id='popup-desc-start'>Expl<span class='yellow'>o</span>re <span class='red'>o</span>utside y<span class='green'>o</span>ur circle<span class='blue'>.</span></div><br/>
             <div id='popup-desc'>
+
                 Try something different. Meet someone interesting.
               <!--  <br/>If you have an idea you're passionate about, <br/>contact <strong>concierge@thesocialer.com</strong> to be a host.-->
                 
             </div>
-            <xsl:choose>
+           
+            
+            
+                        
+            
+          <!--  <xsl:choose>
             <xsl:when test='./Viewer/@userId = -1'>
                     <br/>
                 <div id='button-container'>
@@ -51,7 +81,7 @@
                 Create a new popup</div>
                  </a> <br/>
                  <div id='popup-safety'>
-                <!--     <div id='verified'>
+                   <div id='verified'>
                          <i class="icon-ok-sign icon-large"></i>
                      </div>
                      Safety guaranteed. BLAH All hosts and events are personally verified by the Socialer team.
@@ -61,11 +91,13 @@
                      Get to know each other before the event via our messaging system
                      <br/>
                          <i class="icon-lock  icon-large"></i>
-                     Pay and get paid via Stripe, a secure payments system.-->
+                     Pay and get paid via Stripe, a secure payments system.
                  </div>
             </xsl:otherwise>
-            </xsl:choose>
+            </xsl:choose>-->
             </div>
+           
+        </div>
         </div>
         
       <!--   <div id='become-host'>
@@ -101,81 +133,41 @@
         </div>-->
         
         <div id='host-discover'>
-            <div id='partition'>
+             <div id='partition' class='box'>
                 <h2>Discover Popups</h2>
                 <div>
-                    <div class='iconContainer'>
+                    <div class='iconContainer yellow'>
                         <i class="icon-search"></i>
                     </div> 
                     <div class='list-item'>Learn, make, play - experience something <strong>new</strong>.</div>
                 </div>
                 <div>
-                    <div class='iconContainer'>
+                    <div class='iconContainer yellow'>
                         <i class="icon-user"></i>
                     </div>
                         <div class='list-item'>
-                            See who's going, bring a friend, and meet someone <strong>outside your</strong> personal <strong>networks</strong>.
+                            See who's going, bring a friend or come solo, and meet someone <strong>outside your</strong> personal <strong>networks</strong>.
                         </div>
                 </div>
                 <div>
-                    <div class='iconContainer'>
+                    <div class='iconContainer yellow'>
                         <i class="icon-credit-card"></i>
                     </div>
                     <div class='list-item'>
                         Make seamless and secure payments.
                     </div>
                 </div>
-                <a class='discover-now' href='/popups/new'>
-                    <div id='new_popup_button' class='new_popup_button'>
+                <a class='discover-now' href='/popups'>
+                    <div id='new_popup_button' class='new_popup_button' style='background-image: none; background-color: #db9729'>
                         <i class="icon-search"></i>
                         Discover now
                     </div>
                 </a>
             </div>
-            <div id='partition'>
-                <div id="myCarousel" class="carousel slide">
-                        <ol class="carousel-indicators">
-                            <!--    <li data-target="#myCarousel" data-slide="next" class="active"></li>-->
-                        </ol>
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
-                <div class='item active' >
-                     <div class='community' style='background-image: url(/Static/Images/Aneta-Ivanova1.jpg)'></div>
-   
-                </div>    
-                <div class='item'>
-                     <div class='community' style='background-image: url(https://www.filepicker.io/api/file/tYSSbhJIQu8LfXAoujfW)'/>
-                </div>
-                <div class='item'>
-                                        <div class='community' style='background-image: url(/Static/Images/circle.jpg)'></div>
-
-                     </div>
-                <div class='item'> 
-                     <div class='community' style='background-image: url(https://www.filepicker.io/api/file/Q439iJ3hS0ekqiZMhIgx)'/>
-                </div>
-                <div class='item'> 
-<div class='community' style='background-image: url(https://www.filepicker.io/api/file/kz76JO36R5aOYk9PWCHf)'/>
-                
-                </div>                 
-                
-                        </div>
-                        <!-- Carousel nav -->
-                     <!--   <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-                            <xsl:text disable-output-escaping="yes">&#8249;</xsl:text>
-
-                        </a>
-
-                        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-                            <xsl:text disable-output-escaping="yes">&#8250;</xsl:text>
-
-                        </a>-->
- 
-            </div>
-            </div>      
-            <div id='partition'>
+            <div id='partition' class='box'>
                 <h2>Create a popup</h2>
                 <div>
-                    <div class='iconContainer'>
+                    <div class='iconContainer green'>
                         <i class="icon-edit"></i>
                     </div>
                     <div class='list-item'>
@@ -183,7 +175,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class='iconContainer'>
+                    <div class='iconContainer green'>
                         <i class="icon-envelope"></i>
                     </div>
                     <div class='list-item'>
@@ -191,7 +183,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class='iconContainer'>
+                    <div class='iconContainer green'>
                         <i class="icon-dollar"></i>
                     </div>
                     <div class='list-item'>
@@ -202,24 +194,53 @@
             <xsl:choose>
                 <xsl:when test='./Viewer/@userId != -1'>
                     <a class='host-now' href='/popups/new'>
-                        <div id='new_popup_button' class='new_popup_button'>
+                        <div id='new_popup_button' class='new_popup_button' style='background-image: none; background-color: #79a161'>
                             <i class="icon-edit"></i>
                             Host now
                         </div>
                     </a>
                 </xsl:when>
                 <xsl:otherwise>
-                    <a class='host-now notLoggedIn' href='#'>
-                        <div id='new_popup_button' class='new_popup_button'>
+                        <div id='new_popup_button' class='host-now notLoggedIn new_popup_button' style='background-image: none; background-color: #79a161'>
                             <i class="icon-edit"></i>
                             Host now
                         </div>
-                    </a>
                 </xsl:otherwise>
             </xsl:choose>
             </div>
-            
-            
+             <div id='partition' class='box'>
+
+            <h2>Trust and Safety</h2>
+             <div id='popup-safety'>
+                  <div class='iconContainer blue'>
+                         <i class="icon-ok-sign "></i>
+                    </div>
+                    <div class='list-item'>
+                        All hosts and events are personally verified by the Socialer team.
+                    </div>
+                    <div class='iconContainer blue'>
+                        <i class="icon-envelope"></i>
+                    </div>
+                    <div class='list-item'>
+                        Get to know each other before the event via our messaging system
+                    </div>
+                    <div class='iconContainer blue'>
+                        <i class="icon-lock"></i>
+                    </div>
+                                        <div class='list-item'>
+
+                     Pay and get paid via Stripe, a secure payments system.
+                                            </div>
+                     <div class='iconContainer blue'>
+                     <i class="icon-phone-sign blue"></i>
+                    </div>
+                    <div class='list-item'>
+                                             Contact us anytime about anything at concierge@thesocialer.com
+
+                     </div>
+                 </div>
+                 </div>
+             
             
         </div>
         <div id='discover'>
@@ -284,21 +305,7 @@
 
         </div>
         <div id='trust'>
-            <h2>Trust and Safety</h2>
-             <div id='popup-safety'>
-                         <i class="icon-ok-sign icon-large"></i>
-                      All hosts and events are personally verified by the Socialer team.
-                <br/>
-                         <i class="icon-envelope  icon-large"></i>
-                     
-                     Get to know each other before the event via our messaging system
-                     <br/>
-                         <i class="icon-lock  icon-large"></i>
-                     Pay and get paid via Stripe, a secure payments system.
-                     <br/>
-                     <i class="icon-phone-sign icon-large"></i>
-                     Contact us anytime about anything at concierge@thesocialer.com
-                 </div>
+                        
             
         </div>
 

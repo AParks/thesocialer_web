@@ -60,7 +60,10 @@
                                         </li>
                                         <li>
                                             <a href="/messages">
-                                                <img width='25' src="/Static/Images/mailbox.png"/>
+                                              <!--  <img width='25' src="/Static/Images/mailbox.png"/>-->
+                                                <div class='iconContainer blue'>
+                                                    <i class="icon-envelope icon-large"></i>
+                                                </div>
                                                 <div class='profile'>Messages</div>
 
                                                 <xsl:if test="@unreadCount > 0">
@@ -72,13 +75,20 @@
                                         </li>
                                         <li>
                                             <a href="/network" id='network'>
-                                                <img width='25' height='auto' src="/Static/Images/connections_white.png"/>
+                                                <div class='iconContainer yellow'>
+                                                    <i class="icon-user icon-large"></i>
+
+                                                </div> 
+                                              <!--  <img width='25' height='auto' src="/Static/Images/connections_white.png"/>-->
                                                 <div class='profile'> Connections</div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/settings" id='settings'>
-                                                <img width='25' height='25' src="/Static/Images/settings_white.png"/>
+                                                <div class='iconContainer green'>
+                                                    <i class="icon-cog icon-large"></i>
+                                                </div> 
+                                              <!--  <img width='25' height='25' src="/Static/Images/settings_white.png"/>-->
                                                 <div class='profile'>Settings</div>
                                             </a>
                                         </li>
@@ -87,7 +97,12 @@
                                                 <xsl:when test="./Viewer/Member/@fb_id">
                                         
                                                     <a href="#" id="fb_logout">
-                                                        <img width='25' height='auto' src="/Static/Images/logout.png"/>
+                                                        <div class='iconContainer red'>
+                                                            <i class="icon-signout icon-large"></i> 
+
+
+                                                </div> 
+                                                      <!--  <img width='25' height='auto' src="/Static/Images/logout.png"/>-->
                                                         <div class='profile'>Log Out</div>
                                                     </a>
                                                 </xsl:when>
@@ -404,7 +419,7 @@
                     </a>
                 </xsl:when>
                 <xsl:otherwise>
-                    <div class="NavigationLink second notLoggedIn">
+                    <div class="second notLoggedIn">
                         <div>Host</div>a social popup
                     </div>
                 </xsl:otherwise>

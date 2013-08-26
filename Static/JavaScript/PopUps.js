@@ -30,10 +30,7 @@ $(function( ) {
         }
         return false;
     });
-    $('.notLoggedIn').bind('click', function() {
-        $('#myModal').modal('show');
-    });
-    $('#join-email').bind('click', function() {
+   $('#join-email').bind('click', function() {
         $('#myModal2').modal('show');
 
     });

@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'ProximaNovaLight';
+    src: url('/fonts/proximanova-light-webfont.eot');
+    src: url('/fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/proximanova-light-webfont.woff') format('woff'),
+         url('/fonts/proximanova-light-webfont.ttf') format('truetype'),
+         url('/fonts/proximanova-light-webfont.svg#proxima_novalight') format('svg');
+    font-weight: normal;
+    font-style: normal
+
+}
 
 @font-face {
     font-family: 'comfortaaregular';
@@ -49,6 +60,19 @@ only screen and (max-width : 900px){
 
 }
 
+.red{
+    color: #be4b3c;
+}
+.blue{
+    color: #4e9c97;
+}
+.green{
+    color: #79a161;
+}
+.yellow{
+    color: #db9729;
+}
+
 
 /* Message Count */
 .alert-count {
@@ -96,7 +120,7 @@ only screen and (max-width : 900px){
 
 
 h1, h2, h3, h4, h5, h6{
-    font-family: 'comfortaaregular' !important;
+    font-family: 'ProximaNovaLight' !important;
 }
 
 
@@ -115,7 +139,7 @@ h1, h2, h3, h4, h5, h6{
     display: inline-block;
     position: relative;
     line-height: 25px;
-    color: #666;
+    color: #333;
 }
 #AccountSettingsContainer a > img{
     margin-left: 5px;
@@ -129,7 +153,6 @@ h1, h2, h3, h4, h5, h6{
     padding: 3px;
 }
 .profile {
-    color: white;
     margin-left: 7px;
     line-height: 25px;
     height: 25px;
@@ -138,8 +161,8 @@ h1, h2, h3, h4, h5, h6{
 
 .pane-content{
     background-color: #e7e7e7;
+    display: inline-block;
     padding: 4px;
-    margin: auto;
 }
 .social-link{
     background-color: #c2c2c2;
@@ -191,7 +214,7 @@ h1, h2, h3, h4, h5, h6{
 }
 #Header
 {
-    background-color: #eef2f7;
+    background-color: #FFF;
     width: 900px;
     margin: auto;
     margin-top: 5px;
@@ -267,6 +290,12 @@ a:hover{
 }
 
 
+.iconContainer{
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+    float: left;  
+}
 /*
 div.fb-login{
     width: 100%;
@@ -626,20 +655,24 @@ input[type="checkbox"]{
 
 #Navigation .navcontainer
 {
+    display: table;
     margin: auto;
     vertical-align: middle;
-    display: table;
     /*   padding: 3px 10px; */
 }
 #Navigation {
     width: 100%;
-    background-color: #c2c2c2;
-/*opacity: 0.7;*/
+       background-color: #f3f3f3;
+    /*    background-image: -moz-linear-gradient(top, #222222, #111111);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+        background-image: -webkit-linear-gradient(top, #222222, #111111);
+        background-image: -o-linear-gradient(top, #222222, #111111);
+        background-image: linear-gradient(to bottom, #222222, #111111); */
+    /*   background-repeat: repeat-x;
+       border-color: #252525; */
+    /*    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);*/
 }
 
-#Navigation:hover{
-    opacity: 1;
-}
 
 
 
@@ -649,28 +682,29 @@ a:hover{
 #Navigation li{
     display: inline-block;
 }
-#Navigation .NavigationLink:hover,
-#Navigation .NavigationLink.active{
+#Navigation a:hover,
+#Navigation a.active,
+#Navigation .notLoggedIn:hover{
     color:white !important;
-
- /*   background-color: #6887b9;
+    background-color: #4e9c97;
+   /* background-image: -moz-linear-gradient(top, #58A5D7, #318ecb);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#58A5D7), to(#318ecb));
+    background-image: -webkit-linear-gradient(top, #58A5D7, #318ecb);
+    background-image: -o-linear-gradient(top, #58A5D7, #318ecb);
+    background-image: linear-gradient(to bottom, #58A5D7, #318ecb);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#58A5D7', endColorstr='#318ecb', GradientType=0);
+*/
+  /*  background-color: #6887b9;
     background-image: -moz-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8ba3c9), to(#6887b9));
     background-image: -webkit-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: -o-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: linear-gradient(to bottom, #8ba3c9, #6887b9);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ba3c9', endColorstr='#6887b9', GradientType=0);
-
- */
- background-color: #58A5D7;
-background-image: -moz-linear-gradient(top, #58A5D7, #318ecb);
-background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#58A5D7), to(#318ecb));
-background-image: -webkit-linear-gradient(top, #58A5D7, #318ecb);
-background-image: -o-linear-gradient(top, #58A5D7, #318ecb);
-background-image: linear-gradient(to bottom, #58A5D7, #318ecb);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#58A5D7', endColorstr='#318ecb', GradientType=0);
- }
-#Navigation .NavigationLink > div{
+*/
+}
+#Navigation a > div,
+#Navigation .notLoggedIn > div{
     font-size: 18pt;
     font-family: comfortaabold;
     text-align: center;
@@ -683,16 +717,19 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#58A5D7', endC
     display: none;
 }
 
-#Navigation .NavigationLink{
+#Navigation .NavigationLink,
+#Navigation .notLoggedIn{
     display: inline-block;
+    cursor: pointer;
 
 
 }
 #Navigation .NavigationLink,
+#Navigation .notLoggedIn,
 .navcontainer > .btn
 {
     line-height: 22px;
-    color: white;
+    color: #666;
     font-size: 14px;
     padding-left: 13px;
     padding-right: 13px;
@@ -1147,7 +1184,7 @@ button.close {
     padding: 5px 0;
     margin: 2px 0 0;
     list-style: none;
-    background-color: #c2c2c2;
+    background-color: #f3f3f3;
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.2);
     *border-right-width: 2px;
@@ -1190,21 +1227,21 @@ button.close {
 }
 
 
-#AccountSettingsContainer li:hover,
-.dropdown-menu > li > a:hover,
+.dropdown-menu > li:hover,
 .dropdown-menu > li > a:focus,
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
     color: #ffffff;
     text-decoration: none;
-    background-color: #6887b9;
-    background-image: -moz-linear-gradient(top, #8ba3c9, #6887b9);
+    background-color: white;
+ /*   background-image: -moz-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8ba3c9), to(#6887b9));
     background-image: -webkit-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: -o-linear-gradient(top, #8ba3c9, #6887b9);
     background-image: linear-gradient(to bottom, #8ba3c9, #6887b9);
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+*/
 }
 
 .dropdown-menu > .active > a,

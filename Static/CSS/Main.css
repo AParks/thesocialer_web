@@ -3,10 +3,10 @@ body
  /*  background: url(/Static/Images/Background.jpg) no-repeat;
  
     background-color: #0B233F;*/
-        font-family: comfortaaregular;
-    background-color: #eef2f7;
+    background-color: #FFF;
 
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: ProximaNovaLight;
     font-size: 14px;
     font-weight: normal;
     line-height: 20px;
@@ -43,7 +43,8 @@ input[type="color"]:focus,
 }
 #MainBody
 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: ProximaNovaLight;
+   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-size: 14px;
     width: 900px;
     margin: 0 auto 0;

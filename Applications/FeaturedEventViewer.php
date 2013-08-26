@@ -4,9 +4,9 @@ class FeaturedEventViewer extends ApplicationBase {
 
     public function execute() {
 
-        if (!$this->viewer->isAuthenticated()) {
-            $this->redirect('/popups');
-        }
+      //  if (!$this->viewer->isAuthenticated()) {
+      //      $this->redirect('/popups');
+      //  }
         $x = XSLTransformer::getInstance();
 
         $event = $this->getEvent();
