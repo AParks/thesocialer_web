@@ -68,6 +68,8 @@ only screen and (max-width : 450px){
 
 #MainBody {
     width: 100%;
+    background-color: #4e9c97;
+    border-radius: 0;
 }
 #LocationList{
     width: 900px;
@@ -124,12 +126,12 @@ only screen and (max-width : 450px){
     line-height: 50px;
     font-size: 17pt;
     background-color: #79a161;
-    background-image: -moz-linear-gradient(top, #81d34f, #79a161);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#81d34f), to(#79a161));
-    background-image: -webkit-linear-gradient(top, #81d34f, #79a161);
-    background-image: -o-linear-gradient(top, #81d34f, #79a161);
-    background-image: linear-gradient(to bottom, #81d34f, #79a161);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#81d34f', endColorstr='#79a161', GradientType=0);
+    background-image: -moz-linear-gradient(top, #a1bd90, #79a161);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a1bd90), to(#79a161));
+    background-image: -webkit-linear-gradient(top, #a1bd90, #79a161);
+    background-image: -o-linear-gradient(top, #a1bd90, #79a161);
+    background-image: linear-gradient(to bottom, #a1bd90, #79a161);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a1bd90', endColorstr='#79a161', GradientType=0);
 
 }
 #popup-desc-start{
